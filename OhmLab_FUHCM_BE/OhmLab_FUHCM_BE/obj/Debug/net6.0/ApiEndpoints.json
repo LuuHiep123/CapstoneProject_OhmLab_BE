@@ -1,0 +1,12 @@
+[
+  {
+    "ContainingType": "OhmLab_FUHCM_BE.Controller.AuthController",
+    "Method": "StringTest",
+    "RelativePath": "api/auth",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  }
+]
