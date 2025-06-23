@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using DataLayer.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.Extensions.Configuration;
 
 namespace DataLayer.DBContext
 {
@@ -48,9 +49,17 @@ namespace DataLayer.DBContext
         {
             if (!optionsBuilder.IsConfigured)
             {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseSqlServer("server=(local);Database=OhmLab_DB;Uid=sa;Pwd=12345;Trusted_Connection=True;TrustServerCertificate=True;Encrypt=True;");
+                optionsBuilder.UseSqlServer(GetConnectionString());
             }
+        }
+
+        string GetConnectionString()
+        {
+            IConfiguration builder = new ConfigurationBuilder()
+                .SetBasePath(Directory.GetCurrentDirectory())
+                .AddJsonFile("appsettings.json", true, true)
+                .Build();
+            return builder["ConnectionStrings:hosting"];
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -841,6 +850,10 @@ namespace DataLayer.DBContext
                     .HasMaxLength(50)
                     .HasColumnName("User_NumberCode");
 
+                entity.Property(e => e.UserRoleName)
+                    .HasMaxLength(50)
+                    .HasColumnName("User_RoleName");
+
                 entity.Property(e => e.UserRollNumber)
                     .HasMaxLength(50)
                     .HasColumnName("User_RollNumber");
@@ -849,7 +862,7 @@ namespace DataLayer.DBContext
             modelBuilder.Entity<Week>(entity =>
             {
                 entity.HasKey(e => e.WeeksId)
-                    .HasName("PK__Weeks__73E0BF1E43F15728");
+                    .HasName("PK__Weeks__73E0BF1E369C8A88");
 
                 entity.Property(e => e.WeeksId)
                     .ValueGeneratedNever()

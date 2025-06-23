@@ -1,5 +1,9 @@
-﻿using DataLayer.DBContext;
+﻿using BusinessLayer.Service.Interface;
+using BusinessLayer.Service;
+using DataLayer.DBContext;
 using Microsoft.EntityFrameworkCore;
+using DataLayer.Repository.Implement;
+using DataLayer.Repository;
 
 namespace SWD392_FA24_SportShop.AppStarts
 {
@@ -19,10 +23,10 @@ namespace SWD392_FA24_SportShop.AppStarts
             });
 
             //AddService
-            
+            services.AddScoped<IUserService, UserService>();
 
             //AddRepository
-            
+            services.AddScoped<IUserRepositoty, UserRepository>();
         }
     }
 }

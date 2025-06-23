@@ -110,6 +110,7 @@ CREATE TABLE [User] (
     User_FullName NVARCHAR(50) NOT NULL,
     User_RollNumber NVARCHAR(50) NOT NULL,
     User_Email NVARCHAR(100) NOT NULL,
+	User_RoleName NVARCHAR(50) NOT NULL,
     User_NumberCode NVARCHAR(50) NOT NULL,
     [Status] NVARCHAR(50) NOT NULL
 PRIMARY KEY CLUSTERED ([User_id])
