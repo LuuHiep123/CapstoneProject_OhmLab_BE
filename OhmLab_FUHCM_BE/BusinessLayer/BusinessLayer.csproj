@@ -10,10 +10,4 @@
     <ProjectReference Include="..\DataLayer\DataLayer.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="ResponseModel\" />
-    <Folder Include="RequestModel\" />
-    <Folder Include="Service\Implement\" />
-  </ItemGroup>
-
 </Project>
