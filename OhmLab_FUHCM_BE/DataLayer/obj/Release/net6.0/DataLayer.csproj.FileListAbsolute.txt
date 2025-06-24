@@ -1,0 +1,15 @@
+E:\CN9\Capstone_Project\OhmLab\CapstoneProject_OhmLab_BE\OhmLab_FUHCM_BE\DataLayer\bin\Release\net6.0\DataLayer.deps.json
+E:\CN9\Capstone_Project\OhmLab\CapstoneProject_OhmLab_BE\OhmLab_FUHCM_BE\DataLayer\bin\Release\net6.0\DataLayer.runtimeconfig.json
+E:\CN9\Capstone_Project\OhmLab\CapstoneProject_OhmLab_BE\OhmLab_FUHCM_BE\DataLayer\bin\Release\net6.0\DataLayer.dll
+E:\CN9\Capstone_Project\OhmLab\CapstoneProject_OhmLab_BE\OhmLab_FUHCM_BE\DataLayer\bin\Release\net6.0\DataLayer.pdb
+E:\CN9\Capstone_Project\OhmLab\CapstoneProject_OhmLab_BE\OhmLab_FUHCM_BE\DataLayer\obj\Release\net6.0\DataLayer.csproj.AssemblyReference.cache
+E:\CN9\Capstone_Project\OhmLab\CapstoneProject_OhmLab_BE\OhmLab_FUHCM_BE\DataLayer\obj\Release\net6.0\DataLayer.GeneratedMSBuildEditorConfig.editorconfig
+E:\CN9\Capstone_Project\OhmLab\CapstoneProject_OhmLab_BE\OhmLab_FUHCM_BE\DataLayer\obj\Release\net6.0\DataLayer.AssemblyInfoInputs.cache
+E:\CN9\Capstone_Project\OhmLab\CapstoneProject_OhmLab_BE\OhmLab_FUHCM_BE\DataLayer\obj\Release\net6.0\DataLayer.AssemblyInfo.cs
+E:\CN9\Capstone_Project\OhmLab\CapstoneProject_OhmLab_BE\OhmLab_FUHCM_BE\DataLayer\obj\Release\net6.0\DataLayer.csproj.CoreCompileInputs.cache
+E:\CN9\Capstone_Project\OhmLab\CapstoneProject_OhmLab_BE\OhmLab_FUHCM_BE\DataLayer\obj\Release\net6.0\DataLayer.sourcelink.json
+E:\CN9\Capstone_Project\OhmLab\CapstoneProject_OhmLab_BE\OhmLab_FUHCM_BE\DataLayer\obj\Release\net6.0\DataLayer.dll
+E:\CN9\Capstone_Project\OhmLab\CapstoneProject_OhmLab_BE\OhmLab_FUHCM_BE\DataLayer\obj\Release\net6.0\refint\DataLayer.dll
+E:\CN9\Capstone_Project\OhmLab\CapstoneProject_OhmLab_BE\OhmLab_FUHCM_BE\DataLayer\obj\Release\net6.0\DataLayer.pdb
+E:\CN9\Capstone_Project\OhmLab\CapstoneProject_OhmLab_BE\OhmLab_FUHCM_BE\DataLayer\obj\Release\net6.0\DataLayer.genruntimeconfig.cache
+E:\CN9\Capstone_Project\OhmLab\CapstoneProject_OhmLab_BE\OhmLab_FUHCM_BE\DataLayer\obj\Release\net6.0\ref\DataLayer.dll
