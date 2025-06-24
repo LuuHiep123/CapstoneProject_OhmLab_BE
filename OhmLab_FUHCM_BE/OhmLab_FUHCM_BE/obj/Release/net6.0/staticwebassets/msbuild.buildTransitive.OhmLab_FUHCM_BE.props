@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\buildMultiTargeting\OhmLab_FUHCM_BE.props" />
+</Project>

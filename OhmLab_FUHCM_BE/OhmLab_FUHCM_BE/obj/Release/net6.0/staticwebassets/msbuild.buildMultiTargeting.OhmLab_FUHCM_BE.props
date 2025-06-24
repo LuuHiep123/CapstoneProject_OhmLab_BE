@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\OhmLab_FUHCM_BE.props" />
+</Project>
