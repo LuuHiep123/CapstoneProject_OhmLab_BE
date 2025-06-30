@@ -71,11 +71,11 @@ namespace BusinessLayer.Service.Interface
 
      
 
-        public async Task<BaseResponse<LoginResponseModel>> LoginMail(string googleId)
+        public async Task<BaseResponse<LoginResponseModel>> LoginMail(LoginMailModel model)
         {
             try
             {
-                var payload = await GoogleJsonWebSignature.ValidateAsync(googleId);
+                var payload = await GoogleJsonWebSignature.ValidateAsync(model.GoogleId);
                 var email = payload.Email;
                 var user = await _userRepository.GetUserByEmail(email);
                 if (user != null)

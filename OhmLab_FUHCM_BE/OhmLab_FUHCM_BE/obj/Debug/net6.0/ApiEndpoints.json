@@ -129,9 +129,9 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "googleId",
-        "Type": "System.String",
-        "IsRequired": false
+        "Name": "model",
+        "Type": "BusinessLayer.RequestModel.User.LoginMailModel",
+        "IsRequired": true
       }
     ],
     "ReturnTypes": []

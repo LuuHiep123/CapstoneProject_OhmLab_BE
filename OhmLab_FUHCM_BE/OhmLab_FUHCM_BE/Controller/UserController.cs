@@ -96,11 +96,11 @@ namespace SWDProject_BE.Controllers
         }
 
         [HttpPost("LoginMail")]
-        public async Task<IActionResult> LoginMail(string googleId)
+        public async Task<IActionResult> LoginMail(LoginMailModel model)
         {
             try
             {
-                var result = await _service.LoginMail(googleId);
+                var result = await _service.LoginMail(model);
                 return StatusCode(result.Code, result);
             }
             catch (Exception ex)
