@@ -14,7 +14,7 @@ namespace BusinessLayer.Service
     {
         Task<BaseResponse<UserResponseModel>> CreateAccountAdmin(string email, string name);
          Task<BaseResponse<UserResponseModel>> CreateAccountHeadOfDepartment(string email, string name);
-        Task<BaseResponse<LoginResponseModel>> LoginMail(string googleId);
+        Task<BaseResponse<LoginResponseModel>> LoginMail(LoginMailModel model);
          Task<BaseResponse<UserResponseModel>> RegisterUser(RegisterRequestModel model);
         Task<DynamicResponse<UserResponseModel>> GetListUser(GetAllUserRequestModel model);
         Task<BaseResponse> BlockUser(Guid userId);
