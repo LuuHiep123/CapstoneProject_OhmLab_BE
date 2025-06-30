@@ -2,6 +2,10 @@
 using BusinessLayer.RequestModel.User;
 using BusinessLayer.ResponseModel.User;
 using DataLayer.Entities;
+using BusinessLayer.RequestModel.Subject;
+using BusinessLayer.ResponseModel.Subject;
+using BusinessLayer.RequestModel.Lab;
+using BusinessLayer.ResponseModel.Lab;
 
 namespace SWDProject_BE.AppStarts
 {
@@ -15,6 +19,13 @@ namespace SWDProject_BE.AppStarts
             CreateMap<RegisterRequestModel, UserResponseModel>().ReverseMap();
             CreateMap<UpdateRequestModel, User>().ReverseMap();
 
+            CreateMap<CreateSubjectRequestModel, Subject>();
+            CreateMap<UpdateSubjectRequestModel, Subject>();
+            CreateMap<Subject, SubjectResponseModel>();
+
+            CreateMap<CreateLabRequestModel, Lab>();
+            CreateMap<UpdateLabRequestModel, Lab>();
+            CreateMap<Lab, LabResponseModel>();
         }
     }
 }
