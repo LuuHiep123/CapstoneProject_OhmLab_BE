@@ -11,15 +11,45 @@ namespace BusinessLayer.Service.Implement
 {
     public class EquipmentService : IEquipmentService
     {
-        Task<BaseResponse<UserResponseModel>> CreateAccountAdmin(string email, string name);
-        Task<BaseResponse<UserResponseModel>> CreateAccountHeadOfDepartment(string email, string name);
-        Task<BaseResponse<LoginResponseModel>> LoginMail(LoginMailModel model);
-        Task<BaseResponse<UserResponseModel>> RegisterUser(RegisterRequestModel model);
-        Task<DynamicResponse<UserResponseModel>> GetListUser(GetAllUserRequestModel model);
-        Task<BaseResponse> BlockUser(Guid userId);
-        Task<BaseResponse<LoginResponseModel>> LoginTest(string mail);
-        Task<BaseResponse<UserResponseModel>> DeleteUser(Guid id);
-        Task<BaseResponse<UserResponseModel>> GetUserById(Guid id);
-        Task<BaseResponse<UserResponseModel>> UpdateUser(Guid id, UpdateRequestModel model);
+        Task<BaseResponse<UserResponseModel>> CreateAccountAdmin(string email, string name)
+        {
+            throw new NotImplementedException();
+        }
+        Task<BaseResponse<UserResponseModel>> CreateAccountHeadOfDepartment(string email, string name)
+        {
+            throw new NotImplementedException();
+        }
+        Task<BaseResponse<LoginResponseModel>> LoginMail(LoginMailModel model)
+        {
+            throw new NotImplementedException();
+        }
+        Task<BaseResponse<UserResponseModel>> RegisterUser(RegisterRequestModel model)
+        {
+            throw new NotImplementedException();
+        }
+        Task<DynamicResponse<UserResponseModel>> GetListUser(GetAllUserRequestModel model)
+        {
+            throw new NotImplementedException();
+        }
+        Task<BaseResponse> BlockUser(Guid userId)
+        {
+            throw new NotImplementedException();
+        }
+        Task<BaseResponse<LoginResponseModel>> LoginTest(string mail)
+        {
+            throw new NotImplementedException();
+        }
+        Task<BaseResponse<UserResponseModel>> DeleteUser(Guid id)
+        {
+            throw new NotImplementedException();
+        }
+        Task<BaseResponse<UserResponseModel>> GetUserById(Guid id)
+        {
+            throw new NotImplementedException();
+        }
+        Task<BaseResponse<UserResponseModel>> UpdateUser(Guid id, UpdateRequestModel model)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

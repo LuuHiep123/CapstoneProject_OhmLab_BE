@@ -7,7 +7,7 @@ using BusinessLayer.ResponseModel.Subject;
 using BusinessLayer.RequestModel.Lab;
 using BusinessLayer.ResponseModel.Lab;
 
-namespace SWDProject_BE.AppStarts
+namespace OhmLab_FUHCM_BE.AppStarts
 {
     public class MappingProfile : Profile
     {
