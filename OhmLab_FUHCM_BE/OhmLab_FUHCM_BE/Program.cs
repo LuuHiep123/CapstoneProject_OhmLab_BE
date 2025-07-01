@@ -1,6 +1,5 @@
 using Microsoft.Extensions.Configuration;
-using SWD392_FA24_SportShop.AppStarts;
-using SWD392_SportShop.AppStarts;
+using OhmLab_FUHCM_BE.AppStarts;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,13 +9,14 @@ builder.Services.AddMemoryCache();
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 
-builder.Services.ConfigureSwaggerServices();
 
-builder.Services.ConfigureAuthService(builder.Configuration);
 
 builder.Services.AddEndpointsApiExplorer();
 
-builder.Services.ConfigureAutoMapper();
+builder.Services.AddMemoryCache();
+builder.Services.AddControllers();
+builder.Services.AddSwaggerGen();
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 builder.Services.ServiceContainer(builder.Configuration);
 
