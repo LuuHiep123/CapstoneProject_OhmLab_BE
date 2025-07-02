@@ -59,5 +59,11 @@ namespace BusinessLayer.Service.Implement
                 await _labRepository.UpdateLab(lab);
             }
         }
+
+        public async Task<List<LabResponseModel>> GetAllLabs()
+        {
+            var labs = await _labRepository.GetAllLabs();
+            return _mapper.Map<List<LabResponseModel>>(labs);
+        }
     }
 } 

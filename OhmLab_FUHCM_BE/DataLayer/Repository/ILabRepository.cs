@@ -11,5 +11,6 @@ namespace DataLayer.Repository
         Task AddLab(Lab lab);
         Task UpdateLab(Lab lab);
         Task DeleteLab(int id);
+        Task<List<Lab>> GetAllLabs();
     }
 } 

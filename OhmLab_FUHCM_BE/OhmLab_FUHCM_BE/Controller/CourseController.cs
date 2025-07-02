@@ -187,5 +187,19 @@ namespace OhmLab_FUHCM_BE.Controller
                 return BadRequest(new { success = false, message = "Xóa bài lab thất bại!", error = ex.Message });
             }
         }
+
+        [HttpGet("labs")]
+        public async Task<IActionResult> GetAllLabs()
+        {
+            try
+            {
+                var labs = await _labService.GetAllLabs();
+                return Ok(labs);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
     }
 } 

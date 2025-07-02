@@ -48,5 +48,10 @@ namespace DataLayer.Repository.Implement
             _context.Entry(lab).State = EntityState.Modified;
             await _context.SaveChangesAsync();
         }
+
+        public async Task<List<Lab>> GetAllLabs()
+        {
+            return await _context.Labs.ToListAsync();
+        }
     }
 } 

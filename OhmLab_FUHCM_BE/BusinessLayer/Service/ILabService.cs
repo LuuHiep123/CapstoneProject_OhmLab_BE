@@ -12,5 +12,6 @@ namespace BusinessLayer.Service
         Task AddLab(CreateLabRequestModel lab);
         Task UpdateLab(int id, UpdateLabRequestModel lab);
         Task DeleteLab(int id);
+        Task<List<LabResponseModel>> GetAllLabs();
     }
 } 
