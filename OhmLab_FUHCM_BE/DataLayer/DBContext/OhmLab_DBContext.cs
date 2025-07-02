@@ -409,7 +409,7 @@ namespace DataLayer.DBContext
                 entity.ToTable("Lab");
 
                 entity.Property(e => e.LabId)
-                    .ValueGeneratedNever()
+                    .ValueGeneratedOnAdd()
                     .HasColumnName("Lab_id");
 
                 entity.Property(e => e.LabName)
@@ -697,7 +697,7 @@ namespace DataLayer.DBContext
                 entity.ToTable("Subject");
 
                 entity.Property(e => e.SubjectId)
-                    .ValueGeneratedNever()
+                    .ValueGeneratedOnAdd()
                     .HasColumnName("Subject_id");
 
                 entity.Property(e => e.SubjectCode)

@@ -24,6 +24,7 @@ namespace BusinessLayer.Service.Implement
             var lab = _mapper.Map<Lab>(labModel);
             lab.LabStatus = "Active"; // Default status
             await _labRepository.AddLab(lab);
+            Console.WriteLine($"LabId before insert: {lab.LabId}");
         }
 
         public async Task DeleteLab(int id)

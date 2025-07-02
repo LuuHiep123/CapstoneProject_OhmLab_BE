@@ -48,14 +48,16 @@ namespace BusinessLayer.Service.Interface
                 var tokenHandler = new JwtSecurityTokenHandler();
                 var key = Encoding.ASCII.GetBytes(_configuration["Jwt:Key"]);
 
-                var tokenDescriptor = new SecurityTokenDescriptor
+                var claims = new List<Claim>
                 {
-                    Subject = new ClaimsIdentity(new[]
-                    {
                     new Claim(ClaimTypes.Name, username),
                     new Claim(ClaimTypes.Role, roleName),
                     new Claim(ClaimTypes.NameIdentifier, userId.ToString())
-                }),
+                };
+
+                var tokenDescriptor = new SecurityTokenDescriptor
+                {
+                    Subject = new ClaimsIdentity(claims),
                     Expires = DateTime.UtcNow.AddHours(24),
                     SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
                 };

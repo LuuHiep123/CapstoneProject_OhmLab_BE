@@ -19,11 +19,13 @@ namespace OhmLab_FUHCM_BE.AppStarts
             CreateMap<RegisterRequestModel, UserResponseModel>().ReverseMap();
             CreateMap<UpdateRequestModel, User>().ReverseMap();
 
-            CreateMap<CreateSubjectRequestModel, Subject>();
+            CreateMap<CreateSubjectRequestModel, Subject>()
+                .ForMember(dest => dest.SubjectId, opt => opt.Ignore());
             CreateMap<UpdateSubjectRequestModel, Subject>();
             CreateMap<Subject, SubjectResponseModel>();
 
-            CreateMap<CreateLabRequestModel, Lab>();
+            CreateMap<CreateLabRequestModel, Lab>()
+                .ForMember(dest => dest.LabId, opt => opt.Ignore());
             CreateMap<UpdateLabRequestModel, Lab>();
             CreateMap<Lab, LabResponseModel>();
         }

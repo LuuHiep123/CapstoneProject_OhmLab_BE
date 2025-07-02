@@ -56,47 +56,51 @@ namespace OhmLab_FUHCM_BE.Controller
         }
 
         [HttpPost("subjects")]
-        [Authorize(Roles = "HEADOFDEPARTMENT")]
         public async Task<IActionResult> CreateSubject([FromBody] CreateSubjectRequestModel subjectModel)
         {
             try
             {
                 await _subjectService.AddSubject(subjectModel);
-                return Ok();
+                return Ok(new { success = true, message = "Tạo môn học thành công!" });
             }
             catch (Exception ex)
             {
-                return BadRequest(ex.Message);
+                return BadRequest(new
+                {
+                    success = false,
+                    message = "Tạo môn học thất bại!",
+                    error = ex.InnerException?.Message ?? ex.Message
+                });
             }
         }
 
         [HttpPut("subjects/{id}")]
-        [Authorize(Roles = "HEADOFDEPARTMENT")]
+        
         public async Task<IActionResult> UpdateSubject(int id, [FromBody] UpdateSubjectRequestModel subjectModel)
         {
             try
             {
                 await _subjectService.UpdateSubject(id, subjectModel);
-                return Ok();
+                return Ok(new { success = true, message = "Cập nhật môn học thành công!" });
             }
             catch (Exception ex)
             {
-                return BadRequest(ex.Message);
+                return BadRequest(new { success = false, message = "Cập nhật môn học thất bại!", error = ex.Message });
             }
         }
 
         [HttpDelete("subjects/{id}")]
-        [Authorize(Roles = "HEADOFDEPARTMENT")]
+    
         public async Task<IActionResult> DeleteSubject(int id)
         {
             try
             {
                 await _subjectService.DeleteSubject(id);
-                return Ok();
+                return Ok(new { success = true, message = "Xóa môn học thành công!" });
             }
             catch (Exception ex)
             {
-                return BadRequest(ex.Message);
+                return BadRequest(new { success = false, message = "Xóa môn học thất bại!", error = ex.Message });
             }
         }
 
@@ -135,32 +139,37 @@ namespace OhmLab_FUHCM_BE.Controller
         }
 
         [HttpPost("labs")]
-        [Authorize(Roles = " LECTURER")]
+    
         public async Task<IActionResult> CreateLab([FromBody] CreateLabRequestModel labModel)
         {
             try
             {
                 await _labService.AddLab(labModel);
-                return Ok();
+                return Ok(new { success = true, message = "Tạo bài lab thành công!" });
             }
             catch (Exception ex)
             {
-                return BadRequest(ex.Message);
+                return BadRequest(new
+                {
+                    success = false,
+                    message = "Tạo bài lab  thất bại!",
+                    error = ex.InnerException?.Message ?? ex.Message
+                });
             }
         }
 
         [HttpPut("labs/{id}")]
-        [Authorize(Roles = " LECTURER")]
+
         public async Task<IActionResult> UpdateLab(int id, [FromBody] UpdateLabRequestModel labModel)
         {
             try
             {
                 await _labService.UpdateLab(id, labModel);
-                return Ok();
+                return Ok(new { success = true, message = "Cập nhật bài lab thành công!" });
             }
             catch (Exception ex)
             {
-                return BadRequest(ex.Message);
+                return BadRequest(new { success = false, message = "Cập nhật bài lab thất bại!", error = ex.Message });
             }
         }
 
@@ -171,11 +180,11 @@ namespace OhmLab_FUHCM_BE.Controller
             try
             {
                 await _labService.DeleteLab(id);
-                return Ok();
+                return Ok(new { success = true, message = "Xóa bài lab thành công!" });
             }
             catch (Exception ex)
             {
-                return BadRequest(ex.Message);
+                return BadRequest(new { success = false, message = "Xóa bài lab thất bại!", error = ex.Message });
             }
         }
     }
