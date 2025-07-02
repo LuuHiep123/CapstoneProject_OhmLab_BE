@@ -22,7 +22,7 @@ namespace BusinessLayer.Service.Implement
         public async Task AddLab(CreateLabRequestModel labModel)
         {
             var lab = _mapper.Map<Lab>(labModel);
-            lab.LabStatus = "Active"; // Default status
+            lab.LabStatus = labModel.LabStatus ?? "Active";
             await _labRepository.AddLab(lab);
             Console.WriteLine($"LabId before insert: {lab.LabId}");
         }
