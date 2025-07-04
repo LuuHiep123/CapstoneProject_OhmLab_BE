@@ -5,6 +5,9 @@ using DataLayer.Entities;
 using DataLayer.Repository;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using System.Linq;
+using BusinessLayer.ResponseModel.BaseResponse;
+using BusinessLayer.ResponseModel.Lab;
 
 namespace BusinessLayer.Service.Implement
 {
@@ -43,10 +46,60 @@ namespace BusinessLayer.Service.Implement
             return _mapper.Map<LabResponseModel>(lab);
         }
 
-        public async Task<List<LabResponseModel>> GetLabsBySubjectId(int subjectId)
+        public async Task<BusinessLayer.ResponseModel.BaseResponse.DynamicResponse<LabResponseModel>> GetLabsBySubjectId(int subjectId)
         {
             var labs = await _labRepository.GetLabsBySubjectId(subjectId);
-            return _mapper.Map<List<LabResponseModel>>(labs);
+            var result = _mapper.Map<List<LabResponseModel>>(labs);
+            int page = 1, size = 10;
+            var pagedLabs = result.OrderBy(l => l.LabId).Skip((page - 1) * size).Take(size).ToList();
+            var totalItems = result.Count;
+            var totalPages = (int)Math.Ceiling((double)totalItems / size);
+            return new BusinessLayer.ResponseModel.BaseResponse.DynamicResponse<LabResponseModel>
+            {
+                Code = 200,
+                Success = true,
+                Message = null,
+                Data = new BusinessLayer.ResponseModel.BaseResponse.MegaData<LabResponseModel>
+                {
+                    PageData = pagedLabs,
+                    PageInfo = new BusinessLayer.ResponseModel.BaseResponse.PagingMetaData
+                    {
+                        Page = page,
+                        Size = size,
+                        TotalItem = totalItems,
+                        TotalPage = totalPages
+                    },
+                    SearchInfo = null
+                }
+            };
+        }
+
+        public async Task<BusinessLayer.ResponseModel.BaseResponse.DynamicResponse<LabResponseModel>> GetAllLabs()
+        {
+            var labs = await _labRepository.GetAllLabs();
+            var result = _mapper.Map<List<LabResponseModel>>(labs);
+            int page = 1, size = 10;
+            var pagedLabs = result.OrderBy(l => l.LabId).Skip((page - 1) * size).Take(size).ToList();
+            var totalItems = result.Count;
+            var totalPages = (int)Math.Ceiling((double)totalItems / size);
+            return new BusinessLayer.ResponseModel.BaseResponse.DynamicResponse<LabResponseModel>
+            {
+                Code = 200,
+                Success = true,
+                Message = null,
+                Data = new BusinessLayer.ResponseModel.BaseResponse.MegaData<LabResponseModel>
+                {
+                    PageData = pagedLabs,
+                    PageInfo = new BusinessLayer.ResponseModel.BaseResponse.PagingMetaData
+                    {
+                        Page = page,
+                        Size = size,
+                        TotalItem = totalItems,
+                        TotalPage = totalPages
+                    },
+                    SearchInfo = null
+                }
+            };
         }
 
         public async Task UpdateLab(int id, UpdateLabRequestModel labModel)
@@ -58,12 +111,6 @@ namespace BusinessLayer.Service.Implement
                 lab.LabId = id;
                 await _labRepository.UpdateLab(lab);
             }
-        }
-
-        public async Task<List<LabResponseModel>> GetAllLabs()
-        {
-            var labs = await _labRepository.GetAllLabs();
-            return _mapper.Map<List<LabResponseModel>>(labs);
         }
     }
 } 

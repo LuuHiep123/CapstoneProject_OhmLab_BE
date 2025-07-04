@@ -4,6 +4,7 @@ using BusinessLayer.ResponseModel.Subject;
 using DataLayer.Entities;
 using DataLayer.Repository;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace BusinessLayer.Service.Implement
@@ -36,10 +37,32 @@ namespace BusinessLayer.Service.Implement
             }
         }
 
-        public async Task<List<SubjectResponseModel>> GetAllSubjects()
+        public async Task<BusinessLayer.ResponseModel.BaseResponse.DynamicResponse<SubjectResponseModel>> GetAllSubjects()
         {
             var subjects = await _subjectRepository.GetAllSubjects();
-            return _mapper.Map<List<SubjectResponseModel>>(subjects);
+            var result = _mapper.Map<List<SubjectResponseModel>>(subjects);
+            int pageNum = 1, pageSize = 10;
+            var pagedSubjects = result.OrderBy(s => s.SubjectId).Skip((pageNum - 1) * pageSize).Take(pageSize).ToList();
+            var totalItems = result.Count;
+            var totalPages = (int)Math.Ceiling((double)totalItems / pageSize);
+            return new BusinessLayer.ResponseModel.BaseResponse.DynamicResponse<SubjectResponseModel>
+            {
+                Code = 200,
+                Success = true,
+                Message = null,
+                Data = new BusinessLayer.ResponseModel.BaseResponse.MegaData<SubjectResponseModel>
+                {
+                    PageData = pagedSubjects,
+                    PageInfo = new BusinessLayer.ResponseModel.BaseResponse.PagingMetaData
+                    {
+                        Page = pageNum,
+                        Size = pageSize,
+                        TotalItem = totalItems,
+                        TotalPage = totalPages
+                    },
+                    SearchInfo = null
+                }
+            };
         }
 
         public async Task<SubjectResponseModel> GetSubjectById(int id)
