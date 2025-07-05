@@ -39,27 +39,28 @@ namespace OhmLab_FUHCM_BE.Controller
         public async Task<IActionResult> GetSubjectById(int id)
         {
             var subject = await _subjectService.GetSubjectById(id);
-            var pageData = subject != null ? new List<BusinessLayer.ResponseModel.Subject.SubjectResponseModel> { subject } : new List<BusinessLayer.ResponseModel.Subject.SubjectResponseModel>();
-            var totalItem = subject != null ? 1 : 0;
-            var response = new BusinessLayer.ResponseModel.BaseResponse.DynamicResponse<BusinessLayer.ResponseModel.Subject.SubjectResponseModel>
+            if (subject != null)
             {
-                Code = subject != null ? 200 : 404,
-                Success = subject != null,
-                Message = subject != null ? "Lấy chi tiết môn học thành công!" : "Không tìm thấy môn học!",
-                Data = new BusinessLayer.ResponseModel.BaseResponse.MegaData<BusinessLayer.ResponseModel.Subject.SubjectResponseModel>
-                {
-                    PageData = pageData,
-                    PageInfo = new BusinessLayer.ResponseModel.BaseResponse.PagingMetaData
-                    {
-                        Page = 1,
-                        Size = 1,
-                        TotalItem = totalItem,
-                        TotalPage = totalItem
-                    },
-                    SearchInfo = null
-                }
-            };
-            return StatusCode(response.Code, response);
+                return Ok(new {
+                    success = true,
+                    message = "Lấy chi tiết môn học thành công!",
+                    code = 200,
+                    data = new {
+                        subjectName = subject.SubjectName,
+                        subjectDescription = subject.SubjectDescription,
+                        subjectStatus = subject.SubjectStatus
+                    }
+                });
+            }
+            else
+            {
+                return NotFound(new {
+                    success = false,
+                    message = "Không tìm thấy môn học!",
+                    code = 404,
+                    data = (object)null
+                });
+            }
         }
 
         [HttpPost("subjects")]
@@ -141,27 +142,29 @@ namespace OhmLab_FUHCM_BE.Controller
         public async Task<IActionResult> GetLabById(int id)
         {
             var lab = await _labService.GetLabById(id);
-            var pageData = lab != null ? new List<BusinessLayer.ResponseModel.Lab.LabResponseModel> { lab } : new List<BusinessLayer.ResponseModel.Lab.LabResponseModel>();
-            var totalItem = lab != null ? 1 : 0;
-            var response = new BusinessLayer.ResponseModel.BaseResponse.DynamicResponse<BusinessLayer.ResponseModel.Lab.LabResponseModel>
+            if (lab != null)
             {
-                Code = lab != null ? 200 : 404,
-                Success = lab != null,
-                Message = lab != null ? "Lấy chi tiết lab thành công!" : "Không tìm thấy lab!",
-                Data = new BusinessLayer.ResponseModel.BaseResponse.MegaData<BusinessLayer.ResponseModel.Lab.LabResponseModel>
-                {
-                    PageData = pageData,
-                    PageInfo = new BusinessLayer.ResponseModel.BaseResponse.PagingMetaData
-                    {
-                        Page = 1,
-                        Size = 1,
-                        TotalItem = totalItem,
-                        TotalPage = totalItem
-                    },
-                    SearchInfo = null
-                }
-            };
-            return StatusCode(response.Code, response);
+                return Ok(new {
+                    success = true,
+                    message = "Lấy chi tiết lab thành công!",
+                    code = 200,
+                    data = new {
+                        labName = lab.LabName,
+                        labRequest = lab.LabRequest,
+                        labTarget = lab.LabTarget,
+                        labStatus = lab.LabStatus
+                    }
+                });
+            }
+            else
+            {
+                return NotFound(new {
+                    success = false,
+                    message = "Không tìm thấy lab!",
+                    code = 404,
+                    data = (object)null
+                });
+            }
         }
 
         [HttpPost("labs")]
