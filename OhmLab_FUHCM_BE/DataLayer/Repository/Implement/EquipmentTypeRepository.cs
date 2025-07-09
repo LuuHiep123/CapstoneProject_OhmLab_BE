@@ -58,6 +58,19 @@ namespace DataLayer.Repository.Implement
             }
         }
 
+        public async Task<EquipmentType> GetEquipmentTypeByCode(string code)
+        {
+            try
+            {
+                return await _DBContext.EquipmentTypes.FirstOrDefaultAsync(et => et.EquipmentTypeCode.Equals(code));
+
+            }
+            catch (Exception ex)    
+            {
+                throw ex;
+            }
+        }
+
         public async Task<EquipmentType> GetEquipmentTypeById(string id)
         {
             try

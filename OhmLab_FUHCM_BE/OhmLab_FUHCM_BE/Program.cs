@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using OhmLab_FUHCM_BE.AppStarts;
+using SWD392_FA24_SportShop.AppStarts;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -18,7 +19,10 @@ builder.Services.AddEndpointsApiExplorer();
 
 builder.Services.AddMemoryCache();
 builder.Services.AddControllers();
-builder.Services.AddSwaggerGen();
+builder.Services.ConfigureSwaggerServices();
+builder.Services.ConfigureAuthService(builder.Configuration);
+
+
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 
@@ -34,19 +38,6 @@ builder.Services.AddCors(options =>
         .AllowAnyHeader()
         );
 });
-builder.Services.AddAuthentication("Bearer")
-    .AddJwtBearer("Bearer", options =>
-    {
-        options.TokenValidationParameters = new TokenValidationParameters
-        {
-            ValidateIssuer = false,
-            ValidateAudience = false,
-            ValidateLifetime = true,
-            ValidateIssuerSigningKey = true,
-            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"])),
-            RoleClaimType = System.Security.Claims.ClaimTypes.Role
-        };
-    });
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
