@@ -14,5 +14,7 @@ namespace DataLayer.Repository
         public Task<bool> DeleteEquipmentType(EquipmentType equipmentType);
         public Task<List<EquipmentType>> GetAllEquipmentType();
         public Task<EquipmentType> GetEquipmentTypeById(string id);
+        public Task<EquipmentType> GetEquipmentTypeByCode(string code);
+
     }
 }

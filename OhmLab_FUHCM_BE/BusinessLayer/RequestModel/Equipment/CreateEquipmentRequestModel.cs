@@ -14,6 +14,5 @@ namespace BusinessLayer.RequestModel.Equipment
         public string? EquipmentDescription { get; set; }
         public string? EquipmentTypeUrlImg { get; set; }
         public string EquipmentQr { get; set; } = null!;
-        public string EquipmentStatus { get; set; } = null!;
     }
 }

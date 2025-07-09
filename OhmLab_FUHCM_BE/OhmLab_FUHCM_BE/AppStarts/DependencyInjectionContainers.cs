@@ -28,11 +28,14 @@ namespace OhmLab_FUHCM_BE.AppStarts
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<ISubjectService, SubjectService>();
             services.AddScoped<ILabService, LabService>();
+            services.AddScoped<IEquipmentService, EquipmentService>();
 
             //AddRepository
             services.AddScoped<IUserRepositoty, UserRepository>();
             services.AddScoped<ISubjectRepository, SubjectRepository>();
             services.AddScoped<ILabRepository, LabRepository>();
+            services.AddScoped<IEquipmentRepository, EquipmentRepository>();
+            services.AddScoped<IEquipmentTypeRepository, EquipmentTypeRepository>();
         }
     }
 }
