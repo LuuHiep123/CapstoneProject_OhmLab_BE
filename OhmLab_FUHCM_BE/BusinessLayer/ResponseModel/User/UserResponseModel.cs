@@ -10,6 +10,7 @@ namespace BusinessLayer.ResponseModel.User
     {
         public Guid UserId { get; set; }
         public string UserFullName { get; set; } = null!;
+        public string UserRoleName { get; set; } = null!;
         public string UserRollNumber { get; set; } = null!;
         public string UserEmail { get; set; } = null!;
         public string UserNumberCode { get; set; } = null!;
