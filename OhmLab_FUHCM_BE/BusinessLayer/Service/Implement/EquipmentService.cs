@@ -14,6 +14,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using X.PagedList.Extensions;
 
 namespace BusinessLayer.Service.Implement
 {
@@ -141,6 +142,192 @@ namespace BusinessLayer.Service.Implement
                         Message = "Create equipment success!",
                         Data = _mapper.Map<EquipmentResponseModel>(equipment)
 
+                    };
+                }
+            }
+            catch (Exception ex)
+            {
+                return new BaseResponse<EquipmentResponseModel>()
+                {
+                    Code = 500,
+                    Success = false,
+                    Message = "Server Error!"
+
+                };
+            }
+        }
+
+        public async Task<BaseResponse<EquipmentResponseModel>> DeleteEquipment(string id)
+        {
+            try
+            {
+                var equipment = await _equipmentRepository.GetEquipmentById(id);
+                if (equipment != null)
+                {
+                    equipment.EquipmentStatus = "Delete";
+                    await _equipmentRepository.UpdateEquipment(equipment);
+                    return new BaseResponse<EquipmentResponseModel>()
+                    {
+                        Code = 200,
+                        Success = true,
+                        Message = "Delete success!.",
+                        Data = _mapper.Map<EquipmentResponseModel>(equipment)
+                    };
+                }
+                else
+                {
+                    return new BaseResponse<EquipmentResponseModel>()
+                    {
+                        Code = 404,
+                        Success = false,
+                        Message = "Not found Equipment!.",
+                        Data = null
+                    };
+                }
+            }
+            catch (Exception ex)
+            {
+                return new BaseResponse<EquipmentResponseModel>()
+                {
+                    Code = 500,
+                    Success = false,
+                    Message = "Server Error!"
+
+                };
+            }
+        }
+
+        public async Task<DynamicResponse<EquipmentResponseModel>> GetAllEquipment(GetAllEquipmentRequestModel model)
+        {
+            try
+            {
+                var listEquipment = await _equipmentRepository.GetAllEquipment();
+                if (!string.IsNullOrEmpty(model.keyWord))
+                {
+                    List<Equipment> listEquipmentByName = listEquipment.Where(eq => eq.EquipmentName.Contains(model.keyWord)).ToList();
+
+                    List<Equipment> listEquipmentBySeri = listEquipment.Where(eq => eq.EquipmentNumberSerial.Contains(model.keyWord)).ToList();
+
+                    listEquipment = listEquipmentByName
+                               .Concat(listEquipmentBySeri)
+                               .GroupBy(eq => eq.EquipmentId)
+                               .Select(g => g.First())
+                               .ToList();
+                }
+                if (!string.IsNullOrEmpty(model.status))
+                {
+                    listEquipment = listEquipment.Where(eq => eq.EquipmentStatus.ToLower().Equals(model.status)).ToList();
+
+                }
+                var result = _mapper.Map<List<EquipmentResponseModel>>(listEquipment);
+
+                // Nếu không có lỗi, thực hiện phân trang
+                var pagedUsers = result// Giả sử result là danh sách người dùng
+                    .OrderBy(eq => eq.EquipmentName) // Sắp xếp theo Name tăng dần
+                    .ToPagedList(model.pageNum, model.pageSize); // Phân trang với X.PagedList
+                return new DynamicResponse<EquipmentResponseModel>()
+                {
+                    Code = 200,
+                    Success = true,
+                    Message = null,
+
+                    Data = new MegaData<EquipmentResponseModel>()
+                    {
+                        PageInfo = new PagingMetaData()
+                        {
+                            Page = pagedUsers.PageNumber,
+                            Size = pagedUsers.PageSize,
+                            Sort = "Ascending",
+                            Order = "Name",
+                            TotalPage = pagedUsers.PageCount,
+                            TotalItem = pagedUsers.TotalItemCount,
+                        },
+                        SearchInfo = new SearchCondition()
+                        {
+                            keyWord = model.keyWord,
+                            role = null,
+                            status = model.status,
+                        },
+                        PageData = pagedUsers.ToList(),
+                    },
+                };
+            }
+            catch (Exception ex)
+            {
+                return new DynamicResponse<EquipmentResponseModel>()
+                {
+                    Code = 500,
+                    Success = false,
+                    Message = null,
+                    Data = null,
+                };
+            }
+        }
+
+        public async Task<BaseResponse<EquipmentResponseModel>> GetEquipmentById(string id)
+        {
+            try
+            {
+                var equipment = await _equipmentRepository.GetEquipmentById(id);
+                if (equipment != null || !equipment.EquipmentStatus.Equals("Delete"))
+                {
+                    var result = _mapper.Map<EquipmentResponseModel>(equipment);
+                    return new BaseResponse<EquipmentResponseModel>()
+                    {
+                        Code = 200,
+                        Success = true,
+                        Message = null,
+                        Data = result
+                    };
+                }
+                else
+                {
+                    return new BaseResponse<EquipmentResponseModel>()
+                    {
+                        Code = 404,
+                        Success = false,
+                        Message = "Not found Equipment!.",
+                        Data = null
+                    };
+                }
+            }
+            catch (Exception ex)
+            {
+                return new BaseResponse<EquipmentResponseModel>()
+                {
+                    Code = 500,
+                    Success = false,
+                    Message = "Server Error!"
+
+                };
+            }
+        }
+
+        public async Task<BaseResponse<EquipmentResponseModel>> UpdateEquipment(string id, UpdateEquipmentRequestModel model)
+        {
+            try
+            {
+                var equipment = await _equipmentRepository.GetEquipmentById(id);
+                if (equipment != null || !equipment.EquipmentStatus.Equals("Delete"))
+                {
+                    var result = _mapper.Map(model, equipment);
+                    await _equipmentRepository.UpdateEquipment(result);
+                    return new BaseResponse<EquipmentResponseModel>()
+                    {
+                        Code = 200,
+                        Success = true,
+                        Message = "Update success!.",
+                        Data = _mapper.Map<EquipmentResponseModel>(result)
+                    };
+                }
+                else
+                {
+                    return new BaseResponse<EquipmentResponseModel>()
+                    {
+                        Code = 404,
+                        Success = false,
+                        Message = "Not found Equipment!.",
+                        Data = null
                     };
                 }
             }

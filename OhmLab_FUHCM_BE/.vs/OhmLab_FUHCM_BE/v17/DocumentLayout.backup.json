@@ -3,12 +3,76 @@
   "WorkspaceRootPath": "E:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{4BBB523E-D4B5-4AF7-9FC4-70160820133F}|OhmLab_FUHCM_BE\\OhmLab_FUHCM_BE.csproj|e:\\cn9\\capstone_project\\ohmlab\\capstoneproject_ohmlab_be\\ohmlab_fuhcm_be\\ohmlab_fuhcm_be\\controller\\equipmentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4BBB523E-D4B5-4AF7-9FC4-70160820133F}|OhmLab_FUHCM_BE\\OhmLab_FUHCM_BE.csproj|solutionrelative:ohmlab_fuhcm_be\\controller\\equipmentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4BBB523E-D4B5-4AF7-9FC4-70160820133F}|OhmLab_FUHCM_BE\\OhmLab_FUHCM_BE.csproj|e:\\cn9\\capstone_project\\ohmlab\\capstoneproject_ohmlab_be\\ohmlab_fuhcm_be\\ohmlab_fuhcm_be\\controller\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4BBB523E-D4B5-4AF7-9FC4-70160820133F}|OhmLab_FUHCM_BE\\OhmLab_FUHCM_BE.csproj|solutionrelative:ohmlab_fuhcm_be\\controller\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4BBB523E-D4B5-4AF7-9FC4-70160820133F}|OhmLab_FUHCM_BE\\OhmLab_FUHCM_BE.csproj|e:\\cn9\\capstone_project\\ohmlab\\capstoneproject_ohmlab_be\\ohmlab_fuhcm_be\\ohmlab_fuhcm_be\\controller\\coursecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4BBB523E-D4B5-4AF7-9FC4-70160820133F}|OhmLab_FUHCM_BE\\OhmLab_FUHCM_BE.csproj|solutionrelative:ohmlab_fuhcm_be\\controller\\coursecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{E21759DF-68CE-4E02-A661-54A872D48543}|BusinessLayer\\BusinessLayer.csproj|e:\\cn9\\capstone_project\\ohmlab\\capstoneproject_ohmlab_be\\ohmlab_fuhcm_be\\businesslayer\\service\\implement\\equipmentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E21759DF-68CE-4E02-A661-54A872D48543}|BusinessLayer\\BusinessLayer.csproj|solutionrelative:businesslayer\\service\\implement\\equipmentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{E21759DF-68CE-4E02-A661-54A872D48543}|BusinessLayer\\BusinessLayer.csproj|e:\\cn9\\capstone_project\\ohmlab\\capstoneproject_ohmlab_be\\ohmlab_fuhcm_be\\businesslayer\\responsemodel\\user\\userresponsemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E21759DF-68CE-4E02-A661-54A872D48543}|BusinessLayer\\BusinessLayer.csproj|solutionrelative:businesslayer\\responsemodel\\user\\userresponsemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{4BBB523E-D4B5-4AF7-9FC4-70160820133F}|OhmLab_FUHCM_BE\\OhmLab_FUHCM_BE.csproj|e:\\cn9\\capstone_project\\ohmlab\\capstoneproject_ohmlab_be\\ohmlab_fuhcm_be\\ohmlab_fuhcm_be\\appstarts\\mappingprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{4BBB523E-D4B5-4AF7-9FC4-70160820133F}|OhmLab_FUHCM_BE\\OhmLab_FUHCM_BE.csproj|solutionrelative:ohmlab_fuhcm_be\\appstarts\\mappingprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E21759DF-68CE-4E02-A661-54A872D48543}|BusinessLayer\\BusinessLayer.csproj|e:\\cn9\\capstone_project\\ohmlab\\capstoneproject_ohmlab_be\\ohmlab_fuhcm_be\\businesslayer\\service\\iequipmentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E21759DF-68CE-4E02-A661-54A872D48543}|BusinessLayer\\BusinessLayer.csproj|solutionrelative:businesslayer\\service\\iequipmentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E21759DF-68CE-4E02-A661-54A872D48543}|BusinessLayer\\BusinessLayer.csproj|e:\\cn9\\capstone_project\\ohmlab\\capstoneproject_ohmlab_be\\ohmlab_fuhcm_be\\businesslayer\\requestmodel\\equipment\\getallequipmentrequestmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E21759DF-68CE-4E02-A661-54A872D48543}|BusinessLayer\\BusinessLayer.csproj|solutionrelative:businesslayer\\requestmodel\\equipment\\getallequipmentrequestmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E21759DF-68CE-4E02-A661-54A872D48543}|BusinessLayer\\BusinessLayer.csproj|e:\\cn9\\capstone_project\\ohmlab\\capstoneproject_ohmlab_be\\ohmlab_fuhcm_be\\businesslayer\\requestmodel\\equipment\\createequipmentrequestmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E21759DF-68CE-4E02-A661-54A872D48543}|BusinessLayer\\BusinessLayer.csproj|solutionrelative:businesslayer\\requestmodel\\equipment\\createequipmentrequestmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E21759DF-68CE-4E02-A661-54A872D48543}|BusinessLayer\\BusinessLayer.csproj|e:\\cn9\\capstone_project\\ohmlab\\capstoneproject_ohmlab_be\\ohmlab_fuhcm_be\\businesslayer\\requestmodel\\user\\getalluserrequestmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E21759DF-68CE-4E02-A661-54A872D48543}|BusinessLayer\\BusinessLayer.csproj|solutionrelative:businesslayer\\requestmodel\\user\\getalluserrequestmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E21759DF-68CE-4E02-A661-54A872D48543}|BusinessLayer\\BusinessLayer.csproj|e:\\cn9\\capstone_project\\ohmlab\\capstoneproject_ohmlab_be\\ohmlab_fuhcm_be\\businesslayer\\service\\implement\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E21759DF-68CE-4E02-A661-54A872D48543}|BusinessLayer\\BusinessLayer.csproj|solutionrelative:businesslayer\\service\\implement\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E21759DF-68CE-4E02-A661-54A872D48543}|BusinessLayer\\BusinessLayer.csproj|e:\\cn9\\capstone_project\\ohmlab\\capstoneproject_ohmlab_be\\ohmlab_fuhcm_be\\businesslayer\\service\\implement\\subjectservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E21759DF-68CE-4E02-A661-54A872D48543}|BusinessLayer\\BusinessLayer.csproj|solutionrelative:businesslayer\\service\\implement\\subjectservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E21759DF-68CE-4E02-A661-54A872D48543}|BusinessLayer\\BusinessLayer.csproj|e:\\cn9\\capstone_project\\ohmlab\\capstoneproject_ohmlab_be\\ohmlab_fuhcm_be\\businesslayer\\responsemodel\\baseresponse\\basereponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E21759DF-68CE-4E02-A661-54A872D48543}|BusinessLayer\\BusinessLayer.csproj|solutionrelative:businesslayer\\responsemodel\\baseresponse\\basereponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E21759DF-68CE-4E02-A661-54A872D48543}|BusinessLayer\\BusinessLayer.csproj|e:\\cn9\\capstone_project\\ohmlab\\capstoneproject_ohmlab_be\\ohmlab_fuhcm_be\\businesslayer\\service\\iuserservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E21759DF-68CE-4E02-A661-54A872D48543}|BusinessLayer\\BusinessLayer.csproj|solutionrelative:businesslayer\\service\\iuserservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9326A667-EBB2-47AE-B671-4F345AD0F85A}|DataLayer\\DataLayer.csproj|e:\\cn9\\capstone_project\\ohmlab\\capstoneproject_ohmlab_be\\ohmlab_fuhcm_be\\datalayer\\entities\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9326A667-EBB2-47AE-B671-4F345AD0F85A}|DataLayer\\DataLayer.csproj|solutionrelative:datalayer\\entities\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E21759DF-68CE-4E02-A661-54A872D48543}|BusinessLayer\\BusinessLayer.csproj|e:\\cn9\\capstone_project\\ohmlab\\capstoneproject_ohmlab_be\\ohmlab_fuhcm_be\\businesslayer\\requestmodel\\equipment\\updateequipmentrequestmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E21759DF-68CE-4E02-A661-54A872D48543}|BusinessLayer\\BusinessLayer.csproj|solutionrelative:businesslayer\\requestmodel\\equipment\\updateequipmentrequestmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E21759DF-68CE-4E02-A661-54A872D48543}|BusinessLayer\\BusinessLayer.csproj|e:\\cn9\\capstone_project\\ohmlab\\capstoneproject_ohmlab_be\\ohmlab_fuhcm_be\\businesslayer\\responsemodel\\equipment\\equipmentresponsemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E21759DF-68CE-4E02-A661-54A872D48543}|BusinessLayer\\BusinessLayer.csproj|solutionrelative:businesslayer\\responsemodel\\equipment\\equipmentresponsemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9326A667-EBB2-47AE-B671-4F345AD0F85A}|DataLayer\\DataLayer.csproj|e:\\cn9\\capstone_project\\ohmlab\\capstoneproject_ohmlab_be\\ohmlab_fuhcm_be\\datalayer\\entities\\equipment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9326A667-EBB2-47AE-B671-4F345AD0F85A}|DataLayer\\DataLayer.csproj|solutionrelative:datalayer\\entities\\equipment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{9326A667-EBB2-47AE-B671-4F345AD0F85A}|DataLayer\\DataLayer.csproj|e:\\cn9\\capstone_project\\ohmlab\\capstoneproject_ohmlab_be\\ohmlab_fuhcm_be\\datalayer\\repository\\implement\\equipmenttyperepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -23,18 +87,6 @@
       "RelativeMoniker": "D:0:0:{4BBB523E-D4B5-4AF7-9FC4-70160820133F}|OhmLab_FUHCM_BE\\OhmLab_FUHCM_BE.csproj|solutionrelative:ohmlab_fuhcm_be\\appstarts\\dependencyinjectioncontainers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E21759DF-68CE-4E02-A661-54A872D48543}|BusinessLayer\\BusinessLayer.csproj|e:\\cn9\\capstone_project\\ohmlab\\capstoneproject_ohmlab_be\\ohmlab_fuhcm_be\\businesslayer\\responsemodel\\equipment\\equipmentresponsemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E21759DF-68CE-4E02-A661-54A872D48543}|BusinessLayer\\BusinessLayer.csproj|solutionrelative:businesslayer\\responsemodel\\equipment\\equipmentresponsemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E21759DF-68CE-4E02-A661-54A872D48543}|BusinessLayer\\BusinessLayer.csproj|e:\\cn9\\capstone_project\\ohmlab\\capstoneproject_ohmlab_be\\ohmlab_fuhcm_be\\businesslayer\\requestmodel\\equipment\\createequipmentrequestmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E21759DF-68CE-4E02-A661-54A872D48543}|BusinessLayer\\BusinessLayer.csproj|solutionrelative:businesslayer\\requestmodel\\equipment\\createequipmentrequestmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E21759DF-68CE-4E02-A661-54A872D48543}|BusinessLayer\\BusinessLayer.csproj|e:\\cn9\\capstone_project\\ohmlab\\capstoneproject_ohmlab_be\\ohmlab_fuhcm_be\\businesslayer\\service\\iequipmentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E21759DF-68CE-4E02-A661-54A872D48543}|BusinessLayer\\BusinessLayer.csproj|solutionrelative:businesslayer\\service\\iequipmentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{4BBB523E-D4B5-4AF7-9FC4-70160820133F}|OhmLab_FUHCM_BE\\OhmLab_FUHCM_BE.csproj|e:\\cn9\\capstone_project\\ohmlab\\capstoneproject_ohmlab_be\\ohmlab_fuhcm_be\\ohmlab_fuhcm_be\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{4BBB523E-D4B5-4AF7-9FC4-70160820133F}|OhmLab_FUHCM_BE\\OhmLab_FUHCM_BE.csproj|solutionrelative:ohmlab_fuhcm_be\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -47,32 +99,12 @@
       "RelativeMoniker": "D:0:0:{4BBB523E-D4B5-4AF7-9FC4-70160820133F}|OhmLab_FUHCM_BE\\OhmLab_FUHCM_BE.csproj|solutionrelative:ohmlab_fuhcm_be\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4BBB523E-D4B5-4AF7-9FC4-70160820133F}|OhmLab_FUHCM_BE\\OhmLab_FUHCM_BE.csproj|e:\\cn9\\capstone_project\\ohmlab\\capstoneproject_ohmlab_be\\ohmlab_fuhcm_be\\ohmlab_fuhcm_be\\controller\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4BBB523E-D4B5-4AF7-9FC4-70160820133F}|OhmLab_FUHCM_BE\\OhmLab_FUHCM_BE.csproj|solutionrelative:ohmlab_fuhcm_be\\controller\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{4BBB523E-D4B5-4AF7-9FC4-70160820133F}|OhmLab_FUHCM_BE\\OhmLab_FUHCM_BE.csproj|e:\\cn9\\capstone_project\\ohmlab\\capstoneproject_ohmlab_be\\ohmlab_fuhcm_be\\ohmlab_fuhcm_be\\appstarts\\authconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{4BBB523E-D4B5-4AF7-9FC4-70160820133F}|OhmLab_FUHCM_BE\\OhmLab_FUHCM_BE.csproj|solutionrelative:ohmlab_fuhcm_be\\appstarts\\authconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4BBB523E-D4B5-4AF7-9FC4-70160820133F}|OhmLab_FUHCM_BE\\OhmLab_FUHCM_BE.csproj|e:\\cn9\\capstone_project\\ohmlab\\capstoneproject_ohmlab_be\\ohmlab_fuhcm_be\\ohmlab_fuhcm_be\\controller\\coursecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4BBB523E-D4B5-4AF7-9FC4-70160820133F}|OhmLab_FUHCM_BE\\OhmLab_FUHCM_BE.csproj|solutionrelative:ohmlab_fuhcm_be\\controller\\coursecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{4BBB523E-D4B5-4AF7-9FC4-70160820133F}|OhmLab_FUHCM_BE\\OhmLab_FUHCM_BE.csproj|e:\\cn9\\capstone_project\\ohmlab\\capstoneproject_ohmlab_be\\ohmlab_fuhcm_be\\ohmlab_fuhcm_be\\appstarts\\automapperconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{4BBB523E-D4B5-4AF7-9FC4-70160820133F}|OhmLab_FUHCM_BE\\OhmLab_FUHCM_BE.csproj|solutionrelative:ohmlab_fuhcm_be\\appstarts\\automapperconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4BBB523E-D4B5-4AF7-9FC4-70160820133F}|OhmLab_FUHCM_BE\\OhmLab_FUHCM_BE.csproj|e:\\cn9\\capstone_project\\ohmlab\\capstoneproject_ohmlab_be\\ohmlab_fuhcm_be\\ohmlab_fuhcm_be\\controller\\equipmentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4BBB523E-D4B5-4AF7-9FC4-70160820133F}|OhmLab_FUHCM_BE\\OhmLab_FUHCM_BE.csproj|solutionrelative:ohmlab_fuhcm_be\\controller\\equipmentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E21759DF-68CE-4E02-A661-54A872D48543}|BusinessLayer\\BusinessLayer.csproj|e:\\cn9\\capstone_project\\ohmlab\\capstoneproject_ohmlab_be\\ohmlab_fuhcm_be\\businesslayer\\service\\implement\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E21759DF-68CE-4E02-A661-54A872D48543}|BusinessLayer\\BusinessLayer.csproj|solutionrelative:businesslayer\\service\\implement\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9326A667-EBB2-47AE-B671-4F345AD0F85A}|DataLayer\\DataLayer.csproj|e:\\cn9\\capstone_project\\ohmlab\\capstoneproject_ohmlab_be\\ohmlab_fuhcm_be\\datalayer\\entities\\equipment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9326A667-EBB2-47AE-B671-4F345AD0F85A}|DataLayer\\DataLayer.csproj|solutionrelative:datalayer\\entities\\equipment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{E21759DF-68CE-4E02-A661-54A872D48543}|BusinessLayer\\BusinessLayer.csproj|e:\\cn9\\capstone_project\\ohmlab\\capstoneproject_ohmlab_be\\ohmlab_fuhcm_be\\businesslayer\\service\\isubjectservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -81,18 +113,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{E21759DF-68CE-4E02-A661-54A872D48543}|BusinessLayer\\BusinessLayer.csproj|e:\\cn9\\capstone_project\\ohmlab\\capstoneproject_ohmlab_be\\ohmlab_fuhcm_be\\businesslayer\\service\\implement\\labservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E21759DF-68CE-4E02-A661-54A872D48543}|BusinessLayer\\BusinessLayer.csproj|solutionrelative:businesslayer\\service\\implement\\labservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E21759DF-68CE-4E02-A661-54A872D48543}|BusinessLayer\\BusinessLayer.csproj|e:\\cn9\\capstone_project\\ohmlab\\capstoneproject_ohmlab_be\\ohmlab_fuhcm_be\\businesslayer\\service\\implement\\subjectservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E21759DF-68CE-4E02-A661-54A872D48543}|BusinessLayer\\BusinessLayer.csproj|solutionrelative:businesslayer\\service\\implement\\subjectservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E21759DF-68CE-4E02-A661-54A872D48543}|BusinessLayer\\BusinessLayer.csproj|e:\\cn9\\capstone_project\\ohmlab\\capstoneproject_ohmlab_be\\ohmlab_fuhcm_be\\businesslayer\\responsemodel\\baseresponse\\basereponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E21759DF-68CE-4E02-A661-54A872D48543}|BusinessLayer\\BusinessLayer.csproj|solutionrelative:businesslayer\\responsemodel\\baseresponse\\basereponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E21759DF-68CE-4E02-A661-54A872D48543}|BusinessLayer\\BusinessLayer.csproj|e:\\cn9\\capstone_project\\ohmlab\\capstoneproject_ohmlab_be\\ohmlab_fuhcm_be\\businesslayer\\service\\iuserservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E21759DF-68CE-4E02-A661-54A872D48543}|BusinessLayer\\BusinessLayer.csproj|solutionrelative:businesslayer\\service\\iuserservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{E21759DF-68CE-4E02-A661-54A872D48543}|BusinessLayer\\BusinessLayer.csproj|e:\\cn9\\capstone_project\\ohmlab\\capstoneproject_ohmlab_be\\ohmlab_fuhcm_be\\businesslayer\\service\\ilabservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -129,10 +149,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{E21759DF-68CE-4E02-A661-54A872D48543}|BusinessLayer\\BusinessLayer.csproj|e:\\cn9\\capstone_project\\ohmlab\\capstoneproject_ohmlab_be\\ohmlab_fuhcm_be\\businesslayer\\responsemodel\\user\\loginresponsemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E21759DF-68CE-4E02-A661-54A872D48543}|BusinessLayer\\BusinessLayer.csproj|solutionrelative:businesslayer\\responsemodel\\user\\loginresponsemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E21759DF-68CE-4E02-A661-54A872D48543}|BusinessLayer\\BusinessLayer.csproj|e:\\cn9\\capstone_project\\ohmlab\\capstoneproject_ohmlab_be\\ohmlab_fuhcm_be\\businesslayer\\responsemodel\\user\\userresponsemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E21759DF-68CE-4E02-A661-54A872D48543}|BusinessLayer\\BusinessLayer.csproj|solutionrelative:businesslayer\\responsemodel\\user\\userresponsemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{E21759DF-68CE-4E02-A661-54A872D48543}|BusinessLayer\\BusinessLayer.csproj|e:\\cn9\\capstone_project\\ohmlab\\capstoneproject_ohmlab_be\\ohmlab_fuhcm_be\\businesslayer\\requestmodel\\lab\\createlabrequestmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -183,10 +199,6 @@
       "RelativeMoniker": "D:0:0:{E21759DF-68CE-4E02-A661-54A872D48543}|BusinessLayer\\BusinessLayer.csproj|solutionrelative:businesslayer\\requestmodel\\user\\loginrequestmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E21759DF-68CE-4E02-A661-54A872D48543}|BusinessLayer\\BusinessLayer.csproj|e:\\cn9\\capstone_project\\ohmlab\\capstoneproject_ohmlab_be\\ohmlab_fuhcm_be\\businesslayer\\requestmodel\\user\\getalluserrequestmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E21759DF-68CE-4E02-A661-54A872D48543}|BusinessLayer\\BusinessLayer.csproj|solutionrelative:businesslayer\\requestmodel\\user\\getalluserrequestmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{E21759DF-68CE-4E02-A661-54A872D48543}|BusinessLayer\\BusinessLayer.csproj|e:\\cn9\\capstone_project\\ohmlab\\capstoneproject_ohmlab_be\\ohmlab_fuhcm_be\\businesslayer\\requestmodel\\subject\\createsubjectrequestmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E21759DF-68CE-4E02-A661-54A872D48543}|BusinessLayer\\BusinessLayer.csproj|solutionrelative:businesslayer\\requestmodel\\subject\\createsubjectrequestmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -213,10 +225,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{9326A667-EBB2-47AE-B671-4F345AD0F85A}|DataLayer\\DataLayer.csproj|e:\\cn9\\capstone_project\\ohmlab\\capstoneproject_ohmlab_be\\ohmlab_fuhcm_be\\datalayer\\entities\\slot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{9326A667-EBB2-47AE-B671-4F345AD0F85A}|DataLayer\\DataLayer.csproj|solutionrelative:datalayer\\entities\\slot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9326A667-EBB2-47AE-B671-4F345AD0F85A}|DataLayer\\DataLayer.csproj|e:\\cn9\\capstone_project\\ohmlab\\capstoneproject_ohmlab_be\\ohmlab_fuhcm_be\\datalayer\\entities\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9326A667-EBB2-47AE-B671-4F345AD0F85A}|DataLayer\\DataLayer.csproj|solutionrelative:datalayer\\entities\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -226,89 +234,50 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 7,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 7,
+              "Title": "GetAllEquipmentRequestModel.cs",
+              "DocumentMoniker": "E:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\RequestModel\\Equipment\\GetAllEquipmentRequestModel.cs",
+              "RelativeDocumentMoniker": "BusinessLayer\\RequestModel\\Equipment\\GetAllEquipmentRequestModel.cs",
+              "ToolTip": "E:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\RequestModel\\Equipment\\GetAllEquipmentRequestModel.cs",
+              "RelativeToolTip": "BusinessLayer\\RequestModel\\Equipment\\GetAllEquipmentRequestModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-10T10:20:28.059Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "EquipmentService.cs",
               "DocumentMoniker": "E:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\Service\\Implement\\EquipmentService.cs",
               "RelativeDocumentMoniker": "BusinessLayer\\Service\\Implement\\EquipmentService.cs",
               "ToolTip": "E:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\Service\\Implement\\EquipmentService.cs",
               "RelativeToolTip": "BusinessLayer\\Service\\Implement\\EquipmentService.cs",
-              "ViewState": "AgIAAH8AAAAAAAAAAAAAwJIAAAAMAAAAAAAAAA==",
+              "ViewState": "AgIAAM4AAAAAAAAAAADwvwMBAAAkAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-28T08:20:21.969Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "IEquipmentService.cs",
+              "DocumentMoniker": "E:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\Service\\IEquipmentService.cs",
+              "RelativeDocumentMoniker": "BusinessLayer\\Service\\IEquipmentService.cs",
+              "ToolTip": "E:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\Service\\IEquipmentService.cs",
+              "RelativeToolTip": "BusinessLayer\\Service\\IEquipmentService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAABGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-28T08:20:05.016Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 5,
-              "Title": "EquipmentResponseModel.cs",
-              "DocumentMoniker": "E:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\ResponseModel\\Equipment\\EquipmentResponseModel.cs",
-              "RelativeDocumentMoniker": "BusinessLayer\\ResponseModel\\Equipment\\EquipmentResponseModel.cs",
-              "ToolTip": "E:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\ResponseModel\\Equipment\\EquipmentResponseModel.cs",
-              "RelativeToolTip": "BusinessLayer\\ResponseModel\\Equipment\\EquipmentResponseModel.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAABCAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-28T08:22:26.142Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "DependencyInjectionContainers.cs",
-              "DocumentMoniker": "E:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\OhmLab_FUHCM_BE\\AppStarts\\DependencyInjectionContainers.cs",
-              "RelativeDocumentMoniker": "OhmLab_FUHCM_BE\\AppStarts\\DependencyInjectionContainers.cs",
-              "ToolTip": "E:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\OhmLab_FUHCM_BE\\AppStarts\\DependencyInjectionContainers.cs",
-              "RelativeToolTip": "OhmLab_FUHCM_BE\\AppStarts\\DependencyInjectionContainers.cs",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAmwCAAAAAbAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-21T01:29:10.675Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "SwaggerConfig.cs",
-              "DocumentMoniker": "E:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\OhmLab_FUHCM_BE\\AppStarts\\SwaggerConfig.cs",
-              "RelativeDocumentMoniker": "OhmLab_FUHCM_BE\\AppStarts\\SwaggerConfig.cs",
-              "ToolTip": "E:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\OhmLab_FUHCM_BE\\AppStarts\\SwaggerConfig.cs",
-              "RelativeToolTip": "OhmLab_FUHCM_BE\\AppStarts\\SwaggerConfig.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-21T01:30:15.754Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "IEquipmentTypeRepository.cs",
-              "DocumentMoniker": "E:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\DataLayer\\Repository\\IEquipmentTypeRepository.cs",
-              "RelativeDocumentMoniker": "DataLayer\\Repository\\IEquipmentTypeRepository.cs",
-              "ToolTip": "E:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\DataLayer\\Repository\\IEquipmentTypeRepository.cs",
-              "RelativeToolTip": "DataLayer\\Repository\\IEquipmentTypeRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAABHAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-28T08:09:09.766Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "EquipmentTypeRepository.cs",
-              "DocumentMoniker": "E:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\DataLayer\\Repository\\Implement\\EquipmentTypeRepository.cs",
-              "RelativeDocumentMoniker": "DataLayer\\Repository\\Implement\\EquipmentTypeRepository.cs",
-              "ToolTip": "E:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\DataLayer\\Repository\\Implement\\EquipmentTypeRepository.cs",
-              "RelativeToolTip": "DataLayer\\Repository\\Implement\\EquipmentTypeRepository.cs",
-              "ViewState": "AgIAAC8AAAAAAAAAAAAwwEMAAAAkAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-28T08:09:36.443Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
               "Title": "MappingProfile.cs",
               "DocumentMoniker": "E:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\OhmLab_FUHCM_BE\\AppStarts\\MappingProfile.cs",
               "RelativeDocumentMoniker": "OhmLab_FUHCM_BE\\AppStarts\\MappingProfile.cs",
@@ -321,59 +290,33 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "CreateEquipmentRequestModel.cs",
-              "DocumentMoniker": "E:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\RequestModel\\Equipment\\CreateEquipmentRequestModel.cs",
-              "RelativeDocumentMoniker": "BusinessLayer\\RequestModel\\Equipment\\CreateEquipmentRequestModel.cs",
-              "ToolTip": "E:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\RequestModel\\Equipment\\CreateEquipmentRequestModel.cs",
-              "RelativeToolTip": "BusinessLayer\\RequestModel\\Equipment\\CreateEquipmentRequestModel.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAA4AAAAAAAAAA==",
+              "DocumentIndex": 4,
+              "Title": "UserResponseModel.cs",
+              "DocumentMoniker": "E:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\ResponseModel\\User\\UserResponseModel.cs",
+              "RelativeDocumentMoniker": "BusinessLayer\\ResponseModel\\User\\UserResponseModel.cs",
+              "ToolTip": "E:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\ResponseModel\\User\\UserResponseModel.cs",
+              "RelativeToolTip": "BusinessLayer\\ResponseModel\\User\\UserResponseModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAA5AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-28T08:23:19.101Z",
+              "WhenOpened": "2025-06-21T08:52:33.47Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "IEquipmentService.cs",
-              "DocumentMoniker": "E:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\Service\\IEquipmentService.cs",
-              "RelativeDocumentMoniker": "BusinessLayer\\Service\\IEquipmentService.cs",
-              "ToolTip": "E:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\Service\\IEquipmentService.cs",
-              "RelativeToolTip": "BusinessLayer\\Service\\IEquipmentService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "UserController.cs",
+              "DocumentMoniker": "E:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\OhmLab_FUHCM_BE\\Controller\\UserController.cs",
+              "RelativeDocumentMoniker": "OhmLab_FUHCM_BE\\Controller\\UserController.cs",
+              "ToolTip": "E:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\OhmLab_FUHCM_BE\\Controller\\UserController.cs",
+              "RelativeToolTip": "OhmLab_FUHCM_BE\\Controller\\UserController.cs",
+              "ViewState": "AgIAAIgAAAAAAAAAAAAYwKUAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-28T08:20:05.016Z",
+              "WhenOpened": "2025-06-23T03:37:45.19Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "E:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\OhmLab_FUHCM_BE\\appsettings.json",
-              "RelativeDocumentMoniker": "OhmLab_FUHCM_BE\\appsettings.json",
-              "ToolTip": "E:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\OhmLab_FUHCM_BE\\appsettings.json",
-              "RelativeToolTip": "OhmLab_FUHCM_BE\\appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-06-21T01:26:39.498Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "Program.cs",
-              "DocumentMoniker": "E:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\OhmLab_FUHCM_BE\\Program.cs",
-              "RelativeDocumentMoniker": "OhmLab_FUHCM_BE\\Program.cs",
-              "ToolTip": "E:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\OhmLab_FUHCM_BE\\Program.cs",
-              "RelativeToolTip": "OhmLab_FUHCM_BE\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAiAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-20T23:53:52.424Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 2,
               "Title": "CourseController.cs",
               "DocumentMoniker": "E:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\OhmLab_FUHCM_BE\\Controller\\CourseController.cs",
               "RelativeDocumentMoniker": "OhmLab_FUHCM_BE\\Controller\\CourseController.cs",
@@ -386,111 +329,59 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "UserController.cs",
-              "DocumentMoniker": "E:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\OhmLab_FUHCM_BE\\Controller\\UserController.cs",
-              "RelativeDocumentMoniker": "OhmLab_FUHCM_BE\\Controller\\UserController.cs",
-              "ToolTip": "E:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\OhmLab_FUHCM_BE\\Controller\\UserController.cs",
-              "RelativeToolTip": "OhmLab_FUHCM_BE\\Controller\\UserController.cs",
-              "ViewState": "AgIAAHoAAAAAAAAAAAAAwEIAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-23T03:37:45.19Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "AutoMapperConfig.cs",
-              "DocumentMoniker": "E:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\OhmLab_FUHCM_BE\\AppStarts\\AutoMapperConfig.cs",
-              "RelativeDocumentMoniker": "OhmLab_FUHCM_BE\\AppStarts\\AutoMapperConfig.cs",
-              "ToolTip": "E:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\OhmLab_FUHCM_BE\\AppStarts\\AutoMapperConfig.cs",
-              "RelativeToolTip": "OhmLab_FUHCM_BE\\AppStarts\\AutoMapperConfig.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-21T01:29:07.456Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "AuthConfig.cs",
-              "DocumentMoniker": "E:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\OhmLab_FUHCM_BE\\AppStarts\\AuthConfig.cs",
-              "RelativeDocumentMoniker": "OhmLab_FUHCM_BE\\AppStarts\\AuthConfig.cs",
-              "ToolTip": "E:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\OhmLab_FUHCM_BE\\AppStarts\\AuthConfig.cs",
-              "RelativeToolTip": "OhmLab_FUHCM_BE\\AppStarts\\AuthConfig.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-21T01:29:09.304Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 0,
               "Title": "EquipmentController.cs",
               "DocumentMoniker": "E:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\OhmLab_FUHCM_BE\\Controller\\EquipmentController.cs",
               "RelativeDocumentMoniker": "OhmLab_FUHCM_BE\\Controller\\EquipmentController.cs",
               "ToolTip": "E:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\OhmLab_FUHCM_BE\\Controller\\EquipmentController.cs",
               "RelativeToolTip": "OhmLab_FUHCM_BE\\Controller\\EquipmentController.cs",
-              "ViewState": "AgIAABcAAAAAAAAAAAAmwCsAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAFMAAAAAAAAAAAAcwGYAAAA3AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-07-09T04:31:39.728Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 8,
+              "Title": "CreateEquipmentRequestModel.cs",
+              "DocumentMoniker": "E:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\RequestModel\\Equipment\\CreateEquipmentRequestModel.cs",
+              "RelativeDocumentMoniker": "BusinessLayer\\RequestModel\\Equipment\\CreateEquipmentRequestModel.cs",
+              "ToolTip": "E:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\RequestModel\\Equipment\\CreateEquipmentRequestModel.cs",
+              "RelativeToolTip": "BusinessLayer\\RequestModel\\Equipment\\CreateEquipmentRequestModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAA4AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-28T08:23:19.101Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "GetAllUserRequestModel.cs",
+              "DocumentMoniker": "E:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\RequestModel\\User\\GetAllUserRequestModel.cs",
+              "RelativeDocumentMoniker": "BusinessLayer\\RequestModel\\User\\GetAllUserRequestModel.cs",
+              "ToolTip": "E:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\RequestModel\\User\\GetAllUserRequestModel.cs",
+              "RelativeToolTip": "BusinessLayer\\RequestModel\\User\\GetAllUserRequestModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-23T02:43:05.16Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
               "Title": "UserService.cs",
               "DocumentMoniker": "E:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\Service\\Implement\\UserService.cs",
               "RelativeDocumentMoniker": "BusinessLayer\\Service\\Implement\\UserService.cs",
               "ToolTip": "E:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\Service\\Implement\\UserService.cs",
               "RelativeToolTip": "BusinessLayer\\Service\\Implement\\UserService.cs",
-              "ViewState": "AgIAANgAAAAAAAAAAAAQwO0AAAA1AAAAAAAAAA==",
+              "ViewState": "AgIAAIMAAAAAAAAAAAAqwI4AAABgAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-23T02:51:13.056Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
-              "Title": "Equipment.cs",
-              "DocumentMoniker": "E:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\DataLayer\\Entities\\Equipment.cs",
-              "RelativeDocumentMoniker": "DataLayer\\Entities\\Equipment.cs",
-              "ToolTip": "E:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\DataLayer\\Entities\\Equipment.cs",
-              "RelativeToolTip": "DataLayer\\Entities\\Equipment.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAA8AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-28T08:23:26.376Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 18,
-              "Title": "ISubjectService.cs",
-              "DocumentMoniker": "E:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\Service\\ISubjectService.cs",
-              "RelativeDocumentMoniker": "BusinessLayer\\Service\\ISubjectService.cs",
-              "ToolTip": "E:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\Service\\ISubjectService.cs",
-              "RelativeToolTip": "BusinessLayer\\Service\\ISubjectService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-04T07:04:23.314Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 19,
-              "Title": "LabService.cs",
-              "DocumentMoniker": "E:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\Service\\Implement\\LabService.cs",
-              "RelativeDocumentMoniker": "BusinessLayer\\Service\\Implement\\LabService.cs",
-              "ToolTip": "E:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\Service\\Implement\\LabService.cs",
-              "RelativeToolTip": "BusinessLayer\\Service\\Implement\\LabService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-02T09:47:46.256Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 11,
               "Title": "SubjectService.cs",
               "DocumentMoniker": "E:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\Service\\Implement\\SubjectService.cs",
               "RelativeDocumentMoniker": "BusinessLayer\\Service\\Implement\\SubjectService.cs",
@@ -503,20 +394,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 12,
               "Title": "BaseReponse.cs",
               "DocumentMoniker": "E:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\ResponseModel\\BaseResponse\\BaseReponse.cs",
               "RelativeDocumentMoniker": "BusinessLayer\\ResponseModel\\BaseResponse\\BaseReponse.cs",
               "ToolTip": "E:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\ResponseModel\\BaseResponse\\BaseReponse.cs",
               "RelativeToolTip": "BusinessLayer\\ResponseModel\\BaseResponse\\BaseReponse.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAATAAAAAAAAAA==",
+              "ViewState": "AgIAACIAAAAAAAAAAAAwwBYAAAAUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-21T08:50:54.633Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 13,
               "Title": "IUserService.cs",
               "DocumentMoniker": "E:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\Service\\IUserService.cs",
               "RelativeDocumentMoniker": "BusinessLayer\\Service\\IUserService.cs",
@@ -529,7 +420,179 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "User.cs",
+              "DocumentMoniker": "E:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\DataLayer\\Entities\\User.cs",
+              "RelativeDocumentMoniker": "DataLayer\\Entities\\User.cs",
+              "ToolTip": "E:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\DataLayer\\Entities\\User.cs",
+              "RelativeToolTip": "DataLayer\\Entities\\User.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-23T03:03:24.153Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "UpdateEquipmentRequestModel.cs",
+              "DocumentMoniker": "E:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\RequestModel\\Equipment\\UpdateEquipmentRequestModel.cs",
+              "RelativeDocumentMoniker": "BusinessLayer\\RequestModel\\Equipment\\UpdateEquipmentRequestModel.cs",
+              "ToolTip": "E:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\RequestModel\\Equipment\\UpdateEquipmentRequestModel.cs",
+              "RelativeToolTip": "BusinessLayer\\RequestModel\\Equipment\\UpdateEquipmentRequestModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAA6AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-10T07:45:23.736Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "EquipmentResponseModel.cs",
+              "DocumentMoniker": "E:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\ResponseModel\\Equipment\\EquipmentResponseModel.cs",
+              "RelativeDocumentMoniker": "BusinessLayer\\ResponseModel\\Equipment\\EquipmentResponseModel.cs",
+              "ToolTip": "E:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\ResponseModel\\Equipment\\EquipmentResponseModel.cs",
+              "RelativeToolTip": "BusinessLayer\\ResponseModel\\Equipment\\EquipmentResponseModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAABCAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-28T08:22:26.142Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "Equipment.cs",
+              "DocumentMoniker": "E:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\DataLayer\\Entities\\Equipment.cs",
+              "RelativeDocumentMoniker": "DataLayer\\Entities\\Equipment.cs",
+              "ToolTip": "E:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\DataLayer\\Entities\\Equipment.cs",
+              "RelativeToolTip": "DataLayer\\Entities\\Equipment.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-28T08:23:26.376Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "EquipmentTypeRepository.cs",
+              "DocumentMoniker": "E:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\DataLayer\\Repository\\Implement\\EquipmentTypeRepository.cs",
+              "RelativeDocumentMoniker": "DataLayer\\Repository\\Implement\\EquipmentTypeRepository.cs",
+              "ToolTip": "E:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\DataLayer\\Repository\\Implement\\EquipmentTypeRepository.cs",
+              "RelativeToolTip": "DataLayer\\Repository\\Implement\\EquipmentTypeRepository.cs",
+              "ViewState": "AgIAAC8AAAAAAAAAAAAwwEMAAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-28T08:09:36.443Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "IEquipmentTypeRepository.cs",
+              "DocumentMoniker": "E:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\DataLayer\\Repository\\IEquipmentTypeRepository.cs",
+              "RelativeDocumentMoniker": "DataLayer\\Repository\\IEquipmentTypeRepository.cs",
+              "ToolTip": "E:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\DataLayer\\Repository\\IEquipmentTypeRepository.cs",
+              "RelativeToolTip": "DataLayer\\Repository\\IEquipmentTypeRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAABHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-28T08:09:09.766Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "SwaggerConfig.cs",
+              "DocumentMoniker": "E:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\OhmLab_FUHCM_BE\\AppStarts\\SwaggerConfig.cs",
+              "RelativeDocumentMoniker": "OhmLab_FUHCM_BE\\AppStarts\\SwaggerConfig.cs",
+              "ToolTip": "E:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\OhmLab_FUHCM_BE\\AppStarts\\SwaggerConfig.cs",
+              "RelativeToolTip": "OhmLab_FUHCM_BE\\AppStarts\\SwaggerConfig.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-21T01:30:15.754Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "DependencyInjectionContainers.cs",
+              "DocumentMoniker": "E:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\OhmLab_FUHCM_BE\\AppStarts\\DependencyInjectionContainers.cs",
+              "RelativeDocumentMoniker": "OhmLab_FUHCM_BE\\AppStarts\\DependencyInjectionContainers.cs",
+              "ToolTip": "E:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\OhmLab_FUHCM_BE\\AppStarts\\DependencyInjectionContainers.cs",
+              "RelativeToolTip": "OhmLab_FUHCM_BE\\AppStarts\\DependencyInjectionContainers.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAmwCAAAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-21T01:29:10.675Z"
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 23,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "E:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\OhmLab_FUHCM_BE\\appsettings.json",
+              "RelativeDocumentMoniker": "OhmLab_FUHCM_BE\\appsettings.json",
+              "ToolTip": "E:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\OhmLab_FUHCM_BE\\appsettings.json",
+              "RelativeToolTip": "OhmLab_FUHCM_BE\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-06-21T01:26:39.498Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "Program.cs",
+              "DocumentMoniker": "E:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\OhmLab_FUHCM_BE\\Program.cs",
+              "RelativeDocumentMoniker": "OhmLab_FUHCM_BE\\Program.cs",
+              "ToolTip": "E:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\OhmLab_FUHCM_BE\\Program.cs",
+              "RelativeToolTip": "OhmLab_FUHCM_BE\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-20T23:53:52.424Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "AutoMapperConfig.cs",
+              "DocumentMoniker": "E:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\OhmLab_FUHCM_BE\\AppStarts\\AutoMapperConfig.cs",
+              "RelativeDocumentMoniker": "OhmLab_FUHCM_BE\\AppStarts\\AutoMapperConfig.cs",
+              "ToolTip": "E:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\OhmLab_FUHCM_BE\\AppStarts\\AutoMapperConfig.cs",
+              "RelativeToolTip": "OhmLab_FUHCM_BE\\AppStarts\\AutoMapperConfig.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-21T01:29:07.456Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "AuthConfig.cs",
+              "DocumentMoniker": "E:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\OhmLab_FUHCM_BE\\AppStarts\\AuthConfig.cs",
+              "RelativeDocumentMoniker": "OhmLab_FUHCM_BE\\AppStarts\\AuthConfig.cs",
+              "ToolTip": "E:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\OhmLab_FUHCM_BE\\AppStarts\\AuthConfig.cs",
+              "RelativeToolTip": "OhmLab_FUHCM_BE\\AppStarts\\AuthConfig.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-21T01:29:09.304Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "ISubjectService.cs",
+              "DocumentMoniker": "E:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\Service\\ISubjectService.cs",
+              "RelativeDocumentMoniker": "BusinessLayer\\Service\\ISubjectService.cs",
+              "ToolTip": "E:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\Service\\ISubjectService.cs",
+              "RelativeToolTip": "BusinessLayer\\Service\\ISubjectService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-04T07:04:23.314Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "LabService.cs",
+              "DocumentMoniker": "E:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\Service\\Implement\\LabService.cs",
+              "RelativeDocumentMoniker": "BusinessLayer\\Service\\Implement\\LabService.cs",
+              "ToolTip": "E:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\Service\\Implement\\LabService.cs",
+              "RelativeToolTip": "BusinessLayer\\Service\\Implement\\LabService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-02T09:47:46.256Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
               "Title": "ILabService.cs",
               "DocumentMoniker": "E:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\Service\\ILabService.cs",
               "RelativeDocumentMoniker": "BusinessLayer\\Service\\ILabService.cs",
@@ -537,12 +600,11 @@
               "RelativeToolTip": "BusinessLayer\\Service\\ILabService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-09T03:10:53.566Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-09T03:10:53.566Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 29,
               "Title": "EquipmentType.cs",
               "DocumentMoniker": "E:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\DataLayer\\Entities\\EquipmentType.cs",
               "RelativeDocumentMoniker": "DataLayer\\Entities\\EquipmentType.cs",
@@ -550,12 +612,11 @@
               "RelativeToolTip": "DataLayer\\Entities\\EquipmentType.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-09T03:02:49.928Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-09T03:02:49.928Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 30,
               "Title": "EquipmentRepository.cs",
               "DocumentMoniker": "E:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\DataLayer\\Repository\\Implement\\EquipmentRepository.cs",
               "RelativeDocumentMoniker": "DataLayer\\Repository\\Implement\\EquipmentRepository.cs",
@@ -563,12 +624,11 @@
               "RelativeToolTip": "DataLayer\\Repository\\Implement\\EquipmentRepository.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAACAAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-28T07:43:56.873Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-28T07:43:56.873Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 26,
+              "DocumentIndex": 31,
               "Title": "IEquipmentRepository.cs",
               "DocumentMoniker": "E:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\DataLayer\\Repository\\IEquipmentRepository.cs",
               "RelativeDocumentMoniker": "DataLayer\\Repository\\IEquipmentRepository.cs",
@@ -576,12 +636,11 @@
               "RelativeToolTip": "DataLayer\\Repository\\IEquipmentRepository.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-28T07:43:45.197Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-28T07:43:45.197Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 28,
+              "DocumentIndex": 33,
               "Title": "ISubjectRepository.cs",
               "DocumentMoniker": "E:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\DataLayer\\Repository\\ISubjectRepository.cs",
               "RelativeDocumentMoniker": "DataLayer\\Repository\\ISubjectRepository.cs",
@@ -593,7 +652,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 27,
+              "DocumentIndex": 32,
               "Title": "UpdateSubjectRequestModel.cs",
               "DocumentMoniker": "E:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\RequestModel\\Subject\\UpdateSubjectRequestModel.cs",
               "RelativeDocumentMoniker": "BusinessLayer\\RequestModel\\Subject\\UpdateSubjectRequestModel.cs",
@@ -605,7 +664,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 29,
+              "DocumentIndex": 34,
               "Title": "IUserRepositoty.cs",
               "DocumentMoniker": "E:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\DataLayer\\Repository\\IUserRepositoty.cs",
               "RelativeDocumentMoniker": "DataLayer\\Repository\\IUserRepositoty.cs",
@@ -617,7 +676,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 31,
+              "DocumentIndex": 36,
               "Title": "LoginResponseModel.cs",
               "DocumentMoniker": "E:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\ResponseModel\\User\\LoginResponseModel.cs",
               "RelativeDocumentMoniker": "BusinessLayer\\ResponseModel\\User\\LoginResponseModel.cs",
@@ -629,7 +688,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 30,
+              "DocumentIndex": 35,
               "Title": "LabResponseModel.cs",
               "DocumentMoniker": "E:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\ResponseModel\\Lab\\LabResponseModel.cs",
               "RelativeDocumentMoniker": "BusinessLayer\\ResponseModel\\Lab\\LabResponseModel.cs",
@@ -641,19 +700,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 32,
-              "Title": "UserResponseModel.cs",
-              "DocumentMoniker": "E:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\ResponseModel\\User\\UserResponseModel.cs",
-              "RelativeDocumentMoniker": "BusinessLayer\\ResponseModel\\User\\UserResponseModel.cs",
-              "ToolTip": "E:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\ResponseModel\\User\\UserResponseModel.cs",
-              "RelativeToolTip": "BusinessLayer\\ResponseModel\\User\\UserResponseModel.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-21T08:52:33.47Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 37,
+              "DocumentIndex": 41,
               "Title": "UpdateLabRequestModel.cs",
               "DocumentMoniker": "E:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\RequestModel\\Lab\\UpdateLabRequestModel.cs",
               "RelativeDocumentMoniker": "BusinessLayer\\RequestModel\\Lab\\UpdateLabRequestModel.cs",
@@ -665,7 +712,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 35,
+              "DocumentIndex": 39,
               "Title": "ILabRepository.cs",
               "DocumentMoniker": "E:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\DataLayer\\Repository\\ILabRepository.cs",
               "RelativeDocumentMoniker": "DataLayer\\Repository\\ILabRepository.cs",
@@ -677,7 +724,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 34,
+              "DocumentIndex": 38,
               "Title": "LabRepository.cs",
               "DocumentMoniker": "E:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\DataLayer\\Repository\\Implement\\LabRepository.cs",
               "RelativeDocumentMoniker": "DataLayer\\Repository\\Implement\\LabRepository.cs",
@@ -689,7 +736,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 36,
+              "DocumentIndex": 40,
               "Title": "OhmLab_DBContext.cs",
               "DocumentMoniker": "E:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\DataLayer\\DBContext\\OhmLab_DBContext.cs",
               "RelativeDocumentMoniker": "DataLayer\\DBContext\\OhmLab_DBContext.cs",
@@ -701,7 +748,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 33,
+              "DocumentIndex": 37,
               "Title": "CreateLabRequestModel.cs",
               "DocumentMoniker": "E:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\RequestModel\\Lab\\CreateLabRequestModel.cs",
               "RelativeDocumentMoniker": "BusinessLayer\\RequestModel\\Lab\\CreateLabRequestModel.cs",
@@ -713,7 +760,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 38,
+              "DocumentIndex": 42,
               "Title": "Lab.cs",
               "DocumentMoniker": "E:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\DataLayer\\Entities\\Lab.cs",
               "RelativeDocumentMoniker": "DataLayer\\Entities\\Lab.cs",
@@ -725,7 +772,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 40,
+              "DocumentIndex": 44,
               "Title": "UserRepository.cs",
               "DocumentMoniker": "E:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\DataLayer\\Repository\\Implement\\UserRepository.cs",
               "RelativeDocumentMoniker": "DataLayer\\Repository\\Implement\\UserRepository.cs",
@@ -737,7 +784,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 39,
+              "DocumentIndex": 43,
               "Title": "Subject.cs",
               "DocumentMoniker": "E:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\DataLayer\\Entities\\Subject.cs",
               "RelativeDocumentMoniker": "DataLayer\\Entities\\Subject.cs",
@@ -749,7 +796,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 41,
+              "DocumentIndex": 45,
               "Title": "LoginMailModel.cs",
               "DocumentMoniker": "E:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\RequestModel\\User\\LoginMailModel.cs",
               "RelativeDocumentMoniker": "BusinessLayer\\RequestModel\\User\\LoginMailModel.cs",
@@ -761,7 +808,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 42,
+              "DocumentIndex": 46,
               "Title": "UpdateRequestModel.cs",
               "DocumentMoniker": "E:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\RequestModel\\User\\UpdateRequestModel.cs",
               "RelativeDocumentMoniker": "BusinessLayer\\RequestModel\\User\\UpdateRequestModel.cs",
@@ -773,7 +820,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 43,
+              "DocumentIndex": 47,
               "Title": "RegisterRequestModel.cs",
               "DocumentMoniker": "E:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\RequestModel\\User\\RegisterRequestModel.cs",
               "RelativeDocumentMoniker": "BusinessLayer\\RequestModel\\User\\RegisterRequestModel.cs",
@@ -785,7 +832,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 44,
+              "DocumentIndex": 48,
               "Title": "LoginRequestModel.cs",
               "DocumentMoniker": "E:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\RequestModel\\User\\LoginRequestModel.cs",
               "RelativeDocumentMoniker": "BusinessLayer\\RequestModel\\User\\LoginRequestModel.cs",
@@ -797,19 +844,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 45,
-              "Title": "GetAllUserRequestModel.cs",
-              "DocumentMoniker": "E:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\RequestModel\\User\\GetAllUserRequestModel.cs",
-              "RelativeDocumentMoniker": "BusinessLayer\\RequestModel\\User\\GetAllUserRequestModel.cs",
-              "ToolTip": "E:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\RequestModel\\User\\GetAllUserRequestModel.cs",
-              "RelativeToolTip": "BusinessLayer\\RequestModel\\User\\GetAllUserRequestModel.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-23T02:43:05.16Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 46,
+              "DocumentIndex": 49,
               "Title": "CreateSubjectRequestModel.cs",
               "DocumentMoniker": "E:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\RequestModel\\Subject\\CreateSubjectRequestModel.cs",
               "RelativeDocumentMoniker": "BusinessLayer\\RequestModel\\Subject\\CreateSubjectRequestModel.cs",
@@ -821,7 +856,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 47,
+              "DocumentIndex": 50,
               "Title": "SubjectRepository.cs",
               "DocumentMoniker": "E:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\DataLayer\\Repository\\Implement\\SubjectRepository.cs",
               "RelativeDocumentMoniker": "DataLayer\\Repository\\Implement\\SubjectRepository.cs",
@@ -833,7 +868,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 49,
+              "DocumentIndex": 52,
               "Title": "BusinessLayer.csproj",
               "DocumentMoniker": "E:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\BusinessLayer.csproj",
               "RelativeDocumentMoniker": "BusinessLayer\\BusinessLayer.csproj",
@@ -845,7 +880,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 48,
+              "DocumentIndex": 51,
               "Title": "OhmLab_FUHCM_BE.csproj",
               "DocumentMoniker": "E:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\OhmLab_FUHCM_BE\\OhmLab_FUHCM_BE.csproj",
               "RelativeDocumentMoniker": "OhmLab_FUHCM_BE\\OhmLab_FUHCM_BE.csproj",
@@ -857,7 +892,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 50,
+              "DocumentIndex": 53,
               "Title": "LabKitTemplate.cs",
               "DocumentMoniker": "E:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\DataLayer\\Entities\\LabKitTemplate.cs",
               "RelativeDocumentMoniker": "DataLayer\\Entities\\LabKitTemplate.cs",
@@ -869,7 +904,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 51,
+              "DocumentIndex": 54,
               "Title": "Report.cs",
               "DocumentMoniker": "E:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\DataLayer\\Entities\\Report.cs",
               "RelativeDocumentMoniker": "DataLayer\\Entities\\Report.cs",
@@ -881,7 +916,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 52,
+              "DocumentIndex": 55,
               "Title": "Slot.cs",
               "DocumentMoniker": "E:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\DataLayer\\Entities\\Slot.cs",
               "RelativeDocumentMoniker": "DataLayer\\Entities\\Slot.cs",
@@ -890,18 +925,6 @@
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-23T03:03:49.208Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 53,
-              "Title": "User.cs",
-              "DocumentMoniker": "E:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\DataLayer\\Entities\\User.cs",
-              "RelativeDocumentMoniker": "DataLayer\\Entities\\User.cs",
-              "ToolTip": "E:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\DataLayer\\Entities\\User.cs",
-              "RelativeToolTip": "DataLayer\\Entities\\User.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-23T03:03:24.153Z"
             }
           ]
         }

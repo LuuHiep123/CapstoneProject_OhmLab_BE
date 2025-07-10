@@ -14,5 +14,9 @@ namespace BusinessLayer.Service
     {
         Task<BaseResponse<EquipmentResponseModel>> CreateEquipment(CreateEquipmentRequestModel model);
         Task<BaseResponse<EquipmentResponseModel>> AddQR(string id, string UrlQR);
+        Task<BaseResponse<EquipmentResponseModel>> GetEquipmentById(string id);
+        Task<DynamicResponse<EquipmentResponseModel>> GetAllEquipment(GetAllEquipmentRequestModel model);
+        Task<BaseResponse<EquipmentResponseModel>> DeleteEquipment(string id);
+        Task<BaseResponse<EquipmentResponseModel>> UpdateEquipment(string id,UpdateEquipmentRequestModel model);
     }
 }

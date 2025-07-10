@@ -49,5 +49,64 @@ namespace OhmLab_FUHCM_BE.Controller
             }
         }
 
+        [Authorize(Roles = "Admin,HeadOfDepartment")]
+        [HttpPost("Search")]
+        public async Task<IActionResult> GetAllEquipment(GetAllEquipmentRequestModel model)
+        {
+            try
+            {
+                var result = await _service.GetAllEquipment(model);
+                return StatusCode(result.Code, result);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { Message = ex.Message });
+            }
+        }
+
+        [Authorize(Roles = "Admin,HeadOfDepartment")]
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetEquipmentById(string id)
+        {
+            try
+            {
+                var result = await _service.GetEquipmentById(id);
+                return StatusCode(result.Code, result);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        [Authorize(Roles = "Admin,HeadOfDepartment")]
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateEquipment(string id, UpdateEquipmentRequestModel model)
+        {
+            try
+            {
+                var result = await _service.UpdateEquipment(id, model);
+                return StatusCode(result.Code, result);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        [Authorize(Roles = "Admin,HeadOfDepartment")]
+        [HttpPost("Delete/{id}")]
+        public async Task<IActionResult> DeleteEquipment(string id)
+        {
+            try
+            {
+                var result = await _service.DeleteEquipment(id);
+                return StatusCode(result.Code, result);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
     }
 }

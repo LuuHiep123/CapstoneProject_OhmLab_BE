@@ -175,6 +175,59 @@
   },
   {
     "ContainingType": "OhmLab_FUHCM_BE.Controller.EquipmentController",
+    "Method": "GetEquipmentById",
+    "RelativePath": "api/equipment/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OhmLab_FUHCM_BE.Controller.EquipmentController",
+    "Method": "UpdateEquipment",
+    "RelativePath": "api/equipment/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "model",
+        "Type": "BusinessLayer.RequestModel.Equipment.UpdateEquipmentRequestModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OhmLab_FUHCM_BE.Controller.EquipmentController",
+    "Method": "DeleteEquipment",
+    "RelativePath": "api/equipment/delete/{id}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OhmLab_FUHCM_BE.Controller.EquipmentController",
     "Method": "CreateEquipment",
     "RelativePath": "api/equipment/equipment",
     "HttpMethod": "POST",
@@ -206,6 +259,22 @@
         "Name": "QR",
         "Type": "System.String",
         "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OhmLab_FUHCM_BE.Controller.EquipmentController",
+    "Method": "GetAllEquipment",
+    "RelativePath": "api/equipment/search",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "BusinessLayer.RequestModel.Equipment.GetAllEquipmentRequestModel",
+        "IsRequired": true
       }
     ],
     "ReturnTypes": []
