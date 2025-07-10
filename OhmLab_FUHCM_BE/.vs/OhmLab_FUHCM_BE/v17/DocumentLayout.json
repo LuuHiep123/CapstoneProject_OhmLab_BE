@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "D:\\CN9\\SEP\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{E21759DF-68CE-4E02-A661-54A872D48543}|BusinessLayer\\BusinessLayer.csproj|d:\\cn9\\sep\\capstoneproject_ohmlab_be\\ohmlab_fuhcm_be\\businesslayer\\service\\implement\\assignmentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E21759DF-68CE-4E02-A661-54A872D48543}|BusinessLayer\\BusinessLayer.csproj|solutionrelative:businesslayer\\service\\implement\\assignmentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{4BBB523E-D4B5-4AF7-9FC4-70160820133F}|OhmLab_FUHCM_BE\\OhmLab_FUHCM_BE.csproj|d:\\cn9\\sep\\capstoneproject_ohmlab_be\\ohmlab_fuhcm_be\\ohmlab_fuhcm_be\\controller\\assignmentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{4BBB523E-D4B5-4AF7-9FC4-70160820133F}|OhmLab_FUHCM_BE\\OhmLab_FUHCM_BE.csproj|solutionrelative:ohmlab_fuhcm_be\\controller\\assignmentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E21759DF-68CE-4E02-A661-54A872D48543}|BusinessLayer\\BusinessLayer.csproj|d:\\cn9\\sep\\capstoneproject_ohmlab_be\\ohmlab_fuhcm_be\\businesslayer\\service\\implement\\assignmentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E21759DF-68CE-4E02-A661-54A872D48543}|BusinessLayer\\BusinessLayer.csproj|solutionrelative:businesslayer\\service\\implement\\assignmentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{9326A667-EBB2-47AE-B671-4F345AD0F85A}|DataLayer\\DataLayer.csproj|d:\\cn9\\sep\\capstoneproject_ohmlab_be\\ohmlab_fuhcm_be\\datalayer\\repository\\implement\\weekrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -270,7 +270,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 9,
+          "SelectedChildIndex": 7,
           "Children": [
             {
               "$type": "Bookmark",
@@ -294,19 +294,6 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "WeekRepository.cs",
-              "DocumentMoniker": "D:\\CN9\\SEP\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\DataLayer\\Repository\\Implement\\WeekRepository.cs",
-              "RelativeDocumentMoniker": "DataLayer\\Repository\\Implement\\WeekRepository.cs",
-              "ToolTip": "D:\\CN9\\SEP\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\DataLayer\\Repository\\Implement\\WeekRepository.cs",
-              "RelativeToolTip": "DataLayer\\Repository\\Implement\\WeekRepository.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABMAAAACAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-10T06:25:49.725Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 3,
               "Title": "TeamRepository.cs",
               "DocumentMoniker": "D:\\CN9\\SEP\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\DataLayer\\Repository\\Implement\\TeamRepository.cs",
@@ -315,8 +302,7 @@
               "RelativeToolTip": "DataLayer\\Repository\\Implement\\TeamRepository.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-10T06:25:45.35Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-10T06:25:45.35Z"
             },
             {
               "$type": "Document",
@@ -328,34 +314,45 @@
               "RelativeToolTip": "DataLayer\\Repository\\Implement\\GradeRepository.cs",
               "ViewState": "AQIAAIcAAAAAAAAAAAAIwAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-10T06:25:28.881Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-10T06:25:28.881Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "AssignmentController.cs",
               "DocumentMoniker": "D:\\CN9\\SEP\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\OhmLab_FUHCM_BE\\Controller\\AssignmentController.cs",
               "RelativeDocumentMoniker": "OhmLab_FUHCM_BE\\Controller\\AssignmentController.cs",
               "ToolTip": "D:\\CN9\\SEP\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\OhmLab_FUHCM_BE\\Controller\\AssignmentController.cs",
               "RelativeToolTip": "OhmLab_FUHCM_BE\\Controller\\AssignmentController.cs",
-              "ViewState": "AQIAAJIAAAAAAAAAAAA2wDcAAABRAAAA",
+              "ViewState": "AQIAAJMAAAAAAAAAAAAUwKAAAAARAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-07-10T05:37:14.452Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "AssignmentService.cs",
               "DocumentMoniker": "D:\\CN9\\SEP\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\Service\\Implement\\AssignmentService.cs",
               "RelativeDocumentMoniker": "BusinessLayer\\Service\\Implement\\AssignmentService.cs",
               "ToolTip": "D:\\CN9\\SEP\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\Service\\Implement\\AssignmentService.cs",
               "RelativeToolTip": "BusinessLayer\\Service\\Implement\\AssignmentService.cs",
-              "ViewState": "AQIAABwCAAAAAAAAAAAuwDwAAAASAAAA",
+              "ViewState": "AQIAAIIBAAAAAAAAAAApwJsBAAA6AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-07-10T04:23:09.249Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "WeekRepository.cs",
+              "DocumentMoniker": "D:\\CN9\\SEP\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\DataLayer\\Repository\\Implement\\WeekRepository.cs",
+              "RelativeDocumentMoniker": "DataLayer\\Repository\\Implement\\WeekRepository.cs",
+              "ToolTip": "D:\\CN9\\SEP\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\DataLayer\\Repository\\Implement\\WeekRepository.cs",
+              "RelativeToolTip": "DataLayer\\Repository\\Implement\\WeekRepository.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABMAAAACAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-10T06:25:49.725Z"
             },
             {
               "$type": "Document",
@@ -367,8 +364,7 @@
               "RelativeToolTip": "DataLayer\\Repository\\Implement\\ClassRepository.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-10T06:24:37.087Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-10T06:24:37.087Z"
             },
             {
               "$type": "Document",
@@ -380,8 +376,7 @@
               "RelativeToolTip": "DataLayer\\Repository\\Implement\\ScheduleRepository.cs",
               "ViewState": "AQIAAIUAAAAAAAAAAAAmwHoAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-10T05:07:47.891Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-10T05:07:47.891Z"
             },
             {
               "$type": "Document",
@@ -393,8 +388,7 @@
               "RelativeToolTip": "DataLayer\\DBContext\\OhmLab_DBContext.cs",
               "ViewState": "AQIAAFMAAAAAAAAAAAAuwPcBAAArAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-23T03:41:27.368Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-23T03:41:27.368Z"
             },
             {
               "$type": "Document",
@@ -406,8 +400,7 @@
               "RelativeToolTip": "BusinessLayer\\Service\\IAssignmentService.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAuwAgAAAAlAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-10T04:22:59.94Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-10T04:22:59.94Z"
             },
             {
               "$type": "Document",
@@ -432,8 +425,7 @@
               "RelativeToolTip": "OhmLab_FUHCM_BE\\AppStarts\\MappingProfile.cs",
               "ViewState": "AQIAAA4AAAAAAAAAAAAAwAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-21T01:29:16.519Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-21T01:29:16.519Z"
             },
             {
               "$type": "Document",
@@ -445,8 +437,7 @@
               "RelativeToolTip": "BusinessLayer\\RequestModel\\Assignment\\CreateScheduleRequestModel.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-10T06:01:20.588Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-10T06:01:20.588Z"
             },
             {
               "$type": "Document",
@@ -458,8 +449,7 @@
               "RelativeToolTip": "DataLayer\\Entities\\Schedule.cs",
               "ViewState": "AQIAAAwAAAAAAAAAAAA1wAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-10T05:22:03.492Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-10T05:22:03.492Z"
             },
             {
               "$type": "Document",
@@ -471,8 +461,7 @@
               "RelativeToolTip": "DataLayer\\Entities\\ReportEquipment.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAABAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-10T04:15:46.032Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-10T04:15:46.032Z"
             },
             {
               "$type": "Document",
@@ -484,8 +473,7 @@
               "RelativeToolTip": "DataLayer\\Repository\\Implement\\LabRepository.cs",
               "ViewState": "AQIAAA8AAAAAAAAAAAAAACwAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-01T17:01:25.843Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-01T17:01:25.843Z"
             },
             {
               "$type": "Document",
@@ -497,8 +485,7 @@
               "RelativeToolTip": "BusinessLayer\\Service\\Implement\\LabService.cs",
               "ViewState": "AQIAABYAAAAAAAAAAAAQwAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-02T09:47:46.256Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-02T09:47:46.256Z"
             },
             {
               "$type": "Document",
@@ -510,8 +497,7 @@
               "RelativeToolTip": "DataLayer\\Repository\\Implement\\EquipmentRepository.cs",
               "ViewState": "AQIAAA4AAAAAAAAAAAAAwCIAAABEAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-28T07:43:56.873Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-28T07:43:56.873Z"
             },
             {
               "$type": "Document",
@@ -523,8 +509,7 @@
               "RelativeToolTip": "BusinessLayer\\Service\\Implement\\EquipmentService.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-28T08:20:21.969Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-28T08:20:21.969Z"
             },
             {
               "$type": "Document",
@@ -536,8 +521,7 @@
               "RelativeToolTip": "DataLayer\\Entities\\Report.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAACAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-23T03:04:29.812Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-23T03:04:29.812Z"
             },
             {
               "$type": "Document",
@@ -549,8 +533,7 @@
               "RelativeToolTip": "DataLayer\\Entities\\Lab.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAASAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-01T16:57:57.588Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-01T16:57:57.588Z"
             },
             {
               "$type": "Document",
@@ -562,8 +545,7 @@
               "RelativeToolTip": "DataLayer\\Entities\\Subject.cs",
               "ViewState": "AQIAAAMAAAAAAAAAAAAAABEAAAA3AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-02T06:52:17.597Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-02T06:52:17.597Z"
             },
             {
               "$type": "Document",
@@ -611,8 +593,7 @@
               "RelativeToolTip": "DataLayer\\Repository\\IEquipmentTypeRepository.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-28T08:09:09.766Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-28T08:09:09.766Z"
             },
             {
               "$type": "Document",
@@ -624,8 +605,7 @@
               "RelativeToolTip": "DataLayer\\Repository\\Implement\\EquipmentTypeRepository.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-28T08:09:36.443Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-28T08:09:36.443Z"
             },
             {
               "$type": "Document",
@@ -745,8 +725,7 @@
               "RelativeToolTip": "DataLayer\\Entities\\Equipment.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-28T08:23:26.376Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-28T08:23:26.376Z"
             },
             {
               "$type": "Document",
@@ -818,8 +797,7 @@
               "RelativeToolTip": "DataLayer\\Entities\\EquipmentType.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-09T03:02:49.928Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-09T03:02:49.928Z"
             },
             {
               "$type": "Document",
@@ -831,8 +809,7 @@
               "RelativeToolTip": "DataLayer\\Repository\\IEquipmentRepository.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-28T07:43:45.197Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-28T07:43:45.197Z"
             },
             {
               "$type": "Document",
@@ -844,8 +821,7 @@
               "RelativeToolTip": "DataLayer\\Repository\\ISubjectRepository.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-04T06:35:52.927Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-04T06:35:52.927Z"
             },
             {
               "$type": "Document",
@@ -869,8 +845,7 @@
               "RelativeToolTip": "DataLayer\\Repository\\IUserRepositoty.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-22T11:47:14.696Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-22T11:47:14.696Z"
             },
             {
               "$type": "Document",
@@ -930,8 +905,7 @@
               "RelativeToolTip": "DataLayer\\Repository\\ILabRepository.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-02T17:42:36.959Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-02T17:42:36.959Z"
             },
             {
               "$type": "Document",
@@ -955,8 +929,7 @@
               "RelativeToolTip": "DataLayer\\Repository\\Implement\\UserRepository.cs",
               "ViewState": "AQIAABgAAAAAAAAAAAAYwAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-22T11:47:13.837Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-22T11:47:13.837Z"
             },
             {
               "$type": "Document",
@@ -1040,8 +1013,7 @@
               "RelativeToolTip": "DataLayer\\Repository\\Implement\\SubjectRepository.cs",
               "ViewState": "AQIAABUAAAAAAAAAAAAYwAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-01T17:01:33.068Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-01T17:01:33.068Z"
             },
             {
               "$type": "Document",
@@ -1077,8 +1049,7 @@
               "RelativeToolTip": "DataLayer\\Entities\\LabKitTemplate.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-23T03:03:01.796Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-23T03:03:01.796Z"
             },
             {
               "$type": "Document",
@@ -1090,8 +1061,7 @@
               "RelativeToolTip": "DataLayer\\Entities\\Slot.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-23T03:03:49.208Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-23T03:03:49.208Z"
             },
             {
               "$type": "Document",
@@ -1103,8 +1073,7 @@
               "RelativeToolTip": "DataLayer\\Entities\\User.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-23T03:03:24.153Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-23T03:03:24.153Z"
             }
           ]
         }

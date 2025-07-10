@@ -12,7 +12,7 @@ namespace BusinessLayer.Service.Implement
         private readonly IScheduleRepository _scheduleRepository;
         private readonly IReportRepository _reportRepository;
         private readonly IGradeRepository _gradeRepository;
-        private readonly ITeamRepository _teamRepository;
+       
         private readonly ILabRepository _labRepository;
         private readonly IMapper _mapper;
         private readonly ILogger<AssignmentService> _logger;
@@ -20,7 +20,7 @@ namespace BusinessLayer.Service.Implement
         public AssignmentService(IScheduleRepository scheduleRepository, 
                               IReportRepository reportRepository, 
                               IGradeRepository gradeRepository, 
-                              ITeamRepository teamRepository,
+                             
                               ILabRepository labRepository,
                               IMapper mapper,
                               ILogger<AssignmentService> logger)
@@ -28,7 +28,7 @@ namespace BusinessLayer.Service.Implement
             _scheduleRepository = scheduleRepository;
             _reportRepository = reportRepository;
             _gradeRepository = gradeRepository;
-            _teamRepository = teamRepository;
+          
             _labRepository = labRepository;
             _mapper = mapper;
             _logger = logger;
@@ -407,17 +407,7 @@ namespace BusinessLayer.Service.Implement
                     };
                 }
                 // Kiểm tra tồn tại Team
-                var team = await _teamRepository.GetTeamById(grade.TeamId);
-                if (team == null)
-                {
-                    return new BaseResponse<Grade>
-                    {
-                        Code = 404,
-                        Success = false,
-                        Message = "Không tìm thấy Team!",
-                        Data = null
-                    };
-                }
+               
                 grade.GradeStatus = "Graded";
                 await _gradeRepository.CreateAsync(grade);
                 
