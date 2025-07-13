@@ -1,5 +1,6 @@
 using AutoMapper;
 using BusinessLayer.ResponseModel.BaseResponse;
+using BusinessLayer.ResponseModel.Assignment;
 using DataLayer.Entities;
 using DataLayer.Repository;
 using System.Linq;
@@ -14,14 +15,17 @@ namespace BusinessLayer.Service.Implement
         private readonly IGradeRepository _gradeRepository;
        
         private readonly ILabRepository _labRepository;
+        private readonly IClassRepository _classRepository;
+        private readonly IWeekRepository _weekRepository;
         private readonly IMapper _mapper;
         private readonly ILogger<AssignmentService> _logger;
 
         public AssignmentService(IScheduleRepository scheduleRepository, 
                               IReportRepository reportRepository, 
                               IGradeRepository gradeRepository, 
-                             
                               ILabRepository labRepository,
+                              IClassRepository classRepository,
+                              IWeekRepository weekRepository,
                               IMapper mapper,
                               ILogger<AssignmentService> logger)
         {
@@ -30,29 +34,80 @@ namespace BusinessLayer.Service.Implement
             _gradeRepository = gradeRepository;
           
             _labRepository = labRepository;
+            _classRepository = classRepository;
+            _weekRepository = weekRepository;
             _mapper = mapper;
             _logger = logger;
         }
 
         // Tạo lịch thực hành (Schedule)
-        public async Task<BaseResponse<Schedule>> CreatePracticeScheduleAsync(Schedule schedule)
+        public async Task<BaseResponse<ScheduleResponseModel>> CreatePracticeScheduleAsync(Schedule schedule)
         {
             try
             {
+                // Kiểm tra lớp
+                var classEntity = await _classRepository.GetByIdAsync(schedule.ClassId);
+                if (classEntity == null)
+                {
+                    return new BaseResponse<ScheduleResponseModel>
+                    {
+                        Code = 404,
+                        Success = false,
+                        Message = "Không tìm thấy lớp học!",
+                        Data = null
+                    };
+                }
+                // Kiểm tra tuần
+                var weekEntity = await _weekRepository.GetByIdAsync(schedule.WeeksId);
+                if (weekEntity == null)
+                {
+                    return new BaseResponse<ScheduleResponseModel>
+                    {
+                        Code = 404,
+                        Success = false,
+                        Message = "Không tìm thấy tuần!",
+                        Data = null
+                    };
+                }
+                // Kiểm tra trùng lịch
+                var schedules = await _scheduleRepository.GetByClassIdAsync(schedule.ClassId);
+                bool isDuplicate = schedules.Any(s => s.WeeksId == schedule.WeeksId && s.ScheduleDate.Date == schedule.ScheduleDate.Date);
+                if (isDuplicate)
+                {
+                    return new BaseResponse<ScheduleResponseModel>
+                    {
+                        Code = 409,
+                        Success = false,
+                        Message = "Lịch thực hành đã tồn tại!",
+                        Data = null
+                    };
+                }
+                // Kiểm tra ngày nằm trong tuần
+                if (schedule.ScheduleDate < weekEntity.WeeksStartDate || schedule.ScheduleDate > weekEntity.WeeksEndDate)
+                {
+                    return new BaseResponse<ScheduleResponseModel>
+                    {
+                        Code = 400,
+                        Success = false,
+                        Message = "Ngày thực hành phải nằm trong tuần học!",
+                        Data = null
+                    };
+                }
                 schedule.ScheduleName = $"Buổi thực hành - {schedule.ScheduleName}";
                 await _scheduleRepository.CreateAsync(schedule);
-                return new BaseResponse<Schedule>
+                var dto = _mapper.Map<ScheduleResponseModel>(schedule);
+                return new BaseResponse<ScheduleResponseModel>
                 {
                     Code = 200,
                     Success = true,
                     Message = "Tạo lịch thực hành thành công!",
-                    Data = schedule
+                    Data = dto
                 };
             }
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Error in CreatePracticeSchedule: {Message} | Inner: {Inner}", ex.Message, ex.InnerException?.Message);
-                return new BaseResponse<Schedule>
+                return new BaseResponse<ScheduleResponseModel>
                 {
                     Code = 500,
                     Success = false,
@@ -62,14 +117,14 @@ namespace BusinessLayer.Service.Implement
             }
         }
 
-        public async Task<BaseResponse<Schedule>> UpdatePracticeScheduleAsync(int scheduleId, Schedule schedule)
+        public async Task<BaseResponse<ScheduleResponseModel>> UpdatePracticeScheduleAsync(int scheduleId, Schedule schedule)
         {
             try
             {
                 var existingSchedule = await _scheduleRepository.GetByIdAsync(scheduleId);
                 if (existingSchedule == null)
                 {
-                    return new BaseResponse<Schedule>
+                    return new BaseResponse<ScheduleResponseModel>
                     {
                         Code = 404,
                         Success = false,
@@ -81,18 +136,19 @@ namespace BusinessLayer.Service.Implement
                 schedule.ScheduleId = scheduleId;
                 await _scheduleRepository.UpdateAsync(schedule);
                 
-                return new BaseResponse<Schedule>
+                var dto = _mapper.Map<ScheduleResponseModel>(schedule);
+                return new BaseResponse<ScheduleResponseModel>
                 {
                     Code = 200,
                     Success = true,
                     Message = "Cập nhật lịch thực hành thành công!",
-                    Data = schedule
+                    Data = dto
                 };
             }
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Error in UpdatePracticeSchedule: {Message} | Inner: {Inner}", ex.Message, ex.InnerException?.Message);
-                return new BaseResponse<Schedule>
+                return new BaseResponse<ScheduleResponseModel>
                 {
                     Code = 500,
                     Success = false,
@@ -129,20 +185,20 @@ namespace BusinessLayer.Service.Implement
             }
         }
 
-        public async Task<DynamicResponse<Schedule>> GetPracticeSchedulesByClassAsync(int classId)
+        public async Task<DynamicResponse<ScheduleResponseModel>> GetPracticeSchedulesByClassAsync(int classId)
         {
             try
             {
                 var schedules = await _scheduleRepository.GetByClassIdAsync(classId);
                 
-                return new DynamicResponse<Schedule>
+                return new DynamicResponse<ScheduleResponseModel>
                 {
                     Code = 200,
                     Success = true,
                     Message = "Lấy danh sách lịch thực hành theo lớp thành công!",
-                    Data = new MegaData<Schedule>
+                    Data = new MegaData<ScheduleResponseModel>
                     {
-                        PageData = schedules.ToList(),
+                        PageData = schedules.Select(s => _mapper.Map<ScheduleResponseModel>(s)).ToList(),
                         PageInfo = new PagingMetaData
                         {
                             Page = 1,
@@ -157,7 +213,7 @@ namespace BusinessLayer.Service.Implement
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Error in GetPracticeSchedulesByClass: {Message} | Inner: {Inner}", ex.Message, ex.InnerException?.Message);
-                return new DynamicResponse<Schedule>
+                return new DynamicResponse<ScheduleResponseModel>
                 {
                     Code = 500,
                     Success = false,
@@ -167,20 +223,20 @@ namespace BusinessLayer.Service.Implement
             }
         }
 
-        public async Task<DynamicResponse<Schedule>> GetPracticeSchedulesByLecturerAsync(Guid lecturerId)
+        public async Task<DynamicResponse<ScheduleResponseModel>> GetPracticeSchedulesByLecturerAsync(Guid lecturerId)
         {
             try
             {
                 var schedules = await _scheduleRepository.GetByLecturerIdAsync(lecturerId);
                 
-                return new DynamicResponse<Schedule>
+                return new DynamicResponse<ScheduleResponseModel>
                 {
                     Code = 200,
                     Success = true,
                     Message = "Lấy danh sách lịch thực hành theo giảng viên thành công!",
-                    Data = new MegaData<Schedule>
+                    Data = new MegaData<ScheduleResponseModel>
                     {
-                        PageData = schedules.ToList(),
+                        PageData = schedules.Select(s => _mapper.Map<ScheduleResponseModel>(s)).ToList(),
                         PageInfo = new PagingMetaData
                         {
                             Page = 1,
@@ -195,7 +251,7 @@ namespace BusinessLayer.Service.Implement
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Error in GetPracticeSchedulesByLecturer: {Message} | Inner: {Inner}", ex.Message, ex.InnerException?.Message);
-                return new DynamicResponse<Schedule>
+                return new DynamicResponse<ScheduleResponseModel>
                 {
                     Code = 500,
                     Success = false,
@@ -206,26 +262,62 @@ namespace BusinessLayer.Service.Implement
         }
 
         // Sinh viên nộp bài thực hành (Report)
-        public async Task<BaseResponse<Report>> SubmitPracticeReportAsync(Report report)
+        public async Task<BaseResponse<ReportResponseModel>> SubmitPracticeReportAsync(Report report)
         {
             try
             {
+                // Kiểm tra lịch thực hành tồn tại
+                var scheduleEntity = await _scheduleRepository.GetByIdAsync(report.ScheduleId);
+                if (scheduleEntity == null)
+                {
+                    return new BaseResponse<ReportResponseModel>
+                    {
+                        Code = 404,
+                        Success = false,
+                        Message = "Không tìm thấy lịch thực hành!",
+                        Data = null
+                    };
+                }
+                // Kiểm tra đã nộp chưa
+                var reports = await _reportRepository.GetByUserIdAsync(report.UserId);
+                bool hasSubmitted = reports.Any(r => r.ScheduleId == report.ScheduleId);
+                if (hasSubmitted)
+                {
+                    return new BaseResponse<ReportResponseModel>
+                    {
+                        Code = 409,
+                        Success = false,
+                        Message = "Bạn đã nộp báo cáo cho buổi này!",
+                        Data = null
+                    };
+                }
+                // Kiểm tra lịch đã kết thúc chưa
+                if (scheduleEntity.ScheduleDate < DateTime.Now)
+                {
+                    return new BaseResponse<ReportResponseModel>
+                    {
+                        Code = 400,
+                        Success = false,
+                        Message = "Không thể nộp báo cáo cho lịch đã kết thúc!",
+                        Data = null
+                    };
+                }
                 report.ReportCreateDate = DateTime.Now;
                 report.ReportStatus = "Submitted";
                 await _reportRepository.CreateAsync(report);
-                
-                return new BaseResponse<Report>
+                var dto = _mapper.Map<ReportResponseModel>(report);
+                return new BaseResponse<ReportResponseModel>
                 {
                     Code = 200,
                     Success = true,
                     Message = "Nộp báo cáo thực hành thành công!",
-                    Data = report
+                    Data = dto
                 };
             }
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Error in SubmitPracticeReport: {Message} | Inner: {Inner}", ex.Message, ex.InnerException?.Message);
-                return new BaseResponse<Report>
+                return new BaseResponse<ReportResponseModel>
                 {
                     Code = 500,
                     Success = false,
@@ -235,14 +327,14 @@ namespace BusinessLayer.Service.Implement
             }
         }
 
-        public async Task<BaseResponse<Report>> GetReportByIdAsync(int reportId)
+        public async Task<BaseResponse<ReportResponseModel>> GetReportByIdAsync(int reportId)
         {
             try
             {
                 var report = await _reportRepository.GetByIdAsync(reportId);
                 if (report == null)
                 {
-                    return new BaseResponse<Report>
+                    return new BaseResponse<ReportResponseModel>
                     {
                         Code = 404,
                         Success = false,
@@ -251,18 +343,19 @@ namespace BusinessLayer.Service.Implement
                     };
                 }
 
-                return new BaseResponse<Report>
+                var dto = _mapper.Map<ReportResponseModel>(report);
+                return new BaseResponse<ReportResponseModel>
                 {
                     Code = 200,
                     Success = true,
                     Message = "Lấy thông tin báo cáo thành công!",
-                    Data = report
+                    Data = dto
                 };
             }
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Error in GetReportById: {Message} | Inner: {Inner}", ex.Message, ex.InnerException?.Message);
-                return new BaseResponse<Report>
+                return new BaseResponse<ReportResponseModel>
                 {
                     Code = 500,
                     Success = false,
@@ -272,20 +365,20 @@ namespace BusinessLayer.Service.Implement
             }
         }
 
-        public async Task<DynamicResponse<Report>> GetReportsByStudentAsync(Guid studentId)
+        public async Task<DynamicResponse<ReportResponseModel>> GetReportsByStudentAsync(Guid studentId)
         {
             try
             {
                 var reports = await _reportRepository.GetReportsByStudentAsync(studentId);
                 
-                return new DynamicResponse<Report>
+                return new DynamicResponse<ReportResponseModel>
                 {
                     Code = 200,
                     Success = true,
                     Message = "Lấy danh sách báo cáo của sinh viên thành công!",
-                    Data = new MegaData<Report>
+                    Data = new MegaData<ReportResponseModel>
                     {
-                        PageData = reports.ToList(),
+                        PageData = reports.Select(r => _mapper.Map<ReportResponseModel>(r)).ToList(),
                         PageInfo = new PagingMetaData
                         {
                             Page = 1,
@@ -300,7 +393,7 @@ namespace BusinessLayer.Service.Implement
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Error in GetReportsByStudent: {Message} | Inner: {Inner}", ex.Message, ex.InnerException?.Message);
-                return new DynamicResponse<Report>
+                return new DynamicResponse<ReportResponseModel>
                 {
                     Code = 500,
                     Success = false,
@@ -310,20 +403,20 @@ namespace BusinessLayer.Service.Implement
             }
         }
 
-        public async Task<DynamicResponse<Report>> GetReportsByScheduleAsync(int scheduleId)
+        public async Task<DynamicResponse<ReportResponseModel>> GetReportsByScheduleAsync(int scheduleId)
         {
             try
             {
                 var reports = await _reportRepository.GetReportsByScheduleAsync(scheduleId);
                 
-                return new DynamicResponse<Report>
+                return new DynamicResponse<ReportResponseModel>
                 {
                     Code = 200,
                     Success = true,
                     Message = "Lấy danh sách báo cáo theo buổi học thành công!",
-                    Data = new MegaData<Report>
+                    Data = new MegaData<ReportResponseModel>
                     {
-                        PageData = reports.ToList(),
+                        PageData = reports.Select(r => _mapper.Map<ReportResponseModel>(r)).ToList(),
                         PageInfo = new PagingMetaData
                         {
                             Page = 1,
@@ -338,7 +431,7 @@ namespace BusinessLayer.Service.Implement
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Error in GetReportsBySchedule: {Message} | Inner: {Inner}", ex.Message, ex.InnerException?.Message);
-                return new DynamicResponse<Report>
+                return new DynamicResponse<ReportResponseModel>
                 {
                     Code = 500,
                     Success = false,
@@ -348,7 +441,7 @@ namespace BusinessLayer.Service.Implement
             }
         }
 
-        public async Task<DynamicResponse<Report>> GetReportsByLabAsync(int labId)
+        public async Task<DynamicResponse<ReportResponseModel>> GetReportsByLabAsync(int labId)
         {
             try
             {
@@ -357,14 +450,14 @@ namespace BusinessLayer.Service.Implement
                 var reportsByLab = allReports.Where(r => 
                     r.Schedule.Class.SubjectId == labId).ToList();
                 
-                return new DynamicResponse<Report>
+                return new DynamicResponse<ReportResponseModel>
                 {
                     Code = 200,
                     Success = true,
                     Message = "Lấy danh sách báo cáo theo bài thực hành thành công!",
-                    Data = new MegaData<Report>
+                    Data = new MegaData<ReportResponseModel>
                     {
-                        PageData = reportsByLab,
+                        PageData = reportsByLab.Select(r => _mapper.Map<ReportResponseModel>(r)).ToList(),
                         PageInfo = new PagingMetaData
                         {
                             Page = 1,
@@ -379,7 +472,7 @@ namespace BusinessLayer.Service.Implement
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Error in GetReportsByLab: {Message} | Inner: {Inner}", ex.Message, ex.InnerException?.Message);
-                return new DynamicResponse<Report>
+                return new DynamicResponse<ReportResponseModel>
                 {
                     Code = 500,
                     Success = false,
@@ -390,39 +483,51 @@ namespace BusinessLayer.Service.Implement
         }
 
         // Giảng viên chấm điểm (Grade)
-        public async Task<BaseResponse<Grade>> GradePracticeReportAsync(Grade grade)
+        public async Task<BaseResponse<GradeResponseModel>> GradePracticeReportAsync(Grade grade)
         {
             try
             {
-                // Kiểm tra tồn tại Lab
-                var lab = await _labRepository.GetLabById(grade.LabId);
-                if (lab == null)
+                // Kiểm tra báo cáo đã nộp chưa
+                var reports = await _reportRepository.GetByUserIdAsync(grade.UserId);
+                bool hasReport = reports.Any(r => r.ScheduleId == grade.LabId);
+                if (!hasReport)
                 {
-                    return new BaseResponse<Grade>
+                    return new BaseResponse<GradeResponseModel>
                     {
-                        Code = 404,
+                        Code = 400,
                         Success = false,
-                        Message = "Không tìm thấy Lab!",
+                        Message = "Chưa có báo cáo để chấm điểm!",
                         Data = null
                     };
                 }
-                // Kiểm tra tồn tại Team
-               
+                // Kiểm tra đã chấm chưa
+                var grades = await _gradeRepository.GetByUserIdAsync(grade.UserId);
+                bool hasGraded = grades.Any(g => g.LabId == grade.LabId);
+                if (hasGraded)
+                {
+                    return new BaseResponse<GradeResponseModel>
+                    {
+                        Code = 409,
+                        Success = false,
+                        Message = "Báo cáo này đã được chấm điểm!",
+                        Data = null
+                    };
+                }
                 grade.GradeStatus = "Graded";
                 await _gradeRepository.CreateAsync(grade);
-                
-                return new BaseResponse<Grade>
+                var dto = _mapper.Map<GradeResponseModel>(grade);
+                return new BaseResponse<GradeResponseModel>
                 {
                     Code = 200,
                     Success = true,
                     Message = "Chấm điểm thành công!",
-                    Data = grade
+                    Data = dto
                 };
             }
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Error in GradePracticeReport: {Message} | Inner: {Inner}", ex.Message, ex.InnerException?.Message);
-                return new BaseResponse<Grade>
+                return new BaseResponse<GradeResponseModel>
                 {
                     Code = 500,
                     Success = false,
@@ -432,14 +537,14 @@ namespace BusinessLayer.Service.Implement
             }
         }
 
-        public async Task<BaseResponse<Grade>> UpdateGradeAsync(int gradeId, Grade grade)
+        public async Task<BaseResponse<GradeResponseModel>> UpdateGradeAsync(int gradeId, Grade grade)
         {
             try
             {
                 var existingGrade = await _gradeRepository.GetByIdAsync(gradeId);
                 if (existingGrade == null)
                 {
-                    return new BaseResponse<Grade>
+                    return new BaseResponse<GradeResponseModel>
                     {
                         Code = 404,
                         Success = false,
@@ -452,18 +557,19 @@ namespace BusinessLayer.Service.Implement
                 grade.GradeStatus = "Graded";
                 await _gradeRepository.UpdateAsync(grade);
                 
-                return new BaseResponse<Grade>
+                var dto = _mapper.Map<GradeResponseModel>(grade);
+                return new BaseResponse<GradeResponseModel>
                 {
                     Code = 200,
                     Success = true,
                     Message = "Cập nhật điểm số thành công!",
-                    Data = grade
+                    Data = dto
                 };
             }
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Error in UpdateGrade: {Message} | Inner: {Inner}", ex.Message, ex.InnerException?.Message);
-                return new BaseResponse<Grade>
+                return new BaseResponse<GradeResponseModel>
                 {
                     Code = 500,
                     Success = false,
@@ -473,14 +579,14 @@ namespace BusinessLayer.Service.Implement
             }
         }
 
-        public async Task<BaseResponse<Grade>> GetGradeByIdAsync(int gradeId)
+        public async Task<BaseResponse<GradeResponseModel>> GetGradeByIdAsync(int gradeId)
         {
             try
             {
                 var grade = await _gradeRepository.GetByIdAsync(gradeId);
                 if (grade == null)
                 {
-                    return new BaseResponse<Grade>
+                    return new BaseResponse<GradeResponseModel>
                     {
                         Code = 404,
                         Success = false,
@@ -489,18 +595,19 @@ namespace BusinessLayer.Service.Implement
                     };
                 }
 
-                return new BaseResponse<Grade>
+                var dto = _mapper.Map<GradeResponseModel>(grade);
+                return new BaseResponse<GradeResponseModel>
                 {
                     Code = 200,
                     Success = true,
                     Message = "Lấy thông tin điểm số thành công!",
-                    Data = grade
+                    Data = dto
                 };
             }
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Error in GetGradeById: {Message} | Inner: {Inner}", ex.Message, ex.InnerException?.Message);
-                return new BaseResponse<Grade>
+                return new BaseResponse<GradeResponseModel>
                 {
                     Code = 500,
                     Success = false,
@@ -510,21 +617,21 @@ namespace BusinessLayer.Service.Implement
             }
         }
 
-        public async Task<DynamicResponse<Grade>> GetGradesByLabAsync(int labId)
+        public async Task<DynamicResponse<GradeResponseModel>> GetGradesByLabAsync(int labId)
         {
             try
             {
                 var grades = await _gradeRepository.GetByLabIdAsync(labId);
                 var gradedGrades = grades.Where(g => g.GradeStatus == "Graded").ToList();
                 
-                return new DynamicResponse<Grade>
+                return new DynamicResponse<GradeResponseModel>
                 {
                     Code = 200,
                     Success = true,
                     Message = "Lấy danh sách điểm số theo bài thực hành thành công!",
-                    Data = new MegaData<Grade>
+                    Data = new MegaData<GradeResponseModel>
                     {
-                        PageData = gradedGrades,
+                        PageData = gradedGrades.Select(g => _mapper.Map<GradeResponseModel>(g)).ToList(),
                         PageInfo = new PagingMetaData
                         {
                             Page = 1,
@@ -539,7 +646,7 @@ namespace BusinessLayer.Service.Implement
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Error in GetGradesByLab: {Message} | Inner: {Inner}", ex.Message, ex.InnerException?.Message);
-                return new DynamicResponse<Grade>
+                return new DynamicResponse<GradeResponseModel>
                 {
                     Code = 500,
                     Success = false,
@@ -549,21 +656,21 @@ namespace BusinessLayer.Service.Implement
             }
         }
 
-        public async Task<DynamicResponse<Grade>> GetGradesByStudentAsync(Guid studentId)
+        public async Task<DynamicResponse<GradeResponseModel>> GetGradesByStudentAsync(Guid studentId)
         {
             try
             {
                 var grades = await _gradeRepository.GetByUserIdAsync(studentId);
                 var gradedGrades = grades.Where(g => g.GradeStatus == "Graded").ToList();
                 
-                return new DynamicResponse<Grade>
+                return new DynamicResponse<GradeResponseModel>
                 {
                     Code = 200,
                     Success = true,
                     Message = "Lấy danh sách điểm số của sinh viên thành công!",
-                    Data = new MegaData<Grade>
+                    Data = new MegaData<GradeResponseModel>
                     {
-                        PageData = gradedGrades,
+                        PageData = gradedGrades.Select(g => _mapper.Map<GradeResponseModel>(g)).ToList(),
                         PageInfo = new PagingMetaData
                         {
                             Page = 1,
@@ -578,7 +685,7 @@ namespace BusinessLayer.Service.Implement
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Error in GetGradesByStudent: {Message} | Inner: {Inner}", ex.Message, ex.InnerException?.Message);
-                return new DynamicResponse<Grade>
+                return new DynamicResponse<GradeResponseModel>
                 {
                     Code = 500,
                     Success = false,
@@ -588,20 +695,20 @@ namespace BusinessLayer.Service.Implement
             }
         }
 
-        public async Task<DynamicResponse<Report>> GetUngradedReportsAsync()
+        public async Task<DynamicResponse<ReportResponseModel>> GetUngradedReportsAsync()
         {
             try
             {
                 var ungradedReports = await _reportRepository.GetUngradedReportsAsync();
                 
-                return new DynamicResponse<Report>
+                return new DynamicResponse<ReportResponseModel>
                 {
                     Code = 200,
                     Success = true,
                     Message = "Lấy danh sách báo cáo chưa chấm điểm thành công!",
-                    Data = new MegaData<Report>
+                    Data = new MegaData<ReportResponseModel>
                     {
-                        PageData = ungradedReports.ToList(),
+                        PageData = ungradedReports.Select(r => _mapper.Map<ReportResponseModel>(r)).ToList(),
                         PageInfo = new PagingMetaData
                         {
                             Page = 1,
@@ -616,7 +723,7 @@ namespace BusinessLayer.Service.Implement
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Error in GetUngradedReports: {Message} | Inner: {Inner}", ex.Message, ex.InnerException?.Message);
-                return new DynamicResponse<Report>
+                return new DynamicResponse<ReportResponseModel>
                 {
                     Code = 500,
                     Success = false,
@@ -627,14 +734,14 @@ namespace BusinessLayer.Service.Implement
         }
 
         // Phản hồi bài thực hành
-        public async Task<BaseResponse<Report>> UpdateReportStatusAsync(int reportId, string status)
+        public async Task<BaseResponse<ReportResponseModel>> UpdateReportStatusAsync(int reportId, string status)
         {
             try
             {
                 var report = await _reportRepository.GetByIdAsync(reportId);
                 if (report == null)
                 {
-                    return new BaseResponse<Report>
+                    return new BaseResponse<ReportResponseModel>
                     {
                         Code = 404,
                         Success = false,
@@ -646,18 +753,19 @@ namespace BusinessLayer.Service.Implement
                 report.ReportStatus = status;
                 await _reportRepository.UpdateAsync(report);
                 
-                return new BaseResponse<Report>
+                var dto = _mapper.Map<ReportResponseModel>(report);
+                return new BaseResponse<ReportResponseModel>
                 {
                     Code = 200,
                     Success = true,
                     Message = "Cập nhật trạng thái báo cáo thành công!",
-                    Data = report
+                    Data = dto
                 };
             }
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Error in UpdateReportStatus: {Message} | Inner: {Inner}", ex.Message, ex.InnerException?.Message);
-                return new BaseResponse<Report>
+                return new BaseResponse<ReportResponseModel>
                 {
                     Code = 500,
                     Success = false,
@@ -667,14 +775,14 @@ namespace BusinessLayer.Service.Implement
             }
         }
 
-        public async Task<BaseResponse<Grade>> AddFeedbackToGradeAsync(int gradeId, string feedback)
+        public async Task<BaseResponse<GradeResponseModel>> AddFeedbackToGradeAsync(int gradeId, string feedback)
         {
             try
             {
                 var grade = await _gradeRepository.GetByIdAsync(gradeId);
                 if (grade == null)
                 {
-                    return new BaseResponse<Grade>
+                    return new BaseResponse<GradeResponseModel>
                     {
                         Code = 404,
                         Success = false,
@@ -686,18 +794,19 @@ namespace BusinessLayer.Service.Implement
                 grade.GradeDescription = feedback;
                 await _gradeRepository.UpdateAsync(grade);
                 
-                return new BaseResponse<Grade>
+                var dto = _mapper.Map<GradeResponseModel>(grade);
+                return new BaseResponse<GradeResponseModel>
                 {
                     Code = 200,
                     Success = true,
                     Message = "Thêm phản hồi thành công!",
-                    Data = grade
+                    Data = dto
                 };
             }
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Error in AddFeedbackToGrade: {Message} | Inner: {Inner}", ex.Message, ex.InnerException?.Message);
-                return new BaseResponse<Grade>
+                return new BaseResponse<GradeResponseModel>
                 {
                     Code = 500,
                     Success = false,
@@ -707,7 +816,7 @@ namespace BusinessLayer.Service.Implement
             }
         }
 
-        public async Task<DynamicResponse<Grade>> GetGradesWithFeedbackAsync(int labId)
+        public async Task<DynamicResponse<GradeResponseModel>> GetGradesWithFeedbackAsync(int labId)
         {
             try
             {
@@ -715,14 +824,14 @@ namespace BusinessLayer.Service.Implement
                 var gradesWithFeedback = grades.Where(g => 
                     g.GradeStatus == "Graded" && !string.IsNullOrEmpty(g.GradeDescription)).ToList();
                 
-                return new DynamicResponse<Grade>
+                return new DynamicResponse<GradeResponseModel>
                 {
                     Code = 200,
                     Success = true,
                     Message = "Lấy danh sách điểm số có phản hồi thành công!",
-                    Data = new MegaData<Grade>
+                    Data = new MegaData<GradeResponseModel>
                     {
-                        PageData = gradesWithFeedback,
+                        PageData = gradesWithFeedback.Select(g => _mapper.Map<GradeResponseModel>(g)).ToList(),
                         PageInfo = new PagingMetaData
                         {
                             Page = 1,
@@ -737,7 +846,7 @@ namespace BusinessLayer.Service.Implement
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Error in GetGradesWithFeedback: {Message} | Inner: {Inner}", ex.Message, ex.InnerException?.Message);
-                return new DynamicResponse<Grade>
+                return new DynamicResponse<GradeResponseModel>
                 {
                     Code = 500,
                     Success = false,

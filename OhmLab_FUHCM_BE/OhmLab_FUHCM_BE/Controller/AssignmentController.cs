@@ -38,12 +38,12 @@ namespace OhmLab_FUHCM_BE.Controller
                 var classEntity = await _classRepository.GetByIdAsync(model.ClassId);
                 if (classEntity == null)
                 {
-                    return NotFound(new { success = false, message = "Không tìm thấy lớp học!" });
+                    return NotFound(new BaseResponse<object> { Code = 404, Success = false, Message = "Không tìm thấy lớp học!", Data = null });
                 }
                 var weekEntity = await _weekRepository.GetByIdAsync(model.WeeksId);
                 if (weekEntity == null)
                 {
-                    return NotFound(new { success = false, message = "Không tìm thấy tuần!" });
+                    return NotFound(new BaseResponse<object> { Code = 404, Success = false, Message = "Không tìm thấy tuần!", Data = null });
                 }
                 var schedule = new Schedule
                 {
@@ -59,13 +59,21 @@ namespace OhmLab_FUHCM_BE.Controller
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Error in CreatePracticeSchedule: {Message} | Inner: {Inner}", ex.Message, ex.InnerException?.Message);
-                return StatusCode(500, new { success = false, message = ex.Message, inner = ex.InnerException?.Message });
+                return StatusCode(500, new BaseResponse<object> { Code = 500, Success = false, Message = ex.Message, Data = null });
             }
         }
 
         [HttpPut("schedules/{id}")]
-        public async Task<IActionResult> UpdatePracticeSchedule(int id, [FromBody] Schedule schedule)
+        public async Task<IActionResult> UpdatePracticeSchedule(int id, [FromBody] UpdateScheduleRequestModel model)
         {
+            var schedule = new Schedule
+            {
+                ClassId = model.ClassId,
+                WeeksId = model.WeeksId,
+                ScheduleName = model.ScheduleName,
+                ScheduleDate = model.ScheduleDate,
+                ScheduleDescription = model.ScheduleDescription
+            };
             var result = await _assignmentService.UpdatePracticeScheduleAsync(id, schedule);
             return StatusCode(result.Code, result);
         }
@@ -101,7 +109,7 @@ namespace OhmLab_FUHCM_BE.Controller
                 var scheduleEntity = await _assignmentService.GetScheduleByIdAsync(model.ScheduleId);
                 if (scheduleEntity == null)
                 {
-                    return NotFound(new { success = false, message = "Không tìm thấy lịch thực hành!" });
+                    return NotFound(new BaseResponse<object> { Code = 404, Success = false, Message = "Không tìm thấy lịch thực hành!", Data = null });
                 }
                 var report = new Report
                 {
@@ -118,7 +126,7 @@ namespace OhmLab_FUHCM_BE.Controller
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Error in SubmitPracticeReport: {Message} | Inner: {Inner}", ex.Message, ex.InnerException?.Message);
-                return StatusCode(500, new { success = false, message = ex.Message, inner = ex.InnerException?.Message });
+                return StatusCode(500, new BaseResponse<object> { Code = 500, Success = false, Message = ex.Message, Data = null });
             }
         }
 
@@ -172,13 +180,21 @@ namespace OhmLab_FUHCM_BE.Controller
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Error in GradePracticeReport: {Message} | Inner: {Inner}", ex.Message, ex.InnerException?.Message);
-                return StatusCode(500, new { success = false, message = ex.Message, inner = ex.InnerException?.Message });
+                return StatusCode(500, new BaseResponse<object> { Code = 500, Success = false, Message = ex.Message, Data = null });
             }
         }
 
         [HttpPut("grades/{id}")]
-        public async Task<IActionResult> UpdateGrade(int id, [FromBody] Grade grade)
+        public async Task<IActionResult> UpdateGrade(int id, [FromBody] UpdateGradeRequestModel model)
         {
+            var grade = new Grade
+            {
+                UserId = model.UserId,
+                TeamId = model.TeamId,
+                LabId = model.LabId,
+                GradeDescription = model.GradeDescription,
+                GradeStatus = model.GradeStatus
+            };
             var result = await _assignmentService.UpdateGradeAsync(id, grade);
             return StatusCode(result.Code, result);
         }

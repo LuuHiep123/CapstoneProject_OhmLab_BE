@@ -40,6 +40,8 @@ namespace OhmLab_FUHCM_BE.AppStarts
             services.AddScoped<IGradeRepository, GradeRepository>();
             services.AddScoped<IScheduleRepository, ScheduleRepository>();
             services.AddScoped<IReportRepository, ReportRepository>();
+            services.AddScoped<IClassRepository, ClassRepository>();
+            services.AddScoped<IWeekRepository, WeekRepository>();
         }
     }
 }

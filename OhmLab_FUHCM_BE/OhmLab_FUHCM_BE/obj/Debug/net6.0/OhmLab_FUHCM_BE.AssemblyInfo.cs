@@ -14,11 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("OhmLab_FUHCM_BE")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-<<<<<<< HEAD
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a70545b849eb60add6332009b9b2775b4dc2def3")]
-=======
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+997c1eebec8fb63c5345bb5d922b6ed701762456")]
->>>>>>> Feartures/AssignmentManagement
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8fc53ad0452adcd492bbf7800c22a2bd402db235")]
 [assembly: System.Reflection.AssemblyProductAttribute("OhmLab_FUHCM_BE")]
 [assembly: System.Reflection.AssemblyTitleAttribute("OhmLab_FUHCM_BE")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
