@@ -8,6 +8,7 @@ using BusinessLayer.RequestModel.Lab;
 using BusinessLayer.ResponseModel.Lab;
 using BusinessLayer.RequestModel.Equipment;
 using BusinessLayer.ResponseModel.Equipment;
+using BusinessLayer.ResponseModel.Assignment;
 
 namespace OhmLab_FUHCM_BE.AppStarts
 {
@@ -38,6 +39,14 @@ namespace OhmLab_FUHCM_BE.AppStarts
             CreateMap<CreateEquipmentRequestModel, Equipment>().ReverseMap();
             CreateMap<EquipmentResponseModel, Equipment>().ReverseMap();
 
+            // Assignment (Lịch thực hành, Báo cáo, Điểm)
+            CreateMap<Schedule, ScheduleResponseModel>()
+                .ForMember(dest => dest.ClassName, opt => opt.MapFrom(src => src.Class != null ? src.Class.ClassName : null))
+                .ForMember(dest => dest.WeeksName, opt => opt.MapFrom(src => src.Weeks != null ? src.Weeks.WeeksName : null));
+
+            CreateMap<Report, ReportResponseModel>();
+
+            CreateMap<Grade, GradeResponseModel>();
         }
     }
 }
