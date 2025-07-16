@@ -4,7 +4,6 @@ using DataLayer.DBContext;
 using Microsoft.EntityFrameworkCore;
 using DataLayer.Repository.Implement;
 using DataLayer.Repository;
-using BusinessLayer.Service.Interface;
 
 
 namespace OhmLab_FUHCM_BE.AppStarts

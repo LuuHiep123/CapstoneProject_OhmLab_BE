@@ -24,7 +24,7 @@ using Microsoft.Extensions.Caching.Memory;
 using DataLayer.Entities;
 using X.PagedList.Extensions;
 
-namespace BusinessLayer.Service.Interface
+namespace BusinessLayer.Service.Implement
 {
     public class UserService : IUserService
     {
@@ -68,10 +68,10 @@ namespace BusinessLayer.Service.Interface
             catch (Exception ex)
             {
                 throw new Exception(ex.Message);
-            }      
+            }
         }
 
-     
+
 
         public async Task<BaseResponse<LoginResponseModel>> LoginMail(LoginMailModel model)
         {
@@ -106,14 +106,14 @@ namespace BusinessLayer.Service.Interface
                     string token = GenerateJwtToken(user.UserFullName, user.UserRoleName, user.UserId);
                     return new BaseResponse<LoginResponseModel>()
                     {
-                         Code = 200,
-                         Success = true,
-                         Message = "Login success!",
-                         Data = new LoginResponseModel()
-                         {
-                             token = token,
-                             user = _mapper.Map<UserResponseModel>(user)
-                         },
+                        Code = 200,
+                        Success = true,
+                        Message = "Login success!",
+                        Data = new LoginResponseModel()
+                        {
+                            token = token,
+                            user = _mapper.Map<UserResponseModel>(user)
+                        },
                     };
                 }
                 else
@@ -125,7 +125,7 @@ namespace BusinessLayer.Service.Interface
                         Message = null,
                         Data = null,
                     };
-                }       
+                }
             }
             catch (Exception ex)
             {
@@ -137,7 +137,7 @@ namespace BusinessLayer.Service.Interface
                     Data = null,
                 };
             }
-            
+
         }
 
         public async Task<DynamicResponse<UserResponseModel>> GetListUser(GetAllUserRequestModel model)
@@ -145,7 +145,7 @@ namespace BusinessLayer.Service.Interface
             try
             {
                 var listUser = await _userRepository.GetAllUser();
-                if(!string.IsNullOrEmpty(model.keyWord))
+                if (!string.IsNullOrEmpty(model.keyWord))
                 {
                     List<User> listUserByName = listUser.Where(u => u.UserFullName.Contains(model.keyWord)).ToList();
 
@@ -159,17 +159,17 @@ namespace BusinessLayer.Service.Interface
                 }
                 if (!string.IsNullOrEmpty(model.role))
                 {
-                    if(!model.role.Equals("ALL") && !model.role.Equals("all") && !model.role.Equals("All"))
+                    if (!model.role.Equals("ALL") && !model.role.Equals("all") && !model.role.Equals("All"))
                     {
                         listUser = listUser.Where(u => u.UserRoleName.Equals(model.role)).ToList();
-                    }          
+                    }
                 }
                 if (!string.IsNullOrEmpty(model.status))
                 {
                     listUser = listUser.Where(u => u.Status.ToLower().Equals(model.status)).ToList();
                 }
-                    var result = _mapper.Map<List<UserResponseModel>>(listUser);
-                    
+                var result = _mapper.Map<List<UserResponseModel>>(listUser);
+
                 // Nếu không có lỗi, thực hiện phân trang
                 var pagedUsers = result// Giả sử result là danh sách người dùng
                     .OrderBy(u => u.UserId) // Sắp xếp theo Id tăng dần
@@ -259,7 +259,7 @@ namespace BusinessLayer.Service.Interface
                 var user = await _userRepository.GetUserById(id);
                 if (user != null)
                 {
-                    var result = _mapper.Map(model,user);
+                    var result = _mapper.Map(model, user);
                     await _userRepository.UpdateUser(result);
                     return new BaseResponse<UserResponseModel>()
                     {
@@ -425,7 +425,7 @@ namespace BusinessLayer.Service.Interface
                     Data = response
                 };
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return new BaseResponse<UserResponseModel>()
                 {
@@ -496,7 +496,7 @@ namespace BusinessLayer.Service.Interface
             try
             {
                 var user = await _userRepository.GetUserById(userId);
-                if(user == null)
+                if (user == null)
                 {
                     return new BaseResponse()
                     {
@@ -535,7 +535,7 @@ namespace BusinessLayer.Service.Interface
             {
                 var user = await _userRepository.GetUserByEmail(email);
                 if (user != null)
-                {             
+                {
                     string token = GenerateJwtToken(user.UserFullName, user.UserRoleName, user.UserId);
                     return new BaseResponse<LoginResponseModel>()
                     {

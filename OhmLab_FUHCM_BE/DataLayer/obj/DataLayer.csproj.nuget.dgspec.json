@@ -92,6 +92,10 @@
               "target": "Package",
               "version": "[6.0.0, )"
             },
+            "System.Drawing.Common": {
+              "target": "Package",
+              "version": "[9.0.7, )"
+            },
             "X.PagedList": {
               "target": "Package",
               "version": "[10.5.7, )"

@@ -1,7 +1,6 @@
 ﻿using BusinessLayer.RequestModel.User;
 using BusinessLayer.ResponseModel.User;
 using BusinessLayer.ResponseModel.BaseResponse;
-using BusinessLayer.Service.Interface;
 using System;
 using System.Collections.Generic;
 using System.Linq;

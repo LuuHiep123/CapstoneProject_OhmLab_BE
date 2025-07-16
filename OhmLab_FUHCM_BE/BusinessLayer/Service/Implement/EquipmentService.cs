@@ -9,13 +9,16 @@ using DataLayer.Repository;
 using DataLayer.Repository.Implement;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Configuration;
+using QRCoder;
+using System.IO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using X.PagedList.Extensions;
-
+using System.Drawing;
+using System.Drawing.Imaging;
 namespace BusinessLayer.Service.Implement
 {
     public class EquipmentService : IEquipmentService
@@ -35,6 +38,16 @@ namespace BusinessLayer.Service.Implement
             _memoryCache = memoryCache;
         }
 
+        public static string GenerateQRCodeBase64(string text)
+        {
+            var qrGenerator = new QRCodeGenerator();
+            var qrCodeData = qrGenerator.CreateQrCode(text, QRCodeGenerator.ECCLevel.Q);
+
+            var pngQRCode = new PngByteQRCode(qrCodeData);
+            byte[] qrCodeAsPng = pngQRCode.GetGraphic(20); // độ phân giải: pixel per module
+
+            return Convert.ToBase64String(qrCodeAsPng);
+        }
         static string GenerateRandomString(int length)
         {
             const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
@@ -116,6 +129,7 @@ namespace BusinessLayer.Service.Implement
                     equipment.EquipmentTypeId = equipmentTypeId;
                     equipment.EquipmentId = equipmentId;
                     equipment.EquipmentStatus = "Available";
+                    equipment.EquipmentQr = GenerateQRCodeBase64(equipmentId);
                     await _equipmentRepository.CreateEquipment(equipment);
                     return new BaseResponse<EquipmentResponseModel>(){
                         Code = 200,
@@ -133,6 +147,7 @@ namespace BusinessLayer.Service.Implement
                     var equipment = _mapper.Map<Equipment>(model);
                     equipment.EquipmentTypeId = equipmentTypeId;
                     equipment.EquipmentId = equipmentId;
+                    equipment.EquipmentQr = GenerateQRCodeBase64(equipmentId);
                     equipment.EquipmentStatus = "Available";
                     await _equipmentRepository.CreateEquipment(equipment);
                     return new BaseResponse<EquipmentResponseModel>()

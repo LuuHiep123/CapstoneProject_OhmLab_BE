@@ -49,6 +49,12 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
+          "dependencies": {
+            "QRCoder": {
+              "target": "Package",
+              "version": "[1.4.2, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -156,6 +162,10 @@
             "Microsoft.Extensions.DependencyInjection": {
               "target": "Package",
               "version": "[6.0.0, )"
+            },
+            "System.Drawing.Common": {
+              "target": "Package",
+              "version": "[9.0.7, )"
             },
             "X.PagedList": {
               "target": "Package",
