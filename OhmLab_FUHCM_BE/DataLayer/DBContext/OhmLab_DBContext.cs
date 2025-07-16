@@ -277,7 +277,7 @@ namespace DataLayer.DBContext
                 entity.ToTable("Grade");
 
                 entity.Property(e => e.GradeId)
-                    .ValueGeneratedNever()
+                    .ValueGeneratedOnAdd()
                     .HasColumnName("Grade_id");
 
                 entity.Property(e => e.GradeDescription).HasColumnName("Grade_Description");
@@ -484,7 +484,7 @@ namespace DataLayer.DBContext
                 entity.ToTable("Report");
 
                 entity.Property(e => e.ReportId)
-                    .ValueGeneratedNever()
+                    .ValueGeneratedOnAdd()
                     .HasColumnName("Report_id");
 
                 entity.Property(e => e.ReportCreateDate)
@@ -548,7 +548,7 @@ namespace DataLayer.DBContext
                 entity.ToTable("Schedule");
 
                 entity.Property(e => e.ScheduleId)
-                    .ValueGeneratedNever()
+                    .ValueGeneratedOnAdd()
                     .HasColumnName("Schedule_id");
 
                 entity.Property(e => e.ClassId).HasColumnName("Class_id");
@@ -583,7 +583,7 @@ namespace DataLayer.DBContext
                 entity.ToTable("ScheduleType");
 
                 entity.Property(e => e.ScheduleTypeId)
-                    .ValueGeneratedNever()
+                    .ValueGeneratedOnAdd()
                     .HasColumnName("ScheduleType_id");
 
                 entity.Property(e => e.ScheduleTypeDescription).HasColumnName("ScheduleType_Description");
@@ -614,7 +614,7 @@ namespace DataLayer.DBContext
                 entity.ToTable("Semester");
 
                 entity.Property(e => e.SemesterId)
-                    .ValueGeneratedNever()
+                    .ValueGeneratedOnAdd()
                     .HasColumnName("Semester_id");
 
                 entity.Property(e => e.SemesterDescription).HasColumnName("Semester_Description");
@@ -670,7 +670,7 @@ namespace DataLayer.DBContext
                 entity.ToTable("Slot");
 
                 entity.Property(e => e.SlotId)
-                    .ValueGeneratedNever()
+                    .ValueGeneratedOnAdd()
                     .HasColumnName("Slot_id");
 
                 entity.Property(e => e.SlotDescription).HasColumnName("Slot_Description");
@@ -720,7 +720,7 @@ namespace DataLayer.DBContext
                 entity.ToTable("Team");
 
                 entity.Property(e => e.TeamId)
-                    .ValueGeneratedNever()
+                    .ValueGeneratedOnAdd()
                     .HasColumnName("Team_id");
 
                 entity.Property(e => e.ClassId).HasColumnName("Class_id");
@@ -833,7 +833,7 @@ namespace DataLayer.DBContext
                 entity.ToTable("User");
 
                 entity.Property(e => e.UserId)
-                    .ValueGeneratedNever()
+                    .ValueGeneratedOnAdd()
                     .HasColumnName("User_id");
 
                 entity.Property(e => e.Status).HasMaxLength(50);
@@ -865,7 +865,7 @@ namespace DataLayer.DBContext
                     .HasName("PK__Weeks__73E0BF1E369C8A88");
 
                 entity.Property(e => e.WeeksId)
-                    .ValueGeneratedNever()
+                    .ValueGeneratedOnAdd()
                     .HasColumnName("Weeks_id");
 
                 entity.Property(e => e.SemesterId).HasColumnName("Semester_id");
