@@ -268,7 +268,7 @@
               "RelativeDocumentMoniker": "OhmLab_FUHCM_BE\\Controller\\AssignmentController.cs",
               "ToolTip": "D:\\CN9\\SEP\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\OhmLab_FUHCM_BE\\Controller\\AssignmentController.cs",
               "RelativeToolTip": "OhmLab_FUHCM_BE\\Controller\\AssignmentController.cs",
-              "ViewState": "AQIAAB8BAAAAAAAAAAAcwCsBAAAdAAAA",
+              "ViewState": "AQIAAB8BAAAAAAAAAAAcwCoBAAAcAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-07-21T15:04:47.724Z",
               "EditorCaption": ""
@@ -295,8 +295,7 @@
               "RelativeToolTip": "OhmLab_FUHCM_BE\\Controller\\EquipmentController.cs",
               "ViewState": "AQIAAB4AAAAAAAAAAAAYwAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-09T04:31:39.728Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-09T04:31:39.728Z"
             },
             {
               "$type": "Document",
@@ -308,8 +307,7 @@
               "RelativeToolTip": "OhmLab_FUHCM_BE\\Controller\\CourseController.cs",
               "ViewState": "AQIAAOUAAAAAAAAAAADgv/kAAAABAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-30T14:24:49.735Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-30T14:24:49.735Z"
             },
             {
               "$type": "Document",
@@ -357,8 +355,7 @@
               "RelativeToolTip": "BusinessLayer\\Service\\Implement\\EquipmentService.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABYAAAABAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-28T08:20:21.969Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-28T08:20:21.969Z"
             },
             {
               "$type": "Document",
