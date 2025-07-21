@@ -31,9 +31,9 @@ D:\CN9\SEP\CapstoneProject_OhmLab_BE\OhmLab_FUHCM_BE\OhmLab_FUHCM_BE\obj\Release
 D:\CN9\SEP\CapstoneProject_OhmLab_BE\OhmLab_FUHCM_BE\OhmLab_FUHCM_BE\obj\Release\net6.0\PubTmp\Out\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 D:\CN9\SEP\CapstoneProject_OhmLab_BE\OhmLab_FUHCM_BE\OhmLab_FUHCM_BE\obj\Release\net6.0\PubTmp\Out\Microsoft.IdentityModel.Tokens.dll
 D:\CN9\SEP\CapstoneProject_OhmLab_BE\OhmLab_FUHCM_BE\OhmLab_FUHCM_BE\obj\Release\net6.0\PubTmp\Out\Microsoft.OpenApi.dll
-D:\CN9\SEP\CapstoneProject_OhmLab_BE\OhmLab_FUHCM_BE\OhmLab_FUHCM_BE\obj\Release\net6.0\PubTmp\Out\Microsoft.Win32.SystemEvents.dll
 D:\CN9\SEP\CapstoneProject_OhmLab_BE\OhmLab_FUHCM_BE\OhmLab_FUHCM_BE\obj\Release\net6.0\PubTmp\Out\Newtonsoft.Json.dll
 D:\CN9\SEP\CapstoneProject_OhmLab_BE\OhmLab_FUHCM_BE\OhmLab_FUHCM_BE\obj\Release\net6.0\PubTmp\Out\Newtonsoft.Json.Bson.dll
+D:\CN9\SEP\CapstoneProject_OhmLab_BE\OhmLab_FUHCM_BE\OhmLab_FUHCM_BE\obj\Release\net6.0\PubTmp\Out\QRCoder.dll
 D:\CN9\SEP\CapstoneProject_OhmLab_BE\OhmLab_FUHCM_BE\OhmLab_FUHCM_BE\obj\Release\net6.0\PubTmp\Out\Swashbuckle.AspNetCore.Swagger.dll
 D:\CN9\SEP\CapstoneProject_OhmLab_BE\OhmLab_FUHCM_BE\OhmLab_FUHCM_BE\obj\Release\net6.0\PubTmp\Out\Swashbuckle.AspNetCore.SwaggerGen.dll
 D:\CN9\SEP\CapstoneProject_OhmLab_BE\OhmLab_FUHCM_BE\OhmLab_FUHCM_BE\obj\Release\net6.0\PubTmp\Out\Swashbuckle.AspNetCore.SwaggerUI.dll
@@ -53,9 +53,6 @@ D:\CN9\SEP\CapstoneProject_OhmLab_BE\OhmLab_FUHCM_BE\OhmLab_FUHCM_BE\obj\Release
 D:\CN9\SEP\CapstoneProject_OhmLab_BE\OhmLab_FUHCM_BE\OhmLab_FUHCM_BE\obj\Release\net6.0\PubTmp\Out\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
 D:\CN9\SEP\CapstoneProject_OhmLab_BE\OhmLab_FUHCM_BE\OhmLab_FUHCM_BE\obj\Release\net6.0\PubTmp\Out\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
 D:\CN9\SEP\CapstoneProject_OhmLab_BE\OhmLab_FUHCM_BE\OhmLab_FUHCM_BE\obj\Release\net6.0\PubTmp\Out\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
-D:\CN9\SEP\CapstoneProject_OhmLab_BE\OhmLab_FUHCM_BE\OhmLab_FUHCM_BE\obj\Release\net6.0\PubTmp\Out\runtimes\win\lib\netcoreapp3.0\Microsoft.Win32.SystemEvents.dll
-D:\CN9\SEP\CapstoneProject_OhmLab_BE\OhmLab_FUHCM_BE\OhmLab_FUHCM_BE\obj\Release\net6.0\PubTmp\Out\runtimes\unix\lib\netcoreapp3.0\System.Drawing.Common.dll
-D:\CN9\SEP\CapstoneProject_OhmLab_BE\OhmLab_FUHCM_BE\OhmLab_FUHCM_BE\obj\Release\net6.0\PubTmp\Out\runtimes\win\lib\netcoreapp3.0\System.Drawing.Common.dll
 D:\CN9\SEP\CapstoneProject_OhmLab_BE\OhmLab_FUHCM_BE\OhmLab_FUHCM_BE\obj\Release\net6.0\PubTmp\Out\runtimes\win\lib\net6.0\System.Management.dll
 D:\CN9\SEP\CapstoneProject_OhmLab_BE\OhmLab_FUHCM_BE\OhmLab_FUHCM_BE\obj\Release\net6.0\PubTmp\Out\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
 D:\CN9\SEP\CapstoneProject_OhmLab_BE\OhmLab_FUHCM_BE\OhmLab_FUHCM_BE\obj\Release\net6.0\PubTmp\Out\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
