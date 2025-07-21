@@ -10,6 +10,8 @@ using BusinessLayer.ResponseModel.BaseResponse;
 using BusinessLayer.ResponseModel.Lab;
 using BusinessLayer.ResponseModel.Subject;
 using System.Collections.Generic;
+using DataLayer.Repository;
+using DataLayer.Entities;
 
 namespace OhmLab_FUHCM_BE.Controller
 {
@@ -19,11 +21,13 @@ namespace OhmLab_FUHCM_BE.Controller
     {
         private readonly ISubjectService _subjectService;
         private readonly ILabService _labService;
+        private readonly IClassRepository _classRepository;
 
-        public CourseController(ISubjectService subjectService, ILabService labService)
+        public CourseController(ISubjectService subjectService, ILabService labService, IClassRepository classRepository)
         {
             _subjectService = subjectService;
             _labService = labService;
+            _classRepository = classRepository;
         }
 
         // --- Subject Endpoints ---
@@ -239,5 +243,8 @@ namespace OhmLab_FUHCM_BE.Controller
             var result = await _labService.GetAllLabs();
             return StatusCode(result.Code, result);
         }
+
+       
+        }
     }
-} 
+ 

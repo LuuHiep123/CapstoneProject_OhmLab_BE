@@ -42,7 +42,6 @@ D:\CN9\SEP\CapstoneProject_OhmLab_BE\OhmLab_FUHCM_BE\OhmLab_FUHCM_BE\bin\Debug\n
 D:\CN9\SEP\CapstoneProject_OhmLab_BE\OhmLab_FUHCM_BE\OhmLab_FUHCM_BE\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 D:\CN9\SEP\CapstoneProject_OhmLab_BE\OhmLab_FUHCM_BE\OhmLab_FUHCM_BE\bin\Debug\net6.0\Microsoft.IdentityModel.Tokens.dll
 D:\CN9\SEP\CapstoneProject_OhmLab_BE\OhmLab_FUHCM_BE\OhmLab_FUHCM_BE\bin\Debug\net6.0\Microsoft.OpenApi.dll
-D:\CN9\SEP\CapstoneProject_OhmLab_BE\OhmLab_FUHCM_BE\OhmLab_FUHCM_BE\bin\Debug\net6.0\Microsoft.Win32.SystemEvents.dll
 D:\CN9\SEP\CapstoneProject_OhmLab_BE\OhmLab_FUHCM_BE\OhmLab_FUHCM_BE\bin\Debug\net6.0\Newtonsoft.Json.dll
 D:\CN9\SEP\CapstoneProject_OhmLab_BE\OhmLab_FUHCM_BE\OhmLab_FUHCM_BE\bin\Debug\net6.0\Newtonsoft.Json.Bson.dll
 D:\CN9\SEP\CapstoneProject_OhmLab_BE\OhmLab_FUHCM_BE\OhmLab_FUHCM_BE\bin\Debug\net6.0\Swashbuckle.AspNetCore.Swagger.dll
@@ -64,9 +63,6 @@ D:\CN9\SEP\CapstoneProject_OhmLab_BE\OhmLab_FUHCM_BE\OhmLab_FUHCM_BE\bin\Debug\n
 D:\CN9\SEP\CapstoneProject_OhmLab_BE\OhmLab_FUHCM_BE\OhmLab_FUHCM_BE\bin\Debug\net6.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
 D:\CN9\SEP\CapstoneProject_OhmLab_BE\OhmLab_FUHCM_BE\OhmLab_FUHCM_BE\bin\Debug\net6.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
 D:\CN9\SEP\CapstoneProject_OhmLab_BE\OhmLab_FUHCM_BE\OhmLab_FUHCM_BE\bin\Debug\net6.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
-D:\CN9\SEP\CapstoneProject_OhmLab_BE\OhmLab_FUHCM_BE\OhmLab_FUHCM_BE\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.0\Microsoft.Win32.SystemEvents.dll
-D:\CN9\SEP\CapstoneProject_OhmLab_BE\OhmLab_FUHCM_BE\OhmLab_FUHCM_BE\bin\Debug\net6.0\runtimes\unix\lib\netcoreapp3.0\System.Drawing.Common.dll
-D:\CN9\SEP\CapstoneProject_OhmLab_BE\OhmLab_FUHCM_BE\OhmLab_FUHCM_BE\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.0\System.Drawing.Common.dll
 D:\CN9\SEP\CapstoneProject_OhmLab_BE\OhmLab_FUHCM_BE\OhmLab_FUHCM_BE\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Management.dll
 D:\CN9\SEP\CapstoneProject_OhmLab_BE\OhmLab_FUHCM_BE\OhmLab_FUHCM_BE\bin\Debug\net6.0\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
 D:\CN9\SEP\CapstoneProject_OhmLab_BE\OhmLab_FUHCM_BE\OhmLab_FUHCM_BE\bin\Debug\net6.0\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
@@ -171,3 +167,4 @@ E:\CN9\Capstone_Project\OhmLab\CapstoneProject_OhmLab_BE\OhmLab_FUHCM_BE\OhmLab_
 E:\CN9\Capstone_Project\OhmLab\CapstoneProject_OhmLab_BE\OhmLab_FUHCM_BE\OhmLab_FUHCM_BE\obj\Debug\net6.0\OhmLab_FUHCM_BE.pdb
 E:\CN9\Capstone_Project\OhmLab\CapstoneProject_OhmLab_BE\OhmLab_FUHCM_BE\OhmLab_FUHCM_BE\obj\Debug\net6.0\OhmLab_FUHCM_BE.genruntimeconfig.cache
 E:\CN9\Capstone_Project\OhmLab\CapstoneProject_OhmLab_BE\OhmLab_FUHCM_BE\OhmLab_FUHCM_BE\obj\Debug\net6.0\ref\OhmLab_FUHCM_BE.dll
+D:\CN9\SEP\CapstoneProject_OhmLab_BE\OhmLab_FUHCM_BE\OhmLab_FUHCM_BE\bin\Debug\net6.0\QRCoder.dll

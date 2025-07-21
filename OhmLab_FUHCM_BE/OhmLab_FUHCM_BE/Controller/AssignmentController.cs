@@ -8,6 +8,8 @@ using System.Threading.Tasks;
 using BusinessLayer.RequestModel.Assignment;
 using Microsoft.Extensions.Logging;
 using DataLayer.Repository;
+using System.Linq;
+using DataLayer.Repository.Implement;
 
 namespace OhmLab_FUHCM_BE.Controller
 {
@@ -19,13 +21,15 @@ namespace OhmLab_FUHCM_BE.Controller
         private readonly ILogger<AssignmentController> _logger;
         private readonly IClassRepository _classRepository;
         private readonly IWeekRepository _weekRepository;
+        private readonly IUserRepositoty _userRepository;
 
-        public AssignmentController(IAssignmentService assignmentService, ILogger<AssignmentController> logger, IClassRepository classRepository, IWeekRepository weekRepository)
+        public AssignmentController(IAssignmentService assignmentService, ILogger<AssignmentController> logger, IClassRepository classRepository, IWeekRepository weekRepository,IUserRepositoty userRepositoty)
         {
             _assignmentService = assignmentService;
             _logger = logger;
             _classRepository = classRepository;
             _weekRepository = weekRepository;
+            _userRepository = userRepositoty;
         }
 
         // --- Tạo lịch thực hành (Schedule) ---
@@ -271,6 +275,46 @@ namespace OhmLab_FUHCM_BE.Controller
         {
             var result = await _assignmentService.GetClassPracticeSummaryAsync(classId);
             return StatusCode(result.Code, result);
+        }
+
+        // --- Class Endpoints ---
+        [HttpGet("lecturer/{lecturerId}/classes")]
+        public async Task<IActionResult> GetClassesByLecturer(Guid lecturerId)
+        {
+            var user = await _userRepository.GetUserById(lecturerId);
+            if (user == null)
+            {
+                return NotFound(new { success = false, message = "Không tìm thấy giảng viên!", code = 404 });
+            }
+            if (user.UserRoleName != "Lecturer")
+            {
+                return StatusCode(403, new { success = false, message = "Người dùng không phải giảng viên!", code = 403 });
+            }
+            var classes = await _classRepository.GetByLecturerIdAsync(lecturerId);
+            var result = classes.Select(c => new {
+                c.ClassId,
+                c.ClassName,
+                c.ClassDescription,
+                c.ClassStatus,
+                c.SubjectId,
+                c.LecturerId,
+                StudentCount = c.ClassUsers?.Count ?? 0,
+                TeamCount = c.Teams?.Count ?? 0,
+                Schedules = c.Schedules?.Select(s => new {
+                    s.ScheduleId,
+                    s.ScheduleName,
+                    s.ScheduleDate,
+                    s.ScheduleDescription
+                }),
+                // Có thể bổ sung thêm thống kê báo cáo, điểm...
+            }).ToList();
+            return Ok(new
+            {
+                success = true,
+                message = "Lấy danh sách lớp theo giảng viên thành công!",
+                code = 200,
+                data = result
+            });
         }
     }
 } 
