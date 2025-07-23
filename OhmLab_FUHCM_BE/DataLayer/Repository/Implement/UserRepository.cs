@@ -11,9 +11,9 @@ namespace DataLayer.Repository.Implement
 {
     public class UserRepository : IUserRepositoty
     {
-        private readonly OhmLab_DBContext _DBContext;
+        private readonly db_abadcb_ohmlabContext _DBContext;
 
-        public UserRepository(OhmLab_DBContext OhmLab_DBContext)
+        public UserRepository(db_abadcb_ohmlabContext OhmLab_DBContext)
         {
             _DBContext = OhmLab_DBContext;
         }

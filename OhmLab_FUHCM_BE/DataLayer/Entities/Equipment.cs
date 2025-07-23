@@ -7,7 +7,6 @@ namespace DataLayer.Entities
     {
         public Equipment()
         {
-            ReportEquipments = new HashSet<ReportEquipment>();
             TeamEquipments = new HashSet<TeamEquipment>();
         }
 
@@ -22,7 +21,6 @@ namespace DataLayer.Entities
         public string EquipmentStatus { get; set; } = null!;
 
         public virtual EquipmentType EquipmentType { get; set; } = null!;
-        public virtual ICollection<ReportEquipment> ReportEquipments { get; set; }
         public virtual ICollection<TeamEquipment> TeamEquipments { get; set; }
     }
 }

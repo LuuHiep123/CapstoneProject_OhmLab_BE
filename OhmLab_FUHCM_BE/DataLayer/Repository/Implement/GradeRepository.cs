@@ -7,9 +7,9 @@ namespace DataLayer.Repository.Implement
 {
     public class GradeRepository : IGradeRepository
     {
-        private readonly OhmLab_DBContext _DBContext;
+        private readonly db_abadcb_ohmlabContext _DBContext;
 
-        public GradeRepository(OhmLab_DBContext OhmLab_DBContext)
+        public GradeRepository(db_abadcb_ohmlabContext OhmLab_DBContext)
         {
             _DBContext = OhmLab_DBContext;
         }

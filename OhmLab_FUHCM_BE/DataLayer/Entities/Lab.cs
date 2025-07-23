@@ -8,6 +8,8 @@ namespace DataLayer.Entities
         public Lab()
         {
             Grades = new HashSet<Grade>();
+            LabEquipmentTypes = new HashSet<LabEquipmentType>();
+            LabKitTemplates = new HashSet<LabKitTemplate>();
         }
 
         public int LabId { get; set; }
@@ -19,5 +21,7 @@ namespace DataLayer.Entities
 
         public virtual Subject Subject { get; set; } = null!;
         public virtual ICollection<Grade> Grades { get; set; }
+        public virtual ICollection<LabEquipmentType> LabEquipmentTypes { get; set; }
+        public virtual ICollection<LabKitTemplate> LabKitTemplates { get; set; }
     }
 }

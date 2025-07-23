@@ -6,9 +6,11 @@ namespace DataLayer.Entities
     public partial class LabKitTemplate
     {
         public int LabKitTemplateId { get; set; }
+        public int LabId { get; set; }
         public string KitTemplateId { get; set; } = null!;
         public string LabKitTemplateStatus { get; set; } = null!;
 
         public virtual KitTemplate KitTemplate { get; set; } = null!;
+        public virtual Lab Lab { get; set; } = null!;
     }
 }

@@ -7,9 +7,9 @@ namespace DataLayer.Repository.Implement
 {
     public class ReportRepository : IReportRepository
     {
-        private readonly OhmLab_DBContext _DBContext;
+        private readonly db_abadcb_ohmlabContext _DBContext;
 
-        public ReportRepository(OhmLab_DBContext OhmLab_DBContext)
+        public ReportRepository(db_abadcb_ohmlabContext OhmLab_DBContext)
         {
             _DBContext = OhmLab_DBContext;
         }

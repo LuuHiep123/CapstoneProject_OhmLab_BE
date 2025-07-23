@@ -36,7 +36,7 @@ GO
 -- 2. Bảng Accessory
 -- ========================
 CREATE TABLE Accessory (
-    Accessory_id INT NOT NULL,
+    Accessory_id INT NOT NULL IDENTITY (1,1),
     Accessory_Name NVARCHAR(50) NOT NULL,
     Accessory_Description NVARCHAR(MAX) NULL,
 	Accessory_Url_Img NVARCHAR(MAX) NULL,
@@ -53,7 +53,7 @@ GO
 -- 3. Bảng Quan hệ giữa Accessory và KitTemplate
 -- ========================
 CREATE TABLE Accessory_KitTemplate (
-    Accessory_KitTemplate_id INT NOT NULL,
+    Accessory_KitTemplate_id INT NOT NULL IDENTITY (1,1),
     KitTemplate_id NVARCHAR(50) NOT NULL,
     Accessory_id INT NOT NULL,
 	Accessory_Quantity INT NOT NULL,
@@ -89,7 +89,7 @@ GO
 -- 5. Bảng Quan hệ giữa Kit và Accessory
 -- ========================
 CREATE TABLE Kit_Accessory (
-	Kit_Accessory_id INT NOT NULL,
+	Kit_Accessory_id INT NOT NULL IDENTITY (1,1),
     Kit_id NVARCHAR(50) NOT NULL,
 	Accessory_id INT NOT NULL,
     Accessory_Quantity INT NOT NULL,
@@ -125,7 +125,7 @@ GO
 -- 7. Bảng Semester
 -- ========================
 CREATE TABLE Semester (
-    Semester_id INT NOT NULL,
+    Semester_id INT NOT NULL IDENTITY (1,1),
     Semester_Name NVARCHAR(50) NOT NULL,
     Semester_StartDate DATE NOT NULL,
     Semester_EndDate DATE NOT NULL,
@@ -140,7 +140,7 @@ GO
 -- 8. Bảng Subject
 -- ========================
 CREATE TABLE [Subject] (
-    Subject_id INT NOT NULL,
+    Subject_id INT NOT NULL IDENTITY (1,1),
     Subject_Name NVARCHAR(100) NOT NULL,
 	Subject_Code NVARCHAR(50) NOT NULL,
     Subject_Description NVARCHAR(MAX) NULL,
@@ -155,7 +155,7 @@ GO
 -- 9. Bảng Quan hệ giữa Semester và Subject
 -- ========================
 CREATE TABLE [Semester_Subject] (
-    Semester_Subject_id INT NOT NULL,
+    Semester_Subject_id INT NOT NULL IDENTITY (1,1),
     Subject_id INT NOT NULL,
 	Semester_id INT NOT NULL,
     Semester_Subject NVARCHAR(50) NOT NULL,
@@ -210,7 +210,7 @@ GO
 -- 12. Bảng Lab
 -- ========================
 CREATE TABLE Lab (
-    Lab_id INT NOT NULL,
+    Lab_id INT NOT NULL IDENTITY (1,1),
 	Subject_id INT NOT NULL,
     Lab_Name NVARCHAR(50) NOT NULL,
     Lab_Request NVARCHAR(MAX) NOT NULL,
@@ -227,7 +227,7 @@ GO
 -- 13. Bảng Quan hệ giữa Lab và KitTemplate
 -- ========================
 CREATE TABLE Lab_KitTemplate (
-    Lab_KitTemplate_id INT NOT NULL,
+    Lab_KitTemplate_id INT NOT NULL IDENTITY (1,1),
 	KitTemplate_id NVARCHAR(50) NOT NULL,
     Lab_KitTemplate_Status NVARCHAR(50) NOT NULL
 	FOREIGN KEY (KitTemplate_id) REFERENCES [KitTemplate](KitTemplate_id),
@@ -241,7 +241,7 @@ GO
 -- 13. Bảng Quan hệ giữa Lab và EquipmentType
 -- ========================
 CREATE TABLE Lab_EquipmentType (
-    Lab_EquipmentType_id INT NOT NULL,
+    Lab_EquipmentType_id INT NOT NULL IDENTITY (1,1),
 	EquipmentType_id NVARCHAR(50) NOT NULL,
     Lab_EquipmentType_Status NVARCHAR(50) NOT NULL
 	FOREIGN KEY (EquipmentType_id) REFERENCES [EquipmentType](EquipmentType_id),
@@ -257,7 +257,7 @@ GO
 -- 14. Bảng Slot
 -- ========================
 CREATE TABLE Slot (
-    Slot_id INT NOT NULL,
+    Slot_id INT NOT NULL IDENTITY (1,1),
     Slot_Name NVARCHAR(50) NOT NULL,
     Slot_StartTime NVARCHAR(50) NOT NULL,
     Slot_EndTime NVARCHAR(50) NOT NULL,
@@ -273,7 +273,7 @@ GO
 -- 15. Bảng ScheduleType
 -- ========================
 CREATE TABLE ScheduleType (
-    ScheduleType_id INT NOT NULL,
+    ScheduleType_id INT NOT NULL IDENTITY (1,1),
 	Slot_id INT NOT NULL,
     ScheduleType_Name NVARCHAR(50) NOT NULL,
     ScheduleType_Description NVARCHAR(MAX) NULL,
@@ -286,30 +286,11 @@ WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW
 GO
 
 
-
--- ========================
--- 16. Bảng Weeks
--- ========================
-CREATE TABLE Weeks (
-    Weeks_id INT NOT NULL,
-	Semester_id INT NOT NULL,
-    Weeks_Name NVARCHAR(50) NOT NULL,
-    Weeks_StartDate DATE NOT NULL,
-    Weeks_EndDate DATE NOT NULL,
-    Weeks_Description NVARCHAR(MAX) NULL,
-    Weeks_Status NVARCHAR(50) NOT NULL,
-	FOREIGN KEY (Semester_id) REFERENCES [Semester](Semester_id),
-PRIMARY KEY CLUSTERED ([Weeks_id] ASC)
-WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-) ON [PRIMARY];
-GO
-
-
 -- ========================
 -- 17. Bảng Class
 -- ========================
 CREATE TABLE Class (
-    Class_id INT NOT NULL,
+    Class_id INT NOT NULL IDENTITY (1,1),
 	Subject_id INT NOT NULL,
 	Lecturer_id UNIQUEIDENTIFIER NULL,
 	ScheduleType_id INT NULL,
@@ -329,7 +310,7 @@ GO
 -- 18. Bảng Quan hệ giữa Class và User
 -- ========================
 CREATE TABLE Class_User (
-    Class_User_id INT NOT NULL,
+    Class_User_id INT NOT NULL IDENTITY (1,1),
 	Class_id INT NOT NULL,
 	[User_id] UNIQUEIDENTIFIER NOT NULL,
 	Class_User_Description NVARCHAR(MAX) NULL,
@@ -346,14 +327,12 @@ GO
 -- 19. Bảng Schedule
 -- ========================
 CREATE TABLE Schedule (
-    Schedule_id INT NOT NULL,
+    Schedule_id INT NOT NULL IDENTITY (1,1),
 	Class_id INT NOT NULL,
-	Weeks_id INT NOT NULL,
 	Schedule_Name NVARCHAR(50) NOT NULL,
 	Schedule_Date DATE NOT NULL,
 	Schedule_Description NVARCHAR(MAX) NULL,
     FOREIGN KEY (Class_id) REFERENCES Class(Class_id),
-	FOREIGN KEY (Weeks_id) REFERENCES Weeks(Weeks_id),
 PRIMARY KEY CLUSTERED ([Schedule_id] ASC)
 WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY];
@@ -365,7 +344,7 @@ GO
 -- 20. Bảng Team
 -- ========================
 CREATE TABLE Team (
-    Team_id INT NOT NULL,
+    Team_id INT NOT NULL IDENTITY (1,1),
 	Class_id INT NOT NULL,
     Team_Name NVARCHAR(50) NOT NULL,
     Team_Description NVARCHAR(MAX) NULL,
@@ -375,22 +354,38 @@ WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW
 ) ON [PRIMARY];
 GO
 
+-- ========================
+-- 21. Bảng Quan hệ giữa Team và User
+-- ========================
+CREATE TABLE Team_User (
+    Team_User_id INT NOT NULL IDENTITY (1,1), 
+	Team_id INT NOT NULL,
+	[User_id] UNIQUEIDENTIFIER NOT NULL,
+	Team_User_Status NVARCHAR(50) NOT NULL,
+	FOREIGN KEY (Team_id) REFERENCES Team(Team_id),
+	FOREIGN KEY ([User_id]) REFERENCES [User]([User_id]),
+PRIMARY KEY CLUSTERED (Team_User_id ASC)
+WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY];
+GO
+
+
 
 -- ========================
 -- 21. Bảng Quan hệ giữa Team và Equipment
 -- ========================
-CREATE TABLE Team_Equipment (
-    Team_Equipment_id INT NOT NULL,
+CREATE TABLE Team_EquipmentType (
+    Team_EquipmentType_id INT NOT NULL IDENTITY (1,1), 
 	Team_id INT NOT NULL,
-	Equipment_id NVARCHAR(50) NOT NULL,
-    Team_Equipment_Name NVARCHAR(50) NOT NULL,
-    Team_Equipment_Description NVARCHAR(MAX) NULL,
-	Team_Equipment_DateBorrow DATE NOT NULL,
-	Team_Equipment_DateGiveBack DATE NULL,
-	Team_Equipment_Status NVARCHAR(50) NOT NULL,
+	EquipmentType_id NVARCHAR(50) NOT NULL,
+    Team_EquipmentType_Name NVARCHAR(50) NOT NULL,
+    Team_EquipmentType_Description NVARCHAR(MAX) NULL,
+	Team_EquipmentType_DateBorrow DATE NOT NULL,
+	Team_EquipmentType_DateGiveBack DATE NULL,
+	Team_EquipmentType_Status NVARCHAR(50) NOT NULL,
 	FOREIGN KEY (Team_id) REFERENCES Team(Team_id),
-	FOREIGN KEY (Equipment_id) REFERENCES Equipment(Equipment_id),
-PRIMARY KEY CLUSTERED ([Team_Equipment_id] ASC)
+	FOREIGN KEY (EquipmentType_id) REFERENCES EquipmentType(EquipmentType_id),
+PRIMARY KEY CLUSTERED (Team_EquipmentType_id ASC)
 WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY];
 GO
@@ -399,18 +394,18 @@ GO
 -- ========================
 -- 22. Bảng Quan hệ giữa Team và Kit
 -- ========================
-CREATE TABLE Team_Kit (
-    Team_Kit_id INT NOT NULL,
+CREATE TABLE Team_KitTemplate (
+    Team_KitTemplate_id INT NOT NULL IDENTITY (1,1),
 	Team_id INT NOT NULL,
-	Kit_id NVARCHAR(50) NOT NULL,
-    Team_Kit_Name NVARCHAR(50) NOT NULL,
-    Team_Kit_Description NVARCHAR(MAX) NULL,
-	Team_Kit_DateBorrow DATE NOT NULL,
-	Team_Kit_DateGiveBack DATE NULL,
-	Team_Kit_Status NVARCHAR(50) NOT NULL,
+	KitTemplate_id NVARCHAR(50) NOT NULL,
+    Team_KitTemplate_Name NVARCHAR(50) NOT NULL,
+    Team_KitTemplate_Description NVARCHAR(MAX) NULL,
+	Team_KitTemplate_DateBorrow DATE NOT NULL,
+	Team_KitTemplate_DateGiveBack DATE NULL,
+	Team_KitTemplate_Status NVARCHAR(50) NOT NULL,
 	FOREIGN KEY (Team_id) REFERENCES Team(Team_id),
-	FOREIGN KEY (Kit_id) REFERENCES Kit(Kit_id),
-PRIMARY KEY CLUSTERED ([Team_Kit_id] ASC)
+	FOREIGN KEY (KitTemplate_id) REFERENCES KitTemplate(KitTemplate_id),
+PRIMARY KEY CLUSTERED (Team_KitTemplate_id ASC)
 WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY];
 GO
@@ -420,7 +415,7 @@ GO
 -- 23. Bảng Report
 -- ========================
 CREATE TABLE Report (
-    Report_id INT NOT NULL,
+    Report_id INT NOT NULL IDENTITY (1,1),
 	[User_id] UNIQUEIDENTIFIER NOT NULL,
 	Schedule_id INT NOT NULL,
     Report_Title NVARCHAR(50) NOT NULL,
@@ -436,27 +431,12 @@ GO
 
 
 
--- ========================
--- 24. Bảng Quan hệ giữa Report và Equipment
--- ========================
-CREATE TABLE Report_Equipment (
-    Report_Equipment_id INT NOT NULL,
-	Equipment_id NVARCHAR(50) NOT NULL,
-    Report_Equipment_Description NVARCHAR(MAX) NULL,
-    Report_Equipment_Status NVARCHAR(50) NOT NULL
-	FOREIGN KEY ([Equipment_id]) REFERENCES [Equipment]([Equipment_id]),
-PRIMARY KEY CLUSTERED ([Report_Equipment_id] ASC)
-WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-) ON [PRIMARY];
-GO
-
-
 
 -- ========================
 -- 25. Bảng Grade
 -- ========================
 CREATE TABLE Grade (
-    Grade_id INT NOT NULL,
+    Grade_id INT NOT NULL IDENTITY (1,1),
 	[User_id] UNIQUEIDENTIFIER NOT NULL,
 	Team_id INT NOT NULL,
     Lab_id INT NOT NULL,

@@ -6,9 +6,11 @@ namespace DataLayer.Entities
     public partial class LabEquipmentType
     {
         public int LabEquipmentTypeId { get; set; }
+        public int LabId { get; set; }
         public string EquipmentTypeId { get; set; } = null!;
         public string LabEquipmentTypeStatus { get; set; } = null!;
 
         public virtual EquipmentType EquipmentType { get; set; } = null!;
+        public virtual Lab Lab { get; set; } = null!;
     }
 }

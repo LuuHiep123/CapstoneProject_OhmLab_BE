@@ -10,8 +10,8 @@ namespace DataLayer.Repository.Implement
 {
     public class ClassRepository : IClassRepository
     {
-        private readonly OhmLab_DBContext _DBContext;
-        public ClassRepository(OhmLab_DBContext context)
+        private readonly db_abadcb_ohmlabContext _DBContext;
+        public ClassRepository(db_abadcb_ohmlabContext context)
         {
             _DBContext = context;
         }

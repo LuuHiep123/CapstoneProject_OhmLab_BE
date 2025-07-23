@@ -7,9 +7,9 @@ namespace DataLayer.Repository.Implement
 {
     public class ScheduleRepository : IScheduleRepository
     {
-        private readonly OhmLab_DBContext _DBContext;
+        private readonly db_abadcb_ohmlabContext _DBContext;
 
-        public ScheduleRepository(OhmLab_DBContext OhmLab_DBContext)
+        public ScheduleRepository(db_abadcb_ohmlabContext OhmLab_DBContext)
         {
             _DBContext = OhmLab_DBContext;
         }

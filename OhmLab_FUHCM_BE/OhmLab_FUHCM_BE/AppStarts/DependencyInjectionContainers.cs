@@ -18,7 +18,7 @@ namespace OhmLab_FUHCM_BE.AppStarts
                 options.LowercaseQueryStrings = true;
             });
             //Add_DbContext
-            services.AddDbContext<OhmLab_DBContext>(options =>
+            services.AddDbContext<db_abadcb_ohmlabContext>(options =>
             {
                 options.UseSqlServer(configuration.GetConnectionString("hosting"));
             });
@@ -42,8 +42,6 @@ namespace OhmLab_FUHCM_BE.AppStarts
             services.AddScoped<IScheduleRepository, ScheduleRepository>();
             services.AddScoped<IReportRepository, ReportRepository>();
             services.AddScoped<IClassRepository, ClassRepository>();
-            services.AddScoped<IWeekRepository, WeekRepository>();
-            services.AddScoped<IWeekService, WeekService>();
         }
     }
 }
