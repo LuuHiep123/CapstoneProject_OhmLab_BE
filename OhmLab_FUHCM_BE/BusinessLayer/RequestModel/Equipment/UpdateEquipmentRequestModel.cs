@@ -13,7 +13,6 @@ namespace BusinessLayer.RequestModel.Equipment
         public string? EquipmentNumberSerial { get; set; }
         public string? EquipmentDescription { get; set; }
         public string? EquipmentTypeUrlImg { get; set; }
-        public string? EquipmentQr { get; set; }
         public string? EquipmentStatus { get; set; }
     }
 }

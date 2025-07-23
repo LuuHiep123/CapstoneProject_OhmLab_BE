@@ -1,5 +1,371 @@
 [
   {
+    "ContainingType": "OhmLab_FUHCM_BE.Controller.AssignmentController",
+    "Method": "GetClassPracticeSummary",
+    "RelativePath": "api/assignment/classes/{classId}/practice-summary",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "classId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OhmLab_FUHCM_BE.Controller.AssignmentController",
+    "Method": "GetPracticeSchedulesByClass",
+    "RelativePath": "api/assignment/classes/{classId}/schedules",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "classId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OhmLab_FUHCM_BE.Controller.AssignmentController",
+    "Method": "GradePracticeReport",
+    "RelativePath": "api/assignment/grades",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "BusinessLayer.RequestModel.Assignment.GradeReportRequestModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OhmLab_FUHCM_BE.Controller.AssignmentController",
+    "Method": "AddFeedbackToGrade",
+    "RelativePath": "api/assignment/grades/{gradeId}/feedback",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "gradeId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "feedback",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OhmLab_FUHCM_BE.Controller.AssignmentController",
+    "Method": "UpdateGrade",
+    "RelativePath": "api/assignment/grades/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "model",
+        "Type": "BusinessLayer.RequestModel.Assignment.UpdateGradeRequestModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OhmLab_FUHCM_BE.Controller.AssignmentController",
+    "Method": "GetGradeById",
+    "RelativePath": "api/assignment/grades/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OhmLab_FUHCM_BE.Controller.AssignmentController",
+    "Method": "GetGradesByLab",
+    "RelativePath": "api/assignment/labs/{labId}/grades",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "labId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OhmLab_FUHCM_BE.Controller.AssignmentController",
+    "Method": "GetGradesWithFeedback",
+    "RelativePath": "api/assignment/labs/{labId}/grades/feedback",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "labId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OhmLab_FUHCM_BE.Controller.AssignmentController",
+    "Method": "GetReportsByLab",
+    "RelativePath": "api/assignment/labs/{labId}/reports",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "labId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OhmLab_FUHCM_BE.Controller.AssignmentController",
+    "Method": "GetLabStatistics",
+    "RelativePath": "api/assignment/labs/{labId}/statistics",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "labId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OhmLab_FUHCM_BE.Controller.AssignmentController",
+    "Method": "GetClassesByLecturer",
+    "RelativePath": "api/assignment/lecturer/{lecturerId}/classes",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "lecturerId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OhmLab_FUHCM_BE.Controller.AssignmentController",
+    "Method": "GetPracticeSchedulesByLecturer",
+    "RelativePath": "api/assignment/lecturers/{lecturerId}/schedules",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "lecturerId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OhmLab_FUHCM_BE.Controller.AssignmentController",
+    "Method": "SubmitPracticeReport",
+    "RelativePath": "api/assignment/reports",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "BusinessLayer.RequestModel.Assignment.SubmitReportRequestModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OhmLab_FUHCM_BE.Controller.AssignmentController",
+    "Method": "GetReportById",
+    "RelativePath": "api/assignment/reports/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OhmLab_FUHCM_BE.Controller.AssignmentController",
+    "Method": "UpdateReportStatus",
+    "RelativePath": "api/assignment/reports/{reportId}/status",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "reportId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "status",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OhmLab_FUHCM_BE.Controller.AssignmentController",
+    "Method": "GetUngradedReports",
+    "RelativePath": "api/assignment/reports/ungraded",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OhmLab_FUHCM_BE.Controller.AssignmentController",
+    "Method": "UpdatePracticeSchedule",
+    "RelativePath": "api/assignment/schedules/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "model",
+        "Type": "BusinessLayer.RequestModel.Assignment.UpdateScheduleRequestModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OhmLab_FUHCM_BE.Controller.AssignmentController",
+    "Method": "DeletePracticeSchedule",
+    "RelativePath": "api/assignment/schedules/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OhmLab_FUHCM_BE.Controller.AssignmentController",
+    "Method": "GetReportsBySchedule",
+    "RelativePath": "api/assignment/schedules/{scheduleId}/reports",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "scheduleId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OhmLab_FUHCM_BE.Controller.AssignmentController",
+    "Method": "GetStudentGradeSummary",
+    "RelativePath": "api/assignment/students/{studentId}/grade-summary",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "studentId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OhmLab_FUHCM_BE.Controller.AssignmentController",
+    "Method": "GetGradesByStudent",
+    "RelativePath": "api/assignment/students/{studentId}/grades",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "studentId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OhmLab_FUHCM_BE.Controller.AssignmentController",
+    "Method": "GetReportsByStudent",
+    "RelativePath": "api/assignment/students/{studentId}/reports",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "studentId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "OhmLab_FUHCM_BE.Controller.CourseController",
     "Method": "CreateLab",
     "RelativePath": "api/course/labs",
@@ -274,6 +640,85 @@
       {
         "Name": "model",
         "Type": "BusinessLayer.RequestModel.Equipment.GetAllEquipmentRequestModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OhmLab_FUHCM_BE.Controller.SemesterController",
+    "Method": "CreateSemester",
+    "RelativePath": "api/semester",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "BusinessLayer.RequestModel.Semester.CreateSemesterRequestModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OhmLab_FUHCM_BE.Controller.SemesterController",
+    "Method": "GetAllSemesters",
+    "RelativePath": "api/semester",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OhmLab_FUHCM_BE.Controller.SemesterController",
+    "Method": "GetSemesterById",
+    "RelativePath": "api/semester/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OhmLab_FUHCM_BE.Controller.SemesterController",
+    "Method": "UpdateSemester",
+    "RelativePath": "api/semester/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "model",
+        "Type": "BusinessLayer.RequestModel.Semester.UpdateSemesterRequestModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OhmLab_FUHCM_BE.Controller.SemesterController",
+    "Method": "DeleteSemester",
+    "RelativePath": "api/semester/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
         "IsRequired": true
       }
     ],
