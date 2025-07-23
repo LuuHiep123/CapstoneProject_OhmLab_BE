@@ -7,7 +7,7 @@ namespace BusinessLayer.Service
     public interface IAssignmentService
     {
         // Schedule management
-        Task<BaseResponse<ScheduleResponseModel>> CreatePracticeScheduleAsync(Schedule schedule);
+        //Task<BaseResponse<ScheduleResponseModel>> CreatePracticeScheduleAsync(Schedule schedule);
         Task<BaseResponse<ScheduleResponseModel>> UpdatePracticeScheduleAsync(int scheduleId, Schedule schedule);
         Task<BaseResponse<bool>> DeletePracticeScheduleAsync(int scheduleId);
         Task<DynamicResponse<ScheduleResponseModel>> GetPracticeSchedulesByClassAsync(int classId);

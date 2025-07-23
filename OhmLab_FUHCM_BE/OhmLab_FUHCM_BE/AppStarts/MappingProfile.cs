@@ -41,8 +41,8 @@ namespace OhmLab_FUHCM_BE.AppStarts
 
             // Assignment (Lịch thực hành, Báo cáo, Điểm)
             CreateMap<Schedule, ScheduleResponseModel>()
-                .ForMember(dest => dest.ClassName, opt => opt.MapFrom(src => src.Class != null ? src.Class.ClassName : null))
-                .ForMember(dest => dest.WeeksName, opt => opt.MapFrom(src => src.Weeks != null ? src.Weeks.WeeksName : null));
+                .ForMember(dest => dest.ClassName, opt => opt.MapFrom(src => src.Class != null ? src.Class.ClassName : null));
+                //.ForMember(dest => dest.WeeksName, opt => opt.MapFrom(src => src.Weeks != null ? src.Weeks.WeeksName : null));
 
             CreateMap<Report, ReportResponseModel>();
 

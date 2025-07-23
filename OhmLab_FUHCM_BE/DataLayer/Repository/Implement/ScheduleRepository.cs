@@ -20,8 +20,8 @@ namespace DataLayer.Repository.Implement
             {
                 return await _DBContext.Schedules
                     .Include(s => s.Class)
-                    .Include(s => s.Weeks)
-                    .Include(s => s.Reports)
+/*                    .Include(s => s.Weeks)
+*/                    .Include(s => s.Reports)
                     .ToListAsync();
             }
             catch (Exception ex)
@@ -37,7 +37,7 @@ namespace DataLayer.Repository.Implement
             {
                 return await _DBContext.Schedules
                     .Include(s => s.Class)
-                    .Include(s => s.Weeks)
+                    //.Include(s => s.Weeks)
                     .Include(s => s.Reports)
                     .FirstOrDefaultAsync(s => s.ScheduleId == id);
             }
@@ -54,7 +54,7 @@ namespace DataLayer.Repository.Implement
             {
                 return await _DBContext.Schedules
                     .Include(s => s.Class)
-                    .Include(s => s.Weeks)
+                    //.Include(s => s.Weeks)
                     .Include(s => s.Reports)
                     .Where(s => s.ClassId == classId)
                     .ToListAsync();
@@ -72,7 +72,7 @@ namespace DataLayer.Repository.Implement
             {
                 return await _DBContext.Schedules
                     .Include(s => s.Class)
-                    .Include(s => s.Weeks)
+                    //.Include(s => s.Weeks)
                     .Include(s => s.Reports)
                     .Where(s => s.Class.LecturerId == lecturerId)
                     .ToListAsync();
@@ -90,9 +90,9 @@ namespace DataLayer.Repository.Implement
             {
                 return await _DBContext.Schedules
                     .Include(s => s.Class)
-                    .Include(s => s.Weeks)
+                    //.Include(s => s.Weeks)
                     .Include(s => s.Reports)
-                    .Where(s => s.WeeksId == weekId)
+                    //.Where(s => s.WeeksId == weekId)
                     .ToListAsync();
             }
             catch (Exception ex)

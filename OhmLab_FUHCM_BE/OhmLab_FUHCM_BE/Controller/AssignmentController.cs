@@ -20,52 +20,52 @@ namespace OhmLab_FUHCM_BE.Controller
         private readonly IAssignmentService _assignmentService;
         private readonly ILogger<AssignmentController> _logger;
         private readonly IClassRepository _classRepository;
-        private readonly IWeekRepository _weekRepository;
+        //private readonly IWeekRepository _weekRepository;
         private readonly IUserRepositoty _userRepository;
 
-        public AssignmentController(IAssignmentService assignmentService, ILogger<AssignmentController> logger, IClassRepository classRepository, IWeekRepository weekRepository,IUserRepositoty userRepositoty)
+        public AssignmentController(IAssignmentService assignmentService, ILogger<AssignmentController> logger, IClassRepository classRepository,IUserRepositoty userRepositoty)
         {
             _assignmentService = assignmentService;
             _logger = logger;
             _classRepository = classRepository;
-            _weekRepository = weekRepository;
+            //_weekRepository = weekRepository;
             _userRepository = userRepositoty;
         }
 
         // --- Tạo lịch thực hành (Schedule) ---
 
-        [HttpPost("schedules")]
-        public async Task<IActionResult> CreatePracticeSchedule([FromBody] CreateScheduleRequestModel model)
-        {
-            try
-            {
-                var classEntity = await _classRepository.GetByIdAsync(model.ClassId);
-                if (classEntity == null)
-                {
-                    return NotFound(new BaseResponse<object> { Code = 404, Success = false, Message = "Không tìm thấy lớp học!", Data = null });
-                }
-                var weekEntity = await _weekRepository.GetByIdAsync(model.WeeksId);
-                if (weekEntity == null)
-                {
-                    return NotFound(new BaseResponse<object> { Code = 404, Success = false, Message = "Không tìm thấy tuần!", Data = null });
-                }
-                var schedule = new Schedule
-                {
-                    ClassId = model.ClassId,
-                    WeeksId = model.WeeksId,
-                    ScheduleName = model.ScheduleName,
-                    ScheduleDate = model.ScheduleDate,
-                    ScheduleDescription = model.ScheduleDescription
-                };
-                var result = await _assignmentService.CreatePracticeScheduleAsync(schedule);
-                return StatusCode(result.Code, result);
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, "Error in CreatePracticeSchedule: {Message} | Inner: {Inner}", ex.Message, ex.InnerException?.Message);
-                return StatusCode(500, new BaseResponse<object> { Code = 500, Success = false, Message = ex.Message, Data = null });
-            }
-        }
+        //[HttpPost("schedules")]
+        //public async Task<IActionResult> CreatePracticeSchedule([FromBody] CreateScheduleRequestModel model)
+        //{
+        //    try
+        //    {
+        //        var classEntity = await _classRepository.GetByIdAsync(model.ClassId);
+        //        if (classEntity == null)
+        //        {
+        //            return NotFound(new BaseResponse<object> { Code = 404, Success = false, Message = "Không tìm thấy lớp học!", Data = null });
+        //        }
+        //        //var weekEntity = await _weekRepository.GetByIdAsync(model.WeeksId);
+        //        if (weekEntity == null)
+        //        {
+        //            return NotFound(new BaseResponse<object> { Code = 404, Success = false, Message = "Không tìm thấy tuần!", Data = null });
+        //        }
+        //        var schedule = new Schedule
+        //        {
+        //            ClassId = model.ClassId,
+        //            WeeksId = model.WeeksId,
+        //            ScheduleName = model.ScheduleName,
+        //            ScheduleDate = model.ScheduleDate,
+        //            ScheduleDescription = model.ScheduleDescription
+        //        };
+        //        var result = await _assignmentService.CreatePracticeScheduleAsync(schedule);
+        //        return StatusCode(result.Code, result);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        _logger.LogError(ex, "Error in CreatePracticeSchedule: {Message} | Inner: {Inner}", ex.Message, ex.InnerException?.Message);
+        //        return StatusCode(500, new BaseResponse<object> { Code = 500, Success = false, Message = ex.Message, Data = null });
+        //    }
+        //}
 
         [HttpPut("schedules/{id}")]
         public async Task<IActionResult> UpdatePracticeSchedule(int id, [FromBody] UpdateScheduleRequestModel model)
@@ -73,7 +73,7 @@ namespace OhmLab_FUHCM_BE.Controller
             var schedule = new Schedule
             {
                 ClassId = model.ClassId,
-                WeeksId = model.WeeksId,
+                //WeeksId = model.WeeksId,
                 ScheduleName = model.ScheduleName,
                 ScheduleDate = model.ScheduleDate,
                 ScheduleDescription = model.ScheduleDescription

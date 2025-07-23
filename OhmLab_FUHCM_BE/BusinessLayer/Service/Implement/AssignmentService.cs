@@ -16,7 +16,7 @@ namespace BusinessLayer.Service.Implement
        
         private readonly ILabRepository _labRepository;
         private readonly IClassRepository _classRepository;
-        private readonly IWeekRepository _weekRepository;
+        //private readonly IWeekRepository _weekRepository;
         private readonly IMapper _mapper;
         private readonly ILogger<AssignmentService> _logger;
 
@@ -25,7 +25,7 @@ namespace BusinessLayer.Service.Implement
                               IGradeRepository gradeRepository, 
                               ILabRepository labRepository,
                               IClassRepository classRepository,
-                              IWeekRepository weekRepository,
+                              //IWeekRepository weekRepository,
                               IMapper mapper,
                               ILogger<AssignmentService> logger)
         {
@@ -35,87 +35,87 @@ namespace BusinessLayer.Service.Implement
           
             _labRepository = labRepository;
             _classRepository = classRepository;
-            _weekRepository = weekRepository;
+            //_weekRepository = weekRepository;
             _mapper = mapper;
             _logger = logger;
         }
 
         // Tạo lịch thực hành (Schedule)
-        public async Task<BaseResponse<ScheduleResponseModel>> CreatePracticeScheduleAsync(Schedule schedule)
-        {
-            try
-            {
-                // Kiểm tra lớp
-                var classEntity = await _classRepository.GetByIdAsync(schedule.ClassId);
-                if (classEntity == null)
-                {
-                    return new BaseResponse<ScheduleResponseModel>
-                    {
-                        Code = 404,
-                        Success = false,
-                        Message = "Không tìm thấy lớp học!",
-                        Data = null
-                    };
-                }
-                // Kiểm tra tuần
-                var weekEntity = await _weekRepository.GetByIdAsync(schedule.WeeksId);
-                if (weekEntity == null)
-                {
-                    return new BaseResponse<ScheduleResponseModel>
-                    {
-                        Code = 404,
-                        Success = false,
-                        Message = "Không tìm thấy tuần!",
-                        Data = null
-                    };
-                }
-                // Kiểm tra trùng lịch
-                var schedules = await _scheduleRepository.GetByClassIdAsync(schedule.ClassId);
-                bool isDuplicate = schedules.Any(s => s.WeeksId == schedule.WeeksId && s.ScheduleDate.Date == schedule.ScheduleDate.Date);
-                if (isDuplicate)
-                {
-                    return new BaseResponse<ScheduleResponseModel>
-                    {
-                        Code = 409,
-                        Success = false,
-                        Message = "Lịch thực hành đã tồn tại!",
-                        Data = null
-                    };
-                }
-                // Kiểm tra ngày nằm trong tuần
-                if (schedule.ScheduleDate < weekEntity.WeeksStartDate || schedule.ScheduleDate > weekEntity.WeeksEndDate)
-                {
-                    return new BaseResponse<ScheduleResponseModel>
-                    {
-                        Code = 400,
-                        Success = false,
-                        Message = "Ngày thực hành phải nằm trong tuần học!",
-                        Data = null
-                    };
-                }
-                schedule.ScheduleName = $"Buổi thực hành - {schedule.ScheduleName}";
-                await _scheduleRepository.CreateAsync(schedule);
-                var dto = _mapper.Map<ScheduleResponseModel>(schedule);
-                return new BaseResponse<ScheduleResponseModel>
-                {
-                    Code = 200,
-                    Success = true,
-                    Message = "Tạo lịch thực hành thành công!",
-                    Data = dto
-                };
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, "Error in CreatePracticeSchedule: {Message} | Inner: {Inner}", ex.Message, ex.InnerException?.Message);
-                return new BaseResponse<ScheduleResponseModel>
-                {
-                    Code = 500,
-                    Success = false,
-                    Message = ex.Message,
-                    Data = null
-                };
-            }
-        }
+        //public async Task<BaseResponse<ScheduleResponseModel>> CreatePracticeScheduleAsync(Schedule schedule)
+        //{
+        //    try
+        //    {
+        //        // Kiểm tra lớp
+        //        var classEntity = await _classRepository.GetByIdAsync(schedule.ClassId);
+        //        if (classEntity == null)
+        //        {
+        //            return new BaseResponse<ScheduleResponseModel>
+        //            {
+        //                Code = 404,
+        //                Success = false,
+        //                Message = "Không tìm thấy lớp học!",
+        //                Data = null
+        //            };
+        //        }
+        //        // Kiểm tra tuần
+        //        //var weekEntity = await _weekRepository.GetByIdAsync(schedule.WeeksId);
+        //        if (weekEntity == null)
+        //        {
+        //            return new BaseResponse<ScheduleResponseModel>
+        //            {
+        //                Code = 404,
+        //                Success = false,
+        //                Message = "Không tìm thấy tuần!",
+        //                Data = null
+        //            };
+        //        }
+        //        // Kiểm tra trùng lịch
+        //        var schedules = await _scheduleRepository.GetByClassIdAsync(schedule.ClassId);
+        //        //bool isDuplicate = schedules.Any(s => s.WeeksId == schedule.WeeksId && s.ScheduleDate.Date == schedule.ScheduleDate.Date);
+        //        if (isDuplicate)
+        //        {
+        //            return new BaseResponse<ScheduleResponseModel>
+        //            {
+        //                Code = 409,
+        //                Success = false,
+        //                Message = "Lịch thực hành đã tồn tại!",
+        //                Data = null
+        //            };
+        //        }
+        //        // Kiểm tra ngày nằm trong tuần
+        //        if (schedule.ScheduleDate < weekEntity.WeeksStartDate || schedule.ScheduleDate > weekEntity.WeeksEndDate)
+        //        {
+        //            return new BaseResponse<ScheduleResponseModel>
+        //            {
+        //                Code = 400,
+        //                Success = false,
+        //                Message = "Ngày thực hành phải nằm trong tuần học!",
+        //                Data = null
+        //            };
+        //        }
+        //        schedule.ScheduleName = $"Buổi thực hành - {schedule.ScheduleName}";
+        //        await _scheduleRepository.CreateAsync(schedule);
+        //        var dto = _mapper.Map<ScheduleResponseModel>(schedule);
+        //        return new BaseResponse<ScheduleResponseModel>
+        //        {
+        //            Code = 200,
+        //            Success = true,
+        //            Message = "Tạo lịch thực hành thành công!",
+        //            Data = dto
+        //        };
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        _logger.LogError(ex, "Error in CreatePracticeSchedule: {Message} | Inner: {Inner}", ex.Message, ex.InnerException?.Message);
+        //        return new BaseResponse<ScheduleResponseModel>
+        //        {
+        //            Code = 500,
+        //            Success = false,
+        //            Message = ex.Message,
+        //            Data = null
+        //        };
+        //    }
+        //}
 
         public async Task<BaseResponse<ScheduleResponseModel>> UpdatePracticeScheduleAsync(int scheduleId, Schedule schedule)
         {
