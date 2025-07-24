@@ -103,68 +103,12 @@ namespace OhmLab_FUHCM_BE.Controller
             return StatusCode(result.Code, result);
         }
 
-        // --- Sinh viên nộp bài thực hành (Report) ---
 
-        [HttpPost("reports")]
-        public async Task<IActionResult> SubmitPracticeReport([FromBody] SubmitReportRequestModel model)
-        {
-            try
-            {
-                var scheduleEntity = await _assignmentService.GetScheduleByIdAsync(model.ScheduleId);
-                if (scheduleEntity == null)
-                {
-                    return NotFound(new BaseResponse<object> { Code = 404, Success = false, Message = "Không tìm thấy lịch thực hành!", Data = null });
-                }
-                var report = new Report
-                {
-                    UserId = model.UserId,
-                    ScheduleId = model.ScheduleId,
-                    ReportTitle = model.ReportTitle,
-                    ReportDescription = model.ReportDescription,
-                    ReportCreateDate = DateTime.Now,
-                    ReportStatus = "Submitted"
-                };
-                var result = await _assignmentService.SubmitPracticeReportAsync(report);
-                return StatusCode(result.Code, result);
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, "Error in SubmitPracticeReport: {Message} | Inner: {Inner}", ex.Message, ex.InnerException?.Message);
-                return StatusCode(500, new BaseResponse<object> { Code = 500, Success = false, Message = ex.Message, Data = null });
-            }
-        }
-
-        [HttpGet("reports/{id}")]
-        public async Task<IActionResult> GetReportById(int id)
-        {
-            var result = await _assignmentService.GetReportByIdAsync(id);
-            return StatusCode(result.Code, result);
-        }
-
-        [HttpGet("students/{studentId}/reports")]
-        public async Task<IActionResult> GetReportsByStudent(Guid studentId)
-        {
-            var result = await _assignmentService.GetReportsByStudentAsync(studentId);
-            return StatusCode(result.Code, result);
-        }
-
-        [HttpGet("schedules/{scheduleId}/reports")]
-        public async Task<IActionResult> GetReportsBySchedule(int scheduleId)
-        {
-            var result = await _assignmentService.GetReportsByScheduleAsync(scheduleId);
-            return StatusCode(result.Code, result);
-        }
-
-        [HttpGet("labs/{labId}/reports")]
-        public async Task<IActionResult> GetReportsByLab(int labId)
-        {
-            var result = await _assignmentService.GetReportsByLabAsync(labId);
-            return StatusCode(result.Code, result);
-        }
 
         // --- Giảng viên chấm điểm (Grade) ---
-
+        [Authorize(Roles = "Lecturer")]
         [HttpPost("grades")]
+
         public async Task<IActionResult> GradePracticeReport([FromBody] GradeReportRequestModel model)
         {
             try
@@ -225,35 +169,6 @@ namespace OhmLab_FUHCM_BE.Controller
             return StatusCode(result.Code, result);
         }
 
-        [HttpGet("reports/ungraded")]
-        public async Task<IActionResult> GetUngradedReports()
-        {
-            var result = await _assignmentService.GetUngradedReportsAsync();
-            return StatusCode(result.Code, result);
-        }
-
-        // --- Phản hồi bài thực hành ---
-
-        [HttpPut("reports/{reportId}/status")]
-        public async Task<IActionResult> UpdateReportStatus(int reportId, [FromBody] string status)
-        {
-            var result = await _assignmentService.UpdateReportStatusAsync(reportId, status);
-            return StatusCode(result.Code, result);
-        }
-
-        [HttpPut("grades/{gradeId}/feedback")]
-        public async Task<IActionResult> AddFeedbackToGrade(int gradeId, [FromBody] string feedback)
-        {
-            var result = await _assignmentService.AddFeedbackToGradeAsync(gradeId, feedback);
-            return StatusCode(result.Code, result);
-        }
-
-        [HttpGet("labs/{labId}/grades/feedback")]
-        public async Task<IActionResult> GetGradesWithFeedback(int labId)
-        {
-            var result = await _assignmentService.GetGradesWithFeedbackAsync(labId);
-            return StatusCode(result.Code, result);
-        }
 
         // --- Thống kê ---
 
@@ -276,6 +191,31 @@ namespace OhmLab_FUHCM_BE.Controller
         {
             var result = await _assignmentService.GetClassPracticeSummaryAsync(classId);
             return StatusCode(result.Code, result);
+        }
+
+        // --- Nộp bài thực hành (Grade) ---
+        [HttpPost("grades/submit")]
+        public async Task<IActionResult> SubmitAssignment([FromBody] GradeReportRequestModel model)
+        {
+            try
+            {
+                var grade = new Grade
+                {
+                    UserId = model.UserId,
+                    TeamId = model.TeamId,
+                    LabId = model.LabId,
+                    Grade1 = 0, // Chưa chấm điểm
+                    GradeDescription = model.GradeDescription, // Nội dung bài nộp
+                    GradeStatus = "Submitted"
+                };
+                var result = await _assignmentService.SubmitAssignmentAsync(grade);
+                return StatusCode(result.Code, result);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error in SubmitAssignment: {Message} | Inner: {Inner}", ex.Message, ex.InnerException?.Message);
+                return StatusCode(500, new BaseResponse<object> { Code = 500, Success = false, Message = ex.Message, Data = null });
+            }
         }
 
         // --- Class Endpoints ---
