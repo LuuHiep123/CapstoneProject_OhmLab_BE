@@ -174,6 +174,7 @@ namespace OhmLab_FUHCM_BE.Controller
                     UserId = model.UserId,
                     TeamId = model.TeamId,
                     LabId = model.LabId,
+                    Grade1 = model.Grade,
                     GradeDescription = model.GradeDescription,
                     GradeStatus = "Graded"
                     // KHÔNG gán GradeId

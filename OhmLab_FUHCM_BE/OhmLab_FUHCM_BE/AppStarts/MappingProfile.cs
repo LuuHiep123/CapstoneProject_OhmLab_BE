@@ -48,7 +48,8 @@ namespace OhmLab_FUHCM_BE.AppStarts
 
             CreateMap<Report, ReportResponseModel>();
 
-            CreateMap<Grade, GradeResponseModel>();
+            CreateMap<Grade, GradeResponseModel>()
+                .ForMember(dest => dest.Grade, opt => opt.MapFrom(src => src.Grade1));
 
             //TeamEquipment
             CreateMap<GetAllTeamEquipmentRequestModel, TeamEquipment>().ReverseMap();

@@ -514,6 +514,17 @@ namespace BusinessLayer.Service.Implement
                     };
                 }
                 grade.GradeStatus = "Graded";
+                // Đảm bảo đã có điểm số
+                if (grade.Grade1 < 0)
+                {
+                    return new BaseResponse<GradeResponseModel>
+                    {
+                        Code = 400,
+                        Success = false,
+                        Message = "Điểm không hợp lệ!",
+                        Data = null
+                    };
+                }
                 await _gradeRepository.CreateAsync(grade);
                 var dto = _mapper.Map<GradeResponseModel>(grade);
                 return new BaseResponse<GradeResponseModel>
