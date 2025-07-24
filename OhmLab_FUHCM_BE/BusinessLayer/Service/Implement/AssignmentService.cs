@@ -985,5 +985,47 @@ namespace BusinessLayer.Service.Implement
         {
             return await _scheduleRepository.GetByIdAsync(scheduleId);
         }
+
+        public async Task<BaseResponse<GradeResponseModel>> SubmitAssignmentAsync(Grade grade)
+        {
+            try
+            {
+                // Kiểm tra đã nộp chưa (theo UserId, TeamId, LabId, status Submitted)
+                var grades = await _gradeRepository.GetByUserIdAsync(grade.UserId);
+                bool hasSubmitted = grades.Any(g => g.LabId == grade.LabId && g.GradeStatus == "Submitted");
+                if (hasSubmitted)
+                {
+                    return new BaseResponse<GradeResponseModel>
+                    {
+                        Code = 409,
+                        Success = false,
+                        Message = "Bạn đã nộp bài cho lab này!",
+                        Data = null
+                    };
+                }
+                grade.GradeStatus = "Submitted";
+                grade.Grade1 = 0;
+                var created = await _gradeRepository.CreateAsync(grade);
+                var dto = _mapper.Map<GradeResponseModel>(created);
+                return new BaseResponse<GradeResponseModel>
+                {
+                    Code = 200,
+                    Success = true,
+                    Message = "Nộp bài thực hành thành công!",
+                    Data = dto
+                };
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error in SubmitAssignmentAsync: {Message} | Inner: {Inner}", ex.Message, ex.InnerException?.Message);
+                return new BaseResponse<GradeResponseModel>
+                {
+                    Code = 500,
+                    Success = false,
+                    Message = ex.Message,
+                    Data = null
+                };
+            }
+        }
     }
 } 

@@ -27,6 +27,7 @@ namespace BusinessLayer.Service
         Task<DynamicResponse<GradeResponseModel>> GetGradesByLabAsync(int labId);
         Task<DynamicResponse<GradeResponseModel>> GetGradesByStudentAsync(Guid studentId);
         Task<DynamicResponse<ReportResponseModel>> GetUngradedReportsAsync();
+        Task<BaseResponse<GradeResponseModel>> SubmitAssignmentAsync(Grade grade);
 
         // Status and feedback
         Task<BaseResponse<ReportResponseModel>> UpdateReportStatusAsync(int reportId, string status);
