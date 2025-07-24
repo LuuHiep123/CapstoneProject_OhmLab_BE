@@ -9,6 +9,8 @@ using BusinessLayer.ResponseModel.Lab;
 using BusinessLayer.RequestModel.Equipment;
 using BusinessLayer.ResponseModel.Equipment;
 using BusinessLayer.ResponseModel.Assignment;
+using BusinessLayer.RequestModel.TeamEquipment;
+using BusinessLayer.ResponseModel.TeamEquipment;
 
 namespace OhmLab_FUHCM_BE.AppStarts
 {
@@ -47,6 +49,17 @@ namespace OhmLab_FUHCM_BE.AppStarts
             CreateMap<Report, ReportResponseModel>();
 
             CreateMap<Grade, GradeResponseModel>();
+
+            //TeamEquipment
+            CreateMap<GetAllTeamEquipmentRequestModel, TeamEquipment>().ReverseMap();
+            CreateMap<TeamEquipment, TeamEquipmentAllResponseModel>()
+                .ForMember(dest => dest.TeamName, opt => opt.MapFrom(src => src.Team.TeamName))
+                .ForMember(dest => dest.EquipmentName, opt => opt.MapFrom(src => src.Equipment.EquipmentName))
+                .ForMember(dest => dest.EquipmentCode, opt => opt.MapFrom(src => src.Equipment.EquipmentCode))
+                .ForMember(dest => dest.EquipmentNumberSerial, opt => opt.MapFrom(src => src.Equipment.EquipmentNumberSerial))
+                .ReverseMap();
+            CreateMap <GetAllTeamEquipmentRequestModel, TeamEquipmentAllResponseModel>().ReverseMap();
+            CreateMap <CreateTeamEquipmentRequestModel, TeamEquipment>().ReverseMap();
         }
     }
 }

@@ -62,24 +62,84 @@ namespace DataLayer.Repository.Implement
             }
         }
 
-        public Task<TeamEquipment> GetTeamEquipmentByEquipmentId(string equipmentId)
+        public async Task<List<TeamEquipment>> GetAllTeamEquipmentByEquipmentId(string equipmentId)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var listTeamEquipment = await _DBContext.TeamEquipments
+                    .Where(TE => TE.EquipmentId.Equals(equipmentId))
+                    .Include(TE => TE.Team)
+                    .Include(TE => TE.Equipment)
+                    .ToListAsync();
+                return listTeamEquipment;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
-        public Task<TeamEquipment> GetTeamEquipmentById(int id)
+        public async Task<List<TeamEquipment>> GetAllTeamEquipmentByTeamId(int teamId)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var listTeamEquipment = await _DBContext.TeamEquipments
+                    .Where(TE => TE.TeamId == teamId)
+                    .Include(TE => TE.Team)
+                    .Include(TE => TE.Equipment)
+                    .ToListAsync();
+                return listTeamEquipment;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
-        public Task<TeamEquipment> GetTeamEquipmentByTeamId(int teamId)
+        public async Task<TeamEquipment> GetTeamEquipmentById(int id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var TeamEquipment = await _DBContext.TeamEquipments
+                    .Include(TE => TE.Team)
+                    .Include(TE => TE.Equipment)
+                    .FirstOrDefaultAsync(TE => TE.TeamEquipmentId == id);
+                return TeamEquipment;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
-        public Task<bool> UpdateTeamEquipment(TeamEquipment teamEquipment)
+        public async Task<TeamEquipment> GetTeamEquipmentByTeamId(int teamId)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var TeamEquipment = await _DBContext.TeamEquipments
+                    .Include(TE => TE.Team)
+                    .Include(TE => TE.Equipment)
+                    .FirstOrDefaultAsync(TE => TE.TeamId == teamId);
+                return TeamEquipment;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public async Task<bool> UpdateTeamEquipment(TeamEquipment teamEquipment)
+        {
+            try
+            {
+                _DBContext.TeamEquipments.Update(teamEquipment);
+                await _DBContext.SaveChangesAsync();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
     }
 }

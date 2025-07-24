@@ -380,7 +380,7 @@ CREATE TABLE Team_EquipmentType (
 	EquipmentType_id NVARCHAR(50) NOT NULL,
     Team_EquipmentType_Name NVARCHAR(50) NOT NULL,
     Team_EquipmentType_Description NVARCHAR(MAX) NULL,
-	Team_EquipmentType_DateBorrow DATE NOT NULL,
+	Team_EquipmentType_DateBorrow DATETIME2 NOT NULL,
 	Team_EquipmentType_DateGiveBack DATE NULL,
 	Team_EquipmentType_Status NVARCHAR(50) NOT NULL,
 	FOREIGN KEY (Team_id) REFERENCES Team(Team_id),
