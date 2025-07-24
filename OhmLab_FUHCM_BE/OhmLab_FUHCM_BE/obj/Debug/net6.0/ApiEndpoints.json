@@ -725,6 +725,102 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "OhmLab_FUHCM_BE.Controller.TeamEquipmentController",
+    "Method": "GetTeamEquipmentById",
+    "RelativePath": "api/teamequipment/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OhmLab_FUHCM_BE.Controller.TeamEquipmentController",
+    "Method": "CreateTeamEquipment",
+    "RelativePath": "api/teamequipment/borrowequipment",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "BusinessLayer.RequestModel.TeamEquipment.CreateTeamEquipmentRequestModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OhmLab_FUHCM_BE.Controller.TeamEquipmentController",
+    "Method": "GiveBackEquipment",
+    "RelativePath": "api/teamequipment/givebackequipment",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "teamEquipment",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OhmLab_FUHCM_BE.Controller.TeamEquipmentController",
+    "Method": "GetTeamEquipmentByEquipmentId",
+    "RelativePath": "api/teamequipment/listteamequipmentbyequipmentid/{equipmentId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "equipmentId",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OhmLab_FUHCM_BE.Controller.TeamEquipmentController",
+    "Method": "GetTeamEquipmentByTeamId",
+    "RelativePath": "api/teamequipment/listteamequipmentbyteamid/{teamId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "teamId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OhmLab_FUHCM_BE.Controller.TeamEquipmentController",
+    "Method": "GetAllTeamEquipment",
+    "RelativePath": "api/teamequipment/search",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "BusinessLayer.RequestModel.TeamEquipment.GetAllTeamEquipmentRequestModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "SWDProject_BE.Controllers.UserController",
     "Method": "GetUserById",
     "RelativePath": "api/user/{id}",

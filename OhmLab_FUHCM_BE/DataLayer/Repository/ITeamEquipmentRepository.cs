@@ -13,8 +13,10 @@ namespace DataLayer.Repository
         public Task<bool> UpdateTeamEquipment(TeamEquipment teamEquipment);
         public Task<bool> DeleteTeamEquipment(TeamEquipment teamEquipment);
         public Task<List<TeamEquipment>> GetAllTeamEquipment();
+        public Task<List<TeamEquipment>> GetAllTeamEquipmentByTeamId(int teamId);
+        public Task<List<TeamEquipment>> GetAllTeamEquipmentByEquipmentId(string equipmentId);
         public Task<TeamEquipment> GetTeamEquipmentById(int id);
-        public Task<TeamEquipment> GetTeamEquipmentByEquipmentId(string equipmentId);
         public Task<TeamEquipment> GetTeamEquipmentByTeamId(int teamId);
+
     }
 }

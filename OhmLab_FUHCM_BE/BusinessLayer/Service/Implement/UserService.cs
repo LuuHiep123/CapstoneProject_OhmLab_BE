@@ -28,14 +28,14 @@ namespace BusinessLayer.Service.Implement
 {
     public class UserService : IUserService
     {
-        private readonly IUserRepositoty _userRepository;
+        private readonly IUserRepositoty _teamEquipmentRepository;
         private readonly IConfiguration _configuration;
         private readonly IMapper _mapper;
         private readonly IMemoryCache _memoryCache;
 
         public UserService(IUserRepositoty userRepository, IConfiguration configuration, IMapper mapper, IMemoryCache memoryCache)
         {
-            _userRepository = userRepository;
+            _teamEquipmentRepository = userRepository;
             _configuration = configuration;
             _mapper = mapper;
             _memoryCache = memoryCache;
@@ -79,7 +79,7 @@ namespace BusinessLayer.Service.Implement
             {
                 var payload = await GoogleJsonWebSignature.ValidateAsync(model.GoogleId);
                 var email = payload.Email;
-                var user = await _userRepository.GetUserByEmail(email);
+                var user = await _teamEquipmentRepository.GetUserByEmail(email);
                 if (user != null)
                 {
                     if (user.Status.ToLower().Equals("block"))
@@ -144,7 +144,7 @@ namespace BusinessLayer.Service.Implement
         {
             try
             {
-                var listUser = await _userRepository.GetAllUser();
+                var listUser = await _teamEquipmentRepository.GetAllUser();
                 if (!string.IsNullOrEmpty(model.keyWord))
                 {
                     List<User> listUserByName = listUser.Where(u => u.UserFullName.Contains(model.keyWord)).ToList();
@@ -217,7 +217,7 @@ namespace BusinessLayer.Service.Implement
         {
             try
             {
-                var user = await _userRepository.GetUserById(id);
+                var user = await _teamEquipmentRepository.GetUserById(id);
                 if (user != null)
                 {
                     var result = _mapper.Map<UserResponseModel>(user);
@@ -256,11 +256,11 @@ namespace BusinessLayer.Service.Implement
         {
             try
             {
-                var user = await _userRepository.GetUserById(id);
+                var user = await _teamEquipmentRepository.GetUserById(id);
                 if (user != null)
                 {
                     var result = _mapper.Map(model, user);
-                    await _userRepository.UpdateUser(result);
+                    await _teamEquipmentRepository.UpdateUser(result);
                     return new BaseResponse<UserResponseModel>()
                     {
                         Code = 200,
@@ -296,11 +296,11 @@ namespace BusinessLayer.Service.Implement
         {
             try
             {
-                var user = await _userRepository.GetUserById(id);
+                var user = await _teamEquipmentRepository.GetUserById(id);
                 if (user != null)
                 {
                     user.Status = "delete";
-                    await _userRepository.UpdateUser(user);
+                    await _teamEquipmentRepository.UpdateUser(user);
                     return new BaseResponse<UserResponseModel>()
                     {
                         Code = 200,
@@ -336,7 +336,7 @@ namespace BusinessLayer.Service.Implement
         {
             try
             {
-                User checkExit = await _userRepository.GetUserByEmail(model.UserEmail);
+                User checkExit = await _teamEquipmentRepository.GetUserByEmail(model.UserEmail);
                 if (checkExit != null)
                 {
                     return new BaseResponse<UserResponseModel>()
@@ -350,7 +350,7 @@ namespace BusinessLayer.Service.Implement
                 User.UserId = Guid.NewGuid();
                 User.Status = "IsActive";
                 User.UserRoleName = "Student";
-                bool check = await _userRepository.CreateUser(User);
+                bool check = await _teamEquipmentRepository.CreateUser(User);
                 if (!check)
                 {
                     return new BaseResponse<UserResponseModel>()
@@ -386,7 +386,7 @@ namespace BusinessLayer.Service.Implement
         {
             try
             {
-                User checkExit = await _userRepository.GetUserByEmail(email);
+                User checkExit = await _teamEquipmentRepository.GetUserByEmail(email);
                 if (checkExit != null)
                 {
                     return new BaseResponse<UserResponseModel>()
@@ -406,7 +406,7 @@ namespace BusinessLayer.Service.Implement
                     Status = "Isactive",
                     UserRoleName = "Admin",
                 };
-                bool check = await _userRepository.CreateUser(user);
+                bool check = await _teamEquipmentRepository.CreateUser(user);
                 if (!check)
                 {
                     return new BaseResponse<UserResponseModel>()
@@ -440,7 +440,7 @@ namespace BusinessLayer.Service.Implement
         {
             try
             {
-                User checkExit = await _userRepository.GetUserByEmail(email);
+                User checkExit = await _teamEquipmentRepository.GetUserByEmail(email);
                 if (checkExit != null)
                 {
                     return new BaseResponse<UserResponseModel>()
@@ -460,7 +460,7 @@ namespace BusinessLayer.Service.Implement
                     Status = "Isactive",
                     UserRoleName = "HeadOfDepartment",
                 };
-                bool check = await _userRepository.CreateUser(user);
+                bool check = await _teamEquipmentRepository.CreateUser(user);
                 if (!check)
                 {
                     return new BaseResponse<UserResponseModel>()
@@ -495,7 +495,7 @@ namespace BusinessLayer.Service.Implement
         {
             try
             {
-                var user = await _userRepository.GetUserById(userId);
+                var user = await _teamEquipmentRepository.GetUserById(userId);
                 if (user == null)
                 {
                     return new BaseResponse()
@@ -508,7 +508,7 @@ namespace BusinessLayer.Service.Implement
                 else
                 {
                     user.Status = "Block";
-                    await _userRepository.UpdateUser(user);
+                    await _teamEquipmentRepository.UpdateUser(user);
                     return new BaseResponse()
                     {
                         Code = 200,
@@ -533,7 +533,7 @@ namespace BusinessLayer.Service.Implement
         {
             try
             {
-                var user = await _userRepository.GetUserByEmail(email);
+                var user = await _teamEquipmentRepository.GetUserByEmail(email);
                 if (user != null)
                 {
                     string token = GenerateJwtToken(user.UserFullName, user.UserRoleName, user.UserId);

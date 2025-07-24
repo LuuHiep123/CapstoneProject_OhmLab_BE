@@ -21,7 +21,7 @@ namespace OhmLab_FUHCM_BE.Controller
         private readonly ILogger<AssignmentController> _logger;
         private readonly IClassRepository _classRepository;
         //private readonly IWeekRepository _weekRepository;
-        private readonly IUserRepositoty _userRepository;
+        private readonly IUserRepositoty _teamEquipmentRepository;
 
         public AssignmentController(IAssignmentService assignmentService, ILogger<AssignmentController> logger, IClassRepository classRepository,IUserRepositoty userRepositoty)
         {
@@ -29,7 +29,7 @@ namespace OhmLab_FUHCM_BE.Controller
             _logger = logger;
             _classRepository = classRepository;
             //_weekRepository = weekRepository;
-            _userRepository = userRepositoty;
+            _teamEquipmentRepository = userRepositoty;
         }
 
         // --- Tạo lịch thực hành (Schedule) ---
@@ -281,7 +281,7 @@ namespace OhmLab_FUHCM_BE.Controller
         [HttpGet("lecturer/{lecturerId}/classes")]
         public async Task<IActionResult> GetClassesByLecturer(Guid lecturerId)
         {
-            var user = await _userRepository.GetUserById(lecturerId);
+            var user = await _teamEquipmentRepository.GetUserById(lecturerId);
             if (user == null)
             {
                 return NotFound(new { success = false, message = "Không tìm thấy giảng viên!", code = 404 });

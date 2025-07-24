@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using DataLayer.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.Extensions.Configuration;
 
 namespace DataLayer.DBContext
 {
@@ -47,9 +48,17 @@ namespace DataLayer.DBContext
         {
             if (!optionsBuilder.IsConfigured)
             {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseSqlServer("Data Source=SQL1004.site4now.net;Initial Catalog=db_abadcb_ohmlab;User Id=db_abadcb_ohmlab_admin;Password=luuhiep113;");
+                optionsBuilder.UseSqlServer(GetConnectionString());
             }
+        }
+
+        string GetConnectionString()
+        {
+            IConfiguration builder = new ConfigurationBuilder()
+                .SetBasePath(Directory.GetCurrentDirectory())
+                .AddJsonFile("appsettings.json", true, true)
+                .Build();
+            return builder["ConnectionStrings:hosting"];
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -690,11 +699,11 @@ namespace DataLayer.DBContext
                     .HasColumnName("Equipment_id");
 
                 entity.Property(e => e.TeamEquipmentDateBorrow)
-                    .HasColumnType("date")
+                    .HasColumnType("datetime2")
                     .HasColumnName("Team_Equipment_DateBorrow");
 
                 entity.Property(e => e.TeamEquipmentDateGiveBack)
-                    .HasColumnType("date")
+                    .HasColumnType("datetime2")
                     .HasColumnName("Team_Equipment_DateGiveBack");
 
                 entity.Property(e => e.TeamEquipmentDescription).HasColumnName("Team_Equipment_Description");
