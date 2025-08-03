@@ -49,27 +49,6 @@
   },
   {
     "ContainingType": "OhmLab_FUHCM_BE.Controller.AssignmentController",
-    "Method": "AddFeedbackToGrade",
-    "RelativePath": "api/assignment/grades/{gradeId}/feedback",
-    "HttpMethod": "PUT",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "gradeId",
-        "Type": "System.Int32",
-        "IsRequired": true
-      },
-      {
-        "Name": "feedback",
-        "Type": "System.String",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "OhmLab_FUHCM_BE.Controller.AssignmentController",
     "Method": "UpdateGrade",
     "RelativePath": "api/assignment/grades/{id}",
     "HttpMethod": "PUT",
@@ -107,40 +86,24 @@
   },
   {
     "ContainingType": "OhmLab_FUHCM_BE.Controller.AssignmentController",
+    "Method": "SubmitAssignment",
+    "RelativePath": "api/assignment/grades/submit",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "BusinessLayer.RequestModel.Assignment.GradeReportRequestModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OhmLab_FUHCM_BE.Controller.AssignmentController",
     "Method": "GetGradesByLab",
     "RelativePath": "api/assignment/labs/{labId}/grades",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "labId",
-        "Type": "System.Int32",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "OhmLab_FUHCM_BE.Controller.AssignmentController",
-    "Method": "GetGradesWithFeedback",
-    "RelativePath": "api/assignment/labs/{labId}/grades/feedback",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "labId",
-        "Type": "System.Int32",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "OhmLab_FUHCM_BE.Controller.AssignmentController",
-    "Method": "GetReportsByLab",
-    "RelativePath": "api/assignment/labs/{labId}/reports",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -203,69 +166,6 @@
   },
   {
     "ContainingType": "OhmLab_FUHCM_BE.Controller.AssignmentController",
-    "Method": "SubmitPracticeReport",
-    "RelativePath": "api/assignment/reports",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "model",
-        "Type": "BusinessLayer.RequestModel.Assignment.SubmitReportRequestModel",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "OhmLab_FUHCM_BE.Controller.AssignmentController",
-    "Method": "GetReportById",
-    "RelativePath": "api/assignment/reports/{id}",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Int32",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "OhmLab_FUHCM_BE.Controller.AssignmentController",
-    "Method": "UpdateReportStatus",
-    "RelativePath": "api/assignment/reports/{reportId}/status",
-    "HttpMethod": "PUT",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "reportId",
-        "Type": "System.Int32",
-        "IsRequired": true
-      },
-      {
-        "Name": "status",
-        "Type": "System.String",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "OhmLab_FUHCM_BE.Controller.AssignmentController",
-    "Method": "GetUngradedReports",
-    "RelativePath": "api/assignment/reports/ungraded",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "OhmLab_FUHCM_BE.Controller.AssignmentController",
     "Method": "UpdatePracticeSchedule",
     "RelativePath": "api/assignment/schedules/{id}",
     "HttpMethod": "PUT",
@@ -295,22 +195,6 @@
     "Parameters": [
       {
         "Name": "id",
-        "Type": "System.Int32",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "OhmLab_FUHCM_BE.Controller.AssignmentController",
-    "Method": "GetReportsBySchedule",
-    "RelativePath": "api/assignment/schedules/{scheduleId}/reports",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "scheduleId",
         "Type": "System.Int32",
         "IsRequired": true
       }
@@ -350,15 +234,200 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "OhmLab_FUHCM_BE.Controller.AssignmentController",
-    "Method": "GetReportsByStudent",
-    "RelativePath": "api/assignment/students/{studentId}/reports",
+    "ContainingType": "OhmLab_FUHCM_BE.Controller.ClassController",
+    "Method": "CreateClass",
+    "RelativePath": "api/class",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "BusinessLayer.RequestModel.Class.CreateClassRequestModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OhmLab_FUHCM_BE.Controller.ClassController",
+    "Method": "GetAllClasses",
+    "RelativePath": "api/class",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OhmLab_FUHCM_BE.Controller.ClassController",
+    "Method": "GetClassById",
+    "RelativePath": "api/class/{id}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "studentId",
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OhmLab_FUHCM_BE.Controller.ClassController",
+    "Method": "UpdateClass",
+    "RelativePath": "api/class/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "model",
+        "Type": "BusinessLayer.RequestModel.Class.CreateClassRequestModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OhmLab_FUHCM_BE.Controller.ClassController",
+    "Method": "DeleteClass",
+    "RelativePath": "api/class/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OhmLab_FUHCM_BE.Controller.ClassController",
+    "Method": "GetClassesByLecturerId",
+    "RelativePath": "api/class/lecturer/{lecturerId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "lecturerId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OhmLab_FUHCM_BE.Controller.ClassUserController",
+    "Method": "GetClassUserById",
+    "RelativePath": "api/classuser/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OhmLab_FUHCM_BE.Controller.ClassUserController",
+    "Method": "AddUserToClass",
+    "RelativePath": "api/classuser/add",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "BusinessLayer.RequestModel.Class.AddUserToClassRequestModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OhmLab_FUHCM_BE.Controller.ClassUserController",
+    "Method": "IsUserInClass",
+    "RelativePath": "api/classuser/check",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Guid",
+        "IsRequired": false
+      },
+      {
+        "Name": "classId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OhmLab_FUHCM_BE.Controller.ClassUserController",
+    "Method": "GetClassUsersByClassId",
+    "RelativePath": "api/classuser/class/{classId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "classId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OhmLab_FUHCM_BE.Controller.ClassUserController",
+    "Method": "RemoveUserFromClass",
+    "RelativePath": "api/classuser/remove",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Guid",
+        "IsRequired": false
+      },
+      {
+        "Name": "classId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OhmLab_FUHCM_BE.Controller.ClassUserController",
+    "Method": "GetClassUsersByUserId",
+    "RelativePath": "api/classuser/user/{userId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
         "Type": "System.Guid",
         "IsRequired": true
       }
@@ -646,6 +715,192 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "OhmLab_FUHCM_BE.Controller.KitController",
+    "Method": "GetKitById",
+    "RelativePath": "api/kit/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OhmLab_FUHCM_BE.Controller.KitController",
+    "Method": "UpdateKit",
+    "RelativePath": "api/kit/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "model",
+        "Type": "BusinessLayer.RequestModel.Kit.UpdateKitRequestModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OhmLab_FUHCM_BE.Controller.KitController",
+    "Method": "DeleteKit",
+    "RelativePath": "api/kit/delete/{id}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OhmLab_FUHCM_BE.Controller.KitController",
+    "Method": "CreateKit",
+    "RelativePath": "api/kit/kit",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "BusinessLayer.RequestModel.Kit.CreateKitRequestModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OhmLab_FUHCM_BE.Controller.KitController",
+    "Method": "GetAllKit",
+    "RelativePath": "api/kit/search",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "BusinessLayer.RequestModel.Kit.GetAllKitRequestModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OhmLab_FUHCM_BE.Controller.KitController",
+    "Method": "GetAllKitByKitTemplateId",
+    "RelativePath": "api/kit/searchbykittemplateid",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "BusinessLayer.RequestModel.Kit.GetAllKitByKitTemplateIdRequestModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OhmLab_FUHCM_BE.Controller.KitTemplateController",
+    "Method": "GetKitTemplateById",
+    "RelativePath": "api/kittemplate/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OhmLab_FUHCM_BE.Controller.KitTemplateController",
+    "Method": "UpdateKitTemplate",
+    "RelativePath": "api/kittemplate/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "model",
+        "Type": "BusinessLayer.RequestModel.KitTemplate.UpdateKitTemplateRequestModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OhmLab_FUHCM_BE.Controller.KitTemplateController",
+    "Method": "DeleteKitTemplate",
+    "RelativePath": "api/kittemplate/delete/{id}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OhmLab_FUHCM_BE.Controller.KitTemplateController",
+    "Method": "CreateKitTemplate",
+    "RelativePath": "api/kittemplate/kittempalte",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "BusinessLayer.RequestModel.KitTemplate.CreateKitTemplateRequestModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OhmLab_FUHCM_BE.Controller.KitTemplateController",
+    "Method": "GetAllKitTemplate",
+    "RelativePath": "api/kittemplate/search",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "BusinessLayer.RequestModel.KitTemplate.GetAllKitTemplateRequestModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "OhmLab_FUHCM_BE.Controller.SemesterController",
     "Method": "CreateSemester",
     "RelativePath": "api/semester",
@@ -718,6 +973,180 @@
     "Parameters": [
       {
         "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OhmLab_FUHCM_BE.Controller.SlotController",
+    "Method": "CreateSlot",
+    "RelativePath": "api/slot",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "BusinessLayer.RequestModel.Slot.CreateSlotRequestModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OhmLab_FUHCM_BE.Controller.SlotController",
+    "Method": "GetAllSlots",
+    "RelativePath": "api/slot",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OhmLab_FUHCM_BE.Controller.SlotController",
+    "Method": "GetSlotById",
+    "RelativePath": "api/slot/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OhmLab_FUHCM_BE.Controller.SlotController",
+    "Method": "UpdateSlot",
+    "RelativePath": "api/slot/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "model",
+        "Type": "BusinessLayer.RequestModel.Slot.CreateSlotRequestModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OhmLab_FUHCM_BE.Controller.SlotController",
+    "Method": "DeleteSlot",
+    "RelativePath": "api/slot/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OhmLab_FUHCM_BE.Controller.TeamController",
+    "Method": "CreateTeam",
+    "RelativePath": "api/team",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "BusinessLayer.RequestModel.Team.CreateTeamRequestModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OhmLab_FUHCM_BE.Controller.TeamController",
+    "Method": "GetAllTeams",
+    "RelativePath": "api/team",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OhmLab_FUHCM_BE.Controller.TeamController",
+    "Method": "GetTeamById",
+    "RelativePath": "api/team/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OhmLab_FUHCM_BE.Controller.TeamController",
+    "Method": "UpdateTeam",
+    "RelativePath": "api/team/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "model",
+        "Type": "BusinessLayer.RequestModel.Team.UpdateTeamRequestModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OhmLab_FUHCM_BE.Controller.TeamController",
+    "Method": "DeleteTeam",
+    "RelativePath": "api/team/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OhmLab_FUHCM_BE.Controller.TeamController",
+    "Method": "GetTeamsByClassId",
+    "RelativePath": "api/team/class/{classId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "classId",
         "Type": "System.Int32",
         "IsRequired": true
       }
@@ -815,6 +1244,112 @@
       {
         "Name": "model",
         "Type": "BusinessLayer.RequestModel.TeamEquipment.GetAllTeamEquipmentRequestModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OhmLab_FUHCM_BE.Controller.TeamUserController",
+    "Method": "GetTeamUserById",
+    "RelativePath": "api/teamuser/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OhmLab_FUHCM_BE.Controller.TeamUserController",
+    "Method": "RemoveUserFromTeam",
+    "RelativePath": "api/teamuser/{teamUserId}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "teamUserId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OhmLab_FUHCM_BE.Controller.TeamUserController",
+    "Method": "IsUserInTeam",
+    "RelativePath": "api/teamuser/check/team/{teamId}/user/{userId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "teamId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "userId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OhmLab_FUHCM_BE.Controller.TeamUserController",
+    "Method": "GetTeamUsersByTeamId",
+    "RelativePath": "api/teamuser/team/{teamId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "teamId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OhmLab_FUHCM_BE.Controller.TeamUserController",
+    "Method": "AddUserToTeam",
+    "RelativePath": "api/teamuser/team/{teamId}/user/{userId}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "teamId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "userId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OhmLab_FUHCM_BE.Controller.TeamUserController",
+    "Method": "GetTeamUsersByUserId",
+    "RelativePath": "api/teamuser/user/{userId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Guid",
         "IsRequired": true
       }
     ],
