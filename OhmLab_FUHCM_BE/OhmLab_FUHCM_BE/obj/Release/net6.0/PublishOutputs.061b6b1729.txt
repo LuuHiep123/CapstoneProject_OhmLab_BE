@@ -31,9 +31,9 @@ E:\CN9\Capstone_Project\OhmLab\CapstoneProject_OhmLab_BE\OhmLab_FUHCM_BE\OhmLab_
 E:\CN9\Capstone_Project\OhmLab\CapstoneProject_OhmLab_BE\OhmLab_FUHCM_BE\OhmLab_FUHCM_BE\obj\Release\net6.0\PubTmp\Out\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 E:\CN9\Capstone_Project\OhmLab\CapstoneProject_OhmLab_BE\OhmLab_FUHCM_BE\OhmLab_FUHCM_BE\obj\Release\net6.0\PubTmp\Out\Microsoft.IdentityModel.Tokens.dll
 E:\CN9\Capstone_Project\OhmLab\CapstoneProject_OhmLab_BE\OhmLab_FUHCM_BE\OhmLab_FUHCM_BE\obj\Release\net6.0\PubTmp\Out\Microsoft.OpenApi.dll
-E:\CN9\Capstone_Project\OhmLab\CapstoneProject_OhmLab_BE\OhmLab_FUHCM_BE\OhmLab_FUHCM_BE\obj\Release\net6.0\PubTmp\Out\Microsoft.Win32.SystemEvents.dll
 E:\CN9\Capstone_Project\OhmLab\CapstoneProject_OhmLab_BE\OhmLab_FUHCM_BE\OhmLab_FUHCM_BE\obj\Release\net6.0\PubTmp\Out\Newtonsoft.Json.dll
 E:\CN9\Capstone_Project\OhmLab\CapstoneProject_OhmLab_BE\OhmLab_FUHCM_BE\OhmLab_FUHCM_BE\obj\Release\net6.0\PubTmp\Out\Newtonsoft.Json.Bson.dll
+E:\CN9\Capstone_Project\OhmLab\CapstoneProject_OhmLab_BE\OhmLab_FUHCM_BE\OhmLab_FUHCM_BE\obj\Release\net6.0\PubTmp\Out\QRCoder.dll
 E:\CN9\Capstone_Project\OhmLab\CapstoneProject_OhmLab_BE\OhmLab_FUHCM_BE\OhmLab_FUHCM_BE\obj\Release\net6.0\PubTmp\Out\Swashbuckle.AspNetCore.Swagger.dll
 E:\CN9\Capstone_Project\OhmLab\CapstoneProject_OhmLab_BE\OhmLab_FUHCM_BE\OhmLab_FUHCM_BE\obj\Release\net6.0\PubTmp\Out\Swashbuckle.AspNetCore.SwaggerGen.dll
 E:\CN9\Capstone_Project\OhmLab\CapstoneProject_OhmLab_BE\OhmLab_FUHCM_BE\OhmLab_FUHCM_BE\obj\Release\net6.0\PubTmp\Out\Swashbuckle.AspNetCore.SwaggerUI.dll
@@ -53,9 +53,6 @@ E:\CN9\Capstone_Project\OhmLab\CapstoneProject_OhmLab_BE\OhmLab_FUHCM_BE\OhmLab_
 E:\CN9\Capstone_Project\OhmLab\CapstoneProject_OhmLab_BE\OhmLab_FUHCM_BE\OhmLab_FUHCM_BE\obj\Release\net6.0\PubTmp\Out\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
 E:\CN9\Capstone_Project\OhmLab\CapstoneProject_OhmLab_BE\OhmLab_FUHCM_BE\OhmLab_FUHCM_BE\obj\Release\net6.0\PubTmp\Out\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
 E:\CN9\Capstone_Project\OhmLab\CapstoneProject_OhmLab_BE\OhmLab_FUHCM_BE\OhmLab_FUHCM_BE\obj\Release\net6.0\PubTmp\Out\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
-E:\CN9\Capstone_Project\OhmLab\CapstoneProject_OhmLab_BE\OhmLab_FUHCM_BE\OhmLab_FUHCM_BE\obj\Release\net6.0\PubTmp\Out\runtimes\win\lib\netcoreapp3.0\Microsoft.Win32.SystemEvents.dll
-E:\CN9\Capstone_Project\OhmLab\CapstoneProject_OhmLab_BE\OhmLab_FUHCM_BE\OhmLab_FUHCM_BE\obj\Release\net6.0\PubTmp\Out\runtimes\unix\lib\netcoreapp3.0\System.Drawing.Common.dll
-E:\CN9\Capstone_Project\OhmLab\CapstoneProject_OhmLab_BE\OhmLab_FUHCM_BE\OhmLab_FUHCM_BE\obj\Release\net6.0\PubTmp\Out\runtimes\win\lib\netcoreapp3.0\System.Drawing.Common.dll
 E:\CN9\Capstone_Project\OhmLab\CapstoneProject_OhmLab_BE\OhmLab_FUHCM_BE\OhmLab_FUHCM_BE\obj\Release\net6.0\PubTmp\Out\runtimes\win\lib\net6.0\System.Management.dll
 E:\CN9\Capstone_Project\OhmLab\CapstoneProject_OhmLab_BE\OhmLab_FUHCM_BE\OhmLab_FUHCM_BE\obj\Release\net6.0\PubTmp\Out\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
 E:\CN9\Capstone_Project\OhmLab\CapstoneProject_OhmLab_BE\OhmLab_FUHCM_BE\OhmLab_FUHCM_BE\obj\Release\net6.0\PubTmp\Out\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll

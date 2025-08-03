@@ -33,6 +33,8 @@ namespace OhmLab_FUHCM_BE.AppStarts
             services.AddScoped<ISemesterService, SemesterService>();
             services.AddScoped<ISemesterService, SemesterService>();
             services.AddScoped<ITeamEquipmentService, TeamEquipmentService>();
+            services.AddScoped<IKitTemplateService, KitTemplateService>();
+            services.AddScoped<IKitService, KitService>();
 
 
             //AddRepository
@@ -46,6 +48,8 @@ namespace OhmLab_FUHCM_BE.AppStarts
             services.AddScoped<IReportRepository, ReportRepository>();
             services.AddScoped<IClassRepository, ClassRepository>();
             services.AddScoped<ITeamEquipmentRepository, TeamEquipmentRepository>();
+            services.AddScoped<IKitTemplateRepository, KitTemplateRepository>();
+            services.AddScoped<IKitRepository, KitRepository>();
         }
     }
 }

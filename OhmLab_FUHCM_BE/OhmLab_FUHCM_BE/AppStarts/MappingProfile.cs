@@ -11,6 +11,10 @@ using BusinessLayer.ResponseModel.Equipment;
 using BusinessLayer.ResponseModel.Assignment;
 using BusinessLayer.RequestModel.TeamEquipment;
 using BusinessLayer.ResponseModel.TeamEquipment;
+using BusinessLayer.RequestModel.KitTemplate;
+using BusinessLayer.ResponseModel.KitTemplate;
+using BusinessLayer.RequestModel.Kit;
+using BusinessLayer.ResponseModel.Kit;
 
 namespace OhmLab_FUHCM_BE.AppStarts
 {
@@ -61,6 +65,21 @@ namespace OhmLab_FUHCM_BE.AppStarts
                 .ReverseMap();
             CreateMap <GetAllTeamEquipmentRequestModel, TeamEquipmentAllResponseModel>().ReverseMap();
             CreateMap <CreateTeamEquipmentRequestModel, TeamEquipment>().ReverseMap();
+
+
+            //KitTemplate
+            CreateMap<CreateKitTemplateRequestModel, KitTemplate>().ReverseMap();
+            CreateMap<CreateKitTemplateRequestModel, KitTemplateResponseModel>().ReverseMap();
+            CreateMap<KitTemplateResponseModel, KitTemplate>().ReverseMap();
+
+            //Kit
+            CreateMap<CreateKitRequestModel, Kit>().ReverseMap();
+            CreateMap<CreateKitRequestModel, KitResponseModel>().ReverseMap();
+            CreateMap<Kit, KitResponseModel>()
+                 .ForMember(dest => dest.KitTemplateName, opt => opt.MapFrom(src => src.KitTemplate.KitTemplateName))
+                 .ReverseMap();
+
+
         }
     }
 }

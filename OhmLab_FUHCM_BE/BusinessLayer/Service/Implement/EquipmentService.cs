@@ -106,7 +106,7 @@ namespace BusinessLayer.Service.Implement
         {
             try
             {
-                var equipmentType = await _equipmentTypeRepository.GetEquipmentTypeByCode(model.EquipmentCode);
+                    var equipmentType = await _equipmentTypeRepository.GetEquipmentTypeByCode(model.EquipmentCode);
                 string equipmentTypeId = GenerateRandomString(5);
                 string equipmentId = GenerateRandomString(5);
                 if (equipmentType == null)

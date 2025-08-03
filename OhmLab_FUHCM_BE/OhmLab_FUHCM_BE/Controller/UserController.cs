@@ -31,7 +31,7 @@ namespace SWDProject_BE.Controllers
                 var result = await _service.LoginTest(email);
                 return StatusCode(result.Code, result);
             }
-            catch (Exception ex)
+            catch (Exception ex)    
             {
                 throw new Exception(ex.Message);
             }
