@@ -1,7 +1,7 @@
 using DataLayer.Entities;
-using System.Threading.Tasks;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace DataLayer.Repository
 {
@@ -9,5 +9,10 @@ namespace DataLayer.Repository
     {
         Task<Class> GetByIdAsync(int id);
         Task<List<Class>> GetByLecturerIdAsync(Guid lecturerId);
+        Task<List<Class>> GetAllAsync();
+        Task<Class> CreateAsync(Class classEntity);
+        Task<Class> UpdateAsync(Class classEntity);
+        Task<bool> DeleteAsync(int id);
+        Task<bool> ExistsAsync(int id);
     }
 } 
