@@ -18,5 +18,11 @@ namespace DataLayer.Repository
         Task<bool> ExistsAsync(int id);
         Task<int> GetReportCountByScheduleAsync(int scheduleId);
         Task<int> GetReportCountByStudentAsync(Guid studentId);
+        
+        // New methods for Incident Management
+        Task<IEnumerable<Report>> GetIncidentReportsAsync();
+        Task<IEnumerable<Report>> GetIncidentReportsByStatusAsync(string status);
+        Task<IEnumerable<Report>> GetReportsByDateRangeAsync(DateTime fromDate, DateTime toDate);
+        Task<IEnumerable<Report>> GetReportsByUserAndStatusAsync(Guid userId, string status);
     }
 } 
