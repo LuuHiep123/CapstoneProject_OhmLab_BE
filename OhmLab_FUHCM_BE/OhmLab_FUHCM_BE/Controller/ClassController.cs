@@ -52,7 +52,7 @@ namespace OhmLab_FUHCM_BE.Controller
 
         [Authorize(Roles = "Admin,HeadOfDepartment")]
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateClass(int id, [FromBody] CreateClassRequestModel model)
+        public async Task<IActionResult> UpdateClass(int id, [FromBody] UpdateClassRequestModel model)
         {
             var result = await _classService.UpdateClassAsync(id, model);
             return StatusCode(result.Code, result);
@@ -63,6 +63,14 @@ namespace OhmLab_FUHCM_BE.Controller
         public async Task<IActionResult> DeleteClass(int id)
         {
             var result = await _classService.DeleteClassAsync(id);
+            return StatusCode(result.Code, result);
+        }
+
+        [Authorize(Roles = "Admin,HeadOfDepartment")]
+        [HttpPost("AddScheduleForClass")]
+        public async Task<IActionResult> AddScheduleforClass([FromBody] AddScheduleForClassRequestModel model)
+        {
+            var result = await _classService.AddScheduleForClassAsync(model);
             return StatusCode(result.Code, result);
         }
     }

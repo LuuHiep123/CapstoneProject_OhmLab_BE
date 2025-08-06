@@ -15,6 +15,7 @@ using BusinessLayer.RequestModel.KitTemplate;
 using BusinessLayer.ResponseModel.KitTemplate;
 using BusinessLayer.RequestModel.Kit;
 using BusinessLayer.ResponseModel.Kit;
+using BusinessLayer.ResponseModel.Class;
 
 namespace OhmLab_FUHCM_BE.AppStarts
 {
@@ -87,6 +88,9 @@ namespace OhmLab_FUHCM_BE.AppStarts
             CreateMap<Kit, KitResponseModel>()
                  .ForMember(dest => dest.KitTemplateName, opt => opt.MapFrom(src => src.KitTemplate.KitTemplateName))
                  .ReverseMap();
+
+            //Class
+            CreateMap<ClassResponseModel, Class>().ReverseMap();
 
 
         }

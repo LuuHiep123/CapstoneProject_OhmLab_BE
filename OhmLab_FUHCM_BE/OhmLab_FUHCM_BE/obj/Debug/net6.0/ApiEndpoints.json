@@ -290,7 +290,7 @@
       },
       {
         "Name": "model",
-        "Type": "BusinessLayer.RequestModel.Class.CreateClassRequestModel",
+        "Type": "BusinessLayer.RequestModel.Class.UpdateClassRequestModel",
         "IsRequired": true
       }
     ],
@@ -307,6 +307,22 @@
       {
         "Name": "id",
         "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OhmLab_FUHCM_BE.Controller.ClassController",
+    "Method": "AddScheduleforClass",
+    "RelativePath": "api/class/addscheduleforclass",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "BusinessLayer.RequestModel.Class.AddScheduleForClassRequestModel",
         "IsRequired": true
       }
     ],
@@ -895,6 +911,183 @@
       {
         "Name": "model",
         "Type": "BusinessLayer.RequestModel.KitTemplate.GetAllKitTemplateRequestModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OhmLab_FUHCM_BE.Controller.ReportController",
+    "Method": "CreateReport",
+    "RelativePath": "api/report",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "BusinessLayer.RequestModel.Report.CreateReportRequestModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OhmLab_FUHCM_BE.Controller.ReportController",
+    "Method": "GetAllReports",
+    "RelativePath": "api/report",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OhmLab_FUHCM_BE.Controller.ReportController",
+    "Method": "GetReportById",
+    "RelativePath": "api/report/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OhmLab_FUHCM_BE.Controller.ReportController",
+    "Method": "GetReportDetail",
+    "RelativePath": "api/report/{id}/detail",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OhmLab_FUHCM_BE.Controller.ReportController",
+    "Method": "UpdateReportStatus",
+    "RelativePath": "api/report/{id}/status",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "model",
+        "Type": "BusinessLayer.RequestModel.Report.UpdateReportStatusRequestModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OhmLab_FUHCM_BE.Controller.ReportController",
+    "Method": "GetMyReports",
+    "RelativePath": "api/report/my-reports",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OhmLab_FUHCM_BE.Controller.ReportController",
+    "Method": "GetPendingIncidents",
+    "RelativePath": "api/report/pending",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OhmLab_FUHCM_BE.Controller.ReportController",
+    "Method": "GetResolvedIncidents",
+    "RelativePath": "api/report/resolved",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OhmLab_FUHCM_BE.Controller.ReportController",
+    "Method": "GetReportsBySchedule",
+    "RelativePath": "api/report/schedule/{scheduleId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "scheduleId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OhmLab_FUHCM_BE.Controller.ReportController",
+    "Method": "GetReportStatistics",
+    "RelativePath": "api/report/statistics",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OhmLab_FUHCM_BE.Controller.ReportController",
+    "Method": "GetTodayClasses",
+    "RelativePath": "api/report/today-classes",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "slotName",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OhmLab_FUHCM_BE.Controller.ReportController",
+    "Method": "GetTodaySlots",
+    "RelativePath": "api/report/today-slots",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OhmLab_FUHCM_BE.Controller.ReportController",
+    "Method": "GetReportsByUser",
+    "RelativePath": "api/report/user/{userId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Guid",
         "IsRequired": true
       }
     ],
