@@ -290,7 +290,7 @@
       },
       {
         "Name": "model",
-        "Type": "BusinessLayer.RequestModel.Class.CreateClassRequestModel",
+        "Type": "BusinessLayer.RequestModel.Class.UpdateClassRequestModel",
         "IsRequired": true
       }
     ],
@@ -307,6 +307,22 @@
       {
         "Name": "id",
         "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OhmLab_FUHCM_BE.Controller.ClassController",
+    "Method": "AddScheduleforClass",
+    "RelativePath": "api/class/addscheduleforclass",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "BusinessLayer.RequestModel.Class.AddScheduleForClassRequestModel",
         "IsRequired": true
       }
     ],

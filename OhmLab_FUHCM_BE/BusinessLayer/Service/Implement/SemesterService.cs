@@ -1,4 +1,4 @@
-using BusinessLayer.RequestModel.Semester;
+    using BusinessLayer.RequestModel.Semester;
 using BusinessLayer.ResponseModel.Semester;
 using DataLayer.Entities;
 using DataLayer.Repository;

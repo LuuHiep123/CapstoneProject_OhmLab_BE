@@ -8,9 +8,6 @@ namespace BusinessLayer.RequestModel.Class
         [Required]
         public int SubjectId { get; set; }
 
-        public Guid? LecturerId { get; set; }
-
-        public int? ScheduleTypeId { get; set; }
 
         [Required]
         [StringLength(50)]
@@ -18,9 +15,5 @@ namespace BusinessLayer.RequestModel.Class
 
         [StringLength(500)]
         public string? ClassDescription { get; set; }
-
-        [Required]
-        [StringLength(50)]
-        public string ClassStatus { get; set; } = "Active";
     }
 } 
