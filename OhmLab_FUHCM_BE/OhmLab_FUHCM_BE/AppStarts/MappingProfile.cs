@@ -51,7 +51,16 @@ namespace OhmLab_FUHCM_BE.AppStarts
                 .ForMember(dest => dest.ClassName, opt => opt.MapFrom(src => src.Class != null ? src.Class.ClassName : null));
                 //.ForMember(dest => dest.WeeksName, opt => opt.MapFrom(src => src.Weeks != null ? src.Weeks.WeeksName : null));
 
-            CreateMap<Report, ReportResponseModel>();
+            //Report
+            CreateMap<Report, BusinessLayer.ResponseModel.Report.ReportResponseModel>();
+            CreateMap<Report, BusinessLayer.ResponseModel.Report.ReportDetailResponseModel>()
+                .ForMember(dest => dest.ClassName, opt => opt.Ignore())
+                .ForMember(dest => dest.SubjectName, opt => opt.Ignore())
+                .ForMember(dest => dest.LecturerName, opt => opt.Ignore())
+                .ForMember(dest => dest.ScheduleDate, opt => opt.Ignore())
+                .ForMember(dest => dest.SlotName, opt => opt.Ignore())
+                .ForMember(dest => dest.SlotStartTime, opt => opt.Ignore())
+                .ForMember(dest => dest.SlotEndTime, opt => opt.Ignore());
 
             CreateMap<Grade, GradeResponseModel>()
                 .ForMember(dest => dest.Grade, opt => opt.MapFrom(src => src.Grade1));

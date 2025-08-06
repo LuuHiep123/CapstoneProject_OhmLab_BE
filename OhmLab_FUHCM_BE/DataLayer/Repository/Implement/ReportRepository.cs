@@ -239,5 +239,81 @@ namespace DataLayer.Repository.Implement
                 throw ex;
             }
         }
+
+        // New methods for Incident Management
+        public async Task<IEnumerable<Report>> GetIncidentReportsAsync()
+        {
+            try
+            {
+                return await _DBContext.Reports
+                    .Include(r => r.User)
+                    .Include(r => r.Schedule)
+                    .Where(r => r.ReportTitle.Contains("Chập mạch") ||
+                                r.ReportTitle.Contains("Thiết bị hỏng") ||
+                                r.ReportTitle.Contains("Tai nạn") ||
+                                r.ReportTitle.Contains("Sự cố") ||
+                                r.ReportTitle.Contains("Hỏng") ||
+                                r.ReportTitle.Contains("Lỗi"))
+                    .ToListAsync();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public async Task<IEnumerable<Report>> GetIncidentReportsByStatusAsync(string status)
+        {
+            try
+            {
+                return await _DBContext.Reports
+                    .Include(r => r.User)
+                    .Include(r => r.Schedule)
+                    .Where(r => r.ReportStatus == status &&
+                                (r.ReportTitle.Contains("Chập mạch") ||
+                                 r.ReportTitle.Contains("Thiết bị hỏng") ||
+                                 r.ReportTitle.Contains("Tai nạn") ||
+                                 r.ReportTitle.Contains("Sự cố") ||
+                                 r.ReportTitle.Contains("Hỏng") ||
+                                 r.ReportTitle.Contains("Lỗi")))
+                    .ToListAsync();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public async Task<IEnumerable<Report>> GetReportsByDateRangeAsync(DateTime fromDate, DateTime toDate)
+        {
+            try
+            {
+                return await _DBContext.Reports
+                    .Include(r => r.User)
+                    .Include(r => r.Schedule)
+                    .Where(r => r.ReportCreateDate >= fromDate && r.ReportCreateDate <= toDate)
+                    .ToListAsync();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public async Task<IEnumerable<Report>> GetReportsByUserAndStatusAsync(Guid userId, string status)
+        {
+            try
+            {
+                return await _DBContext.Reports
+                    .Include(r => r.User)
+                    .Include(r => r.Schedule)
+                    .Where(r => r.UserId == userId && r.ReportStatus == status)
+                    .ToListAsync();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 } 
