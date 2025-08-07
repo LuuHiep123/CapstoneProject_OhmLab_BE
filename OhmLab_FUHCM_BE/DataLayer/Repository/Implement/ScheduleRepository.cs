@@ -20,8 +20,14 @@ namespace DataLayer.Repository.Implement
             {
                 return await _DBContext.Schedules
                     .Include(s => s.Class)
-/*                    .Include(s => s.Weeks)
-*/                    .Include(s => s.Reports)
+                        .ThenInclude(c => c.Subject)
+                    .Include(s => s.Class)
+                        .ThenInclude(c => c.Lecturer)
+                    .Include(s => s.Class)
+                        .ThenInclude(c => c.ScheduleType)
+                            .ThenInclude(st => st.Slot)
+                    .Include(s => s.Reports)
+                    .OrderBy(s => s.ScheduleDate)
                     .ToListAsync();
             }
             catch (Exception ex)
@@ -37,7 +43,12 @@ namespace DataLayer.Repository.Implement
             {
                 return await _DBContext.Schedules
                     .Include(s => s.Class)
-                    //.Include(s => s.Weeks)
+                        .ThenInclude(c => c.Subject)
+                    .Include(s => s.Class)
+                        .ThenInclude(c => c.Lecturer)
+                    .Include(s => s.Class)
+                        .ThenInclude(c => c.ScheduleType)
+                            .ThenInclude(st => st.Slot)
                     .Include(s => s.Reports)
                     .FirstOrDefaultAsync(s => s.ScheduleId == id);
             }
@@ -54,9 +65,15 @@ namespace DataLayer.Repository.Implement
             {
                 return await _DBContext.Schedules
                     .Include(s => s.Class)
-                    //.Include(s => s.Weeks)
+                        .ThenInclude(c => c.Subject)
+                    .Include(s => s.Class)
+                        .ThenInclude(c => c.Lecturer)
+                    .Include(s => s.Class)
+                        .ThenInclude(c => c.ScheduleType)
+                            .ThenInclude(st => st.Slot)
                     .Include(s => s.Reports)
                     .Where(s => s.ClassId == classId)
+                    .OrderBy(s => s.ScheduleDate)
                     .ToListAsync();
             }
             catch (Exception ex)
@@ -72,9 +89,15 @@ namespace DataLayer.Repository.Implement
             {
                 return await _DBContext.Schedules
                     .Include(s => s.Class)
-                    //.Include(s => s.Weeks)
+                        .ThenInclude(c => c.Subject)
+                    .Include(s => s.Class)
+                        .ThenInclude(c => c.Lecturer)
+                    .Include(s => s.Class)
+                        .ThenInclude(c => c.ScheduleType)
+                            .ThenInclude(st => st.Slot)
                     .Include(s => s.Reports)
                     .Where(s => s.Class.LecturerId == lecturerId)
+                    .OrderBy(s => s.ScheduleDate)
                     .ToListAsync();
             }
             catch (Exception ex)
@@ -88,16 +111,71 @@ namespace DataLayer.Repository.Implement
         {
             try
             {
+                // Vì không có bảng Week riêng, hàm này sẽ trả về tất cả schedules
+                // hoặc có thể được sử dụng để lọc theo logic khác
                 return await _DBContext.Schedules
                     .Include(s => s.Class)
-                    //.Include(s => s.Weeks)
+                        .ThenInclude(c => c.Subject)
+                    .Include(s => s.Class)
+                        .ThenInclude(c => c.Lecturer)
+                    .Include(s => s.Class)
+                        .ThenInclude(c => c.ScheduleType)
+                            .ThenInclude(st => st.Slot)
                     .Include(s => s.Reports)
-                    //.Where(s => s.WeeksId == weekId)
+                    .OrderBy(s => s.ScheduleDate)
                     .ToListAsync();
             }
             catch (Exception ex)
             {
                 Console.WriteLine($"[ERROR][GetByWeekIdAsync] {ex.Message} | Inner: {ex.InnerException?.Message}");
+                throw;
+            }
+        }
+
+        public async Task<IEnumerable<Schedule>> GetByDateRangeAsync(DateTime startDate, DateTime endDate)
+        {
+            try
+            {
+                return await _DBContext.Schedules
+                    .Include(s => s.Class)
+                        .ThenInclude(c => c.Subject)
+                    .Include(s => s.Class)
+                        .ThenInclude(c => c.Lecturer)
+                    .Include(s => s.Class)
+                        .ThenInclude(c => c.ScheduleType)
+                            .ThenInclude(st => st.Slot)
+                    .Include(s => s.Reports)
+                    .Where(s => s.ScheduleDate.Date >= startDate.Date && s.ScheduleDate.Date <= endDate.Date)
+                    .OrderBy(s => s.ScheduleDate)
+                    .ToListAsync();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"[ERROR][GetByDateRangeAsync] {ex.Message} | Inner: {ex.InnerException?.Message}");
+                throw;
+            }
+        }
+
+        public async Task<IEnumerable<Schedule>> GetByDateAsync(DateTime date)
+        {
+            try
+            {
+                return await _DBContext.Schedules
+                    .Include(s => s.Class)
+                        .ThenInclude(c => c.Subject)
+                    .Include(s => s.Class)
+                        .ThenInclude(c => c.Lecturer)
+                    .Include(s => s.Class)
+                        .ThenInclude(c => c.ScheduleType)
+                            .ThenInclude(st => st.Slot)
+                    .Include(s => s.Reports)
+                    .Where(s => s.ScheduleDate.Date == date.Date)
+                    .OrderBy(s => s.ScheduleDate)
+                    .ToListAsync();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"[ERROR][GetByDateAsync] {ex.Message} | Inner: {ex.InnerException?.Message}");
                 throw;
             }
         }

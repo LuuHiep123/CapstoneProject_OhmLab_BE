@@ -35,6 +35,7 @@ namespace BusinessLayer.Service.Implement
             var lab = await _labRepository.GetLabById(id);
             if (lab != null)
             {
+                // Lab có thể được xóa trực tiếp vì Report chỉ dùng để báo cáo sự cố
                 lab.LabStatus = "Inactive";
                 await _labRepository.UpdateLab(lab);
             }
@@ -49,53 +50,22 @@ namespace BusinessLayer.Service.Implement
         public async Task<BusinessLayer.ResponseModel.BaseResponse.DynamicResponse<LabResponseModel>> GetLabsBySubjectId(int subjectId)
         {
             var labs = await _labRepository.GetLabsBySubjectId(subjectId);
-            var result = _mapper.Map<List<LabResponseModel>>(labs);
-            int page = 1, size = 10;
-            var pagedLabs = result.OrderBy(l => l.LabId).Skip((page - 1) * size).Take(size).ToList();
-            var totalItems = result.Count;
-            var totalPages = (int)Math.Ceiling((double)totalItems / size);
-            return new BusinessLayer.ResponseModel.BaseResponse.DynamicResponse<LabResponseModel>
-            {
-                Code = 200,
-                Success = true,
-                Message = null,
-                Data = new BusinessLayer.ResponseModel.BaseResponse.MegaData<LabResponseModel>
-                {
-                    PageData = pagedLabs,
-                    PageInfo = new BusinessLayer.ResponseModel.BaseResponse.PagingMetaData
-                    {
-                        Page = page,
-                        Size = size,
-                        TotalItem = totalItems,
-                        TotalPage = totalPages
-                    },
-                    SearchInfo = null
-                }
-            };
-        }
+            var labResponses = labs.Select(l => _mapper.Map<LabResponseModel>(l)).ToList();
 
-        public async Task<BusinessLayer.ResponseModel.BaseResponse.DynamicResponse<LabResponseModel>> GetAllLabs()
-        {
-            var labs = await _labRepository.GetAllLabs();
-            var result = _mapper.Map<List<LabResponseModel>>(labs);
-            int page = 1, size = 10;
-            var pagedLabs = result.OrderBy(l => l.LabId).Skip((page - 1) * size).Take(size).ToList();
-            var totalItems = result.Count;
-            var totalPages = (int)Math.Ceiling((double)totalItems / size);
             return new BusinessLayer.ResponseModel.BaseResponse.DynamicResponse<LabResponseModel>
             {
                 Code = 200,
                 Success = true,
-                Message = null,
+                Message = "Lấy danh sách bài lab theo môn học thành công!",
                 Data = new BusinessLayer.ResponseModel.BaseResponse.MegaData<LabResponseModel>
                 {
-                    PageData = pagedLabs,
+                    PageData = labResponses,
                     PageInfo = new BusinessLayer.ResponseModel.BaseResponse.PagingMetaData
                     {
-                        Page = page,
-                        Size = size,
-                        TotalItem = totalItems,
-                        TotalPage = totalPages
+                        Page = 1,
+                        Size = labResponses.Count,
+                        TotalItem = labResponses.Count,
+                        TotalPage = 1
                     },
                     SearchInfo = null
                 }
@@ -111,6 +81,31 @@ namespace BusinessLayer.Service.Implement
                 lab.LabId = id;
                 await _labRepository.UpdateLab(lab);
             }
+        }
+
+        public async Task<BusinessLayer.ResponseModel.BaseResponse.DynamicResponse<LabResponseModel>> GetAllLabs()
+        {
+            var labs = await _labRepository.GetAllLabs();
+            var labResponses = labs.Select(l => _mapper.Map<LabResponseModel>(l)).ToList();
+
+            return new BusinessLayer.ResponseModel.BaseResponse.DynamicResponse<LabResponseModel>
+            {
+                Code = 200,
+                Success = true,
+                Message = "Lấy danh sách tất cả bài lab thành công!",
+                Data = new BusinessLayer.ResponseModel.BaseResponse.MegaData<LabResponseModel>
+                {
+                    PageData = labResponses,
+                    PageInfo = new BusinessLayer.ResponseModel.BaseResponse.PagingMetaData
+                    {
+                        Page = 1,
+                        Size = labResponses.Count,
+                        TotalItem = labResponses.Count,
+                        TotalPage = 1
+                    },
+                    SearchInfo = null
+                }
+            };
         }
     }
 } 

@@ -18,6 +18,10 @@ using BusinessLayer.ResponseModel.Kit;
 using BusinessLayer.ResponseModel.Class;
 using BusinessLayer.RequestModel.EquipmentType;
 using BusinessLayer.ResponseModel.EquipmentType;
+using BusinessLayer.RequestModel.Slot;
+using BusinessLayer.ResponseModel.Slot;
+using BusinessLayer.RequestModel.ScheduleType;
+using BusinessLayer.ResponseModel.ScheduleType;
 
 namespace OhmLab_FUHCM_BE.AppStarts
 {
@@ -52,8 +56,14 @@ namespace OhmLab_FUHCM_BE.AppStarts
 
             // Assignment (Lịch thực hành, Báo cáo, Điểm)
             CreateMap<Schedule, ScheduleResponseModel>()
-                .ForMember(dest => dest.ClassName, opt => opt.MapFrom(src => src.Class != null ? src.Class.ClassName : null));
-                //.ForMember(dest => dest.WeeksName, opt => opt.MapFrom(src => src.Weeks != null ? src.Weeks.WeeksName : null));
+                .ForMember(dest => dest.ClassName, opt => opt.MapFrom(src => src.Class != null ? src.Class.ClassName : null))
+                .ForMember(dest => dest.SubjectName, opt => opt.MapFrom(src => src.Class != null && src.Class.Subject != null ? src.Class.Subject.SubjectName : null))
+                .ForMember(dest => dest.LecturerName, opt => opt.MapFrom(src => src.Class != null && src.Class.Lecturer != null ? src.Class.Lecturer.UserFullName : null))
+                .ForMember(dest => dest.SlotName, opt => opt.MapFrom(src => src.Class != null && src.Class.ScheduleType != null && src.Class.ScheduleType.Slot != null ? src.Class.ScheduleType.Slot.SlotName : null))
+                .ForMember(dest => dest.SlotStartTime, opt => opt.MapFrom(src => src.Class != null && src.Class.ScheduleType != null && src.Class.ScheduleType.Slot != null ? src.Class.ScheduleType.Slot.SlotStartTime : null))
+                .ForMember(dest => dest.SlotEndTime, opt => opt.MapFrom(src => src.Class != null && src.Class.ScheduleType != null && src.Class.ScheduleType.Slot != null ? src.Class.ScheduleType.Slot.SlotEndTime : null))
+                .ForMember(dest => dest.ScheduleTypeName, opt => opt.MapFrom(src => src.Class != null && src.Class.ScheduleType != null ? src.Class.ScheduleType.ScheduleTypeName : null))
+                .ForMember(dest => dest.ScheduleTypeDow, opt => opt.MapFrom(src => src.Class != null && src.Class.ScheduleType != null ? src.Class.ScheduleType.ScheduleTypeDow : null));
 
             //Report
             CreateMap<Report, BusinessLayer.ResponseModel.Report.ReportResponseModel>();
@@ -102,8 +112,22 @@ namespace OhmLab_FUHCM_BE.AppStarts
 
             //Class
             CreateMap<ClassResponseModel, Class>().ReverseMap();
-
-
+            
+            //Slot
+            CreateMap<CreateSlotRequestModel, Slot>()
+               .ForMember(dest => dest.SlotId, opt => opt.Ignore());
+            CreateMap<Slot, SlotResponseModel>().ReverseMap();
+            CreateMap<CreateSlotRequestModel, SlotResponseModel>();
+            
+            //ScheduleType
+            CreateMap<CreateScheduleTypeRequestModel, ScheduleType>()
+               .ForMember(dest => dest.ScheduleTypeId, opt => opt.Ignore());
+            CreateMap<UpdateScheduleTypeRequestModel, ScheduleType>();
+            CreateMap<ScheduleType, ScheduleTypeResponseModel>()
+                .ForMember(dest => dest.SlotName, opt => opt.MapFrom(src => src.Slot != null ? src.Slot.SlotName : null))
+                .ForMember(dest => dest.SlotStartTime, opt => opt.MapFrom(src => src.Slot != null ? src.Slot.SlotStartTime : null))
+                .ForMember(dest => dest.SlotEndTime, opt => opt.MapFrom(src => src.Slot != null ? src.Slot.SlotEndTime : null))
+                .ForMember(dest => dest.SlotDescription, opt => opt.MapFrom(src => src.Slot != null ? src.Slot.SlotDescription : null));
         }
     }
 }

@@ -11,10 +11,14 @@ namespace BusinessLayer.Service.Implement
     public class SemesterService : ISemesterService
     {
         private readonly ISemesterRepository _semesterRepository;
-        public SemesterService(ISemesterRepository semesterRepository)
+        private readonly ISemesterSubjectRepository _semesterSubjectRepository;
+
+        public SemesterService(ISemesterRepository semesterRepository, ISemesterSubjectRepository semesterSubjectRepository)
         {
             _semesterRepository = semesterRepository;
+            _semesterSubjectRepository = semesterSubjectRepository;
         }
+
         public async Task<SemesterResponseModel> CreateSemesterAsync(CreateSemesterRequestModel model)
         {
             var semester = new Semester
@@ -36,6 +40,7 @@ namespace BusinessLayer.Service.Implement
                 SemesterStatus = result.SemesterStatus
             };
         }
+
         public async Task<SemesterResponseModel> GetByIdAsync(int id)
         {
             var s = await _semesterRepository.GetByIdAsync(id);
@@ -50,6 +55,7 @@ namespace BusinessLayer.Service.Implement
                 SemesterStatus = s.SemesterStatus
             };
         }
+
         public async Task<IEnumerable<SemesterResponseModel>> GetAllAsync()
         {
             var semesters = await _semesterRepository.GetAllAsync();
@@ -63,6 +69,7 @@ namespace BusinessLayer.Service.Implement
                 SemesterStatus = s.SemesterStatus
             });
         }
+
         public async Task<SemesterResponseModel> UpdateAsync(int id, UpdateSemesterRequestModel model)
         {
             var semester = new Semester
@@ -85,8 +92,26 @@ namespace BusinessLayer.Service.Implement
                 SemesterStatus = result.SemesterStatus
             };
         }
+
         public async Task<bool> DeleteAsync(int id)
         {
+            // Kiểm tra Semester có tồn tại không
+            var semester = await _semesterRepository.GetByIdAsync(id);
+            if (semester == null)
+            {
+                return false;
+            }
+
+            // Kiểm tra Semester có đang được sử dụng bởi SemesterSubject nào không
+            var semesterSubjects = await _semesterSubjectRepository.GetAllAsync();
+            var usingSemesterSubjects = semesterSubjects.Where(ss => ss.SemesterId == id).ToList();
+            
+            if (usingSemesterSubjects.Any())
+            {
+                // Nếu có SemesterSubject đang sử dụng, không cho phép xóa
+                return false;
+            }
+
             return await _semesterRepository.DeleteAsync(id);
         }
     }

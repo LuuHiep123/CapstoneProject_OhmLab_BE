@@ -41,5 +41,7 @@ namespace BusinessLayer.Service
 
         // Utility
         Task<Schedule> GetScheduleByIdAsync(int scheduleId);
+        Task<BaseResponse<object>> GetSchedulesByDateAsync(DateTime date);
+        Task<BaseResponse<object>> GetSchedulesByDateRangeAsync(DateTime startDate, DateTime endDate);
     }
 } 
