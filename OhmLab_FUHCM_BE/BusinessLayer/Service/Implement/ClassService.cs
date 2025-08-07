@@ -3,6 +3,7 @@ using BusinessLayer.RequestModel.Class;
 using BusinessLayer.ResponseModel.BaseResponse;
 using BusinessLayer.ResponseModel.Class;
 using BusinessLayer.ResponseModel.User;
+using BusinessLayer.ResponseModel.Lab;
 using DataLayer.Entities;
 using DataLayer.Repository;
 using System;
@@ -12,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace BusinessLayer.Service.Implement
 {
-    public class ClassService : IClassService
+        public class ClassService : IClassService
     {
         private readonly IClassRepository _classRepository;
         private readonly ISemesterRepository _semesterRepository;
@@ -21,17 +22,19 @@ namespace BusinessLayer.Service.Implement
         private readonly ISubjectRepository _subjectRepository;
         private readonly IScheduleRepository _scheduleRepository;
         private readonly ISemesterSubjectRepository _semesterSubjectRepository;
+        private readonly ILabRepository _labRepository;
         private readonly IMapper _mapper;
 
-        public ClassService(IScheduleRepository scheduleRepository, ISemesterSubjectRepository semesterSubjectRepository, ISemesterRepository semesterRepository, ISubjectRepository subjectRepository, IScheduleTypeRepository scheduleTypeRepository, IClassRepository classRepository, IClassUserRepository classUserRepository, IMapper mapper)
+        public ClassService(IScheduleRepository scheduleRepository, ISemesterSubjectRepository semesterSubjectRepository, ISemesterRepository semesterRepository, ISubjectRepository subjectRepository, IScheduleTypeRepository scheduleTypeRepository, IClassRepository classRepository, IClassUserRepository classUserRepository, ILabRepository labRepository, IMapper mapper)
         {
             _scheduleRepository = scheduleRepository;
             _semesterSubjectRepository = semesterSubjectRepository;
             _semesterRepository = semesterRepository;
-            _subjectRepository = subjectRepository;   
+            _subjectRepository = subjectRepository;
             _scheduleTypeRepository = scheduleTypeRepository;
             _classRepository = classRepository;
             _classUserRepository = classUserRepository;
+            _labRepository = labRepository;
             _mapper = mapper;
         }
 
@@ -331,7 +334,7 @@ namespace BusinessLayer.Service.Implement
                     };
                 }
 
-                // Lấy thông tin subject, semester
+                // Lấy thông tin subject
                 var subject = await _subjectRepository.GetSubjectById(Class.SubjectId);
                 if (subject == null)
                 {
@@ -340,6 +343,32 @@ namespace BusinessLayer.Service.Implement
                         Code = 404,
                         Success = false,
                         Message = "Không tìm thấy môn học!",
+                        Data = false
+                    };
+                }
+
+                // Kiểm tra môn học có lab không
+                var labs = await _labRepository.GetLabsBySubjectId(subject.SubjectId);
+                if (!labs.Any())
+                {
+                    return new BaseResponse<bool>
+                    {
+                        Code = 400,
+                        Success = false,
+                        Message = $"Môn học {subject.SubjectName} không có bài lab nào! Không thể tạo lịch thực hành.",
+                        Data = false
+                    };
+                }
+
+                // Lọc chỉ những lab có trạng thái Active
+                var activeLabs = labs.Where(l => l.LabStatus.ToLower() == "active").ToList();
+                if (!activeLabs.Any())
+                {
+                    return new BaseResponse<bool>
+                    {
+                        Code = 400,
+                        Success = false,
+                        Message = $"Môn học {subject.SubjectName} không có bài lab nào đang hoạt động!",
                         Data = false
                     };
                 }
@@ -394,28 +423,37 @@ namespace BusinessLayer.Service.Implement
                     };
                 }
 
-                // Tạo 10 buổi học (5 tuần, mỗi tuần 2 buổi)
-                for (var week = 1; week <= 5; week++)
+                // Tạo lịch thực hành dựa trên số lượng lab có sẵn
+                var labCount = activeLabs.Count;
+                var weekCount = Math.Min(labCount, 5); // Tối đa 5 tuần
+
+                for (var week = 1; week <= weekCount; week++)
                 {
+                    var currentLab = activeLabs[week - 1]; // Lấy lab tương ứng với tuần
+                    
                     // Buổi 1 trong tuần
                     var schedule1 = new Schedule()
                     {
                         ClassId = model.ClassId,
-                        ScheduleName = $"Buổi thực hành {week}.1 - {subject.SubjectName}",
-                        ScheduleDescription = $"Buổi thực hành tuần {week} - {scheduleType.ScheduleTypeName}",
+                        ScheduleName = $"Buổi thực hành {week}.1 - {currentLab.LabName}",
+                        ScheduleDescription = $"Buổi thực hành tuần {week} - {currentLab.LabName} - {scheduleType.ScheduleTypeName}",
                         ScheduleDate = startDate.Value.AddDays((week - 1) * 7),
                     };
                     await _scheduleRepository.CreateAsync(schedule1);
 
-                    // Buổi 2 trong tuần (cách 3 ngày)
-                    var schedule2 = new Schedule()
+                    // Buổi 2 trong tuần (cách 3 ngày) - chỉ tạo nếu còn lab
+                    if (week < labCount)
                     {
-                        ClassId = model.ClassId,
-                        ScheduleName = $"Buổi thực hành {week}.2 - {subject.SubjectName}",
-                        ScheduleDescription = $"Buổi thực hành tuần {week} - {scheduleType.ScheduleTypeName}",
-                        ScheduleDate = startDate.Value.AddDays((week - 1) * 7 + 3),
-                    };
-                    await _scheduleRepository.CreateAsync(schedule2);
+                        var nextLab = activeLabs[week]; // Lấy lab tiếp theo
+                        var schedule2 = new Schedule()
+                        {
+                            ClassId = model.ClassId,
+                            ScheduleName = $"Buổi thực hành {week}.2 - {nextLab.LabName}",
+                            ScheduleDescription = $"Buổi thực hành tuần {week} - {nextLab.LabName} - {scheduleType.ScheduleTypeName}",
+                            ScheduleDate = startDate.Value.AddDays((week - 1) * 7 + 3),
+                        };
+                        await _scheduleRepository.CreateAsync(schedule2);
+                    }
                 }
 
                 // Cập nhật ScheduleTypeId cho lớp
@@ -426,7 +464,7 @@ namespace BusinessLayer.Service.Implement
                 {
                     Code = 200,
                     Success = true,
-                    Message = "Tạo lịch học thành công!",
+                    Message = $"Tạo lịch thực hành thành công! Đã tạo {labCount} buổi thực hành cho {labCount} bài lab.",
                     Data = true
                 };
             }
@@ -436,8 +474,50 @@ namespace BusinessLayer.Service.Implement
                 {
                     Code = 500,
                     Success = false,
-                    Message = $"Lỗi server: {ex.Message}",
+                    Message = $"Lỗi: {ex.Message}",
                     Data = false
+                };
+            }
+        }
+
+        public async Task<BaseResponse<List<LabResponseModel>>> GetLabsByClassIdAsync(int classId)
+        {
+            try
+            {
+                var Class = await _classRepository.GetByIdAsync(classId);
+                if (Class == null)
+                {
+                    return new BaseResponse<List<LabResponseModel>>
+                    {
+                        Code = 404,
+                        Success = false,
+                        Message = "Không tìm thấy lớp học!",
+                        Data = null
+                    };
+                }
+
+                // Lấy danh sách lab của môn học
+                var labs = await _labRepository.GetLabsBySubjectId(Class.SubjectId);
+                var activeLabs = labs.Where(l => l.LabStatus.ToLower() == "active").ToList();
+                
+                var labResponses = _mapper.Map<List<LabResponseModel>>(activeLabs);
+
+                return new BaseResponse<List<LabResponseModel>>
+                {
+                    Code = 200,
+                    Success = true,
+                    Message = $"Lấy danh sách lab thành công! Tìm thấy {activeLabs.Count} bài lab.",
+                    Data = labResponses
+                };
+            }
+            catch (System.Exception ex)
+            {
+                return new BaseResponse<List<LabResponseModel>>
+                {
+                    Code = 500,
+                    Success = false,
+                    Message = $"Lỗi: {ex.Message}",
+                    Data = null
                 };
             }
         }
