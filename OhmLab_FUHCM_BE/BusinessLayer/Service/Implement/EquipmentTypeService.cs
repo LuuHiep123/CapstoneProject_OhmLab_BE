@@ -1,17 +1,14 @@
 ﻿using AutoMapper;
 using BusinessLayer.RequestModel.Equipment;
-using BusinessLayer.RequestModel.KitTemplate;
+using BusinessLayer.RequestModel.EquipmentType;
 using BusinessLayer.ResponseModel.BaseResponse;
 using BusinessLayer.ResponseModel.Equipment;
-using BusinessLayer.ResponseModel.Kit;
-using BusinessLayer.ResponseModel.KitTemplate;
-using BusinessLayer.ResponseModel.User;
+using BusinessLayer.ResponseModel.EquipmentType;
 using DataLayer.Entities;
 using DataLayer.Repository;
 using DataLayer.Repository.Implement;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Configuration;
-using QRCoder;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,21 +18,20 @@ using X.PagedList.Extensions;
 
 namespace BusinessLayer.Service.Implement
 {
-    public class KitTemplateService : IKitTemplateService
+    public class EquipmentTypeService : IEquipmentTypeService
     {
-        private readonly IKitTemplateRepository _kitTemplateRepository;
+        private readonly IEquipmentTypeRepository _equipmentTypeRepository;
         private readonly IConfiguration _configuration;
         private readonly IMapper _mapper;
         private readonly IMemoryCache _memoryCache;
 
-        public KitTemplateService(IKitTemplateRepository kitTemplateRepository, IConfiguration configuration, IMapper mapper, IMemoryCache memoryCache)
+        public EquipmentTypeService(IEquipmentTypeRepository equipmentTypeRepository, IConfiguration configuration, IMapper mapper, IMemoryCache memoryCache)
         {
-            _kitTemplateRepository = kitTemplateRepository;
+            _equipmentTypeRepository = equipmentTypeRepository;
             _configuration = configuration;
             _mapper = mapper;
             _memoryCache = memoryCache;
         }
-
 
         static string GenerateRandomString(int length)
         {
@@ -51,78 +47,69 @@ namespace BusinessLayer.Service.Implement
             return new string(result);
         }
 
-        public async Task<BaseResponse<KitTemplateResponseModel>> CreateKitTemplate(CreateKitTemplateRequestModel model)
+        public async Task<BaseResponse<EquipmentTypeResponseModel>> CreateEquipmentType(CreateEquipmentTypeRequestModel model)
         {
             try
             {
-                string kidTemplateId = GenerateRandomString(5);
-                var kitTemplate = _mapper.Map<KitTemplate>(model);
-                kitTemplate.KitTemplateId = kidTemplateId;
-                kitTemplate.KitTemplateStatus = "Valid";
-                kitTemplate.KitTemplateQuantity = 0;
+                var equipmentType = _mapper.Map<EquipmentType>(model);
+                equipmentType.EquipmentTypeQuantity = 0;
+                equipmentType.EquipmentTypeStatus = "Available";
+                equipmentType.EquipmentTypeCreateDate = DateTime.Now;
+                equipmentType.EquipmentTypeId = GenerateRandomString(5);
 
-                var kitTemplateCheckName = await _kitTemplateRepository.GetKitTemplateByName(model.KitTemplateName);
-                if(kitTemplateCheckName != null)
+                await _equipmentTypeRepository.CreateEquipmentType(equipmentType);
+
+                return new BaseResponse<EquipmentTypeResponseModel>()
                 {
-                    return new BaseResponse<KitTemplateResponseModel>()
+                    Code = 200,
+                    Success = true,
+                    Message = "Create equipmentType success!",
+                    Data = null
+
+                };
+            }
+            catch (Exception ex)
+            {
+                return new BaseResponse<EquipmentTypeResponseModel>()
+                {
+                    Code = 500,
+                    Success = false,
+                    Message = "Server Error!"
+                };
+            }
+        }
+
+        public async Task<BaseResponse<EquipmentTypeResponseModel>> DeleteEquipmentType(string id)
+        {
+            try
+            {
+                var equipmentType = await _equipmentTypeRepository.GetEquipmentTypeById(id);
+                if (equipmentType != null)
+                {
+                    equipmentType.EquipmentTypeStatus = "Delete";
+                    await _equipmentTypeRepository.UpdateEquipmentType(equipmentType);
+                    return new BaseResponse<EquipmentTypeResponseModel>()
                     {
-                        Code = 401,
-                        Success = false,
-                        Message = "Dupplicate name!.",
+                        Code = 200,
+                        Success = true,
+                        Message = "Delete success!.",
                         Data = null
                     };
                 }
-
-                await _kitTemplateRepository.CreateKitTemplate(kitTemplate);
-                return new BaseResponse<KitTemplateResponseModel>()
+                else
                 {
-                    Code = 200,
-                    Success = true,
-                    Message = "Create KitTemplate Success!.",
-                    Data = null
-                };
-            }
-            catch (Exception ex)
-            {
-                return new BaseResponse<KitTemplateResponseModel>()
-                {
-                    Code = 500,
-                    Success = false,
-                    Message = "Server Error!"
-
-                };
-            }
-        }
-
-        public async Task<BaseResponse<KitTemplateResponseModel>> DeleteKitTemplate(string id)
-        {
-            try
-            {
-                var kitTemplate = await _kitTemplateRepository.GetKitTemplateById(id);
-                if (kitTemplate == null)
-                {
-                    return new BaseResponse<KitTemplateResponseModel>()
+                    return new BaseResponse<EquipmentTypeResponseModel>()
                     {
                         Code = 404,
                         Success = false,
-                        Message = "Not found KitTemplate!"
+                        Message = "Not found EquipmentType!.",
+                        Data = null
                     };
                 }
-                kitTemplate.KitTemplateStatus = "Invalid";
-                await _kitTemplateRepository.UpdateKitTemplate(kitTemplate);
-                return new BaseResponse<KitTemplateResponseModel>()
-                {
-                    Code = 200,
-                    Success = true,
-                    Message = "Delete KitTemplate success!",
-                    Data = null           
-                };
-
-
             }
             catch (Exception ex)
             {
-                return new BaseResponse<KitTemplateResponseModel>()
+                return new BaseResponse<EquipmentTypeResponseModel>()
                 {
                     Code = 500,
                     Success = false,
@@ -132,37 +119,38 @@ namespace BusinessLayer.Service.Implement
             }
         }
 
-        public async Task<DynamicResponse<KitTemplateResponseModel>> GetAllKitTemplate(GetAllKitTemplateRequestModel model)
+        public async Task<DynamicResponse<EquipmentTypeResponseModel>> GetAllEquipmentType(GetAllEquipmentTypeRequestModel model)
         {
             try
             {
-                var listKitTemplate= await _kitTemplateRepository.GetAllKitTemplate();
+                var listEquipmentType = await _equipmentTypeRepository.GetAllEquipmentType();
                 if (!string.IsNullOrEmpty(model.keyWord))
                 {
-                    List<KitTemplate> listKitTemplateByName = listKitTemplate.Where(kt => kt.KitTemplateName.Contains(model.keyWord)).ToList();
+                    List<EquipmentType> listEquipmentTypeByName = listEquipmentType.Where(eqt => eqt.EquipmentTypeName.Contains(model.keyWord)).ToList();
 
-                    listKitTemplate = listKitTemplateByName
-                               .GroupBy(u => u.KitTemplateId)
+                    listEquipmentType = listEquipmentTypeByName
+                               .GroupBy(eqt=> eqt.EquipmentTypeId)
                                .Select(g => g.First())
                                .ToList();
                 }
                 if (!string.IsNullOrEmpty(model.status))
                 {
-                    listKitTemplate = listKitTemplate.Where(kt => kt.KitTemplateStatus.ToLower().Equals(model.status)).ToList();
+                    listEquipmentType = listEquipmentType.Where(eq => eq.EquipmentTypeStatus.ToLower().Equals(model.status)).ToList();
+
                 }
-                var result = _mapper.Map<List<KitTemplateResponseModel>>(listKitTemplate);
+                var result = _mapper.Map<List<EquipmentTypeResponseModel>>(listEquipmentType);
 
                 // Nếu không có lỗi, thực hiện phân trang
                 var pagedUsers = result// Giả sử result là danh sách người dùng
-                    .OrderBy(u => u.KitTemplateName) // Sắp xếp theo Id tăng dần
+                    .OrderBy(eqt => eqt.EquipmentTypeName) // Sắp xếp theo Name tăng dần
                     .ToPagedList(model.pageNum, model.pageSize); // Phân trang với X.PagedList
-                return new DynamicResponse<KitTemplateResponseModel>()
+                return new DynamicResponse<EquipmentTypeResponseModel>()
                 {
                     Code = 200,
                     Success = true,
                     Message = null,
 
-                    Data = new MegaData<KitTemplateResponseModel>()
+                    Data = new MegaData<EquipmentTypeResponseModel>()
                     {
                         PageInfo = new PagingMetaData()
                         {
@@ -185,7 +173,7 @@ namespace BusinessLayer.Service.Implement
             }
             catch (Exception ex)
             {
-                return new DynamicResponse<KitTemplateResponseModel>()
+                return new DynamicResponse<EquipmentTypeResponseModel>()
                 {
                     Code = 500,
                     Success = false,
@@ -195,15 +183,15 @@ namespace BusinessLayer.Service.Implement
             }
         }
 
-        public async Task<BaseResponse<KitTemplateResponseModel>> GetKitTemplateById(string id)
+        public async Task<BaseResponse<EquipmentTypeResponseModel>> GetEquipmentTypeById(string id)
         {
             try
             {
-                var kitTemplate = await _kitTemplateRepository.GetKitTemplateById(id);
-                if (kitTemplate != null)
+                var equipmentType = await _equipmentTypeRepository.GetEquipmentTypeById(id);
+                if (equipmentType != null || !equipmentType.EquipmentTypeStatus.Equals("Delete"))
                 {
-                    var result = _mapper.Map<KitTemplateResponseModel>(kitTemplate);
-                    return new BaseResponse<KitTemplateResponseModel>()
+                    var result = _mapper.Map<EquipmentTypeResponseModel>(equipmentType);
+                    return new BaseResponse<EquipmentTypeResponseModel>()
                     {
                         Code = 200,
                         Success = true,
@@ -213,18 +201,18 @@ namespace BusinessLayer.Service.Implement
                 }
                 else
                 {
-                    return new BaseResponse<KitTemplateResponseModel>()
+                    return new BaseResponse<EquipmentTypeResponseModel>()
                     {
                         Code = 404,
                         Success = false,
-                        Message = "Not found KitTemplate!.",
+                        Message = "Not found EquipmentType!.",
                         Data = null
                     };
                 }
             }
             catch (Exception ex)
             {
-                return new BaseResponse<KitTemplateResponseModel>()
+                return new BaseResponse<EquipmentTypeResponseModel>()
                 {
                     Code = 500,
                     Success = false,
@@ -234,47 +222,47 @@ namespace BusinessLayer.Service.Implement
             }
         }
 
-        public async Task<BaseResponse<KitTemplateResponseModel>> UpdateKitTemplate(string id, UpdateKitTemplateRequestModel model)
+        public async Task<BaseResponse<EquipmentTypeResponseModel>> UpdateEquipmentType(string id, UpdateEquipmentTypeRequestModel model)
         {
             try
             {
-                if(model.KitTemplateQuantity < 0)
+                if(model.EquipmentTypeQuantity < 0)
                 {
-                    return new BaseResponse<KitTemplateResponseModel>()
+                    return new BaseResponse<EquipmentTypeResponseModel>()
                     {
                         Code = 401,
                         Success = false,
-                        Message = "Do not enter negative numbers!.",
+                        Message = "Do not enter negative numbers!",
                         Data = null
                     };
                 }
-                var kitTemmplate = await _kitTemplateRepository.GetKitTemplateById(id);
-                if (kitTemmplate != null)
+                var equipmentType = await _equipmentTypeRepository.GetEquipmentTypeById(id);
+                if (equipmentType != null || !equipmentType.EquipmentTypeStatus.Equals("Delete"))
                 {
-                    var result = _mapper.Map(model, kitTemmplate);
-                    await _kitTemplateRepository.UpdateKitTemplate(result);
-                    return new BaseResponse<KitTemplateResponseModel>()
+                    var result = _mapper.Map(model, equipmentType);
+                    await _equipmentTypeRepository.UpdateEquipmentType(result);
+                    return new BaseResponse<EquipmentTypeResponseModel>()
                     {
                         Code = 200,
                         Success = true,
                         Message = "Update success!.",
-                        Data = _mapper.Map<KitTemplateResponseModel>(result)
+                        Data = null
                     };
                 }
                 else
                 {
-                    return new BaseResponse<KitTemplateResponseModel>()
+                    return new BaseResponse<EquipmentTypeResponseModel>()
                     {
                         Code = 404,
                         Success = false,
-                        Message = "Not found KitTemplate!.",
+                        Message = "Not found EquipmentType!.",
                         Data = null
                     };
                 }
             }
             catch (Exception ex)
             {
-                return new BaseResponse<KitTemplateResponseModel>()
+                return new BaseResponse<EquipmentTypeResponseModel>()
                 {
                     Code = 500,
                     Success = false,

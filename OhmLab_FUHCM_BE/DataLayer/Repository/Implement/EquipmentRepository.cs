@@ -50,7 +50,9 @@ namespace DataLayer.Repository.Implement
         {
             try
             {
-                return await _DBContext.Equipment.ToListAsync();
+                return await _DBContext.Equipment
+                    .Include(e => e.EquipmentType)
+                    .ToListAsync();
             }
             catch (Exception ex)
             {
@@ -62,7 +64,21 @@ namespace DataLayer.Repository.Implement
         {
             try
             {
-                return await _DBContext.Equipment.FirstOrDefaultAsync(e => e.EquipmentId == id);
+                return await _DBContext.Equipment
+                    .Include(e => e.EquipmentType)
+                    .FirstOrDefaultAsync(e => e.EquipmentId == id);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public async Task<Equipment> GetEquipmentByName(string name)
+        {
+            try
+            {
+                return await _DBContext.Equipment.FirstOrDefaultAsync(e => e.EquipmentName == name);
             }
             catch (Exception ex)
             {

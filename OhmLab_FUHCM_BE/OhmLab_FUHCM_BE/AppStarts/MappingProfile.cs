@@ -16,6 +16,8 @@ using BusinessLayer.ResponseModel.KitTemplate;
 using BusinessLayer.RequestModel.Kit;
 using BusinessLayer.ResponseModel.Kit;
 using BusinessLayer.ResponseModel.Class;
+using BusinessLayer.RequestModel.EquipmentType;
+using BusinessLayer.ResponseModel.EquipmentType;
 
 namespace OhmLab_FUHCM_BE.AppStarts
 {
@@ -44,7 +46,9 @@ namespace OhmLab_FUHCM_BE.AppStarts
 
             //Equipment
             CreateMap<CreateEquipmentRequestModel, Equipment>().ReverseMap();
-            CreateMap<EquipmentResponseModel, Equipment>().ReverseMap();
+            CreateMap<Equipment, EquipmentResponseModel>()
+                .ForMember(dest => dest.EquipmentTypeName, opt => opt.MapFrom(src => src.EquipmentType.EquipmentTypeName))
+                .ReverseMap();
 
             // Assignment (Lịch thực hành, Báo cáo, Điểm)
             CreateMap<Schedule, ScheduleResponseModel>()
@@ -81,13 +85,20 @@ namespace OhmLab_FUHCM_BE.AppStarts
             CreateMap<CreateKitTemplateRequestModel, KitTemplate>().ReverseMap();
             CreateMap<CreateKitTemplateRequestModel, KitTemplateResponseModel>().ReverseMap();
             CreateMap<KitTemplateResponseModel, KitTemplate>().ReverseMap();
+            CreateMap<UpdateKitTemplateRequestModel, KitTemplate>().ReverseMap();
 
             //Kit
             CreateMap<CreateKitRequestModel, Kit>().ReverseMap();
             CreateMap<CreateKitRequestModel, KitResponseModel>().ReverseMap();
             CreateMap<Kit, KitResponseModel>()
                  .ForMember(dest => dest.KitTemplateName, opt => opt.MapFrom(src => src.KitTemplate.KitTemplateName))
-                 .ReverseMap();
+                 .ReverseMap();         
+
+            //EquipmentType
+            CreateMap<CreateEquipmentTypeRequestModel, EquipmentType>().ReverseMap();
+            CreateMap<CreateEquipmentTypeRequestModel, EquipmentTypeResponseModel>().ReverseMap();
+            CreateMap<UpdateEquipmentTypeRequestModel, EquipmentType>().ReverseMap();
+            CreateMap<EquipmentType, EquipmentTypeResponseModel>().ReverseMap();
 
             //Class
             CreateMap<ClassResponseModel, Class>().ReverseMap();

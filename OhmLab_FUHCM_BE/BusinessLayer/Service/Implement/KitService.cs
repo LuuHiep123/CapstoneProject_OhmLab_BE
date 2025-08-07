@@ -94,6 +94,10 @@ namespace BusinessLayer.Service.Implement
                 kit.KitUrlQr = GenerateQRCodeBase64(kidId);
 
                 await _kitRepository.CreateKit(kit);
+
+                kitTemplate.KitTemplateQuantity += 1;
+                await _kitTemplateRepository.UpdateKitTemplate(kitTemplate);
+
                 return new BaseResponse<KitResponseModel>()
                 {
                     Code = 200,
