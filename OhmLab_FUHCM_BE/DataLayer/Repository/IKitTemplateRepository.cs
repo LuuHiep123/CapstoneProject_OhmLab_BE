@@ -14,5 +14,6 @@ namespace DataLayer.Repository
         Task<bool> DeleteKitTemplate(KitTemplate kitTemplate);
         Task<List<KitTemplate>> GetAllKitTemplate();
         Task<KitTemplate> GetKitTemplateById(string id);
+        Task<KitTemplate> GetKitTemplateByName(string name);
     }
 }

@@ -106,59 +106,35 @@ namespace BusinessLayer.Service.Implement
         {
             try
             {
-                    var equipmentType = await _equipmentTypeRepository.GetEquipmentTypeByCode(model.EquipmentCode);
-                string equipmentTypeId = GenerateRandomString(5);
-                string equipmentId = GenerateRandomString(5);
-                if (equipmentType == null)
+                var equipmentType = await _equipmentTypeRepository.GetEquipmentTypeById(model.EquipmentTypeId);
+                if(equipmentType == null)
                 {
-                    equipmentType = new DataLayer.Entities.EquipmentType()
-                    {
-                        EquipmentTypeId = equipmentTypeId,
-                        EquipmentTypeName = model.EquipmentName,
-                        EquipmentTypeCode = model.EquipmentCode,
-                        EquipmentTypeDescription = model.EquipmentDescription,  
-                        EquipmentTypeQuantity = 1,
-                        EquipmentTypeUrlImg = model.EquipmentTypeUrlImg,
-                        EquipmentTypeCreateDate = DateTime.Now,
-                        EquipmentTypeStatus = "Available"
-
-                    };
-                    await _equipmentTypeRepository.CreateEquipmentType(equipmentType);
-
-                    var equipment = _mapper.Map<Equipment>(model);
-                    equipment.EquipmentTypeId = equipmentTypeId;
-                    equipment.EquipmentId = equipmentId;
-                    equipment.EquipmentStatus = "Available";
-                    equipment.EquipmentQr = GenerateQRCodeBase64(equipmentId);
-                    await _equipmentRepository.CreateEquipment(equipment);
-                    return new BaseResponse<EquipmentResponseModel>(){
-                        Code = 200,
-                        Success = true,
-                        Message = "Create equipment success!",
-                        Data = _mapper.Map<EquipmentResponseModel>(equipment)
-
-                    };
-                }
-                else
-                {
-                    equipmentType.EquipmentTypeQuantity += 1;
-                    await _equipmentTypeRepository.UpdateEquipmentType(equipmentType);
-
-                    var equipment = _mapper.Map<Equipment>(model);
-                    equipment.EquipmentTypeId = equipmentTypeId;
-                    equipment.EquipmentId = equipmentId;
-                    equipment.EquipmentQr = GenerateQRCodeBase64(equipmentId);
-                    equipment.EquipmentStatus = "Available";
-                    await _equipmentRepository.CreateEquipment(equipment);
                     return new BaseResponse<EquipmentResponseModel>()
                     {
-                        Code = 200,
-                        Success = true,
-                        Message = "Create equipment success!",
-                        Data = _mapper.Map<EquipmentResponseModel>(equipment)
+                        Code = 404,
+                        Success = false,
+                        Message = "Not found EquipmentType"
 
                     };
                 }
+                string equipmentId = GenerateRandomString(5);
+                var equipment = _mapper.Map<Equipment>(model);
+                equipment.EquipmentId = equipmentId;
+                equipment.EquipmentCode = equipmentType.EquipmentTypeCode;
+                equipment.EquipmentStatus = "Available";
+                equipment.EquipmentQr = GenerateQRCodeBase64(equipmentId);
+                await _equipmentRepository.CreateEquipment(equipment);
+
+                equipmentType.EquipmentTypeQuantity += 1;
+                await _equipmentTypeRepository.UpdateEquipmentType(equipmentType);
+                return new BaseResponse<EquipmentResponseModel>()
+                {
+                    Code = 200,
+                    Success = true,
+                    Message = "Create equipment success!",
+                    Data = _mapper.Map<EquipmentResponseModel>(equipment)
+                };
+
             }
             catch (Exception ex)
             {

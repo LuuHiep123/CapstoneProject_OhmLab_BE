@@ -10,6 +10,8 @@ namespace BusinessLayer.ResponseModel.Equipment
     {
         public string EquipmentId { get; set; } = null!;
         public string EquipmentName { get; set; } = null!;
+        public string EquipmentTypeId { get; set; } = null!;
+        public string EquipmentTypeName { get; set; } = null!;
         public string EquipmentCode { get; set; } = null!;
         public string EquipmentNumberSerial { get; set; } = null!;
         public string? EquipmentDescription { get; set; }

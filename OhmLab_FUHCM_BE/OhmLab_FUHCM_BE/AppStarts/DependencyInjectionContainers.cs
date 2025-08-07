@@ -37,6 +37,7 @@ namespace OhmLab_FUHCM_BE.AppStarts
             services.AddScoped<IClassService, ClassService>();
             services.AddScoped<IClassUserService, ClassUserService>();
             services.AddScoped<IReportService, ReportService>();
+            services.AddScoped<IEquipmentTypeService, EquipmentTypeService>();
 
 
             //AddRepository

@@ -74,6 +74,20 @@ namespace DataLayer.Repository.Implement
             }
         }
 
+        public async Task<KitTemplate> GetKitTemplateByName(string name)
+        {
+            try
+            {
+                var kitTemplate = await _context.KitTemplates
+                    .FirstOrDefaultAsync(kt => kt.KitTemplateName.Equals(name));
+                return kitTemplate;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public async Task<bool> UpdateKitTemplate(KitTemplate kitTemplate)
         {
             try
