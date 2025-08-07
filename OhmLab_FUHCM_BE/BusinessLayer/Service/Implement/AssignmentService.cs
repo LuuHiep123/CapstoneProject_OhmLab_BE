@@ -1,4 +1,4 @@
-using AutoMapper;
+ using AutoMapper;
 using BusinessLayer.ResponseModel.BaseResponse;
 using BusinessLayer.ResponseModel.Assignment;
 using DataLayer.Entities;
@@ -984,6 +984,73 @@ namespace BusinessLayer.Service.Implement
         public async Task<Schedule> GetScheduleByIdAsync(int scheduleId)
         {
             return await _scheduleRepository.GetByIdAsync(scheduleId);
+        }
+
+        public async Task<BaseResponse<object>> GetSchedulesByDateAsync(DateTime date)
+        {
+            try
+            {
+                var schedules = await _scheduleRepository.GetByDateAsync(date);
+                var scheduleResponses = schedules.Select(s => _mapper.Map<ScheduleResponseModel>(s)).ToList();
+
+                return new BaseResponse<object>
+                {
+                    Code = 200,
+                    Success = true,
+                    Message = "Lấy danh sách lịch học theo ngày thành công!",
+                    Data = new
+                    {
+                        Date = date.ToString("dd/MM/yyyy"),
+                        Schedules = scheduleResponses,
+                        TotalCount = scheduleResponses.Count
+                    }
+                };
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error in GetSchedulesByDate: {Message}", ex.Message);
+                return new BaseResponse<object>
+                {
+                    Code = 500,
+                    Success = false,
+                    Message = "Lỗi server!",
+                    Data = null
+                };
+            }
+        }
+
+        public async Task<BaseResponse<object>> GetSchedulesByDateRangeAsync(DateTime startDate, DateTime endDate)
+        {
+            try
+            {
+                var schedules = await _scheduleRepository.GetByDateRangeAsync(startDate, endDate);
+                var scheduleResponses = schedules.Select(s => _mapper.Map<ScheduleResponseModel>(s)).ToList();
+
+                return new BaseResponse<object>
+                {
+                    Code = 200,
+                    Success = true,
+                    Message = "Lấy danh sách lịch học theo khoảng thời gian thành công!",
+                    Data = new
+                    {
+                        StartDate = startDate.ToString("dd/MM/yyyy"),
+                        EndDate = endDate.ToString("dd/MM/yyyy"),
+                        Schedules = scheduleResponses,
+                        TotalCount = scheduleResponses.Count
+                    }
+                };
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error in GetSchedulesByDateRange: {Message}", ex.Message);
+                return new BaseResponse<object>
+                {
+                    Code = 500,
+                    Success = false,
+                    Message = "Lỗi server!",
+                    Data = null
+                };
+            }
         }
 
         public async Task<BaseResponse<GradeResponseModel>> SubmitAssignmentAsync(Grade grade)

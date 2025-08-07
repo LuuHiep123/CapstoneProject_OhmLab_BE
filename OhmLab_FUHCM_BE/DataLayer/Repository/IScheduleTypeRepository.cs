@@ -11,5 +11,8 @@ namespace DataLayer.Repository
     {
         Task<ScheduleType> CreateAsync(ScheduleType scheduleTypes);
         Task<ScheduleType> GetByIdAsync(int id);
+        Task<IEnumerable<ScheduleType>> GetAllAsync();
+        Task<ScheduleType> UpdateAsync(ScheduleType scheduleType);
+        Task<bool> DeleteAsync(int id);
     }
 }

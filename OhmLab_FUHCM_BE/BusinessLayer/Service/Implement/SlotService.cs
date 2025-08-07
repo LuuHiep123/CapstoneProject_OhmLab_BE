@@ -13,11 +13,13 @@ namespace BusinessLayer.Service.Implement
     public class SlotService : ISlotService
     {
         private readonly ISlotRepository _slotRepository;
+        private readonly IScheduleTypeRepository _scheduleTypeRepository;
         private readonly IMapper _mapper;
 
-        public SlotService(ISlotRepository slotRepository, IMapper mapper)
+        public SlotService(ISlotRepository slotRepository, IScheduleTypeRepository scheduleTypeRepository, IMapper mapper)
         {
             _slotRepository = slotRepository;
+            _scheduleTypeRepository = scheduleTypeRepository;
             _mapper = mapper;
         }
 
@@ -171,14 +173,43 @@ namespace BusinessLayer.Service.Implement
         {
             try
             {
-                var result = await _slotRepository.DeleteAsync(id);
-                if (!result)
+                // Kiểm tra Slot có tồn tại không
+                var slot = await _slotRepository.GetByIdAsync(id);
+                if (slot == null)
                 {
                     return new BaseResponse<bool>
                     {
                         Code = 404,
                         Success = false,
                         Message = "Không tìm thấy ca học!",
+                        Data = false
+                    };
+                }
+
+                // Kiểm tra Slot có đang được sử dụng bởi ScheduleType nào không
+                var scheduleTypes = await _scheduleTypeRepository.GetAllAsync();
+                var usingScheduleTypes = scheduleTypes.Where(st => st.SlotId == id).ToList();
+                
+                if (usingScheduleTypes.Any())
+                {
+                    var scheduleTypeNames = string.Join(", ", usingScheduleTypes.Select(st => st.ScheduleTypeName));
+                    return new BaseResponse<bool>
+                    {
+                        Code = 409,
+                        Success = false,
+                        Message = $"Không thể xóa ca học này vì đang được sử dụng bởi các loại lịch học: {scheduleTypeNames}",
+                        Data = false
+                    };
+                }
+
+                var result = await _slotRepository.DeleteAsync(id);
+                if (!result)
+                {
+                    return new BaseResponse<bool>
+                    {
+                        Code = 500,
+                        Success = false,
+                        Message = "Lỗi khi xóa ca học!",
                         Data = false
                     };
                 }

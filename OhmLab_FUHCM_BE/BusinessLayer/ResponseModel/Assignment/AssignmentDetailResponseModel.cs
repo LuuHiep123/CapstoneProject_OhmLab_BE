@@ -30,13 +30,6 @@ namespace BusinessLayer.ResponseModel.Assignment
         public string LabTarget { get; set; } = null!;
         public string LabStatus { get; set; } = null!;
         
-        // Thông tin tuần học
-        public int WeeksId { get; set; }
-        public string WeeksName { get; set; } = null!;
-        public DateTime WeeksStartDate { get; set; }
-        public DateTime WeeksEndDate { get; set; }
-        public string? WeeksDescription { get; set; }
-        
         // Thông tin giảng viên
         public Guid? LecturerId { get; set; }
         public string? LecturerName { get; set; }
