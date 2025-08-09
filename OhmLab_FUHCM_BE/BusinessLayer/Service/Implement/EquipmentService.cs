@@ -255,6 +255,31 @@ namespace BusinessLayer.Service.Implement
             }
         }
 
+        public async Task<BaseResponse<List<EquipmentResponseModel>>> GetEquipmentByEquipmentTypeId(string equipmentType)
+        {
+            try
+            {
+                var listEquipment = await _equipmentRepository.GetEquipmentByEquipmentId(equipmentType);
+                return new BaseResponse<List<EquipmentResponseModel>>()
+                {
+                    Code = 200,
+                    Success = false,
+                    Message = "list equipment type",
+                    Data = _mapper.Map<List<EquipmentResponseModel>>(listEquipment)
+                };
+            }
+            catch (Exception ex)
+            {
+                return new BaseResponse<List<EquipmentResponseModel>>()
+                {
+                    Code = 500,
+                    Success = false,
+                    Message = "Server Error!"
+
+                };
+            }
+        }
+
         public async Task<BaseResponse<EquipmentResponseModel>> GetEquipmentById(string id)
         {
             try
