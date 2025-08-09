@@ -60,6 +60,21 @@ namespace DataLayer.Repository.Implement
             }
         }
 
+        public async Task<List<Equipment>> GetEquipmentByEquipmentId(string equipmentId)
+        {
+            try
+            {
+                return await _DBContext.Equipment
+                    .Include(e => e.EquipmentType)
+                    .Where(e => e.EquipmentTypeId.Equals(equipmentId))
+                    .ToListAsync();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public async Task<Equipment> GetEquipmentById(string id)
         {
             try

@@ -695,6 +695,22 @@
   },
   {
     "ContainingType": "OhmLab_FUHCM_BE.Controller.EquipmentController",
+    "Method": "GetEquipmentByEquipmentTypeId",
+    "RelativePath": "api/equipment/equipmentbyequipmenttype/{EqupmentTypeId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "EqupmentTypeId",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OhmLab_FUHCM_BE.Controller.EquipmentController",
     "Method": "CreateQR",
     "RelativePath": "api/equipment/qr",
     "HttpMethod": "POST",

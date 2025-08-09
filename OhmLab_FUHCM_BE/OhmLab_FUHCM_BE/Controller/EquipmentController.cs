@@ -80,6 +80,21 @@ namespace OhmLab_FUHCM_BE.Controller
         }
 
         [Authorize(Roles = "Admin,HeadOfDepartment")]
+        [HttpGet("EquipmentByEquipmentType/{EqupmentTypeId}")]
+        public async Task<IActionResult> GetEquipmentByEquipmentTypeId(string EqupmentTypeId)
+        {
+            try
+            {
+                var result = await _service.GetEquipmentByEquipmentTypeId(EqupmentTypeId);
+                return StatusCode(result.Code, result);
+            }   
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        [Authorize(Roles = "Admin,HeadOfDepartment")]
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateEquipment(string id, UpdateEquipmentRequestModel model)
         {
