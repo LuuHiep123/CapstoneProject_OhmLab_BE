@@ -13,6 +13,7 @@ namespace BusinessLayer.Service
         Task<BaseResponse<ClassResponseModel>> CreateClassAsync(CreateClassRequestModel model);
         Task<BaseResponse<ClassResponseModel>> GetClassByIdAsync(int id);
         Task<BaseResponse<List<ClassResponseModel>>> GetAllClassesAsync();
+        Task<DynamicResponse<ClassResponseModel>> GetAllClassesAsync(GetAllClassRequestModel model);
         Task<BaseResponse<List<ClassResponseModel>>> GetClassesByLecturerIdAsync(Guid lecturerId);
         Task<BaseResponse<ClassResponseModel>> UpdateClassAsync(int id, UpdateClassRequestModel model);
         Task<BaseResponse<bool>> DeleteClassAsync(int id);

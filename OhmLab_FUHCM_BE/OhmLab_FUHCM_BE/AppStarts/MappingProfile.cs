@@ -16,6 +16,7 @@ using BusinessLayer.ResponseModel.KitTemplate;
 using BusinessLayer.RequestModel.Kit;
 using BusinessLayer.ResponseModel.Kit;
 using BusinessLayer.ResponseModel.Class;
+using BusinessLayer.RequestModel.Class;
 using BusinessLayer.RequestModel.EquipmentType;
 using BusinessLayer.ResponseModel.EquipmentType;
 using BusinessLayer.RequestModel.Slot;
@@ -112,6 +113,8 @@ namespace OhmLab_FUHCM_BE.AppStarts
 
             //Class
             CreateMap<ClassResponseModel, Class>().ReverseMap();
+            CreateMap<CreateClassRequestModel, Class>()
+                .ForMember(dest => dest.ClassId, opt => opt.Ignore());
             
             //Slot
             CreateMap<CreateSlotRequestModel, Slot>()
