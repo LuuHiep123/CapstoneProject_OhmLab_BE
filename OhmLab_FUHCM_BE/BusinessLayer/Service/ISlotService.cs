@@ -11,6 +11,7 @@ namespace BusinessLayer.Service
         Task<BaseResponse<SlotResponseModel>> CreateSlotAsync(CreateSlotRequestModel model);
         Task<BaseResponse<SlotResponseModel>> GetSlotByIdAsync(int id);
         Task<BaseResponse<List<SlotResponseModel>>> GetAllSlotsAsync();
+        Task<DynamicResponse<SlotResponseModel>> GetAllSlotsAsync(GetAllSlotRequestModel model);
         Task<BaseResponse<SlotResponseModel>> UpdateSlotAsync(int id, CreateSlotRequestModel model);
         Task<BaseResponse<bool>> DeleteSlotAsync(int id);
     }

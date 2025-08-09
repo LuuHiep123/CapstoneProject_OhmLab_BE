@@ -7,6 +7,8 @@ using DataLayer.Repository;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using X.PagedList.Extensions;
+using System;
 
 namespace BusinessLayer.Service.Implement
 {
@@ -120,6 +122,72 @@ namespace BusinessLayer.Service.Implement
                     Success = false,
                     Message = $"Lỗi: {ex.Message}",
                     Data = null
+                };
+            }
+        }
+
+        public async Task<DynamicResponse<SlotResponseModel>> GetAllSlotsAsync(GetAllSlotRequestModel model)
+        {
+            try
+            {
+                var slots = await _slotRepository.GetAllAsync();
+                var listSlot = slots.ToList();
+
+                // Lọc theo keyword nếu có
+                if (!string.IsNullOrEmpty(model.keyWord))
+                {
+                    listSlot = listSlot.Where(s => s.SlotName.ToLower().Contains(model.keyWord.ToLower()) ||
+                                                  (!string.IsNullOrEmpty(s.SlotDescription) && s.SlotDescription.ToLower().Contains(model.keyWord.ToLower())))
+                                     .ToList();
+                }
+
+                // Lọc theo status nếu có
+                if (!string.IsNullOrEmpty(model.status))
+                {
+                    listSlot = listSlot.Where(s => s.SlotStatus.ToLower().Equals(model.status.ToLower())).ToList();
+                }
+
+                var result = _mapper.Map<List<SlotResponseModel>>(listSlot);
+
+                // Thực hiện phân trang
+                var pagedSlots = result
+                    .OrderBy(s => s.SlotName) // Sắp xếp theo tên ca học
+                    .ToPagedList(model.pageNum, model.pageSize);
+
+                return new DynamicResponse<SlotResponseModel>()
+                {
+                    Code = 200,
+                    Success = true,
+                    Message = "Lấy danh sách ca học thành công!",
+                    Data = new MegaData<SlotResponseModel>()
+                    {
+                        PageInfo = new PagingMetaData()
+                        {
+                            Page = pagedSlots.PageNumber,
+                            Size = pagedSlots.PageSize,
+                            Sort = "Ascending",
+                            Order = "Name",
+                            TotalPage = pagedSlots.PageCount,
+                            TotalItem = pagedSlots.TotalItemCount,
+                        },
+                        SearchInfo = new SearchCondition()
+                        {
+                            keyWord = model.keyWord,
+                            role = null,
+                            status = model.status,
+                        },
+                        PageData = pagedSlots.ToList(),
+                    },
+                };
+            }
+            catch (Exception ex)
+            {
+                return new DynamicResponse<SlotResponseModel>()
+                {
+                    Code = 500,
+                    Success = false,
+                    Message = $"Lỗi: {ex.Message}",
+                    Data = null,
                 };
             }
         }

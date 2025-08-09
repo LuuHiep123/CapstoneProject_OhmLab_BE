@@ -41,6 +41,14 @@ namespace OhmLab_FUHCM_BE.Controller
             return StatusCode(result.Code, result);
         }
 
+        [Authorize(Roles = "Admin,HeadOfDepartment,Lecturer,Student")]
+        [HttpPost("GetAllSlots")]
+        public async Task<IActionResult> GetAllSlots([FromBody] GetAllSlotRequestModel model)
+        {
+            var result = await _slotService.GetAllSlotsAsync(model);
+            return StatusCode(result.Code, result);
+        }
+
         [Authorize(Roles = "Admin,HeadOfDepartment")]
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateSlot(int id, [FromBody] CreateSlotRequestModel model)

@@ -8,6 +8,9 @@ namespace BusinessLayer.RequestModel.Class
         [Required]
         public int SubjectId { get; set; }
 
+        public Guid? LecturerId { get; set; }
+
+        public int? ScheduleTypeId { get; set; }
 
         [Required]
         [StringLength(50)]

@@ -43,6 +43,14 @@ namespace OhmLab_FUHCM_BE.Controller
         }
 
         [Authorize(Roles = "Admin,HeadOfDepartment,Lecturer")]
+        [HttpPost("GetAllClasses")]
+        public async Task<IActionResult> GetAllClasses([FromBody] GetAllClassRequestModel model)
+        {
+            var result = await _classService.GetAllClassesAsync(model);
+            return StatusCode(result.Code, result);
+        }
+
+        [Authorize(Roles = "Admin,HeadOfDepartment,Lecturer")]
         [HttpGet("lecturer/{lecturerId}")]
         public async Task<IActionResult> GetClassesByLecturerId(Guid lecturerId)
         {

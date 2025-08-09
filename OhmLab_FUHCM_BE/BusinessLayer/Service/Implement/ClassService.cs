@@ -10,6 +10,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using X.PagedList.Extensions;
 
 namespace BusinessLayer.Service.Implement
 {
@@ -23,9 +24,10 @@ namespace BusinessLayer.Service.Implement
         private readonly IScheduleRepository _scheduleRepository;
         private readonly ISemesterSubjectRepository _semesterSubjectRepository;
         private readonly ILabRepository _labRepository;
+        private readonly IUserRepositoty _userRepository;
         private readonly IMapper _mapper;
 
-        public ClassService(IScheduleRepository scheduleRepository, ISemesterSubjectRepository semesterSubjectRepository, ISemesterRepository semesterRepository, ISubjectRepository subjectRepository, IScheduleTypeRepository scheduleTypeRepository, IClassRepository classRepository, IClassUserRepository classUserRepository, ILabRepository labRepository, IMapper mapper)
+        public ClassService(IScheduleRepository scheduleRepository, ISemesterSubjectRepository semesterSubjectRepository, ISemesterRepository semesterRepository, ISubjectRepository subjectRepository, IScheduleTypeRepository scheduleTypeRepository, IClassRepository classRepository, IClassUserRepository classUserRepository, ILabRepository labRepository, IUserRepositoty userRepository, IMapper mapper)
         {
             _scheduleRepository = scheduleRepository;
             _semesterSubjectRepository = semesterSubjectRepository;
@@ -35,6 +37,7 @@ namespace BusinessLayer.Service.Implement
             _classRepository = classRepository;
             _classUserRepository = classUserRepository;
             _labRepository = labRepository;
+            _userRepository = userRepository;
             _mapper = mapper;
         }
 
@@ -42,9 +45,43 @@ namespace BusinessLayer.Service.Implement
         {
             try
             {
+                // Validation cho LecturerId nếu có
+                if (model.LecturerId.HasValue)
+                {
+                    var lecturer = await _userRepository.GetUserById(model.LecturerId.Value);
+                    if (lecturer == null)
+                    {
+                        return new BaseResponse<ClassResponseModel>
+                        {
+                            Code = 400,
+                            Success = false,
+                            Message = "Không tìm thấy giảng viên với ID đã cung cấp!",
+                            Data = null
+                        };
+                    }
+                }
+
+                // Validation cho ScheduleTypeId nếu có
+                if (model.ScheduleTypeId.HasValue)
+                {
+                    var scheduleType = await _scheduleTypeRepository.GetByIdAsync(model.ScheduleTypeId.Value);
+                    if (scheduleType == null)
+                    {
+                        return new BaseResponse<ClassResponseModel>
+                        {
+                            Code = 400,
+                            Success = false,
+                            Message = "Không tìm thấy loại lịch học với ID đã cung cấp!",
+                            Data = null
+                        };
+                    }
+                }
+
                 var classEntity = new Class
                 {
                     SubjectId = model.SubjectId,
+                    LecturerId = model.LecturerId,
+                    ScheduleTypeId = model.ScheduleTypeId,
                     ClassName = model.ClassName,
                     ClassDescription = model.ClassDescription,
                     ClassStatus = "Valid"
@@ -145,6 +182,91 @@ namespace BusinessLayer.Service.Implement
                     Success = false,
                     Message = $"Lỗi: {ex.Message}",
                     Data = null
+                };
+            }
+        }
+
+        public async Task<DynamicResponse<ClassResponseModel>> GetAllClassesAsync(GetAllClassRequestModel model)
+        {
+            try
+            {
+                var classes = await _classRepository.GetAllAsync();
+                var listClass = classes.ToList();
+
+                // Lọc theo keyword nếu có
+                if (!string.IsNullOrEmpty(model.keyWord))
+                {
+                    listClass = listClass.Where(c => c.ClassName.ToLower().Contains(model.keyWord.ToLower()) ||
+                                                    (!string.IsNullOrEmpty(c.ClassDescription) && c.ClassDescription.ToLower().Contains(model.keyWord.ToLower())))
+                                       .ToList();
+                }
+
+                // Lọc theo status nếu có
+                if (!string.IsNullOrEmpty(model.status))
+                {
+                    listClass = listClass.Where(c => c.ClassStatus.ToLower().Equals(model.status.ToLower())).ToList();
+                }
+
+                // Lọc theo subjectId nếu có
+                if (model.subjectId.HasValue)
+                {
+                    listClass = listClass.Where(c => c.SubjectId == model.subjectId.Value).ToList();
+                }
+
+                // Lọc theo lecturerId nếu có
+                if (model.lecturerId.HasValue)
+                {
+                    listClass = listClass.Where(c => c.LecturerId == model.lecturerId.Value).ToList();
+                }
+
+                var result = _mapper.Map<List<ClassResponseModel>>(listClass);
+
+                // Lấy ClassUsers cho từng class
+                foreach (var classResponse in result)
+                {
+                    var classUsers = await _classUserRepository.GetByClassIdAsync(classResponse.ClassId);
+                    classResponse.ClassUsers = _mapper.Map<List<ClassUserResponseModel>>(classUsers);
+                }
+
+                // Thực hiện phân trang
+                var pagedClasses = result
+                    .OrderBy(c => c.ClassName) // Sắp xếp theo tên lớp học
+                    .ToPagedList(model.pageNum, model.pageSize);
+
+                return new DynamicResponse<ClassResponseModel>()
+                {
+                    Code = 200,
+                    Success = true,
+                    Message = "Lấy danh sách lớp học thành công!",
+                    Data = new MegaData<ClassResponseModel>()
+                    {
+                        PageInfo = new PagingMetaData()
+                        {
+                            Page = pagedClasses.PageNumber,
+                            Size = pagedClasses.PageSize,
+                            Sort = "Ascending",
+                            Order = "Name",
+                            TotalPage = pagedClasses.PageCount,
+                            TotalItem = pagedClasses.TotalItemCount,
+                        },
+                        SearchInfo = new SearchCondition()
+                        {
+                            keyWord = model.keyWord,
+                            role = null,
+                            status = model.status,
+                        },
+                        PageData = pagedClasses.ToList(),
+                    },
+                };
+            }
+            catch (Exception ex)
+            {
+                return new DynamicResponse<ClassResponseModel>()
+                {
+                    Code = 500,
+                    Success = false,
+                    Message = $"Lỗi: {ex.Message}",
+                    Data = null,
                 };
             }
         }
