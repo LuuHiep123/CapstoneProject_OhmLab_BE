@@ -6,6 +6,8 @@ using DataLayer.Repository;
 using Microsoft.Extensions.Logging;
 using AutoMapper;
 using System.Linq;
+using BusinessLayer.ResponseModel.Slot;
+using BusinessLayer.ResponseModel.Class;
 
 namespace BusinessLayer.Service.Implement
 {
@@ -124,7 +126,7 @@ namespace BusinessLayer.Service.Implement
 
                 var availableSlots = todaySchedules
                     .GroupBy(s => s.Class?.ScheduleType?.Slot?.SlotName ?? "Unknown")
-                    .Select(g => new SlotResponseModel
+                    .Select(g => new BusinessLayer.ResponseModel.Report.SlotResponseModel
                     {
                         SlotName = g.Key,
                         SlotStartTime = g.First().Class?.ScheduleType?.Slot?.SlotStartTime ?? "Unknown",
@@ -186,7 +188,7 @@ namespace BusinessLayer.Service.Implement
                     .ToList();
 
                 var availableClasses = filteredSchedules
-                    .Select(s => new ClassResponseModel
+                    .Select(s => new BusinessLayer.ResponseModel.Report.ClassResponseModel
                     {
                         ClassName = s.Class?.ClassName ?? "Unknown",
                         SubjectName = s.Class?.Subject?.SubjectName ?? "Unknown",

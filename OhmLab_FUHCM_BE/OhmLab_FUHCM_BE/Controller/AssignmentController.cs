@@ -73,7 +73,6 @@ namespace OhmLab_FUHCM_BE.Controller
             var schedule = new Schedule
             {
                 ClassId = model.ClassId,
-                //WeeksId = model.WeeksId,
                 ScheduleName = model.ScheduleName,
                 ScheduleDate = model.ScheduleDate,
                 ScheduleDescription = model.ScheduleDescription
@@ -103,6 +102,19 @@ namespace OhmLab_FUHCM_BE.Controller
             return StatusCode(result.Code, result);
         }
 
+        [HttpGet("schedules/date/{date:datetime}")]
+        public async Task<IActionResult> GetSchedulesByDate(DateTime date)
+        {
+            var result = await _assignmentService.GetSchedulesByDateAsync(date);
+            return StatusCode(result.Code, result);
+        }
+
+        [HttpGet("schedules/daterange")]
+        public async Task<IActionResult> GetSchedulesByDateRange([FromQuery] DateTime startDate, [FromQuery] DateTime endDate)
+        {
+            var result = await _assignmentService.GetSchedulesByDateRangeAsync(startDate, endDate);
+            return StatusCode(result.Code, result);
+        }
 
 
         // --- Giảng viên chấm điểm (Grade) ---

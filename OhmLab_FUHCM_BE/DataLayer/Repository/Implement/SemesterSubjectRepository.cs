@@ -27,6 +27,21 @@ namespace DataLayer.Repository.Implement
             }
             catch (Exception ex)
             {
+                Console.WriteLine($"[ERROR][GetBySubjectIdAsync] {ex.Message} | Inner: {ex.InnerException?.Message}");
+                throw;
+            }
+        }
+
+        public async Task<IEnumerable<SemesterSubject>> GetAllAsync()
+        {
+            try
+            {
+                return await _DBContext.SemesterSubjects
+                    .Where(ss => ss.SemesterSubject1.ToLower().Equals("valid"))
+                    .ToListAsync();
+            }
+            catch (Exception ex)
+            {
                 Console.WriteLine($"[ERROR][GetAllAsync] {ex.Message} | Inner: {ex.InnerException?.Message}");
                 throw;
             }
