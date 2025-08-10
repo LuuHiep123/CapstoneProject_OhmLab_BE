@@ -10,3 +10,4 @@ namespace BusinessLayer.RequestModel.Slot
         public string? status { get; set; }
     }
 }
+
