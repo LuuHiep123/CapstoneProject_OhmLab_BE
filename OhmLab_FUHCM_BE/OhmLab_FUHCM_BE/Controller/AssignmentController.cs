@@ -10,6 +10,8 @@ using Microsoft.Extensions.Logging;
 using DataLayer.Repository;
 using System.Linq;
 using DataLayer.Repository.Implement;
+using BusinessLayer.RequestModel.Assignment;
+using BusinessLayer.RequestModel.Class;
 
 namespace OhmLab_FUHCM_BE.Controller
 {
@@ -268,6 +270,30 @@ namespace OhmLab_FUHCM_BE.Controller
                 code = 200,
                 data = result
             });
+        }
+
+        [Authorize(Roles = "Admin,HeadOfDepartment")]
+        [HttpPost("AddScheduleForClass")]
+        public async Task<IActionResult> AddScheduleforClass([FromBody] AddScheduleForClassRequestModel model)
+        {
+            var result = await _assignmentService.AddScheduleForClassAsync(model);
+            return StatusCode(result.Code, result);
+        }
+
+        [Authorize(Roles = "Admin,HeadOfDepartment")]
+        [HttpPost("AddScheduleForLecturer")]
+        public async Task<IActionResult> AddScheduleForLecturer([FromBody] AddScheduleForLecturerRequestModel model)
+        {
+            try
+            {
+                var result = await _assignmentService.AddScheduleForLecturerAsync(model);
+                return StatusCode(result.Code, result);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error in AddScheduleForLecturer: {Message}", ex.Message);
+                return StatusCode(500, new { Code = 500, Success = false, Message = "Lỗi hệ thống!", Data = false });
+            }
         }
     }
 } 

@@ -1,6 +1,8 @@
 using BusinessLayer.ResponseModel.Assignment;
 using BusinessLayer.ResponseModel.BaseResponse;
 using DataLayer.Entities;
+using BusinessLayer.RequestModel.Assignment;
+using BusinessLayer.RequestModel.Class;
 
 namespace BusinessLayer.Service
 {
@@ -12,6 +14,8 @@ namespace BusinessLayer.Service
         Task<BaseResponse<bool>> DeletePracticeScheduleAsync(int scheduleId);
         Task<DynamicResponse<ScheduleResponseModel>> GetPracticeSchedulesByClassAsync(int classId);
         Task<DynamicResponse<ScheduleResponseModel>> GetPracticeSchedulesByLecturerAsync(Guid lecturerId);
+        Task<BaseResponse<bool>> AddScheduleForLecturerAsync(AddScheduleForLecturerRequestModel model);
+        Task<BaseResponse<bool>> AddScheduleForClassAsync(AddScheduleForClassRequestModel model);
 
         // Report management
         Task<BaseResponse<ReportResponseModel>> SubmitPracticeReportAsync(Report report);

@@ -5,6 +5,8 @@ using DataLayer.Entities;
 using DataLayer.Repository;
 using System.Linq;
 using Microsoft.Extensions.Logging;
+using BusinessLayer.RequestModel.Assignment;
+using BusinessLayer.RequestModel.Class;
 
 namespace BusinessLayer.Service.Implement
 {
@@ -13,10 +15,10 @@ namespace BusinessLayer.Service.Implement
         private readonly IScheduleRepository _scheduleRepository;
         private readonly IReportRepository _reportRepository;
         private readonly IGradeRepository _gradeRepository;
-       
         private readonly ILabRepository _labRepository;
         private readonly IClassRepository _classRepository;
-        //private readonly IWeekRepository _weekRepository;
+        private readonly IScheduleTypeRepository _scheduleTypeRepository;
+        private readonly IUserRepositoty _userRepository;
         private readonly IMapper _mapper;
         private readonly ILogger<AssignmentService> _logger;
 
@@ -25,17 +27,18 @@ namespace BusinessLayer.Service.Implement
                               IGradeRepository gradeRepository, 
                               ILabRepository labRepository,
                               IClassRepository classRepository,
-                              //IWeekRepository weekRepository,
+                              IScheduleTypeRepository scheduleTypeRepository,
+                              IUserRepositoty userRepository,
                               IMapper mapper,
                               ILogger<AssignmentService> logger)
         {
             _scheduleRepository = scheduleRepository;
             _reportRepository = reportRepository;
             _gradeRepository = gradeRepository;
-          
             _labRepository = labRepository;
             _classRepository = classRepository;
-            //_weekRepository = weekRepository;
+            _scheduleTypeRepository = scheduleTypeRepository;
+            _userRepository = userRepository;
             _mapper = mapper;
             _logger = logger;
         }
@@ -228,7 +231,8 @@ namespace BusinessLayer.Service.Implement
             try
             {
                 var schedules = await _scheduleRepository.GetByLecturerIdAsync(lecturerId);
-                
+                var scheduleResponses = schedules.Select(s => _mapper.Map<ScheduleResponseModel>(s)).ToList();
+
                 return new DynamicResponse<ScheduleResponseModel>
                 {
                     Code = 200,
@@ -236,12 +240,12 @@ namespace BusinessLayer.Service.Implement
                     Message = "Lấy danh sách lịch thực hành theo giảng viên thành công!",
                     Data = new MegaData<ScheduleResponseModel>
                     {
-                        PageData = schedules.Select(s => _mapper.Map<ScheduleResponseModel>(s)).ToList(),
+                        PageData = scheduleResponses,
                         PageInfo = new PagingMetaData
                         {
                             Page = 1,
-                            Size = schedules.Count(),
-                            TotalItem = schedules.Count(),
+                            Size = scheduleResponses.Count,
+                            TotalItem = scheduleResponses.Count,
                             TotalPage = 1
                         },
                         SearchInfo = null
@@ -250,13 +254,102 @@ namespace BusinessLayer.Service.Implement
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Error in GetPracticeSchedulesByLecturer: {Message} | Inner: {Inner}", ex.Message, ex.InnerException?.Message);
+                _logger.LogError(ex, "Error in GetPracticeSchedulesByLecturer: {Message}", ex.Message);
                 return new DynamicResponse<ScheduleResponseModel>
                 {
                     Code = 500,
                     Success = false,
-                    Message = ex.Message,
+                    Message = "Lỗi hệ thống!",
                     Data = null
+                };
+            }
+        }
+
+        public async Task<BaseResponse<bool>> AddScheduleForLecturerAsync(AddScheduleForLecturerRequestModel model)
+        {
+            try
+            {
+                // Kiểm tra giảng viên tồn tại
+                var user = await _userRepository.GetUserById(model.LecturerId);
+                if (user == null || user.UserRoleName != "Lecturer")
+                {
+                    return new BaseResponse<bool>
+                    {
+                        Code = 404,
+                        Success = false,
+                        Message = "Không tìm thấy giảng viên!",
+                        Data = false
+                    };
+                }
+
+                // Kiểm tra ScheduleType tồn tại
+                var scheduleType = await _scheduleTypeRepository.GetByIdAsync(model.ScheduleTypeId);
+                if (scheduleType == null)
+                {
+                    return new BaseResponse<bool>
+                    {
+                        Code = 404,
+                        Success = false,
+                        Message = "Không tìm thấy loại lịch học!",
+                        Data = false
+                    };
+                }
+
+                // Lấy tất cả lớp học của giảng viên
+                var lecturerClasses = await _classRepository.GetByLecturerIdAsync(model.LecturerId);
+                if (!lecturerClasses.Any())
+                {
+                    return new BaseResponse<bool>
+                    {
+                        Code = 404,
+                        Success = false,
+                        Message = "Giảng viên chưa có lớp học nào!",
+                        Data = false
+                    };
+                }
+
+                // Tạo lịch cho từng lớp học của giảng viên
+                var createdSchedules = new List<Schedule>();
+                var currentDate = model.StartDate;
+
+                while (currentDate <= model.EndDate)
+                {
+                    foreach (var classEntity in lecturerClasses)
+                    {
+                        // Tạo lịch cho lớp này
+                        var schedule = new Schedule
+                        {
+                            ClassId = classEntity.ClassId,
+                            ScheduleName = $"Lịch giảng viên - {classEntity.ClassName}",
+                            ScheduleDate = currentDate,
+                            ScheduleDescription = model.Description ?? $"Lịch giảng viên cho lớp {classEntity.ClassName}"
+                        };
+
+                        await _scheduleRepository.CreateAsync(schedule);
+                        createdSchedules.Add(schedule);
+                    }
+
+                    // Tăng ngày lên 7 ngày (tuần tiếp theo)
+                    currentDate = currentDate.AddDays(7);
+                }
+
+                return new BaseResponse<bool>
+                {
+                    Code = 200,
+                    Success = true,
+                    Message = $"Đã tạo {createdSchedules.Count} lịch cho giảng viên thành công!",
+                    Data = true
+                };
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error in AddScheduleForLecturer: {Message}", ex.Message);
+                return new BaseResponse<bool>
+                {
+                    Code = 500,
+                    Success = false,
+                    Message = "Lỗi hệ thống!",
+                    Data = false
                 };
             }
         }
@@ -1091,6 +1184,61 @@ namespace BusinessLayer.Service.Implement
                     Success = false,
                     Message = ex.Message,
                     Data = null
+                };
+            }
+        }
+
+        public async Task<BaseResponse<bool>> AddScheduleForClassAsync(AddScheduleForClassRequestModel model)
+        {
+            try
+            {
+                // Kiểm tra lớp học tồn tại
+                var classEntity = await _classRepository.GetByIdAsync(model.ClassId);
+                if (classEntity == null)
+                {
+                    return new BaseResponse<bool>
+                    {
+                        Code = 404,
+                        Success = false,
+                        Message = "Không tìm thấy lớp học!",
+                        Data = false
+                    };
+                }
+
+                // Kiểm tra ScheduleType tồn tại
+                var scheduleType = await _scheduleTypeRepository.GetByIdAsync(model.ScheduleTypeId);
+                if (scheduleType == null)
+                {
+                    return new BaseResponse<bool>
+                    {
+                        Code = 404,
+                        Success = false,
+                        Message = "Không tìm thấy loại lịch học!",
+                        Data = false
+                    };
+                }
+
+                // Cập nhật ScheduleTypeId cho lớp
+                classEntity.ScheduleTypeId = model.ScheduleTypeId;
+                await _classRepository.UpdateAsync(classEntity);
+
+                return new BaseResponse<bool>
+                {
+                    Code = 200,
+                    Success = true,
+                    Message = "Đã thêm lịch học cho lớp thành công!",
+                    Data = true
+                };
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error in AddScheduleForClass: {Message}", ex.Message);
+                return new BaseResponse<bool>
+                {
+                    Code = 500,
+                    Success = false,
+                    Message = "Lỗi hệ thống!",
+                    Data = false
                 };
             }
         }
