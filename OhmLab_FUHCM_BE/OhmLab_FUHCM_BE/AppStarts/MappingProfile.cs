@@ -112,7 +112,10 @@ namespace OhmLab_FUHCM_BE.AppStarts
             CreateMap<EquipmentType, EquipmentTypeResponseModel>().ReverseMap();
 
             //Class
-            CreateMap<ClassResponseModel, Class>().ReverseMap();
+            CreateMap<Class, ClassResponseModel>()
+                .ForMember(dest => dest.SubjectName, opt => opt.MapFrom(src => src.Subject != null ? src.Subject.SubjectName : null))
+                .ForMember(dest => dest.LecturerName, opt => opt.MapFrom(src => src.Lecturer != null ? src.Lecturer.UserFullName : null));
+            CreateMap<ClassResponseModel, Class>();
             CreateMap<CreateClassRequestModel, Class>()
                 .ForMember(dest => dest.ClassId, opt => opt.Ignore());
             

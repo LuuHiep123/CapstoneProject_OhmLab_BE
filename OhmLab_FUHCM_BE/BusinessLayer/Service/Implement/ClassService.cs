@@ -152,7 +152,7 @@ namespace BusinessLayer.Service.Implement
             }
         }
 
-        public async Task<BaseResponse<List<ClassResponseModel>>> GetAllClassesAsync()
+        public async Task<DynamicResponse<ClassResponseModel>> GetAllClassesAsync()
         {
             try
             {
@@ -166,22 +166,40 @@ namespace BusinessLayer.Service.Implement
                     classResponse.ClassUsers = _mapper.Map<List<ClassUserResponseModel>>(classUsers);
                 }
 
-                return new BaseResponse<List<ClassResponseModel>>
+                // Thực hiện phân trang với giá trị mặc định
+                var pagedClasses = response
+                    .OrderBy(c => c.ClassName) // Sắp xếp theo tên lớp học
+                    .ToPagedList(1, 10); // Mặc định page 1, size 10
+
+                return new DynamicResponse<ClassResponseModel>()
                 {
                     Code = 200,
                     Success = true,
                     Message = "Lấy danh sách lớp học thành công!",
-                    Data = response
+                    Data = new MegaData<ClassResponseModel>()
+                    {
+                        PageInfo = new PagingMetaData()
+                        {
+                            Page = pagedClasses.PageNumber,
+                            Size = pagedClasses.PageSize,
+                            Sort = "Ascending",
+                            Order = "Name",
+                            TotalPage = pagedClasses.PageCount,
+                            TotalItem = pagedClasses.TotalItemCount,
+                        },
+                        SearchInfo = null,
+                        PageData = pagedClasses.ToList(),
+                    },
                 };
             }
             catch (System.Exception ex)
             {
-                return new BaseResponse<List<ClassResponseModel>>
+                return new DynamicResponse<ClassResponseModel>()
                 {
                     Code = 500,
                     Success = false,
                     Message = $"Lỗi: {ex.Message}",
-                    Data = null
+                    Data = null,
                 };
             }
         }

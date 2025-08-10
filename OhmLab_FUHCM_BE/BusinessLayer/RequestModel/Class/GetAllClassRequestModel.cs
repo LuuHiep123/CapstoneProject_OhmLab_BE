@@ -13,3 +13,4 @@ namespace BusinessLayer.RequestModel.Class
         public Guid? lecturerId { get; set; }
     }
 }
+
