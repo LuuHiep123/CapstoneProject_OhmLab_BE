@@ -4,7 +4,7 @@ namespace DataLayer.Repository
 {
     public interface IScheduleRepository
     {
-        Task<IEnumerable<Schedule>> GetAllAsync();
+        Task<List<Schedule>> GetAllAsync();
         Task<Schedule> GetByIdAsync(int id);
         Task<IEnumerable<Schedule>> GetByClassIdAsync(int classId);
         Task<IEnumerable<Schedule>> GetByLecturerIdAsync(Guid lecturerId);

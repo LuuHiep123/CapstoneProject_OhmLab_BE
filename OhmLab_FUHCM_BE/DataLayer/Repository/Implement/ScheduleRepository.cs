@@ -14,7 +14,7 @@ namespace DataLayer.Repository.Implement
             _DBContext = OhmLab_DBContext;
         }
 
-        public async Task<IEnumerable<Schedule>> GetAllAsync()
+        public async Task<List<Schedule>> GetAllAsync()
         {
             try
             {
@@ -26,6 +26,8 @@ namespace DataLayer.Repository.Implement
                     .Include(s => s.Class)
                         .ThenInclude(c => c.ScheduleType)
                             .ThenInclude(st => st.Slot)
+                    .Include(s => s.Class)
+                        .ThenInclude(c => c.ClassUsers)
                     .Include(s => s.Reports)
                     .OrderBy(s => s.ScheduleDate)
                     .ToListAsync();

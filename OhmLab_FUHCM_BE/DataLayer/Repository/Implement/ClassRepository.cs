@@ -76,5 +76,11 @@ namespace DataLayer.Repository.Implement
         {
             return await _DBContext.Classes.AnyAsync(c => c.ClassId == id);
         }
+
+        public async Task<Class> GetByName(string name)
+        {
+            var Class = await _DBContext.Classes.FirstOrDefaultAsync(c => c.ClassName.Equals(name));
+            return Class;
+        }
     }
 } 

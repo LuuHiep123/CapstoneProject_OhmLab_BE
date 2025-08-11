@@ -60,12 +60,11 @@ namespace BusinessLayer.Service.Implement
                         };
                     }
                 }
-
                 // Validation cho ScheduleTypeId nếu có
                 if (model.ScheduleTypeId.HasValue)
                 {
-                    var scheduleType = await _scheduleTypeRepository.GetByIdAsync(model.ScheduleTypeId.Value);
-                    if (scheduleType == null)
+                    var scheduleTypeCheck = await _scheduleTypeRepository.GetByIdAsync(model.ScheduleTypeId.Value);
+                    if (scheduleTypeCheck == null)
                     {
                         return new BaseResponse<ClassResponseModel>
                         {
@@ -77,6 +76,18 @@ namespace BusinessLayer.Service.Implement
                     }
                 }
 
+                var classCheckName = await _classRepository.GetByName(model.ClassName);
+                if(classCheckName != null)
+                {
+                    return new BaseResponse<ClassResponseModel>() 
+                    {
+                        Code = 401,
+                        Success = false,
+                        Message = "trùng tên lớp!",
+                        Data = null
+                    };
+                }
+
                 var classEntity = new Class
                 {
                     SubjectId = model.SubjectId,
@@ -84,19 +95,176 @@ namespace BusinessLayer.Service.Implement
                     ScheduleTypeId = model.ScheduleTypeId,
                     ClassName = model.ClassName,
                     ClassDescription = model.ClassDescription,
-                    ClassStatus = "Valid"
+                    ClassStatus = "v"
                 };
 
-                var result = await _classRepository.CreateAsync(classEntity);
-                var response = _mapper.Map<ClassResponseModel>(result);
 
+                // Kiểm tra ScheduleType đã được sử dụng bởi lớp khác chưa
+                var listClass = await _classRepository.GetAllAsync();
+                var existingClass = listClass.FirstOrDefault(c => c.ScheduleTypeId == model.ScheduleTypeId && c.ClassStatus.Equals("Valid"));
+                if (existingClass != null)
+                {
+                    return new BaseResponse<ClassResponseModel>
+                    {
+                        Code = 409,
+                        Success = false,
+                        Message = $"Lịch học này đã được sử dụng bởi lớp {existingClass.ClassName}!",
+                        Data = null
+                    };
+                }
+
+                var result = await _classRepository.CreateAsync(classEntity);
+
+                var subject = await _subjectRepository.GetSubjectById(result.SubjectId);
+                if (subject == null)
+                {
+                    return new BaseResponse<ClassResponseModel>
+                    {
+                        Code = 404,
+                        Success = false,
+                        Message = "Không tìm thấy môn!",
+                        Data = null
+                    };
+                }
+                var semesterSubject = await _semesterSubjectRepository.GetBySubjectIdAsync(subject.SubjectId);
+                if (semesterSubject == null)
+                {
+                    return new BaseResponse<ClassResponseModel>
+                    {
+                        Code = 404,
+                        Success = false,
+                        Message = "Không tìm thấy kỳ môn",
+                        Data = null
+                    };
+                }
+                var semester = await _semesterRepository.GetByIdAsync(semesterSubject.SemesterId);
+                if (semester == null)
+                {
+                    return new BaseResponse<ClassResponseModel>
+                    {
+                        Code = 404,
+                        Success = false,
+                        Message = "Không tìm thấy kỳ!",
+                        Data = null
+                    };
+                }
+                if (model.ScheduleTypeId.HasValue)
+                {
+                    var scheduleType = await _scheduleTypeRepository.GetByIdAsync(model.ScheduleTypeId.Value);
+                    if (scheduleType.ScheduleTypeDow.ToLower().Contains("mon"))
+                    {
+                        var startDate = semester.SemesterStartDate;
+                        for (var i = 0; i < 10; i++)
+                        {
+                            var schedule = new Schedule()
+                            {
+                                ClassId = result.ClassId,
+                                ScheduleName = "schedule",
+                                ScheduleDescription = "schedule for Lab room FPT HCM",
+                                ScheduleDate = startDate,
+                            };
+                            await _scheduleRepository.CreateAsync(schedule);
+
+                            startDate = startDate.AddDays(3);
+                            var schedule1 = new Schedule()
+                            {
+                                ClassId = result.ClassId,
+                                ScheduleName = "schedule",
+                                ScheduleDescription = "schedule for Lab room FPT HCM",
+                                ScheduleDate = startDate,
+                            };
+                            await _scheduleRepository.CreateAsync(schedule1);
+                            startDate = startDate.AddDays(4);
+                        }
+                        var response = _mapper.Map<ClassResponseModel>(result);
+                        return new BaseResponse<ClassResponseModel>
+                        {
+                            Code = 200,
+                            Success = true,
+                            Message = "Tạo lớp học thành công!",
+                            Data = response
+                        };
+                    }
+                    if (scheduleType.ScheduleTypeDow.ToLower().Contains("tue"))
+                    {
+                        var startDate = semester.SemesterStartDate.AddDays(1);
+                        for (var i = 0; i < 10; i++)
+                        {
+                            var schedule = new Schedule()
+                            {
+                                ClassId = result.ClassId,
+                                ScheduleName = "schedule",
+                                ScheduleDescription = "schedule for Lab room FPT HCM",
+                                ScheduleDate = startDate,
+                            };
+                            await _scheduleRepository.CreateAsync(schedule);
+
+                            startDate = startDate.AddDays(3);
+                            var schedule1 = new Schedule()
+                            {
+                                ClassId = result.ClassId,
+                                ScheduleName = "schedule",
+                                ScheduleDescription = "schedule for Lab room FPT HCM",
+                                ScheduleDate = startDate,
+                            };
+                            await _scheduleRepository.CreateAsync(schedule1);
+
+                            startDate = startDate.AddDays(4);
+                        }
+
+                        var response = _mapper.Map<ClassResponseModel>(result);
+                        return new BaseResponse<ClassResponseModel>
+                        {
+                            Code = 200,
+                            Success = true,
+                            Message = "Tạo lớp học thành công!",
+                            Data = response
+                        };
+                    }
+                    if (scheduleType.ScheduleTypeDow.ToLower().Contains("wed"))
+                    {
+                        var startDate = semester.SemesterStartDate.AddDays(2);
+                        for (var i = 0; i < 10; i++)
+                        {
+                            var schedule = new Schedule()
+                            {
+                                ClassId = result.ClassId,
+                                ScheduleName = "schedule",
+                                ScheduleDescription = "schedule for Lab room FPT HCM",
+                                ScheduleDate = startDate,
+                            };
+                            await _scheduleRepository.CreateAsync(schedule);
+
+                            startDate = startDate.AddDays(3);
+                            var schedule1 = new Schedule()
+                            {
+                                ClassId = result.ClassId,
+                                ScheduleName = "schedule",
+                                ScheduleDescription = "schedule for Lab room FPT HCM",
+                                ScheduleDate = startDate,
+                            };
+                            await _scheduleRepository.CreateAsync(schedule1);
+                            startDate = startDate.AddDays(4);
+                        }
+
+                        var response = _mapper.Map<ClassResponseModel>(result);
+                        return new BaseResponse<ClassResponseModel>
+                        {
+                            Code = 200,
+                            Success = true,
+                            Message = "Tạo lớp học thành công!",
+                            Data = response
+                        };
+                    }
+                }
                 return new BaseResponse<ClassResponseModel>
                 {
                     Code = 200,
                     Success = true,
-                    Message = "Tạo lớp học thành công!",
-                    Data = response
+                    Message = "Tạo lớp học thất bại!",
+                    Data = null
                 };
+
             }
             catch (System.Exception ex)
             {
@@ -437,7 +605,7 @@ namespace BusinessLayer.Service.Implement
             try
             {
                 var Class = await _classRepository.GetByIdAsync(model.ClassId);
-                if(Class == null)
+                if (Class == null)
                 {
                     return new BaseResponse<bool>
                     {
@@ -462,7 +630,7 @@ namespace BusinessLayer.Service.Implement
 
                 // Kiểm tra ScheduleType đã được sử dụng bởi lớp khác chưa
                 var listClass = await _classRepository.GetAllAsync();
-                var existingClass = listClass.FirstOrDefault(c => c.ScheduleTypeId == model.ScheduleTypeId);
+                var existingClass = listClass.FirstOrDefault(c => c.ScheduleTypeId == model.ScheduleTypeId && c.ClassStatus.Equals("Active"));
                 if (existingClass != null)
                 {
                     return new BaseResponse<bool>
@@ -470,69 +638,6 @@ namespace BusinessLayer.Service.Implement
                         Code = 409,
                         Success = false,
                         Message = $"Lịch học này đã được sử dụng bởi lớp {existingClass.ClassName}!",
-                        Data = false
-                    };
-                }
-
-                // Lấy thông tin subject
-                var subject = await _subjectRepository.GetSubjectById(Class.SubjectId);
-                if (subject == null)
-                {
-                    return new BaseResponse<bool>
-                    {
-                        Code = 404,
-                        Success = false,
-                        Message = "Không tìm thấy môn học!",
-                        Data = false
-                    };
-                }
-
-                // Kiểm tra môn học có lab không
-                var labs = await _labRepository.GetLabsBySubjectId(subject.SubjectId);
-                if (!labs.Any())
-                {
-                    return new BaseResponse<bool>
-                    {
-                        Code = 400,
-                        Success = false,
-                        Message = $"Môn học {subject.SubjectName} không có bài lab nào! Không thể tạo lịch thực hành.",
-                        Data = false
-                    };
-                }
-
-                // Lọc chỉ những lab có trạng thái Active
-                var activeLabs = labs.Where(l => l.LabStatus.ToLower() == "active").ToList();
-                if (!activeLabs.Any())
-                {
-                    return new BaseResponse<bool>
-                    {
-                        Code = 400,
-                        Success = false,
-                        Message = $"Môn học {subject.SubjectName} không có bài lab nào đang hoạt động!",
-                        Data = false
-                    };
-                }
-
-                var semesterSubject = await _semesterSubjectRepository.GetBySubjectIdAsync(subject.SubjectId);
-                if (semesterSubject == null)
-                {
-                    return new BaseResponse<bool>
-                    {
-                        Code = 404,
-                        Success = false,
-                        Message = "Không tìm thấy thông tin học kỳ của môn học!",
-                        Data = false
-                    };
-                }
-
-                var semester = await _semesterRepository.GetByIdAsync(semesterSubject.SemesterId);
-                if (semester == null)
-                {
-                    return new BaseResponse<bool>
-                    {
-                        Code = 404,
-                        Success = false,
-                        Message = "Không tìm thấy học kỳ!",
                         Data = false
                     };
                 }
@@ -549,62 +654,155 @@ namespace BusinessLayer.Service.Implement
                         Data = false
                     };
                 }
-
-                // Xác định ngày bắt đầu dựa trên ngày trong tuần
-                var startDate = GetStartDateByDayOfWeek(semester.SemesterStartDate, scheduleType.ScheduleTypeDow);
-                if (startDate == null)
+                var subject = await _subjectRepository.GetSubjectById(Class.SubjectId);
+                if (subject == null)
                 {
                     return new BaseResponse<bool>
                     {
-                        Code = 400,
+                        Code = 404,
                         Success = false,
-                        Message = "Không thể xác định ngày bắt đầu cho lịch học!",
+                        Message = "Không tìm thấy môn!",
                         Data = false
                     };
                 }
-
-                // Tạo lịch thực hành dựa trên số lượng lab có sẵn
-                var labCount = activeLabs.Count;
-                var weekCount = Math.Min(labCount, 5); // Tối đa 5 tuần
-
-                for (var week = 1; week <= weekCount; week++)
+                var semesterSubject = await _semesterSubjectRepository.GetBySubjectIdAsync(subject.SubjectId);
+                if (semesterSubject == null)
                 {
-                    var currentLab = activeLabs[week - 1]; // Lấy lab tương ứng với tuần
-                    
-                    // Buổi 1 trong tuần
-                    var schedule1 = new Schedule()
+                    return new BaseResponse<bool>
                     {
-                        ClassId = model.ClassId,
-                        ScheduleName = $"Buổi thực hành {week}.1 - {currentLab.LabName}",
-                        ScheduleDescription = $"Buổi thực hành tuần {week} - {currentLab.LabName} - {scheduleType.ScheduleTypeName}",
-                        ScheduleDate = startDate.Value.AddDays((week - 1) * 7),
+                        Code = 404,
+                        Success = false,
+                        Message = "Không tìm thấy kỳ môn",
+                        Data = false
                     };
-                    await _scheduleRepository.CreateAsync(schedule1);
-
-                    // Buổi 2 trong tuần (cách 3 ngày) - chỉ tạo nếu còn lab
-                    if (week < labCount)
+                }
+                var semester = await _semesterRepository.GetByIdAsync(semesterSubject.SemesterId);
+                if (semester == null)
+                {
+                    return new BaseResponse<bool>
                     {
-                        var nextLab = activeLabs[week]; // Lấy lab tiếp theo
-                        var schedule2 = new Schedule()
+                        Code = 404,
+                        Success = false,
+                        Message = "Không tìm thấy kỳ!",
+                        Data = false
+                    };
+                }
+                if (scheduleType.ScheduleTypeDow.ToLower().Contains("mon"))
+                {
+                    var startDate = semester.SemesterStartDate;
+                    for (var i = 0; i < 10; i++)
+                    {
+                        var schedule = new Schedule()
                         {
                             ClassId = model.ClassId,
-                            ScheduleName = $"Buổi thực hành {week}.2 - {nextLab.LabName}",
-                            ScheduleDescription = $"Buổi thực hành tuần {week} - {nextLab.LabName} - {scheduleType.ScheduleTypeName}",
-                            ScheduleDate = startDate.Value.AddDays((week - 1) * 7 + 3),
+                            ScheduleName = "schedule",
+                            ScheduleDescription = "schedule for Lab room FPT HCM",
+                            ScheduleDate = startDate,
                         };
-                        await _scheduleRepository.CreateAsync(schedule2);
-                    }
-                }
+                        await _scheduleRepository.CreateAsync(schedule);
 
-                // Cập nhật ScheduleTypeId cho lớp
-                Class.ScheduleTypeId = model.ScheduleTypeId;
-                await _classRepository.UpdateAsync(Class);
+                        startDate = startDate.AddDays(3);
+                        var schedule1 = new Schedule()
+                        {
+                            ClassId = model.ClassId,
+                            ScheduleName = "schedule",
+                            ScheduleDescription = "schedule for Lab room FPT HCM",
+                            ScheduleDate = startDate,
+                        };
+                        await _scheduleRepository.CreateAsync(schedule1);
+                        startDate = startDate.AddDays(4);
+                    }
+                    Class.ScheduleTypeId = model.ScheduleTypeId;
+                    await _classRepository.UpdateAsync(Class);
+                    return new BaseResponse<bool>()
+                    {
+                        Code = 200,
+                        Success = true,
+                        Message = "add schedule success!",
+                        Data = true
+                    };
+                }
+                if (scheduleType.ScheduleTypeDow.ToLower().Contains("tue"))
+                {
+                    var startDate = semester.SemesterStartDate.AddDays(1);
+                    for (var i = 0; i < 10; i++)
+                    {
+                        var schedule = new Schedule()
+                        {
+                            ClassId = model.ClassId,
+                            ScheduleName = "schedule",
+                            ScheduleDescription = "schedule for Lab room FPT HCM",
+                            ScheduleDate = startDate,
+                        };
+                        await _scheduleRepository.CreateAsync(schedule);
+
+                        startDate = startDate.AddDays(3);
+                        var schedule1 = new Schedule()
+                        {
+                            ClassId = model.ClassId,
+                            ScheduleName = "schedule",
+                            ScheduleDescription = "schedule for Lab room FPT HCM",
+                            ScheduleDate = startDate,
+                        };
+                        await _scheduleRepository.CreateAsync(schedule1);
+
+                        startDate = startDate.AddDays(4);
+                    }
+
+                    Class.ScheduleTypeId = model.ScheduleTypeId;
+                    await _classRepository.UpdateAsync(Class);
+
+                    return new BaseResponse<bool>()
+                    {
+                        Code = 200,
+                        Success = true,
+                        Message = "add schedule success!",
+                        Data = true
+                    };
+                }
+                if (scheduleType.ScheduleTypeDow.ToLower().Contains("wed"))
+                {
+                    var startDate = semester.SemesterStartDate.AddDays(2);
+                    for (var i = 0; i < 10; i++)
+                    {
+                        var schedule = new Schedule()
+                        {
+                            ClassId = model.ClassId,
+                            ScheduleName = "schedule",
+                            ScheduleDescription = "schedule for Lab room FPT HCM",
+                            ScheduleDate = startDate,
+                        };
+                        await _scheduleRepository.CreateAsync(schedule);
+
+                        startDate = startDate.AddDays(3);
+                        var schedule1 = new Schedule()
+                        {
+                            ClassId = model.ClassId,
+                            ScheduleName = "schedule",
+                            ScheduleDescription = "schedule for Lab room FPT HCM",
+                            ScheduleDate = startDate,
+                        };
+                        await _scheduleRepository.CreateAsync(schedule1);
+                        startDate = startDate.AddDays(4);
+                    }
+
+                    Class.ScheduleTypeId = model.ScheduleTypeId;
+                    await _classRepository.UpdateAsync(Class);
+
+                    return new BaseResponse<bool>()
+                    {
+                        Code = 200,
+                        Success = true,
+                        Message = "add schedule success!",
+                        Data = true
+                    };
+                }
 
                 return new BaseResponse<bool>()
                 {
-                    Code = 200,
+                    Code = 401,
                     Success = true,
-                    Message = $"Tạo lịch thực hành thành công! Đã tạo {labCount} buổi thực hành cho {labCount} bài lab.",
+                    Message = "xếp lịch thất bại",
                     Data = true
                 };
             }
@@ -619,7 +817,7 @@ namespace BusinessLayer.Service.Implement
                 };
             }
         }
-
+            
         public async Task<BaseResponse<List<LabResponseModel>>> GetLabsByClassIdAsync(int classId)
         {
             try
