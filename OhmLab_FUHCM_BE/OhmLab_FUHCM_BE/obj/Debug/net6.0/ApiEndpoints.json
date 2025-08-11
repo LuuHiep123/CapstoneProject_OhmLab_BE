@@ -1479,22 +1479,6 @@
   },
   {
     "ContainingType": "OhmLab_FUHCM_BE.Controller.SemesterController",
-    "Method": "GetSemesterById",
-    "RelativePath": "api/semester/{id}",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Int32",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "OhmLab_FUHCM_BE.Controller.SemesterController",
     "Method": "UpdateSemester",
     "RelativePath": "api/semester/{id}",
     "HttpMethod": "PUT",
