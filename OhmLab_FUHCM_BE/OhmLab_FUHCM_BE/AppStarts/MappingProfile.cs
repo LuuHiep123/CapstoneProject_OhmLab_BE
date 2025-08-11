@@ -23,6 +23,7 @@ using BusinessLayer.RequestModel.Slot;
 using BusinessLayer.ResponseModel.Slot;
 using BusinessLayer.RequestModel.ScheduleType;
 using BusinessLayer.ResponseModel.ScheduleType;
+using BusinessLayer.ResponseModel.Schedule;
 
 namespace OhmLab_FUHCM_BE.AppStarts
 {
@@ -114,21 +115,10 @@ namespace OhmLab_FUHCM_BE.AppStarts
             //Class
             CreateMap<Class, ClassResponseModel>()
                 .ForMember(dest => dest.SubjectName, opt => opt.MapFrom(src => src.Subject != null ? src.Subject.SubjectName : null))
-                .ForMember(dest => dest.LecturerName, opt => opt.MapFrom(src => src.Lecturer != null ? src.Lecturer.UserFullName : null))
-                .ForMember(dest => dest.ScheduleTypeDow, opt => opt.MapFrom(src => src.ScheduleType != null ? src.ScheduleType.ScheduleTypeDow : null))
-                .ForMember(dest => dest.SlotStartTime, opt => opt.MapFrom(src => src.ScheduleType != null && src.ScheduleType.Slot != null ? src.ScheduleType.Slot.SlotStartTime : null))
-                .ForMember(dest => dest.SlotEndTime, opt => opt.MapFrom(src => src.ScheduleType != null && src.ScheduleType.Slot != null ? src.ScheduleType.Slot.SlotEndTime : null))
-                .ForMember(dest => dest.SemesterName, opt => opt.MapFrom(src => src.Subject != null && src.Subject.SemesterSubjects != null && src.Subject.SemesterSubjects.Any() ? src.Subject.SemesterSubjects.First().Semester.SemesterName : null));
+                .ForMember(dest => dest.LecturerName, opt => opt.MapFrom(src => src.Lecturer != null ? src.Lecturer.UserFullName : null));
             CreateMap<ClassResponseModel, Class>();
             CreateMap<CreateClassRequestModel, Class>()
                 .ForMember(dest => dest.ClassId, opt => opt.Ignore());
-
-            //ClassUser
-            CreateMap<ClassUser, ClassUserResponseModel>()
-                .ForMember(dest => dest.ClassName, opt => opt.MapFrom(src => src.Class != null ? src.Class.ClassName : null))
-                .ForMember(dest => dest.UserName, opt => opt.MapFrom(src => src.User != null ? src.User.UserFullName : null))
-                .ForMember(dest => dest.UserEmail, opt => opt.MapFrom(src => src.User != null ? src.User.UserEmail : null))
-                .ForMember(dest => dest.UserRole, opt => opt.MapFrom(src => src.User != null ? src.User.UserRoleName : null));
             
             //Slot
             CreateMap<CreateSlotRequestModel, Slot>()
@@ -145,6 +135,23 @@ namespace OhmLab_FUHCM_BE.AppStarts
                 .ForMember(dest => dest.SlotStartTime, opt => opt.MapFrom(src => src.Slot != null ? src.Slot.SlotStartTime : null))
                 .ForMember(dest => dest.SlotEndTime, opt => opt.MapFrom(src => src.Slot != null ? src.Slot.SlotEndTime : null))
                 .ForMember(dest => dest.SlotDescription, opt => opt.MapFrom(src => src.Slot != null ? src.Slot.SlotDescription : null));
+
+            //Schedule
+            CreateMap<Schedule, ScheduleResponseAllModel>()
+                .ForMember(dest => dest.ClassName, opt => opt.MapFrom(src => src.Class.ClassName))
+                .ForMember(dest => dest.ClassName, opt => opt.MapFrom(src => src.Class.ClassName))
+                .ForMember(dest => dest.SubjectName, opt => opt.MapFrom(src => src.Class.Subject.SubjectName))
+                .ForMember(dest => dest.SubjectId, opt => opt.MapFrom(src => src.Class.Subject.SubjectId))
+                .ForMember(dest => dest.LecturerName, opt => opt.MapFrom(src => src.Class.Lecturer.UserFullName))
+                .ForMember(dest => dest.LecturerId, opt => opt.MapFrom(src => src.Class.Lecturer.UserId))
+                .ForMember(dest => dest.SlotName, opt => opt.MapFrom(src => src.Class.ScheduleType.Slot.SlotName))
+                .ForMember(dest => dest.SlotId, opt => opt.MapFrom(src => src.Class.ScheduleType.Slot.SlotId))
+                .ForMember(dest => dest.SlotStartTime, opt => opt.MapFrom(src => src.Class.ScheduleType.Slot.SlotStartTime))
+                .ForMember(dest => dest.SlotEndTime, opt => opt.MapFrom(src => src.Class.ScheduleType.Slot.SlotEndTime));
+
+
+
+
         }
     }
 }

@@ -34,20 +34,31 @@ namespace OhmLab_FUHCM_BE.Controller
         [HttpGet]
         public async Task<IActionResult> GetAllSemesters()
         {
-            var model = new GetAllSemesterRequestModel
+            var result = await _semesterService.GetAllAsync();
+            return Ok(new BaseResponse<IEnumerable<SemesterResponseModel>>
             {
-                pageNum = 1,
-                pageSize = 10,
-                keyWord = null,
-                status = null
-            };
-            var result = await _semesterService.GetAllAsync(model);
-            return StatusCode(result.Code, result);
+                Code = 200,
+                Success = true,
+                Message = "Lấy danh sách học kỳ thành công!",
+                Data = result
+            });
         }
 
-      
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetSemesterById(int id)
+        {
+            var result = await _semesterService.GetByIdAsync(id);
+            if (result == null)
+                return NotFound(new BaseResponse<object> { Code = 404, Success = false, Message = "Không tìm thấy học kỳ!", Data = null });
+            return Ok(new BaseResponse<SemesterResponseModel>
+            {
+                Code = 200,
+                Success = true,
+                Message = "Lấy học kỳ thành công!",
+                Data = result
+            });
+        }
 
-       
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateSemester(int id, [FromBody] UpdateSemesterRequestModel model)
         {

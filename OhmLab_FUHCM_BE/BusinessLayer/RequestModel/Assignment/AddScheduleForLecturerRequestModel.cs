@@ -21,4 +21,3 @@ namespace BusinessLayer.RequestModel.Assignment
         public string? Description { get; set; }
     }
 }
-

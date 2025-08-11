@@ -253,10 +253,6 @@ namespace OhmLab_FUHCM_BE.Controller
                 c.ClassStatus,
                 c.SubjectId,
                 c.LecturerId,
-                ScheduleTypeDow = c.ScheduleType?.ScheduleTypeDow,
-                SlotStartTime = c.ScheduleType?.Slot?.SlotStartTime,
-                SlotEndTime = c.ScheduleType?.Slot?.SlotEndTime,
-                SemesterName = c.Subject?.SemesterSubjects?.FirstOrDefault()?.Semester?.SemesterName,
                 StudentCount = c.ClassUsers?.Count ?? 0,
                 TeamCount = c.Teams?.Count ?? 0,
                 Schedules = c.Schedules?.Select(s => new {
@@ -274,30 +270,6 @@ namespace OhmLab_FUHCM_BE.Controller
                 code = 200,
                 data = result
             });
-        }
-
-        [Authorize(Roles = "Admin,HeadOfDepartment")]
-        [HttpPost("AddScheduleForClass")]
-        public async Task<IActionResult> AddScheduleforClass([FromBody] AddScheduleForClassRequestModel model)
-        {
-            var result = await _assignmentService.AddScheduleForClassAsync(model);
-            return StatusCode(result.Code, result);
-        }
-
-        [Authorize(Roles = "Admin,HeadOfDepartment")]
-        [HttpPost("AddScheduleForLecturer")]
-        public async Task<IActionResult> AddScheduleForLecturer([FromBody] AddScheduleForLecturerRequestModel model)
-        {
-            try
-            {
-                var result = await _assignmentService.AddScheduleForLecturerAsync(model);
-                return StatusCode(result.Code, result);
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, "Error in AddScheduleForLecturer: {Message}", ex.Message);
-                return StatusCode(500, new { Code = 500, Success = false, Message = "Lỗi hệ thống!", Data = false });
-            }
         }
     }
 } 

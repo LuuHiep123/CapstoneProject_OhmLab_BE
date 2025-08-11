@@ -19,11 +19,8 @@ namespace DataLayer.Repository.Implement
         {
             return await _DBContext.Classes
                 .Include(c => c.Subject)
-                    .ThenInclude(s => s.SemesterSubjects)
-                        .ThenInclude(ss => ss.Semester)
                 .Include(c => c.Lecturer)
                 .Include(c => c.ScheduleType)
-                    .ThenInclude(st => st.Slot)
                 .Include(c => c.Teams)
                 .FirstOrDefaultAsync(c => c.ClassId == id);
         }
@@ -32,11 +29,8 @@ namespace DataLayer.Repository.Implement
         {
             return await _DBContext.Classes
                 .Include(c => c.Subject)
-                    .ThenInclude(s => s.SemesterSubjects)
-                        .ThenInclude(ss => ss.Semester)
                 .Include(c => c.Lecturer)
                 .Include(c => c.ScheduleType)
-                    .ThenInclude(st => st.Slot)
                 .Include(c => c.Teams)
                 .Where(c => c.LecturerId == lecturerId)
                 .ToListAsync();
@@ -46,11 +40,8 @@ namespace DataLayer.Repository.Implement
         {
             return await _DBContext.Classes
                 .Include(c => c.Subject)
-                    .ThenInclude(s => s.SemesterSubjects)
-                        .ThenInclude(ss => ss.Semester)
                 .Include(c => c.Lecturer)
                 .Include(c => c.ScheduleType)
-                    .ThenInclude(st => st.Slot)
                 .Include(c => c.Teams)
                 .ToListAsync();
         }
@@ -84,6 +75,12 @@ namespace DataLayer.Repository.Implement
         public async Task<bool> ExistsAsync(int id)
         {
             return await _DBContext.Classes.AnyAsync(c => c.ClassId == id);
+        }
+
+        public async Task<Class> GetByName(string name)
+        {
+            var Class = await _DBContext.Classes.FirstOrDefaultAsync(c => c.ClassName.Equals(name));
+            return Class;
         }
     }
 } 

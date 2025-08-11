@@ -8,6 +8,7 @@ namespace DataLayer.Repository
     public interface IClassRepository
     {
         Task<Class> GetByIdAsync(int id);
+        Task<Class> GetByName(string name);
         Task<List<Class>> GetByLecturerIdAsync(Guid lecturerId);
         Task<List<Class>> GetAllAsync();
         Task<Class> CreateAsync(Class classEntity);
