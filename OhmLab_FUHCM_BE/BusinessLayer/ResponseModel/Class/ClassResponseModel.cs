@@ -15,6 +15,17 @@ namespace BusinessLayer.ResponseModel.Class
         public string ClassStatus { get; set; }
         public string? SubjectName { get; set; }
         public string? LecturerName { get; set; }
+        
+        // Thêm các trường mới
+        public string? SemesterName { get; set; }
+        public DateTime? SemesterStartDate { get; set; }
+        public DateTime? SemesterEndDate { get; set; }
+        public string? ScheduleTypeName { get; set; }
+        public string? ScheduleTypeDow { get; set; }
+        public string? SlotName { get; set; }
+        public string? SlotStartTime { get; set; }
+        public string? SlotEndTime { get; set; }
+        
         public List<ClassUserResponseModel>? ClassUsers { get; set; }
     }
 } 

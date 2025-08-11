@@ -23,6 +23,8 @@ namespace DataLayer.Repository.Implement
                 .ThenInclude(ss => ss.Semester)
                 .Include(c => c.Lecturer)
                 .Include(c => c.ScheduleType)
+                .Include(c => c.ClassUsers)
+                .ThenInclude(cu => cu.User)
                 .Include(c => c.Teams)
                 .FirstOrDefaultAsync(c => c.ClassId == id);
         }
@@ -35,6 +37,8 @@ namespace DataLayer.Repository.Implement
                 .ThenInclude(ss => ss.Semester)
                 .Include(c => c.Lecturer)
                 .Include(c => c.ScheduleType)
+                .Include(c => c.ClassUsers)
+                .ThenInclude(cu => cu.User)
                 .Include(c => c.Teams)
                 .Where(c => c.LecturerId == lecturerId)
                 .ToListAsync();
@@ -48,6 +52,8 @@ namespace DataLayer.Repository.Implement
                 .ThenInclude(ss => ss.Semester)
                 .Include(c => c.Lecturer)
                 .Include(c => c.ScheduleType)
+                .Include(c => c.ClassUsers)
+                .ThenInclude(cu => cu.User)
                 .Include(c => c.Teams)
                 .ToListAsync();
         }
