@@ -340,6 +340,8 @@ namespace BusinessLayer.Service.Implement
                 }
 
                 existingClass.SubjectId = model.SubjectId;
+                existingClass.LecturerId = model.LecturerId;
+                existingClass.ScheduleTypeId = model.ScheduleTypeId;
                 existingClass.ClassName = model.ClassName;
                 existingClass.ClassDescription = model.ClassDescription;
                 existingClass.ClassStatus = model.ClassStatus;

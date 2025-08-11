@@ -18,5 +18,12 @@ namespace BusinessLayer.RequestModel.Class
 
         [StringLength(500)]
         public string? ClassDescription { get; set; }
+
+        // Additional fields for display
+        public string? ScheduleTypeDow { get; set; }
+        public string? SlotStartTime { get; set; }
+        public string? SlotEndTime { get; set; }
+        public string? LecturerName { get; set; }
+        public string? SubjectName { get; set; }
     }
 } 
