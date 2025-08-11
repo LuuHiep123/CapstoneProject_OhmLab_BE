@@ -36,7 +36,7 @@ namespace OhmLab_FUHCM_BE.Controller
             }
         }
 
-        [Authorize(Roles = "Admin,HeadOfDepartment")]
+        [Authorize(Roles = "Admin,HeadOfDepartment,Student")]
         [HttpGet("Student/{StudentId}")]
         public async Task<IActionResult> GetScheduleByStudentId(Guid StudentId)
         {
@@ -51,7 +51,7 @@ namespace OhmLab_FUHCM_BE.Controller
             }
         }
 
-        [Authorize(Roles = "Admin,HeadOfDepartment")]
+        [Authorize(Roles = "Admin,HeadOfDepartment,Lecturer")]
         [HttpGet("Lecture/{LectureId}")]
         public async Task<IActionResult> GetScheduleByLectureId(Guid LectureId)
         {
