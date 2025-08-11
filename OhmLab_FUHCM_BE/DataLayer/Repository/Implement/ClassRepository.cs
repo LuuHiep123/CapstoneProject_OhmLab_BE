@@ -19,6 +19,8 @@ namespace DataLayer.Repository.Implement
         {
             return await _DBContext.Classes
                 .Include(c => c.Subject)
+                .ThenInclude(s => s.SemesterSubjects)
+                .ThenInclude(ss => ss.Semester)
                 .Include(c => c.Lecturer)
                 .Include(c => c.ScheduleType)
                 .Include(c => c.Teams)
@@ -29,6 +31,8 @@ namespace DataLayer.Repository.Implement
         {
             return await _DBContext.Classes
                 .Include(c => c.Subject)
+                .ThenInclude(s => s.SemesterSubjects)
+                .ThenInclude(ss => ss.Semester)
                 .Include(c => c.Lecturer)
                 .Include(c => c.ScheduleType)
                 .Include(c => c.Teams)
@@ -40,6 +44,8 @@ namespace DataLayer.Repository.Implement
         {
             return await _DBContext.Classes
                 .Include(c => c.Subject)
+                .ThenInclude(s => s.SemesterSubjects)
+                .ThenInclude(ss => ss.Semester)
                 .Include(c => c.Lecturer)
                 .Include(c => c.ScheduleType)
                 .Include(c => c.Teams)

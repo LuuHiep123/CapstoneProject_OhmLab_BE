@@ -31,17 +31,11 @@ namespace OhmLab_FUHCM_BE.Controller
             });
         }
 
-        [HttpGet]
+        [HttpGet("GetAllSemesters")]
         public async Task<IActionResult> GetAllSemesters()
         {
             var result = await _semesterService.GetAllAsync();
-            return Ok(new BaseResponse<IEnumerable<SemesterResponseModel>>
-            {
-                Code = 200,
-                Success = true,
-                Message = "Lấy danh sách học kỳ thành công!",
-                Data = result
-            });
+            return StatusCode(result.Code, result);
         }
 
         [HttpGet("{id}")]

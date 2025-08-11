@@ -1,10 +1,12 @@
     using BusinessLayer.RequestModel.Semester;
+using BusinessLayer.ResponseModel.BaseResponse;
 using BusinessLayer.ResponseModel.Semester;
 using DataLayer.Entities;
 using DataLayer.Repository;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using X.PagedList.Extensions;
 
 namespace BusinessLayer.Service.Implement
 {
@@ -56,18 +58,66 @@ namespace BusinessLayer.Service.Implement
             };
         }
 
-        public async Task<IEnumerable<SemesterResponseModel>> GetAllAsync()
+        public async Task<DynamicResponse<SemesterResponseModel>> GetAllAsync()
         {
-            var semesters = await _semesterRepository.GetAllAsync();
-            return semesters.Select(s => new SemesterResponseModel
+            try
             {
-                SemesterId = s.SemesterId,
-                SemesterName = s.SemesterName,
-                SemesterStartDate = s.SemesterStartDate,
-                SemesterEndDate = s.SemesterEndDate,
-                SemesterDescription = s.SemesterDescription,
-                SemesterStatus = s.SemesterStatus
-            });
+                const int DefaultPageNum = 1;
+                const int DefaultPageSize = 10;
+
+                var semesters = await _semesterRepository.GetAllAsync();
+
+                var ordered = semesters
+                    .OrderBy(s => s.SemesterName)
+                    .Select(s => new SemesterResponseModel
+                    {
+                        SemesterId = s.SemesterId,
+                        SemesterName = s.SemesterName,
+                        SemesterStartDate = s.SemesterStartDate,
+                        SemesterEndDate = s.SemesterEndDate,
+                        SemesterDescription = s.SemesterDescription,
+                        SemesterStatus = s.SemesterStatus
+                    })
+                    .ToList();
+
+                var pagedSemesters = ordered.ToPagedList(DefaultPageNum, DefaultPageSize);
+
+                return new DynamicResponse<SemesterResponseModel>
+                {
+                    Code = 200,
+                    Success = true,
+                    Message = "Lấy danh sách học kỳ thành công!",
+                    Data = new MegaData<SemesterResponseModel>
+                    {
+                        PageInfo = new PagingMetaData
+                        {
+                            Page = pagedSemesters.PageNumber,
+                            Size = pagedSemesters.PageSize,
+                            Sort = "Ascending",
+                            Order = "Name",
+                            TotalPage = pagedSemesters.PageCount,
+                            TotalItem = pagedSemesters.TotalItemCount,
+                        },
+                        SearchInfo = new SearchCondition
+                        {
+                            keyWord = null,
+                            role = null,
+                            status = null
+                        },
+                        PageData = pagedSemesters.ToList(),
+                    }
+                };
+            }
+            catch (System.Exception ex)
+            {
+                return new DynamicResponse<SemesterResponseModel>
+                {
+                    Code = 500,
+                    Success = false,
+                    Message = $"Lỗi: {ex.Message}",
+                    Data = null
+                };
+            }
         }
 
         public async Task<SemesterResponseModel> UpdateAsync(int id, UpdateSemesterRequestModel model)

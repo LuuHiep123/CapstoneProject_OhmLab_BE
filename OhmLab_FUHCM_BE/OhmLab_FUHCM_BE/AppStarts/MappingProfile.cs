@@ -119,8 +119,16 @@ namespace OhmLab_FUHCM_BE.AppStarts
             CreateMap<ClassResponseModel, Class>();
             CreateMap<CreateClassRequestModel, Class>()
                 .ForMember(dest => dest.ClassId, opt => opt.Ignore());
-            
-            //Slot
+            //classuser
+            // ClassUser -> ClassUserResponseModel
+            CreateMap<ClassUser, ClassUserResponseModel>()
+                .ForMember(dest => dest.ClassUserId, opt => opt.MapFrom(src => src.ClassUserId))
+                .ForMember(dest => dest.ClassId, opt => opt.MapFrom(src => src.ClassId))
+                .ForMember(dest => dest.UserId, opt => opt.MapFrom(src => src.UserId))
+                .ForMember(dest => dest.ClassName, opt => opt.MapFrom(src => src.Class != null ? src.Class.ClassName : null))
+                .ForMember(dest => dest.UserName, opt => opt.MapFrom(src => src.User != null ? src.User.UserFullName : null))
+                .ForMember(dest => dest.UserEmail, opt => opt.MapFrom(src => src.User != null ? src.User.UserEmail : null))
+                .ForMember(dest => dest.UserRole, opt => opt.MapFrom(src => src.User != null ? src.User.UserRoleName : null));
             CreateMap<CreateSlotRequestModel, Slot>()
                .ForMember(dest => dest.SlotId, opt => opt.Ignore());
             CreateMap<Slot, SlotResponseModel>().ReverseMap();

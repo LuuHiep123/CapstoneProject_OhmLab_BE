@@ -44,30 +44,8 @@ namespace OhmLab_FUHCM_BE.Controller
             return StatusCode(result.Code, result);
         }
 
-        [Authorize(Roles = "Admin,HeadOfDepartment,Lecturer")]
-        [HttpGet("paged")]
-        public async Task<IActionResult> GetAllClassesPaged([FromQuery] int page = 1, [FromQuery] int size = 10, [FromQuery] string? keyword = null, [FromQuery] string? status = null, [FromQuery] int? subjectId = null, [FromQuery] Guid? lecturerId = null)
-        {
-            var model = new GetAllClassRequestModel
-            {
-                pageNum = page,
-                pageSize = size,
-                keyWord = keyword,
-                status = status,
-                subjectId = subjectId,
-                lecturerId = lecturerId
-            };
-            var result = await _classService.GetAllClassesAsync(model);
-            return StatusCode(result.Code, result);
-        }
 
-        [Authorize(Roles = "Admin,HeadOfDepartment,Lecturer")]
-        [HttpPost("GetAllClasses")]
-        public async Task<IActionResult> GetAllClasses([FromBody] GetAllClassRequestModel model)
-        {
-            var result = await _classService.GetAllClassesAsync(model);
-            return StatusCode(result.Code, result);
-        }
+      
 
         [Authorize(Roles = "Admin,HeadOfDepartment,Lecturer")]
         [HttpGet("lecturer/{lecturerId}")]
