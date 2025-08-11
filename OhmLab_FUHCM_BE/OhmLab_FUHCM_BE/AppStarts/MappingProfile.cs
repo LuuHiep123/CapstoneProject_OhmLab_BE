@@ -114,10 +114,21 @@ namespace OhmLab_FUHCM_BE.AppStarts
             //Class
             CreateMap<Class, ClassResponseModel>()
                 .ForMember(dest => dest.SubjectName, opt => opt.MapFrom(src => src.Subject != null ? src.Subject.SubjectName : null))
-                .ForMember(dest => dest.LecturerName, opt => opt.MapFrom(src => src.Lecturer != null ? src.Lecturer.UserFullName : null));
+                .ForMember(dest => dest.LecturerName, opt => opt.MapFrom(src => src.Lecturer != null ? src.Lecturer.UserFullName : null))
+                .ForMember(dest => dest.ScheduleTypeDow, opt => opt.MapFrom(src => src.ScheduleType != null ? src.ScheduleType.ScheduleTypeDow : null))
+                .ForMember(dest => dest.SlotStartTime, opt => opt.MapFrom(src => src.ScheduleType != null && src.ScheduleType.Slot != null ? src.ScheduleType.Slot.SlotStartTime : null))
+                .ForMember(dest => dest.SlotEndTime, opt => opt.MapFrom(src => src.ScheduleType != null && src.ScheduleType.Slot != null ? src.ScheduleType.Slot.SlotEndTime : null))
+                .ForMember(dest => dest.SemesterName, opt => opt.MapFrom(src => src.Subject != null && src.Subject.SemesterSubjects != null && src.Subject.SemesterSubjects.Any() ? src.Subject.SemesterSubjects.First().Semester.SemesterName : null));
             CreateMap<ClassResponseModel, Class>();
             CreateMap<CreateClassRequestModel, Class>()
                 .ForMember(dest => dest.ClassId, opt => opt.Ignore());
+
+            //ClassUser
+            CreateMap<ClassUser, ClassUserResponseModel>()
+                .ForMember(dest => dest.ClassName, opt => opt.MapFrom(src => src.Class != null ? src.Class.ClassName : null))
+                .ForMember(dest => dest.UserName, opt => opt.MapFrom(src => src.User != null ? src.User.UserFullName : null))
+                .ForMember(dest => dest.UserEmail, opt => opt.MapFrom(src => src.User != null ? src.User.UserEmail : null))
+                .ForMember(dest => dest.UserRole, opt => opt.MapFrom(src => src.User != null ? src.User.UserRoleName : null));
             
             //Slot
             CreateMap<CreateSlotRequestModel, Slot>()

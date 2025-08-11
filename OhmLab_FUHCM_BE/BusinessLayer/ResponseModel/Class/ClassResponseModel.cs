@@ -15,6 +15,10 @@ namespace BusinessLayer.ResponseModel.Class
         public string ClassStatus { get; set; }
         public string? SubjectName { get; set; }
         public string? LecturerName { get; set; }
+        public string? ScheduleTypeDow { get; set; }
+        public string? SlotStartTime { get; set; }
+        public string? SlotEndTime { get; set; }
+        public string? SemesterName { get; set; }
         public List<ClassUserResponseModel>? ClassUsers { get; set; }
     }
 } 

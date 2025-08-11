@@ -26,5 +26,12 @@ namespace BusinessLayer.RequestModel.Class
         [Required]
         [StringLength(50)]
         public string ClassStatus { get; set; } = "Active";
+
+        // Additional fields for display
+        public string? ScheduleTypeDow { get; set; }
+        public string? SlotStartTime { get; set; }
+        public string? SlotEndTime { get; set; }
+        public string? LecturerName { get; set; }
+        public string? SubjectName { get; set; }
     }
 }

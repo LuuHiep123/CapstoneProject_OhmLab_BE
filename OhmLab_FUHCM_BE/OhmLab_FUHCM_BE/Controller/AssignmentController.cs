@@ -253,6 +253,10 @@ namespace OhmLab_FUHCM_BE.Controller
                 c.ClassStatus,
                 c.SubjectId,
                 c.LecturerId,
+                ScheduleTypeDow = c.ScheduleType?.ScheduleTypeDow,
+                SlotStartTime = c.ScheduleType?.Slot?.SlotStartTime,
+                SlotEndTime = c.ScheduleType?.Slot?.SlotEndTime,
+                SemesterName = c.Subject?.SemesterSubjects?.FirstOrDefault()?.Semester?.SemesterName,
                 StudentCount = c.ClassUsers?.Count ?? 0,
                 TeamCount = c.Teams?.Count ?? 0,
                 Schedules = c.Schedules?.Select(s => new {
