@@ -118,9 +118,24 @@ namespace OhmLab_FUHCM_BE.AppStarts
             CreateMap<Class, ClassResponseModel>()
                 .ForMember(dest => dest.SubjectName, opt => opt.MapFrom(src => src.Subject != null ? src.Subject.SubjectName : null))
                 .ForMember(dest => dest.LecturerName, opt => opt.MapFrom(src => src.Lecturer != null ? src.Lecturer.UserFullName : null))
-                .ForMember(dest => dest.SemesterName, opt => opt.MapFrom(src => src.Subject != null && src.Subject.SemesterSubjects != null && src.Subject.SemesterSubjects.Any() ? src.Subject.SemesterSubjects.First().Semester.SemesterName : null))
-                .ForMember(dest => dest.SemesterStartDate, opt => opt.MapFrom(src => src.Subject != null && src.Subject.SemesterSubjects != null && src.Subject.SemesterSubjects.Any() ? src.Subject.SemesterSubjects.First().Semester.SemesterStartDate : (DateTime?)null))
-                .ForMember(dest => dest.SemesterEndDate, opt => opt.MapFrom(src => src.Subject != null && src.Subject.SemesterSubjects != null && src.Subject.SemesterSubjects.Any() ? src.Subject.SemesterSubjects.First().Semester.SemesterEndDate : (DateTime?)null))
+                .ForMember(dest => dest.SemesterName, opt => opt.MapFrom(src => 
+                    src.Subject != null && 
+                    src.Subject.SemesterSubjects != null && 
+                    src.Subject.SemesterSubjects.Any() && 
+                    src.Subject.SemesterSubjects.First().Semester != null ? 
+                    src.Subject.SemesterSubjects.First().Semester.SemesterName : null))
+                .ForMember(dest => dest.SemesterStartDate, opt => opt.MapFrom(src => 
+                    src.Subject != null && 
+                    src.Subject.SemesterSubjects != null && 
+                    src.Subject.SemesterSubjects.Any() && 
+                    src.Subject.SemesterSubjects.First().Semester != null ? 
+                    src.Subject.SemesterSubjects.First().Semester.SemesterStartDate : (DateTime?)null))
+                .ForMember(dest => dest.SemesterEndDate, opt => opt.MapFrom(src => 
+                    src.Subject != null && 
+                    src.Subject.SemesterSubjects != null && 
+                    src.Subject.SemesterSubjects.Any() && 
+                    src.Subject.SemesterSubjects.First().Semester != null ? 
+                    src.Subject.SemesterSubjects.First().Semester.SemesterEndDate : (DateTime?)null))
                 .ForMember(dest => dest.ScheduleTypeName, opt => opt.MapFrom(src => src.ScheduleType != null ? src.ScheduleType.ScheduleTypeName : null))
                 .ForMember(dest => dest.ScheduleTypeDow, opt => opt.MapFrom(src => src.ScheduleType != null ? src.ScheduleType.ScheduleTypeDow : null))
                 .ForMember(dest => dest.SlotName, opt => opt.MapFrom(src => src.ScheduleType != null && src.ScheduleType.Slot != null ? src.ScheduleType.Slot.SlotName : null))
