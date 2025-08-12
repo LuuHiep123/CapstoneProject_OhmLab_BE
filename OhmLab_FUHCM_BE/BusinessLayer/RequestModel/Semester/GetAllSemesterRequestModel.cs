@@ -10,3 +10,4 @@ namespace BusinessLayer.RequestModel.Semester
         public string? status { get; set; }
     }
 } 
+
