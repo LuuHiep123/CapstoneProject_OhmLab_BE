@@ -45,6 +45,41 @@ namespace BusinessLayer.Service.Implement
         {
             try
             {
+                // Validation cho SubjectId
+                if (model.SubjectId <= 0)
+                {
+                    return new BaseResponse<ClassResponseModel>
+                    {
+                        Code = 400,
+                        Success = false,
+                        Message = "SubjectId không hợp lệ!",
+                        Data = null
+                    };
+                }
+
+                var subject = await _subjectRepository.GetSubjectById(model.SubjectId);
+                if (subject == null)
+                {
+                    return new BaseResponse<ClassResponseModel>
+                    {
+                        Code = 400,
+                        Success = false,
+                        Message = "Không tìm thấy môn học với ID đã cung cấp!",
+                        Data = null
+                    };
+                }
+
+                if (subject.SubjectStatus.ToLower() != "active")
+                {
+                    return new BaseResponse<ClassResponseModel>
+                    {
+                        Code = 400,
+                        Success = false,
+                        Message = "Môn học này không còn hoạt động!",
+                        Data = null
+                    };
+                }
+
                 // Validation cho LecturerId nếu có
                 if (model.LecturerId.HasValue)
                 {
@@ -59,9 +94,20 @@ namespace BusinessLayer.Service.Implement
                             Data = null
                         };
                     }
+
+                    if (lecturer.UserRoleName.ToLower() != "lecturer")
+                    {
+                        return new BaseResponse<ClassResponseModel>
+                        {
+                            Code = 400,
+                            Success = false,
+                            Message = "Người dùng này không phải là giảng viên!",
+                            Data = null
+                        };
+                    }
                 }
-                // Validation cho ScheduleTypeId nếu có
-                if (model.ScheduleTypeId.HasValue)
+                // Validation cho ScheduleTypeId nếu có và khác 0
+                if (model.ScheduleTypeId.HasValue && model.ScheduleTypeId.Value > 0)
                 {
                     var scheduleTypeCheck = await _scheduleTypeRepository.GetByIdAsync(model.ScheduleTypeId.Value);
                     if (scheduleTypeCheck == null)
@@ -74,6 +120,40 @@ namespace BusinessLayer.Service.Implement
                             Data = null
                         };
                     }
+
+                    if (scheduleTypeCheck.ScheduleTypeStatus.ToLower() != "active")
+                    {
+                        return new BaseResponse<ClassResponseModel>
+                        {
+                            Code = 400,
+                            Success = false,
+                            Message = "Loại lịch học này không còn hoạt động!",
+                            Data = null
+                        };
+                    }
+                }
+
+                // Validation cho ClassName
+                if (string.IsNullOrWhiteSpace(model.ClassName))
+                {
+                    return new BaseResponse<ClassResponseModel>
+                    {
+                        Code = 400,
+                        Success = false,
+                        Message = "Tên lớp học không được để trống!",
+                        Data = null
+                    };
+                }
+
+                if (model.ClassName.Length > 50)
+                {
+                    return new BaseResponse<ClassResponseModel>
+                    {
+                        Code = 400,
+                        Success = false,
+                        Message = "Tên lớp học không được vượt quá 50 ký tự!",
+                        Data = null
+                    };
                 }
 
                 var classCheckName = await _classRepository.GetByName(model.ClassName);
@@ -81,9 +161,9 @@ namespace BusinessLayer.Service.Implement
                 {
                     return new BaseResponse<ClassResponseModel>() 
                     {
-                        Code = 401,
+                        Code = 409,
                         Success = false,
-                        Message = "trùng tên lớp!",
+                        Message = "Tên lớp học đã tồn tại!",
                         Data = null
                     };
                 }
@@ -92,177 +172,69 @@ namespace BusinessLayer.Service.Implement
                 {
                     SubjectId = model.SubjectId,
                     LecturerId = model.LecturerId,
-                    ScheduleTypeId = model.ScheduleTypeId,
+                    ScheduleTypeId = model.ScheduleTypeId.HasValue && model.ScheduleTypeId.Value > 0 ? model.ScheduleTypeId : null,
                     ClassName = model.ClassName,
                     ClassDescription = model.ClassDescription,
-                    ClassStatus = "v"
+                    ClassStatus = "Active"
                 };
 
 
-                // Kiểm tra ScheduleType đã được sử dụng bởi lớp khác chưa
-                var listClass = await _classRepository.GetAllAsync();
-                var existingClass = listClass.FirstOrDefault(c => c.ScheduleTypeId == model.ScheduleTypeId && c.ClassStatus.Equals("Valid"));
-                if (existingClass != null)
+                // Kiểm tra ScheduleType đã được sử dụng bởi lớp khác chưa (chỉ khi có ScheduleTypeId và khác 0)
+                if (model.ScheduleTypeId.HasValue && model.ScheduleTypeId.Value > 0)
                 {
-                    return new BaseResponse<ClassResponseModel>
+                    var listClass = await _classRepository.GetAllAsync();
+                    var existingClass = listClass.FirstOrDefault(c => c.ScheduleTypeId == model.ScheduleTypeId && c.ClassStatus.Equals("Active"));
+                    if (existingClass != null)
                     {
-                        Code = 409,
-                        Success = false,
-                        Message = $"Lịch học này đã được sử dụng bởi lớp {existingClass.ClassName}!",
-                        Data = null
-                    };
+                        return new BaseResponse<ClassResponseModel>
+                        {
+                            Code = 409,
+                            Success = false,
+                            Message = $"Lịch học này đã được sử dụng bởi lớp {existingClass.ClassName}!",
+                            Data = null
+                        };
+                    }
                 }
 
                 var result = await _classRepository.CreateAsync(classEntity);
 
-                var subject = await _subjectRepository.GetSubjectById(result.SubjectId);
-                if (subject == null)
+                // Lấy lại class với đầy đủ thông tin navigation properties
+                var classWithDetails = await _classRepository.GetByIdAsync(result.ClassId);
+                
+
+                
+                var response = _mapper.Map<ClassResponseModel>(classWithDetails);
+                
+                // Lấy thông tin semester trực tiếp
+                var allSemesters = await _semesterRepository.GetAllAsync();
+                var currentSemester = allSemesters.FirstOrDefault(s => s.SemesterStatus.ToLower() == "active");
+                if (currentSemester == null)
                 {
-                    return new BaseResponse<ClassResponseModel>
-                    {
-                        Code = 404,
-                        Success = false,
-                        Message = "Không tìm thấy môn!",
-                        Data = null
-                    };
+                    currentSemester = allSemesters.FirstOrDefault();
                 }
-                var semesterSubject = await _semesterSubjectRepository.GetBySubjectIdAsync(subject.SubjectId);
-                if (semesterSubject == null)
+                
+                if (currentSemester != null)
                 {
-                    return new BaseResponse<ClassResponseModel>
-                    {
-                        Code = 404,
-                        Success = false,
-                        Message = "Không tìm thấy kỳ môn",
-                        Data = null
-                    };
+                    response.SemesterName = currentSemester.SemesterName;
+                    response.SemesterStartDate = currentSemester.SemesterStartDate;
+                    response.SemesterEndDate = currentSemester.SemesterEndDate;
                 }
-                var semester = await _semesterRepository.GetByIdAsync(semesterSubject.SemesterId);
-                if (semester == null)
+                string message = "Tạo lớp học thành công!";
+                if (model.ScheduleTypeId.HasValue && model.ScheduleTypeId.Value > 0)
                 {
-                    return new BaseResponse<ClassResponseModel>
-                    {
-                        Code = 404,
-                        Success = false,
-                        Message = "Không tìm thấy kỳ!",
-                        Data = null
-                    };
+                    message += " Đã gán loại lịch học cho lớp.";
                 }
-                if (model.ScheduleTypeId.HasValue)
+                else
                 {
-                    var scheduleType = await _scheduleTypeRepository.GetByIdAsync(model.ScheduleTypeId.Value);
-                    if (scheduleType.ScheduleTypeDow.ToLower().Contains("mon"))
-                    {
-                        var startDate = semester.SemesterStartDate;
-                        for (var i = 0; i < 10; i++)
-                        {
-                            var schedule = new Schedule()
-                            {
-                                ClassId = result.ClassId,
-                                ScheduleName = "schedule",
-                                ScheduleDescription = "schedule for Lab room FPT HCM",
-                                ScheduleDate = startDate,
-                            };
-                            await _scheduleRepository.CreateAsync(schedule);
-
-                            startDate = startDate.AddDays(3);
-                            var schedule1 = new Schedule()
-                            {
-                                ClassId = result.ClassId,
-                                ScheduleName = "schedule",
-                                ScheduleDescription = "schedule for Lab room FPT HCM",
-                                ScheduleDate = startDate,
-                            };
-                            await _scheduleRepository.CreateAsync(schedule1);
-                            startDate = startDate.AddDays(4);
-                        }
-                        var response = _mapper.Map<ClassResponseModel>(result);
-                        return new BaseResponse<ClassResponseModel>
-                        {
-                            Code = 200,
-                            Success = true,
-                            Message = "Tạo lớp học thành công!",
-                            Data = response
-                        };
-                    }
-                    if (scheduleType.ScheduleTypeDow.ToLower().Contains("tue"))
-                    {
-                        var startDate = semester.SemesterStartDate.AddDays(1);
-                        for (var i = 0; i < 10; i++)
-                        {
-                            var schedule = new Schedule()
-                            {
-                                ClassId = result.ClassId,
-                                ScheduleName = "schedule",
-                                ScheduleDescription = "schedule for Lab room FPT HCM",
-                                ScheduleDate = startDate,
-                            };
-                            await _scheduleRepository.CreateAsync(schedule);
-
-                            startDate = startDate.AddDays(3);
-                            var schedule1 = new Schedule()
-                            {
-                                ClassId = result.ClassId,
-                                ScheduleName = "schedule",
-                                ScheduleDescription = "schedule for Lab room FPT HCM",
-                                ScheduleDate = startDate,
-                            };
-                            await _scheduleRepository.CreateAsync(schedule1);
-
-                            startDate = startDate.AddDays(4);
-                        }
-
-                        var response = _mapper.Map<ClassResponseModel>(result);
-                        return new BaseResponse<ClassResponseModel>
-                        {
-                            Code = 200,
-                            Success = true,
-                            Message = "Tạo lớp học thành công!",
-                            Data = response
-                        };
-                    }
-                    if (scheduleType.ScheduleTypeDow.ToLower().Contains("wed"))
-                    {
-                        var startDate = semester.SemesterStartDate.AddDays(2);
-                        for (var i = 0; i < 10; i++)
-                        {
-                            var schedule = new Schedule()
-                            {
-                                ClassId = result.ClassId,
-                                ScheduleName = "schedule",
-                                ScheduleDescription = "schedule for Lab room FPT HCM",
-                                ScheduleDate = startDate,
-                            };
-                            await _scheduleRepository.CreateAsync(schedule);
-
-                            startDate = startDate.AddDays(3);
-                            var schedule1 = new Schedule()
-                            {
-                                ClassId = result.ClassId,
-                                ScheduleName = "schedule",
-                                ScheduleDescription = "schedule for Lab room FPT HCM",
-                                ScheduleDate = startDate,
-                            };
-                            await _scheduleRepository.CreateAsync(schedule1);
-                            startDate = startDate.AddDays(4);
-                        }
-
-                        var response = _mapper.Map<ClassResponseModel>(result);
-                        return new BaseResponse<ClassResponseModel>
-                        {
-                            Code = 200,
-                            Success = true,
-                            Message = "Tạo lớp học thành công!",
-                            Data = response
-                        };
-                    }
+                    message += " Bạn có thể thêm lịch học sau.";
                 }
+
                 return new BaseResponse<ClassResponseModel>
                 {
                     Code = 200,
                     Success = true,
-                    Message = "Tạo lớp học thất bại!",
-                    Data = null
+                    Message = message,
+                    Data = response
                 };
 
             }
@@ -282,6 +254,18 @@ namespace BusinessLayer.Service.Implement
         {
             try
             {
+                // Validation cho ID
+                if (id <= 0)
+                {
+                    return new BaseResponse<ClassResponseModel>
+                    {
+                        Code = 400,
+                        Success = false,
+                        Message = "ID lớp học không hợp lệ!",
+                        Data = null
+                    };
+                }
+
                 var classEntity = await _classRepository.GetByIdAsync(id);
                 if (classEntity == null)
                 {
@@ -295,6 +279,21 @@ namespace BusinessLayer.Service.Implement
                 }
 
                 var response = _mapper.Map<ClassResponseModel>(classEntity);
+                
+                // Lấy thông tin semester trực tiếp
+                var allSemesters = await _semesterRepository.GetAllAsync();
+                var currentSemester = allSemesters.FirstOrDefault(s => s.SemesterStatus.ToLower() == "active");
+                if (currentSemester == null)
+                {
+                    currentSemester = allSemesters.FirstOrDefault();
+                }
+                
+                if (currentSemester != null)
+                {
+                    response.SemesterName = currentSemester.SemesterName;
+                    response.SemesterStartDate = currentSemester.SemesterStartDate;
+                    response.SemesterEndDate = currentSemester.SemesterEndDate;
+                }
                 
                 // Lấy danh sách ClassUsers
                 var classUsers = await _classUserRepository.GetByClassIdAsync(id);
@@ -407,11 +406,27 @@ namespace BusinessLayer.Service.Implement
 
                 var result = _mapper.Map<List<ClassResponseModel>>(listClass);
 
-                // Lấy ClassUsers cho từng class
+                // Lấy thông tin semester trực tiếp
+                var allSemesters = await _semesterRepository.GetAllAsync();
+                var currentSemester = allSemesters.FirstOrDefault(s => s.SemesterStatus.ToLower() == "active");
+                if (currentSemester == null)
+                {
+                    currentSemester = allSemesters.FirstOrDefault();
+                }
+
+                // Lấy ClassUsers cho từng class và cập nhật semester
                 foreach (var classResponse in result)
                 {
                     var classUsers = await _classUserRepository.GetByClassIdAsync(classResponse.ClassId);
                     classResponse.ClassUsers = _mapper.Map<List<ClassUserResponseModel>>(classUsers);
+                    
+                    // Cập nhật thông tin semester
+                    if (currentSemester != null)
+                    {
+                        classResponse.SemesterName = currentSemester.SemesterName;
+                        classResponse.SemesterStartDate = currentSemester.SemesterStartDate;
+                        classResponse.SemesterEndDate = currentSemester.SemesterEndDate;
+                    }
                 }
 
                 // Thực hiện phân trang
@@ -461,14 +476,66 @@ namespace BusinessLayer.Service.Implement
         {
             try
             {
+                // Validation cho LecturerId
+                if (lecturerId == Guid.Empty)
+                {
+                    return new BaseResponse<List<ClassResponseModel>>
+                    {
+                        Code = 400,
+                        Success = false,
+                        Message = "LecturerId không hợp lệ!",
+                        Data = null
+                    };
+                }
+
+                // Kiểm tra lecturer có tồn tại không
+                var lecturer = await _userRepository.GetUserById(lecturerId);
+                if (lecturer == null)
+                {
+                    return new BaseResponse<List<ClassResponseModel>>
+                    {
+                        Code = 404,
+                        Success = false,
+                        Message = "Không tìm thấy giảng viên!",
+                        Data = null
+                    };
+                }
+
+                if (lecturer.UserRoleName.ToLower() != "lecturer")
+                {
+                    return new BaseResponse<List<ClassResponseModel>>
+                    {
+                        Code = 400,
+                        Success = false,
+                        Message = "Người dùng này không phải là giảng viên!",
+                        Data = null
+                    };
+                }
+
                 var classes = await _classRepository.GetByLecturerIdAsync(lecturerId);
                 var response = _mapper.Map<List<ClassResponseModel>>(classes);
 
-                // Lấy ClassUsers cho từng class
+                // Lấy thông tin semester trực tiếp
+                var allSemesters = await _semesterRepository.GetAllAsync();
+                var currentSemester = allSemesters.FirstOrDefault(s => s.SemesterStatus.ToLower() == "active");
+                if (currentSemester == null)
+                {
+                    currentSemester = allSemesters.FirstOrDefault();
+                }
+
+                // Lấy ClassUsers cho từng class và cập nhật semester
                 foreach (var classResponse in response)
                 {
                     var classUsers = await _classUserRepository.GetByClassIdAsync(classResponse.ClassId);
                     classResponse.ClassUsers = _mapper.Map<List<ClassUserResponseModel>>(classUsers);
+                    
+                    // Cập nhật thông tin semester
+                    if (currentSemester != null)
+                    {
+                        classResponse.SemesterName = currentSemester.SemesterName;
+                        classResponse.SemesterStartDate = currentSemester.SemesterStartDate;
+                        classResponse.SemesterEndDate = currentSemester.SemesterEndDate;
+                    }
                 }
 
                 return new BaseResponse<List<ClassResponseModel>>
@@ -495,6 +562,18 @@ namespace BusinessLayer.Service.Implement
         {
             try
             {
+                // Validation cho ID
+                if (id <= 0)
+                {
+                    return new BaseResponse<ClassResponseModel>
+                    {
+                        Code = 400,
+                        Success = false,
+                        Message = "ID lớp học không hợp lệ!",
+                        Data = null
+                    };
+                }
+
                 var existingClass = await _classRepository.GetByIdAsync(id);
                 if (existingClass == null)
                 {
@@ -503,6 +582,77 @@ namespace BusinessLayer.Service.Implement
                         Code = 404,
                         Success = false,
                         Message = "Không tìm thấy lớp học!",
+                        Data = null
+                    };
+                }
+
+                // Validation cho SubjectId
+                if (model.SubjectId <= 0)
+                {
+                    return new BaseResponse<ClassResponseModel>
+                    {
+                        Code = 400,
+                        Success = false,
+                        Message = "SubjectId không hợp lệ!",
+                        Data = null
+                    };
+                }
+
+                var subject = await _subjectRepository.GetSubjectById(model.SubjectId);
+                if (subject == null)
+                {
+                    return new BaseResponse<ClassResponseModel>
+                    {
+                        Code = 400,
+                        Success = false,
+                        Message = "Không tìm thấy môn học với ID đã cung cấp!",
+                        Data = null
+                    };
+                }
+
+                if (subject.SubjectStatus.ToLower() != "active")
+                {
+                    return new BaseResponse<ClassResponseModel>
+                    {
+                        Code = 400,
+                        Success = false,
+                        Message = "Môn học này không còn hoạt động!",
+                        Data = null
+                    };
+                }
+
+                // Validation cho ClassName
+                if (string.IsNullOrWhiteSpace(model.ClassName))
+                {
+                    return new BaseResponse<ClassResponseModel>
+                    {
+                        Code = 400,
+                        Success = false,
+                        Message = "Tên lớp học không được để trống!",
+                        Data = null
+                    };
+                }
+
+                if (model.ClassName.Length > 50)
+                {
+                    return new BaseResponse<ClassResponseModel>
+                    {
+                        Code = 400,
+                        Success = false,
+                        Message = "Tên lớp học không được vượt quá 50 ký tự!",
+                        Data = null
+                    };
+                }
+
+                // Kiểm tra tên lớp học trùng lặp (trừ lớp hiện tại)
+                var classCheckName = await _classRepository.GetByName(model.ClassName);
+                if (classCheckName != null && classCheckName.ClassId != id)
+                {
+                    return new BaseResponse<ClassResponseModel>
+                    {
+                        Code = 409,
+                        Success = false,
+                        Message = "Tên lớp học đã tồn tại!",
                         Data = null
                     };
                 }
@@ -539,6 +689,18 @@ namespace BusinessLayer.Service.Implement
         {
             try
             {
+                // Validation cho ID
+                if (id <= 0)
+                {
+                    return new BaseResponse<bool>
+                    {
+                        Code = 400,
+                        Success = false,
+                        Message = "ID lớp học không hợp lệ!",
+                        Data = false
+                    };
+                }
+
                 var existingClass = await _classRepository.GetByIdAsync(id);
                 if (existingClass == null)
                 {
@@ -547,6 +709,18 @@ namespace BusinessLayer.Service.Implement
                         Code = 404,
                         Success = false,
                         Message = "Không tìm thấy lớp học!",
+                        Data = false
+                    };
+                }
+
+                // Kiểm tra trạng thái lớp học
+                if (existingClass.ClassStatus.ToLower() == "deleted")
+                {
+                    return new BaseResponse<bool>
+                    {
+                        Code = 400,
+                        Success = false,
+                        Message = "Lớp học này đã bị xóa!",
                         Data = false
                     };
                 }
@@ -604,6 +778,30 @@ namespace BusinessLayer.Service.Implement
         {
             try
             {
+                // Validation cho ClassId
+                if (model.ClassId <= 0)
+                {
+                    return new BaseResponse<bool>
+                    {
+                        Code = 400,
+                        Success = false,
+                        Message = "ClassId không hợp lệ!",
+                        Data = false
+                    };
+                }
+
+                // Validation cho ScheduleTypeId
+                if (model.ScheduleTypeId <= 0)
+                {
+                    return new BaseResponse<bool>
+                    {
+                        Code = 400,
+                        Success = false,
+                        Message = "ScheduleTypeId không hợp lệ!",
+                        Data = false
+                    };
+                }
+
                 var Class = await _classRepository.GetByIdAsync(model.ClassId);
                 if (Class == null)
                 {
@@ -616,6 +814,18 @@ namespace BusinessLayer.Service.Implement
                     };
                 }
 
+                // Kiểm tra trạng thái lớp học
+                if (Class.ClassStatus.ToLower() != "active")
+                {
+                    return new BaseResponse<bool>
+                    {
+                        Code = 400,
+                        Success = false,
+                        Message = "Lớp học này không còn hoạt động!",
+                        Data = false
+                    };
+                }
+
                 // Kiểm tra lớp đã có lịch chưa
                 if (Class.ScheduleTypeId != null)
                 {
@@ -623,7 +833,7 @@ namespace BusinessLayer.Service.Implement
                     {
                         Code = 409,
                         Success = false,
-                        Message = "Lớp đã có lịch học!",
+                        Message = "Lớp đã có lịch học! Bạn có thể cập nhật lịch học thay vì thêm mới.",
                         Data = false
                     };
                 }
@@ -665,31 +875,29 @@ namespace BusinessLayer.Service.Implement
                         Data = false
                     };
                 }
-                var semesterSubject = await _semesterSubjectRepository.GetBySubjectIdAsync(subject.SubjectId);
-                if (semesterSubject == null)
+                // Lấy semester hiện tại hoặc semester đầu tiên có sẵn
+                var allSemesters = await _semesterRepository.GetAllAsync();
+                var currentSemester = allSemesters.FirstOrDefault(s => s.SemesterStatus.ToLower() == "active");
+                
+                if (currentSemester == null)
                 {
-                    return new BaseResponse<bool>
-                    {
-                        Code = 404,
-                        Success = false,
-                        Message = "Không tìm thấy kỳ môn",
-                        Data = false
-                    };
+                    // Nếu không có semester active, lấy semester đầu tiên
+                    currentSemester = allSemesters.FirstOrDefault();
                 }
-                var semester = await _semesterRepository.GetByIdAsync(semesterSubject.SemesterId);
-                if (semester == null)
+                
+                if (currentSemester == null)
                 {
                     return new BaseResponse<bool>
                     {
                         Code = 404,
                         Success = false,
-                        Message = "Không tìm thấy kỳ!",
+                        Message = "Không tìm thấy học kỳ nào trong hệ thống!",
                         Data = false
                     };
                 }
                 if (scheduleType.ScheduleTypeDow.ToLower().Contains("mon"))
                 {
-                    var startDate = semester.SemesterStartDate;
+                    var startDate = currentSemester.SemesterStartDate;
                     for (var i = 0; i < 10; i++)
                     {
                         var schedule = new Schedule()
@@ -724,7 +932,7 @@ namespace BusinessLayer.Service.Implement
                 }
                 if (scheduleType.ScheduleTypeDow.ToLower().Contains("tue"))
                 {
-                    var startDate = semester.SemesterStartDate.AddDays(1);
+                    var startDate = currentSemester.SemesterStartDate.AddDays(1);
                     for (var i = 0; i < 10; i++)
                     {
                         var schedule = new Schedule()
@@ -762,7 +970,7 @@ namespace BusinessLayer.Service.Implement
                 }
                 if (scheduleType.ScheduleTypeDow.ToLower().Contains("wed"))
                 {
-                    var startDate = semester.SemesterStartDate.AddDays(2);
+                    var startDate = currentSemester.SemesterStartDate.AddDays(2);
                     for (var i = 0; i < 10; i++)
                     {
                         var schedule = new Schedule()
@@ -822,6 +1030,18 @@ namespace BusinessLayer.Service.Implement
         {
             try
             {
+                // Validation cho ClassId
+                if (classId <= 0)
+                {
+                    return new BaseResponse<List<LabResponseModel>>
+                    {
+                        Code = 400,
+                        Success = false,
+                        Message = "ClassId không hợp lệ!",
+                        Data = null
+                    };
+                }
+
                 var Class = await _classRepository.GetByIdAsync(classId);
                 if (Class == null)
                 {
@@ -830,6 +1050,18 @@ namespace BusinessLayer.Service.Implement
                         Code = 404,
                         Success = false,
                         Message = "Không tìm thấy lớp học!",
+                        Data = null
+                    };
+                }
+
+                // Kiểm tra trạng thái lớp học
+                if (Class.ClassStatus.ToLower() != "active")
+                {
+                    return new BaseResponse<List<LabResponseModel>>
+                    {
+                        Code = 400,
+                        Success = false,
+                        Message = "Lớp học này không còn hoạt động!",
                         Data = null
                     };
                 }
