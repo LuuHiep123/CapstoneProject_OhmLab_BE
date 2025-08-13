@@ -4,6 +4,7 @@ using DataLayer.DBContext;
 using Microsoft.EntityFrameworkCore;
 using DataLayer.Repository.Implement;
 using DataLayer.Repository;
+using AutoMapper;
 
 
 namespace OhmLab_FUHCM_BE.AppStarts
@@ -26,7 +27,14 @@ namespace OhmLab_FUHCM_BE.AppStarts
             //AddService
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<ISubjectService, SubjectService>();
-            services.AddScoped<ILabService, LabService>();
+            services.AddScoped<ILabService>(provider => new LabService(
+                provider.GetRequiredService<ILabRepository>(),
+                provider.GetRequiredService<ILabEquipmentTypeRepository>(),
+                provider.GetRequiredService<ILabKitTemplateRepository>(),
+                provider.GetRequiredService<IEquipmentTypeRepository>(),
+                provider.GetRequiredService<IKitTemplateRepository>(),
+                provider.GetRequiredService<IMapper>()
+            ));
             services.AddScoped<IEquipmentService, EquipmentService>();
             services.AddScoped<IAssignmentService, AssignmentService>();
             services.AddScoped<ISemesterRepository, SemesterRepository>();
@@ -34,7 +42,21 @@ namespace OhmLab_FUHCM_BE.AppStarts
             services.AddScoped<ITeamEquipmentService, TeamEquipmentService>();
             services.AddScoped<IKitTemplateService, KitTemplateService>();
             services.AddScoped<IKitService, KitService>();
-            services.AddScoped<IClassService, ClassService>();
+            services.AddScoped<IClassService>(provider => new ClassService(
+                provider.GetRequiredService<IScheduleRepository>(),
+                provider.GetRequiredService<ISemesterSubjectRepository>(),
+                provider.GetRequiredService<ISemesterRepository>(),
+                provider.GetRequiredService<ISubjectRepository>(),
+                provider.GetRequiredService<IScheduleTypeRepository>(),
+                provider.GetRequiredService<IClassRepository>(),
+                provider.GetRequiredService<IClassUserRepository>(),
+                provider.GetRequiredService<ILabRepository>(),
+                provider.GetRequiredService<IUserRepositoty>(),
+                provider.GetRequiredService<IReportRepository>(),
+                provider.GetRequiredService<ITeamRepository>(),
+                provider.GetRequiredService<db_abadcb_ohmlabContext>(),
+                provider.GetRequiredService<IMapper>()
+            ));
             services.AddScoped<IClassUserService, ClassUserService>();
             services.AddScoped<IReportService, ReportService>();
             services.AddScoped<IEquipmentTypeService, EquipmentTypeService>();
@@ -61,6 +83,9 @@ namespace OhmLab_FUHCM_BE.AppStarts
             services.AddScoped<ISemesterSubjectRepository, SemesterSubjectRepository>();
             services.AddScoped<ISlotRepository, SlotRepository>();
             services.AddScoped<IScheduleRepository, ScheduleRepository>();
+            services.AddScoped<ITeamRepository, TeamRepository>();
+            services.AddScoped<ILabEquipmentTypeRepository, LabEquipmentTypeRepository>();
+            services.AddScoped<ILabKitTemplateRepository, LabKitTemplateRepository>();
         }
     }
 }

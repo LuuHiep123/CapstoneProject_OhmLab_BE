@@ -142,6 +142,30 @@ namespace OhmLab_FUHCM_BE.AppStarts
                 .ForMember(dest => dest.SlotStartTime, opt => opt.MapFrom(src => src.ScheduleType != null && src.ScheduleType.Slot != null ? src.ScheduleType.Slot.SlotStartTime : null))
                 .ForMember(dest => dest.SlotEndTime, opt => opt.MapFrom(src => src.ScheduleType != null && src.ScheduleType.Slot != null ? src.ScheduleType.Slot.SlotEndTime : null))
                 .ForMember(dest => dest.ClassUsers, opt => opt.MapFrom(src => src.ClassUsers));
+
+            //Lab
+            CreateMap<Lab, LabResponseModel>()
+                .ForMember(dest => dest.SubjectName, opt => opt.MapFrom(src => src.Subject != null ? src.Subject.SubjectName : null))
+                .ForMember(dest => dest.RequiredEquipments, opt => opt.MapFrom(src => src.LabEquipmentTypes))
+                .ForMember(dest => dest.RequiredKits, opt => opt.MapFrom(src => src.LabKitTemplates));
+
+            //Lab Equipment
+            CreateMap<LabEquipmentType, LabEquipmentResponseModel>()
+                .ForMember(dest => dest.Status, opt => opt.MapFrom(src => src.LabEquipmentTypeStatus))
+                .ForMember(dest => dest.EquipmentTypeName, opt => opt.MapFrom(src => src.EquipmentType != null ? src.EquipmentType.EquipmentTypeName : null))
+                .ForMember(dest => dest.EquipmentTypeCode, opt => opt.MapFrom(src => src.EquipmentType != null ? src.EquipmentType.EquipmentTypeCode : null))
+                .ForMember(dest => dest.EquipmentTypeDescription, opt => opt.MapFrom(src => src.EquipmentType != null ? src.EquipmentType.EquipmentTypeDescription : null))
+                .ForMember(dest => dest.EquipmentTypeQuantity, opt => opt.MapFrom(src => src.EquipmentType != null ? src.EquipmentType.EquipmentTypeQuantity : 0))
+                .ForMember(dest => dest.EquipmentTypeUrlImg, opt => opt.MapFrom(src => src.EquipmentType != null ? src.EquipmentType.EquipmentTypeUrlImg : null));
+
+            //Lab Kit
+            CreateMap<LabKitTemplate, LabKitResponseModel>()
+                .ForMember(dest => dest.Status, opt => opt.MapFrom(src => src.LabKitTemplateStatus))
+                .ForMember(dest => dest.KitTemplateName, opt => opt.MapFrom(src => src.KitTemplate != null ? src.KitTemplate.KitTemplateName : null))
+                .ForMember(dest => dest.KitTemplateQuantity, opt => opt.MapFrom(src => src.KitTemplate != null ? src.KitTemplate.KitTemplateQuantity : 0))
+                .ForMember(dest => dest.KitTemplateDescription, opt => opt.MapFrom(src => src.KitTemplate != null ? src.KitTemplate.KitTemplateDescription : null))
+                .ForMember(dest => dest.KitTemplateUrlImg, opt => opt.MapFrom(src => src.KitTemplate != null ? src.KitTemplate.KitTemplateUrlImg : null))
+                .ForMember(dest => dest.KitTemplateStatus, opt => opt.MapFrom(src => src.KitTemplate != null ? src.KitTemplate.KitTemplateStatus : null));
             CreateMap<ClassResponseModel, Class>();
             CreateMap<CreateClassRequestModel, Class>()
                 .ForMember(dest => dest.ClassId, opt => opt.Ignore());

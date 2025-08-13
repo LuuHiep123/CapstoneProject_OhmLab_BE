@@ -38,9 +38,10 @@ namespace OhmLab_FUHCM_BE.Controller
 
         [Authorize(Roles = "Admin,HeadOfDepartment,Lecturer")]
         [HttpGet]
-        public async Task<IActionResult> GetAllClasses()
+        public async Task<IActionResult> GetAllClasses([FromQuery] string? status = null)
         {
-            var result = await _classService.GetAllClassesAsync();
+            var requestModel = new GetAllClassRequestModel { Status = status };
+            var result = await _classService.GetAllClassesAsync(requestModel);
             return StatusCode(result.Code, result);
         }
 
@@ -64,10 +65,10 @@ namespace OhmLab_FUHCM_BE.Controller
         }
 
         [Authorize(Roles = "Admin,HeadOfDepartment")]
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteClass(int id)
+        [HttpPut("{id}/status")]
+        public async Task<IActionResult> UpdateClassStatus(int id, [FromBody] UpdateClassStatusRequestModel model)
         {
-            var result = await _classService.DeleteClassAsync(id);
+            var result = await _classService.UpdateClassStatusAsync(id, model.Status);
             return StatusCode(result.Code, result);
         }
 
