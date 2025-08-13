@@ -619,16 +619,7 @@ namespace BusinessLayer.Service.Implement
                     };
                 }
 
-                if (subject.SubjectStatus.ToLower() != "active")
-                {
-                    return new BaseResponse<ClassResponseModel>
-                    {
-                        Code = 400,
-                        Success = false,
-                        Message = "Môn học này không còn hoạt động!",
-                        Data = null
-                    };
-                }
+              
 
                 // Validation cho ClassName
                 if (string.IsNullOrWhiteSpace(model.ClassName))
