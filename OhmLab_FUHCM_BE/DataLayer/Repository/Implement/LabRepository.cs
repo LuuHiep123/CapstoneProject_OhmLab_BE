@@ -35,12 +35,67 @@ namespace DataLayer.Repository.Implement
 
         public async Task<Lab> GetLabById(int id)
         {
-            return await _context.Labs.FindAsync(id);
+            return await _context.Labs
+                .Include(l => l.Subject)
+                .Include(l => l.LabEquipmentTypes)
+                    .ThenInclude(le => le.EquipmentType)
+                .Include(l => l.LabKitTemplates)
+                    .ThenInclude(lk => lk.KitTemplate)
+                .FirstOrDefaultAsync(l => l.LabId == id);
         }
 
         public async Task<List<Lab>> GetLabsBySubjectId(int subjectId)
         {
-            return await _context.Labs.Where(l => l.SubjectId == subjectId).ToListAsync();
+            return await _context.Labs
+                .Include(l => l.Subject)
+                .Include(l => l.LabEquipmentTypes)
+                    .ThenInclude(le => le.EquipmentType)
+                .Include(l => l.LabKitTemplates)
+                    .ThenInclude(lk => lk.KitTemplate)
+                .Where(l => l.SubjectId == subjectId)
+                .ToListAsync();
+        }
+
+        public async Task<List<Lab>> GetLabsByLecturerId(string lecturerId)
+        {
+            // Lấy tất cả SubjectId mà lecturer này dạy (thông qua Class)
+            var subjectIds = await _context.Classes
+                .Where(c => c.LecturerId.ToString() == lecturerId)
+                .Select(c => c.SubjectId)
+                .Distinct()
+                .ToListAsync();
+
+            // Lấy tất cả labs của các subject đó
+            return await _context.Labs
+                .Include(l => l.Subject)
+                .Include(l => l.LabEquipmentTypes)
+                    .ThenInclude(le => le.EquipmentType)
+                .Include(l => l.LabKitTemplates)
+                    .ThenInclude(lk => lk.KitTemplate)
+                .Where(l => subjectIds.Contains(l.SubjectId))
+                .ToListAsync();
+        }
+
+        public async Task<List<Lab>> GetLabsByClassId(int classId)
+        {
+            // Lấy SubjectId từ class
+            var classEntity = await _context.Classes
+                .Where(c => c.ClassId == classId)
+                .Select(c => c.SubjectId)
+                .FirstOrDefaultAsync();
+
+            if (classEntity == 0)
+                return new List<Lab>();
+
+            // Lấy tất cả labs của subject đó
+            return await _context.Labs
+                .Include(l => l.Subject)
+                .Include(l => l.LabEquipmentTypes)
+                    .ThenInclude(le => le.EquipmentType)
+                .Include(l => l.LabKitTemplates)
+                    .ThenInclude(lk => lk.KitTemplate)
+                .Where(l => l.SubjectId == classEntity)
+                .ToListAsync();
         }
 
         public async Task UpdateLab(Lab lab)
@@ -51,7 +106,13 @@ namespace DataLayer.Repository.Implement
 
         public async Task<List<Lab>> GetAllLabs()
         {
-            return await _context.Labs.ToListAsync();
+            return await _context.Labs
+                .Include(l => l.Subject)
+                .Include(l => l.LabEquipmentTypes)
+                    .ThenInclude(le => le.EquipmentType)
+                .Include(l => l.LabKitTemplates)
+                    .ThenInclude(lk => lk.KitTemplate)
+                .ToListAsync();
         }
     }
 } 

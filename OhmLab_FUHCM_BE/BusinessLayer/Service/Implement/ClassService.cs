@@ -6,6 +6,7 @@ using BusinessLayer.ResponseModel.User;
 using BusinessLayer.ResponseModel.Lab;
 using DataLayer.Entities;
 using DataLayer.Repository;
+using DataLayer.DBContext;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,9 +26,12 @@ namespace BusinessLayer.Service.Implement
         private readonly ISemesterSubjectRepository _semesterSubjectRepository;
         private readonly ILabRepository _labRepository;
         private readonly IUserRepositoty _userRepository;
+        private readonly IReportRepository _reportRepository;
+        private readonly ITeamRepository _teamRepository;
+        private readonly db_abadcb_ohmlabContext _dbContext;
         private readonly IMapper _mapper;
 
-        public ClassService(IScheduleRepository scheduleRepository, ISemesterSubjectRepository semesterSubjectRepository, ISemesterRepository semesterRepository, ISubjectRepository subjectRepository, IScheduleTypeRepository scheduleTypeRepository, IClassRepository classRepository, IClassUserRepository classUserRepository, ILabRepository labRepository, IUserRepositoty userRepository, IMapper mapper)
+        public ClassService(IScheduleRepository scheduleRepository, ISemesterSubjectRepository semesterSubjectRepository, ISemesterRepository semesterRepository, ISubjectRepository subjectRepository, IScheduleTypeRepository scheduleTypeRepository, IClassRepository classRepository, IClassUserRepository classUserRepository, ILabRepository labRepository, IUserRepositoty userRepository, IReportRepository reportRepository, ITeamRepository teamRepository, db_abadcb_ohmlabContext dbContext, IMapper mapper)
         {
             _scheduleRepository = scheduleRepository;
             _semesterSubjectRepository = semesterSubjectRepository;
@@ -38,6 +42,9 @@ namespace BusinessLayer.Service.Implement
             _classUserRepository = classUserRepository;
             _labRepository = labRepository;
             _userRepository = userRepository;
+            _reportRepository = reportRepository;
+            _teamRepository = teamRepository;
+            _dbContext = dbContext;
             _mapper = mapper;
         }
 
@@ -47,26 +54,26 @@ namespace BusinessLayer.Service.Implement
             {
                 // Validation cho SubjectId
                 if (model.SubjectId <= 0)
-                {
-                    return new BaseResponse<ClassResponseModel>
                     {
-                        Code = 400,
-                        Success = false,
+                        return new BaseResponse<ClassResponseModel>
+                        {
+                            Code = 400,
+                            Success = false,
                         Message = "SubjectId không hợp lệ!",
-                        Data = null
-                    };
-                }
+                            Data = null
+                        };
+                    }
 
                 var subject = await _subjectRepository.GetSubjectById(model.SubjectId);
                 if (subject == null)
-                {
-                    return new BaseResponse<ClassResponseModel>
                     {
-                        Code = 400,
-                        Success = false,
+                        return new BaseResponse<ClassResponseModel>
+                        {
+                            Code = 400,
+                            Success = false,
                         Message = "Không tìm thấy môn học với ID đã cung cấp!",
-                        Data = null
-                    };
+                            Data = null
+                        };
                 }
 
                 if (subject.SubjectStatus.ToLower() != "active")
@@ -85,52 +92,52 @@ namespace BusinessLayer.Service.Implement
                 {
                     var lecturer = await _userRepository.GetUserById(model.LecturerId.Value);
                     if (lecturer == null)
+                {
+                    return new BaseResponse<ClassResponseModel>
                     {
-                        return new BaseResponse<ClassResponseModel>
-                        {
                             Code = 400,
-                            Success = false,
+                        Success = false,
                             Message = "Không tìm thấy giảng viên với ID đã cung cấp!",
-                            Data = null
-                        };
-                    }
+                        Data = null
+                    };
+                }
 
                     if (lecturer.UserRoleName.ToLower() != "lecturer")
+                {
+                    return new BaseResponse<ClassResponseModel>
                     {
-                        return new BaseResponse<ClassResponseModel>
-                        {
                             Code = 400,
-                            Success = false,
+                        Success = false,
                             Message = "Người dùng này không phải là giảng viên!",
-                            Data = null
-                        };
-                    }
+                        Data = null
+                    };
+                }
                 }
                 // Validation cho ScheduleTypeId nếu có và khác 0
                 if (model.ScheduleTypeId.HasValue && model.ScheduleTypeId.Value > 0)
                 {
                     var scheduleTypeCheck = await _scheduleTypeRepository.GetByIdAsync(model.ScheduleTypeId.Value);
                     if (scheduleTypeCheck == null)
+                {
+                    return new BaseResponse<ClassResponseModel>
                     {
-                        return new BaseResponse<ClassResponseModel>
-                        {
                             Code = 400,
-                            Success = false,
+                        Success = false,
                             Message = "Không tìm thấy loại lịch học với ID đã cung cấp!",
-                            Data = null
-                        };
-                    }
+                        Data = null
+                    };
+                }
 
                     if (scheduleTypeCheck.ScheduleTypeStatus.ToLower() != "active")
+                {
+                    return new BaseResponse<ClassResponseModel>
                     {
-                        return new BaseResponse<ClassResponseModel>
-                        {
                             Code = 400,
-                            Success = false,
+                        Success = false,
                             Message = "Loại lịch học này không còn hoạt động!",
-                            Data = null
-                        };
-                    }
+                        Data = null
+                    };
+                }
                 }
 
                 // Validation cho ClassName
@@ -147,8 +154,8 @@ namespace BusinessLayer.Service.Implement
 
                 if (model.ClassName.Length > 50)
                 {
-                    return new BaseResponse<ClassResponseModel>
-                    {
+                        return new BaseResponse<ClassResponseModel>
+                        {
                         Code = 400,
                         Success = false,
                         Message = "Tên lớp học không được vượt quá 50 ký tự!",
@@ -229,12 +236,12 @@ namespace BusinessLayer.Service.Implement
                     message += " Bạn có thể thêm lịch học sau.";
                 }
 
-                return new BaseResponse<ClassResponseModel>
-                {
-                    Code = 200,
-                    Success = true,
+                        return new BaseResponse<ClassResponseModel>
+                        {
+                            Code = 200,
+                            Success = true,
                     Message = message,
-                    Data = response
+                            Data = response
                 };
 
             }
@@ -379,30 +386,30 @@ namespace BusinessLayer.Service.Implement
                 var listClass = classes.ToList();
 
                 // Lọc theo keyword nếu có
-                if (!string.IsNullOrEmpty(model.keyWord))
+                if (!string.IsNullOrEmpty(model.SearchTerm))
                 {
-                    listClass = listClass.Where(c => c.ClassName.ToLower().Contains(model.keyWord.ToLower()) ||
-                                                    (!string.IsNullOrEmpty(c.ClassDescription) && c.ClassDescription.ToLower().Contains(model.keyWord.ToLower())))
+                    listClass = listClass.Where(c => c.ClassName.ToLower().Contains(model.SearchTerm.ToLower()) ||
+                                                    (!string.IsNullOrEmpty(c.ClassDescription) && c.ClassDescription.ToLower().Contains(model.SearchTerm.ToLower())))
                                        .ToList();
                 }
 
                 // Lọc theo status nếu có
-                if (!string.IsNullOrEmpty(model.status))
+                if (!string.IsNullOrEmpty(model.Status))
                 {
-                    listClass = listClass.Where(c => c.ClassStatus.ToLower().Equals(model.status.ToLower())).ToList();
+                    listClass = listClass.Where(c => c.ClassStatus.ToLower().Equals(model.Status.ToLower())).ToList();
                 }
 
-                // Lọc theo subjectId nếu có
-                if (model.subjectId.HasValue)
-                {
-                    listClass = listClass.Where(c => c.SubjectId == model.subjectId.Value).ToList();
-                }
+                // Lọc theo subjectId nếu có (tạm thời bỏ qua vì không có trong model mới)
+                // if (model.subjectId.HasValue)
+                // {
+                //     listClass = listClass.Where(c => c.SubjectId == model.subjectId.Value).ToList();
+                // }
 
-                // Lọc theo lecturerId nếu có
-                if (model.lecturerId.HasValue)
-                {
-                    listClass = listClass.Where(c => c.LecturerId == model.lecturerId.Value).ToList();
-                }
+                // Lọc theo lecturerId nếu có (tạm thời bỏ qua vì không có trong model mới)
+                // if (model.lecturerId.HasValue)
+                // {
+                //     listClass = listClass.Where(c => c.LecturerId == model.lecturerId.Value).ToList();
+                // }
 
                 var result = _mapper.Map<List<ClassResponseModel>>(listClass);
 
@@ -430,9 +437,11 @@ namespace BusinessLayer.Service.Implement
                 }
 
                 // Thực hiện phân trang
+                var page = model.Page ?? 1;
+                var pageSize = model.PageSize ?? 10;
                 var pagedClasses = result
                     .OrderBy(c => c.ClassName) // Sắp xếp theo tên lớp học
-                    .ToPagedList(model.pageNum, model.pageSize);
+                    .ToPagedList(page, pageSize);
 
                 return new DynamicResponse<ClassResponseModel>()
                 {
@@ -452,9 +461,9 @@ namespace BusinessLayer.Service.Implement
                         },
                         SearchInfo = new SearchCondition()
                         {
-                            keyWord = model.keyWord,
+                            keyWord = model.SearchTerm,
                             role = null,
-                            status = model.status,
+                            status = model.Status,
                         },
                         PageData = pagedClasses.ToList(),
                     },
@@ -685,7 +694,7 @@ namespace BusinessLayer.Service.Implement
             }
         }
 
-        public async Task<BaseResponse<bool>> DeleteClassAsync(int id)
+        public async Task<BaseResponse<bool>> UpdateClassStatusAsync(int id, string status)
         {
             try
             {
@@ -697,6 +706,30 @@ namespace BusinessLayer.Service.Implement
                         Code = 400,
                         Success = false,
                         Message = "ID lớp học không hợp lệ!",
+                        Data = false
+                    };
+                }
+
+                // Validation cho status
+                if (string.IsNullOrWhiteSpace(status))
+                {
+                    return new BaseResponse<bool>
+                    {
+                        Code = 400,
+                        Success = false,
+                        Message = "Status không được để trống!",
+                        Data = false
+                    };
+                }
+
+                var validStatuses = new[] { "Active", "Inactive", "Deleted" };
+                if (!validStatuses.Contains(status, StringComparer.OrdinalIgnoreCase))
+                {
+                    return new BaseResponse<bool>
+                    {
+                        Code = 400,
+                        Success = false,
+                        Message = "Status không hợp lệ! Chỉ chấp nhận: Active, Inactive, Deleted",
                         Data = false
                     };
                 }
@@ -713,53 +746,26 @@ namespace BusinessLayer.Service.Implement
                     };
                 }
 
-                // Kiểm tra trạng thái lớp học
-                if (existingClass.ClassStatus.ToLower() == "deleted")
+                // Kiểm tra nếu đang chuyển từ Active sang Inactive
+                if (existingClass.ClassStatus.ToLower() == "active" && status.ToLower() == "inactive")
                 {
-                    return new BaseResponse<bool>
-                    {
-                        Code = 400,
-                        Success = false,
-                        Message = "Lớp học này đã bị xóa!",
-                        Data = false
-                    };
+                    // Có thể thêm logic kiểm tra nếu cần
+                    // Ví dụ: kiểm tra xem có lịch học nào đang diễn ra không
                 }
 
-                // Kiểm tra Class có đang được sử dụng bởi Schedule nào không
-                var schedules = await _scheduleRepository.GetByClassIdAsync(id);
-                if (schedules.Any())
-                {
-                    var scheduleCount = schedules.Count();
-                    return new BaseResponse<bool>
-                    {
-                        Code = 409,
-                        Success = false,
-                        Message = $"Không thể xóa lớp học này vì đang có {scheduleCount} lịch học được tạo!",
-                        Data = false
-                    };
-                }
+                // Cập nhật status
+                existingClass.ClassStatus = status;
+                var result = await _classRepository.UpdateAsync(existingClass);
 
-                // Kiểm tra Class có đang được sử dụng bởi ClassUser nào không
-                var classUsers = await _classUserRepository.GetByClassIdAsync(id);
-                if (classUsers.Any())
-                {
-                    var userCount = classUsers.Count();
-                    return new BaseResponse<bool>
-                    {
-                        Code = 409,
-                        Success = false,
-                        Message = $"Không thể xóa lớp học này vì đang có {userCount} sinh viên đăng ký!",
-                        Data = false
-                    };
-                }
+                var statusText = status.ToLower() == "active" ? "kích hoạt" : 
+                               status.ToLower() == "inactive" ? "tạm ngưng" : "xóa";
 
-                var result = await _classRepository.DeleteAsync(id);
                 return new BaseResponse<bool>
                 {
                     Code = 200,
                     Success = true,
-                    Message = "Xóa lớp học thành công!",
-                    Data = result
+                    Message = $"Cập nhật trạng thái lớp học thành công! Lớp học đã được {statusText}.",
+                    Data = result != null
                 };
             }
             catch (System.Exception ex)

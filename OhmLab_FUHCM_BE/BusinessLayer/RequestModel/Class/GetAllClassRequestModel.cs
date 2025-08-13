@@ -5,12 +5,10 @@ namespace BusinessLayer.RequestModel.Class
 {
     public class GetAllClassRequestModel
     {
-        public int pageNum { get; set; } = 1;
-        public int pageSize { get; set; } = 10;
-        public string? keyWord { get; set; }
-        public string? status { get; set; }
-        public int? subjectId { get; set; }
-        public Guid? lecturerId { get; set; }
+        public string? Status { get; set; } // "Active", "Inactive", "Deleted", hoặc null để lấy tất cả
+        public int? Page { get; set; }
+        public int? PageSize { get; set; }
+        public string? SearchTerm { get; set; }
     }
 }
 
