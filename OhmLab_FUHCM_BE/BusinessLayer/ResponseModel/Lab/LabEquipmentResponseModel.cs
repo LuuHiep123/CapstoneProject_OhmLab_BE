@@ -15,3 +15,4 @@ namespace BusinessLayer.ResponseModel.Lab
         public string? EquipmentTypeUrlImg { get; set; }
     }
 }
+

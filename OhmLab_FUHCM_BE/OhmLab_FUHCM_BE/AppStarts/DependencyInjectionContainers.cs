@@ -26,7 +26,13 @@ namespace OhmLab_FUHCM_BE.AppStarts
 
             //AddService
             services.AddScoped<IUserService, UserService>();
-            services.AddScoped<ISubjectService, SubjectService>();
+            services.AddScoped<ISubjectService>(provider => new SubjectService(
+                provider.GetRequiredService<ISubjectRepository>(),
+                provider.GetRequiredService<IClassRepository>(),
+                provider.GetRequiredService<ISemesterRepository>(),
+                provider.GetRequiredService<ISemesterSubjectRepository>(),
+                provider.GetRequiredService<IMapper>()
+            ));
             services.AddScoped<ILabService>(provider => new LabService(
                 provider.GetRequiredService<ILabRepository>(),
                 provider.GetRequiredService<ILabEquipmentTypeRepository>(),

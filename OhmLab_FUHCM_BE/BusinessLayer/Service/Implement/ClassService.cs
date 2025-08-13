@@ -661,9 +661,49 @@ namespace BusinessLayer.Service.Implement
                 existingClass.ClassName = model.ClassName;
                 existingClass.ClassDescription = model.ClassDescription;
                 existingClass.ClassStatus = model.ClassStatus;
+                
+                // Cập nhật ScheduleTypeId
+                if (model.ScheduleTypeId.HasValue && model.ScheduleTypeId.Value > 0)
+                {
+                    // Kiểm tra ScheduleType tồn tại
+                    var scheduleType = await _scheduleTypeRepository.GetByIdAsync(model.ScheduleTypeId.Value);
+                    if (scheduleType == null)
+                    {
+                        return new BaseResponse<ClassResponseModel>
+                        {
+                            Code = 400,
+                            Success = false,
+                            Message = $"Không tìm thấy loại lịch học với ID: {model.ScheduleTypeId.Value}",
+                            Data = null
+                        };
+                    }
+                    existingClass.ScheduleTypeId = model.ScheduleTypeId.Value;
+                }
+                else
+                {
+                    existingClass.ScheduleTypeId = null;
+                }
 
                 var result = await _classRepository.UpdateAsync(existingClass);
-                var response = _mapper.Map<ClassResponseModel>(result);
+                
+                // Lấy lại class với đầy đủ thông tin navigation properties
+                var classWithDetails = await _classRepository.GetByIdAsync(result.ClassId);
+                var response = _mapper.Map<ClassResponseModel>(classWithDetails);
+                
+                // Lấy thông tin semester trực tiếp
+                var allSemesters = await _semesterRepository.GetAllAsync();
+                var currentSemester = allSemesters.FirstOrDefault(s => s.SemesterStatus.ToLower() == "active");
+                if (currentSemester == null)
+                {
+                    currentSemester = allSemesters.FirstOrDefault();
+                }
+                
+                if (currentSemester != null)
+                {
+                    response.SemesterName = currentSemester.SemesterName;
+                    response.SemesterStartDate = currentSemester.SemesterStartDate;
+                    response.SemesterEndDate = currentSemester.SemesterEndDate;
+                }
 
                 return new BaseResponse<ClassResponseModel>
                 {

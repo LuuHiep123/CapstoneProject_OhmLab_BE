@@ -9,5 +9,7 @@ namespace BusinessLayer.RequestModel.Subject
         [Required]
         public string SubjectCode { get; set; } = null!;
         public string? SubjectDescription { get; set; }
+        [Required]
+        public int SemesterId { get; set; }
     }
 } 

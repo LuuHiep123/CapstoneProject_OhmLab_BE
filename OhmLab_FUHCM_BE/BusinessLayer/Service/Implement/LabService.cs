@@ -3,6 +3,7 @@ using BusinessLayer.RequestModel.Lab;
 using BusinessLayer.ResponseModel.Lab;
 using DataLayer.Entities;
 using DataLayer.Repository;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Linq;
@@ -37,10 +38,99 @@ namespace BusinessLayer.Service.Implement
 
         public async Task AddLab(CreateLabRequestModel labModel)
         {
-            var lab = _mapper.Map<Lab>(labModel);
-            lab.LabStatus = labModel.LabStatus; // Nhận trạng thái từ request
-            await _labRepository.AddLab(lab);
-            Console.WriteLine($"LabId before insert: {lab.LabId}");
+            try
+            {
+                // Validation
+                if (labModel.SubjectId <= 0)
+                {
+                    throw new ArgumentException("Subject ID phải lớn hơn 0!");
+                }
+
+                if (string.IsNullOrWhiteSpace(labModel.LabName))
+                {
+                    throw new ArgumentException("Tên lab không được để trống!");
+                }
+
+                if (string.IsNullOrWhiteSpace(labModel.LabRequest))
+                {
+                    throw new ArgumentException("Yêu cầu lab không được để trống!");
+                }
+
+                if (string.IsNullOrWhiteSpace(labModel.LabTarget))
+                {
+                    throw new ArgumentException("Mục tiêu lab không được để trống!");
+                }
+
+                if (string.IsNullOrWhiteSpace(labModel.LabStatus))
+                {
+                    throw new ArgumentException("Trạng thái lab không được để trống!");
+                }
+
+                // Tạo lab
+                var lab = _mapper.Map<Lab>(labModel);
+                lab.LabStatus = labModel.LabStatus;
+                await _labRepository.AddLab(lab);
+
+                // Thêm equipment nếu có
+                if (labModel.RequiredEquipments != null && labModel.RequiredEquipments.Any())
+                {
+                    foreach (var equipment in labModel.RequiredEquipments)
+                    {
+                        // Kiểm tra equipment type tồn tại
+                        var equipmentType = await _equipmentTypeRepository.GetEquipmentTypeById(equipment.EquipmentTypeId);
+                        if (equipmentType == null)
+                        {
+                            throw new ArgumentException($"Không tìm thấy loại thiết bị với ID: {equipment.EquipmentTypeId}");
+                        }
+
+                        // Kiểm tra đã tồn tại chưa
+                        var exists = await _labEquipmentTypeRepository.ExistsAsync(lab.LabId, equipment.EquipmentTypeId);
+                        if (!exists)
+                        {
+                            var labEquipment = new LabEquipmentType
+                            {
+                                LabId = lab.LabId,
+                                EquipmentTypeId = equipment.EquipmentTypeId,
+                                LabEquipmentTypeStatus = equipment.Status
+                            };
+                            await _labEquipmentTypeRepository.CreateAsync(labEquipment);
+                        }
+                    }
+                }
+
+                // Thêm kit nếu có
+                if (labModel.RequiredKits != null && labModel.RequiredKits.Any())
+                {
+                    foreach (var kit in labModel.RequiredKits)
+                    {
+                        // Kiểm tra kit template tồn tại
+                        var kitTemplate = await _kitTemplateRepository.GetKitTemplateById(kit.KitTemplateId);
+                        if (kitTemplate == null)
+                        {
+                            throw new ArgumentException($"Không tìm thấy kit template với ID: {kit.KitTemplateId}");
+                        }
+
+                        // Kiểm tra đã tồn tại chưa
+                        var exists = await _labKitTemplateRepository.ExistsAsync(lab.LabId, kit.KitTemplateId);
+                        if (!exists)
+                        {
+                            var labKit = new LabKitTemplate
+                            {
+                                LabId = lab.LabId,
+                                KitTemplateId = kit.KitTemplateId,
+                                LabKitTemplateStatus = kit.Status
+                            };
+                            await _labKitTemplateRepository.CreateAsync(labKit);
+                        }
+                    }
+                }
+
+                Console.WriteLine($"LabId after insert: {lab.LabId}");
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Lỗi khi tạo lab: {ex.Message}");
+            }
         }
 
         public async Task DeleteLab(int id)

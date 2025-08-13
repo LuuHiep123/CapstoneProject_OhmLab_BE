@@ -11,5 +11,6 @@ namespace DataLayer.Repository
     {
         Task<SemesterSubject> GetBySubjectIdAsync(int subjectId);
         Task<IEnumerable<SemesterSubject>> GetAllAsync();
+        Task<SemesterSubject> AddAsync(SemesterSubject semesterSubject);
     }
 }
