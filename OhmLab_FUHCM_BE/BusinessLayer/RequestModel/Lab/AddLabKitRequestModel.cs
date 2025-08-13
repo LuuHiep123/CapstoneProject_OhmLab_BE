@@ -6,3 +6,4 @@ namespace BusinessLayer.RequestModel.Lab
         public string Status { get; set; } = "Active";
     }
 }
+

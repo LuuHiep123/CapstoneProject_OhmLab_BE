@@ -12,3 +12,4 @@ namespace DataLayer.Repository
         Task<bool> ExistsAsync(int labId, string kitTemplateId);
     }
 }
+

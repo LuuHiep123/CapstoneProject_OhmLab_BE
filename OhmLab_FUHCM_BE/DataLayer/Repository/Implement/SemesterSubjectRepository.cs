@@ -46,5 +46,20 @@ namespace DataLayer.Repository.Implement
                 throw;
             }
         }
+
+        public async Task<SemesterSubject> AddAsync(SemesterSubject semesterSubject)
+        {
+            try
+            {
+                _DBContext.SemesterSubjects.Add(semesterSubject);
+                await _DBContext.SaveChangesAsync();
+                return semesterSubject;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"[ERROR][AddAsync] {ex.Message} | Inner: {ex.InnerException?.Message}");
+                throw;
+            }
+        }
     }
 }

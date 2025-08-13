@@ -5,3 +5,4 @@ namespace BusinessLayer.RequestModel.Class
         public string Status { get; set; } = null!; // "Active" hoặc "Inactive"
     }
 }
+
