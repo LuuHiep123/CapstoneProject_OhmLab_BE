@@ -49,7 +49,7 @@ namespace OhmLab_FUHCM_BE.Controller
             }
         }
 
-        [Authorize(Roles = "Admin,HeadOfDepartment")]
+        [Authorize(Roles = "Admin,HeadOfDepartment,Lecturer")]
         [HttpPost("Search")]
         public async Task<IActionResult> GetAllEquipment(GetAllEquipmentRequestModel model)
         {
