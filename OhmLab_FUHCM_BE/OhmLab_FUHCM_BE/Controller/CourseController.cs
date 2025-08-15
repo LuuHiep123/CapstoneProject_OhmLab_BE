@@ -142,20 +142,6 @@ namespace OhmLab_FUHCM_BE.Controller
             return StatusCode(result.Code, result);
         }
 
-        [HttpGet("lecturers/{lecturerId}/labs")]
-        public async Task<IActionResult> GetLabsForLecturer(string lecturerId)
-        {
-            var result = await _labService.GetLabsByLecturerId(lecturerId);
-            return StatusCode(result.Code, result);
-        }
-
-        [HttpGet("classes/{classId}/labs")]
-        public async Task<IActionResult> GetLabsForClass(int classId)
-        {
-            var result = await _labService.GetLabsByClassId(classId);
-            return StatusCode(result.Code, result);
-        }
-
         [HttpGet("labs/{id}")]
         public async Task<IActionResult> GetLabById(int id)
         {
@@ -258,51 +244,7 @@ namespace OhmLab_FUHCM_BE.Controller
             return StatusCode(result.Code, result);
         }
 
-        // --- Lab Equipment Management ---
-
-        [HttpPost("labs/{labId}/equipment")]
-        public async Task<IActionResult> AddEquipmentToLab(int labId, [FromBody] AddLabEquipmentRequestModel model)
-        {
-            var result = await _labService.AddEquipmentToLab(labId, model);
-            return StatusCode(result.Code, result);
-        }
-
-        [HttpDelete("labs/{labId}/equipment/{equipmentTypeId}")]
-        public async Task<IActionResult> RemoveEquipmentFromLab(int labId, string equipmentTypeId)
-        {
-            var result = await _labService.RemoveEquipmentFromLab(labId, equipmentTypeId);
-            return StatusCode(result.Code, result);
-        }
-
-        [HttpGet("labs/{labId}/equipment")]
-        public async Task<IActionResult> GetLabEquipments(int labId)
-        {
-            var result = await _labService.GetLabEquipments(labId);
-            return StatusCode(result.Code, result);
-        }
-
-        // --- Lab Kit Management ---
-
-        [HttpPost("labs/{labId}/kit")]
-        public async Task<IActionResult> AddKitToLab(int labId, [FromBody] AddLabKitRequestModel model)
-        {
-            var result = await _labService.AddKitToLab(labId, model);
-            return StatusCode(result.Code, result);
-        }
-
-        [HttpDelete("labs/{labId}/kit/{kitTemplateId}")]
-        public async Task<IActionResult> RemoveKitFromLab(int labId, string kitTemplateId)
-        {
-            var result = await _labService.RemoveKitFromLab(labId, kitTemplateId);
-            return StatusCode(result.Code, result);
-        }
-
-        [HttpGet("labs/{labId}/kit")]
-        public async Task<IActionResult> GetLabKits(int labId)
-        {
-            var result = await _labService.GetLabKits(labId);
-            return StatusCode(result.Code, result);
+       
         }
     }
-}
  
