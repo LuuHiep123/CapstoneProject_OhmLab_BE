@@ -91,7 +91,7 @@ namespace BusinessLayer.Service.Implement
                             {
                                 LabId = lab.LabId,
                                 EquipmentTypeId = equipment.EquipmentTypeId,
-                                LabEquipmentTypeStatus = equipment.Status
+                                
                             };
                             await _labEquipmentTypeRepository.CreateAsync(labEquipment);
                         }
@@ -118,7 +118,7 @@ namespace BusinessLayer.Service.Implement
                             {
                                 LabId = lab.LabId,
                                 KitTemplateId = kit.KitTemplateId,
-                                LabKitTemplateStatus = kit.Status
+                               
                             };
                             await _labKitTemplateRepository.CreateAsync(labKit);
                         }

@@ -25,12 +25,10 @@ namespace BusinessLayer.RequestModel.Lab
     public class LabEquipmentItem
     {
         public string EquipmentTypeId { get; set; } = null!;
-        public string Status { get; set; } = "Active";
     }
     
     public class LabKitItem
     {
         public string KitTemplateId { get; set; } = null!;
-        public string Status { get; set; } = "Active";
     }
 } 
