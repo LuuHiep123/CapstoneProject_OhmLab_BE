@@ -3,6 +3,7 @@ using BusinessLayer.ResponseModel.User;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 
 namespace BusinessLayer.Service
 {
@@ -14,5 +15,6 @@ namespace BusinessLayer.Service
         Task<BaseResponse<List<ClassUserResponseModel>>> GetClassUsersByUserIdAsync(Guid userId);
         Task<BaseResponse<bool>> RemoveUserFromClassAsync(Guid userId, int classId);
         Task<BaseResponse<bool>> IsUserInClassAsync(Guid userId, int classId);
+        Task<BaseResponse<object>> ImportUsersFromExcelAsync(IFormFile file, int classId);
     }
 } 

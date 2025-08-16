@@ -4,6 +4,9 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
+using System.IO;
+using System.Linq;
 
 namespace OhmLab_FUHCM_BE.Controller
 {
@@ -24,6 +27,41 @@ namespace OhmLab_FUHCM_BE.Controller
         {
             var result = await _classUserService.AddUserToClassAsync(model.UserId, model.ClassId);
             return StatusCode(result.Code, result);
+        }
+
+        [Authorize(Roles = "Admin,HeadOfDepartment,Lecturer")]
+        [HttpPost("import-excel")]
+        public async Task<IActionResult> ImportUsersFromExcel([FromForm] ImportExcelRequestModel request)
+        {
+            try
+            {
+                if (request.ExcelFile == null || request.ExcelFile.Length == 0)
+                {
+                    return BadRequest(new { Code = 400, Success = false, Message = "Vui lòng chọn file Excel!" });
+                }
+
+                // Kiểm tra kích thước file (giới hạn 10MB)
+                if (request.ExcelFile.Length > 10 * 1024 * 1024)
+                {
+                    return BadRequest(new { Code = 400, Success = false, Message = "File quá lớn! Tối đa 10MB." });
+                }
+
+                // Kiểm tra định dạng file
+                var allowedExtensions = new[] { ".xlsx", ".xls" };
+                var fileExtension = Path.GetExtension(request.ExcelFile.FileName).ToLowerInvariant();
+                
+                if (!allowedExtensions.Contains(fileExtension))
+                {
+                    return BadRequest(new { Code = 400, Success = false, Message = "Chỉ chấp nhận file Excel (.xlsx, .xls)!" });
+                }
+
+                var result = await _classUserService.ImportUsersFromExcelAsync(request.ExcelFile, request.ClassId);
+                return StatusCode(result.Code, result);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { Code = 500, Success = false, Message = $"Lỗi server: {ex.Message}" });
+            }
         }
 
         [Authorize(Roles = "Admin,HeadOfDepartment,Lecturer,Student")]
