@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 using System.IO;
 using OfficeOpenXml;
 using System.Text.RegularExpressions;
+using AutoMapper;
 
 namespace BusinessLayer.Service.Implement
 {
@@ -20,12 +21,14 @@ namespace BusinessLayer.Service.Implement
         private readonly IClassUserRepository _classUserRepository;
         private readonly IUserRepositoty _userRepository;
         private readonly IClassRepository _classRepository;
+        private readonly IMapper _mapper;
 
-        public ClassUserService(IClassUserRepository classUserRepository, IUserRepositoty userRepository, IClassRepository classRepository)
+        public ClassUserService(IClassUserRepository classUserRepository, IUserRepositoty userRepository, IClassRepository classRepository, IMapper mapper)
         {
             _classUserRepository = classUserRepository;
             _userRepository = userRepository;
             _classRepository = classRepository;
+            _mapper = mapper;
         }
 
         public async Task<BaseResponse<ClassUserResponseModel>> AddUserToClassAsync(Guid userId, int classId)
@@ -78,12 +81,7 @@ namespace BusinessLayer.Service.Implement
                 };
 
                 var result = await _classUserRepository.CreateAsync(classUser);
-                var response = new ClassUserResponseModel
-                {
-                    ClassUserId = result.ClassUserId,
-                    ClassId = result.ClassId,
-                    UserId = result.UserId
-                };
+                var response = _mapper.Map<ClassUserResponseModel>(result);
 
                 return new BaseResponse<ClassUserResponseModel>
                 {
@@ -121,12 +119,7 @@ namespace BusinessLayer.Service.Implement
                     };
                 }
 
-                var response = new ClassUserResponseModel
-                {
-                    ClassUserId = classUser.ClassUserId,
-                    ClassId = classUser.ClassId,
-                    UserId = classUser.UserId
-                };
+                var response = _mapper.Map<ClassUserResponseModel>(classUser);
                 return new BaseResponse<ClassUserResponseModel>
                 {
                     Code = 200,
@@ -152,12 +145,7 @@ namespace BusinessLayer.Service.Implement
             try
             {
                 var classUsers = await _classUserRepository.GetByClassIdAsync(classId);
-                var response = classUsers.Select(cu => new ClassUserResponseModel
-                {
-                    ClassUserId = cu.ClassUserId,
-                    ClassId = cu.ClassId,
-                    UserId = cu.UserId
-                }).ToList();
+                var response = _mapper.Map<List<ClassUserResponseModel>>(classUsers);
 
                 return new BaseResponse<List<ClassUserResponseModel>>
                 {
@@ -184,12 +172,7 @@ namespace BusinessLayer.Service.Implement
             try
             {
                 var classUsers = await _classUserRepository.GetByUserIdAsync(userId);
-                var response = classUsers.Select(cu => new ClassUserResponseModel
-                {
-                    ClassUserId = cu.ClassUserId,
-                    ClassId = cu.ClassId,
-                    UserId = cu.UserId
-                }).ToList();
+                var response = _mapper.Map<List<ClassUserResponseModel>>(classUsers);
 
                 return new BaseResponse<List<ClassUserResponseModel>>
                 {
@@ -228,20 +211,22 @@ namespace BusinessLayer.Service.Implement
                     };
                 }
 
-                // Tìm ClassUser để xóa
+                // Tìm ClassUser để đổi trạng thái
                 var classUsers = await _classUserRepository.GetByClassIdAsync(classId);
-                var classUserToDelete = classUsers.FirstOrDefault(cu => cu.UserId == userId);
+                var classUserToUpdate = classUsers.FirstOrDefault(cu => cu.UserId == userId);
                 
-                if (classUserToDelete != null)
+                if (classUserToUpdate != null)
                 {
-                    await _classUserRepository.DeleteAsync(classUserToDelete.ClassUserId);
+                    
+                    classUserToUpdate.ClassUserStatus = "delete";
+                    await _classUserRepository.UpdateAsync(classUserToUpdate);
                 }
 
                 return new BaseResponse<bool>
                 {
                     Code = 200,
                     Success = true,
-                    Message = "Xóa người dùng khỏi lớp học thành công!",
+                    Message = "Đã đổi trạng thái người dùng trong lớp học thành Delete!",
                     Data = true
                 };
             }
@@ -449,9 +434,9 @@ namespace BusinessLayer.Service.Implement
                                 UserRollNumber = studentId,
                                 UserEmail = email,
                                 UserFullName = fullName,
-                                UserNumberCode = studentId ?? "",
+                                UserNumberCode = studentId ?? string.Empty,
                                 UserRoleName = "Student",
-                                Status = "Active"
+                                Status = "IsActive"
                             };
 
                             await _userRepository.CreateUser(newUser);
@@ -495,8 +480,8 @@ namespace BusinessLayer.Service.Implement
                         errorItems.Add(new ImportErrorItem
                         {
                             RowNumber = row,
-                            UserNumberCode = studentId ?? "",
-                            FullName = fullName ?? "",
+                            UserNumberCode = studentId ?? string.Empty,
+                            FullName = fullName ?? string.Empty,
                             ErrorMessage = $"Lỗi xử lý: {ex.Message}"
                         });
                     }
