@@ -11,6 +11,7 @@ namespace BusinessLayer.ResponseModel.User
         public string? UserName { get; set; }
         public string? UserEmail { get; set; }
         public string? UserRole { get; set; }
+        public string? UserNumberCode { get; set; }
         
         // Thêm thông tin môn học
         public int? SubjectId { get; set; }

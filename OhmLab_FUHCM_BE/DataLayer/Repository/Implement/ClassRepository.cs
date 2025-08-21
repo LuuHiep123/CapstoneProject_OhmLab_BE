@@ -19,14 +19,15 @@ namespace DataLayer.Repository.Implement
         {
             return await _DBContext.Classes
                 .Include(c => c.Subject)
-                .ThenInclude(s => s.SemesterSubjects)
-                .ThenInclude(ss => ss.Semester)
+                    .ThenInclude(s => s.SemesterSubjects)
+                        .ThenInclude(ss => ss.Semester)
                 .Include(c => c.Lecturer)
                 .Include(c => c.ScheduleType)
                     .ThenInclude(st => st.Slot)
                 .Include(c => c.ClassUsers)
-                .ThenInclude(cu => cu.User)
+                    .ThenInclude(cu => cu.User)
                 .Include(c => c.Teams)
+                .AsSplitQuery() // Use split query for better performance
                 .FirstOrDefaultAsync(c => c.ClassId == id);
         }
 
@@ -34,15 +35,16 @@ namespace DataLayer.Repository.Implement
         {
             return await _DBContext.Classes
                 .Include(c => c.Subject)
-                .ThenInclude(s => s.SemesterSubjects)
-                .ThenInclude(ss => ss.Semester)
+                    .ThenInclude(s => s.SemesterSubjects)
+                        .ThenInclude(ss => ss.Semester)
                 .Include(c => c.Lecturer)
                 .Include(c => c.ScheduleType)
                     .ThenInclude(st => st.Slot)
                 .Include(c => c.ClassUsers)
-                .ThenInclude(cu => cu.User)
+                    .ThenInclude(cu => cu.User)
                 .Include(c => c.Teams)
                 .Where(c => c.LecturerId == lecturerId)
+                .AsSplitQuery() // Use split query for better performance
                 .ToListAsync();
         }
 
@@ -50,14 +52,15 @@ namespace DataLayer.Repository.Implement
         {
             return await _DBContext.Classes
                 .Include(c => c.Subject)
-                .ThenInclude(s => s.SemesterSubjects)
-                .ThenInclude(ss => ss.Semester)
+                    .ThenInclude(s => s.SemesterSubjects)
+                        .ThenInclude(ss => ss.Semester)
                 .Include(c => c.Lecturer)
                 .Include(c => c.ScheduleType)
                     .ThenInclude(st => st.Slot)
                 .Include(c => c.ClassUsers)
-                .ThenInclude(cu => cu.User)
+                    .ThenInclude(cu => cu.User)
                 .Include(c => c.Teams)
+                .AsSplitQuery() // Use split query for better performance
                 .ToListAsync();
         }
 
