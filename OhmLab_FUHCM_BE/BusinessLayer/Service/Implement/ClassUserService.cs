@@ -377,6 +377,8 @@ namespace BusinessLayer.Service.Implement
 
                 Console.WriteLine($"Bắt đầu xử lý {excelData.Count} dòng dữ liệu");
 
+
+
                 for (int i = 0; i < excelData.Count; i++)
                 {
                     // Kiểm tra timeout
@@ -456,6 +458,8 @@ namespace BusinessLayer.Service.Implement
                             });
                             continue;
                         }
+
+
 
                         // Thêm user vào class
                         var classUser = new ClassUser

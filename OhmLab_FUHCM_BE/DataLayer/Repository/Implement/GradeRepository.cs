@@ -22,6 +22,7 @@ namespace DataLayer.Repository.Implement
                     .Include(g => g.User)
                     .Include(g => g.Lab)
                     .Include(g => g.Team)
+                    .AsSplitQuery() // Use split query for better performance
                     .ToListAsync();
             }
             catch (Exception ex)
@@ -38,6 +39,7 @@ namespace DataLayer.Repository.Implement
                     .Include(g => g.User)
                     .Include(g => g.Lab)
                     .Include(g => g.Team)
+                    .AsSplitQuery() // Use split query for better performance
                     .FirstOrDefaultAsync(g => g.GradeId == id);
             }
             catch (Exception ex)
@@ -55,6 +57,7 @@ namespace DataLayer.Repository.Implement
                     .Include(g => g.Lab)
                     .Include(g => g.Team)
                     .Where(g => g.UserId == userId)
+                    .AsSplitQuery() // Use split query for better performance
                     .ToListAsync();
             }
             catch (Exception ex)
@@ -72,6 +75,7 @@ namespace DataLayer.Repository.Implement
                     .Include(g => g.Lab)
                     .Include(g => g.Team)
                     .Where(g => g.LabId == labId)
+                    .AsSplitQuery() // Use split query for better performance
                     .ToListAsync();
             }
             catch (Exception ex)
@@ -89,6 +93,7 @@ namespace DataLayer.Repository.Implement
                     .Include(g => g.Lab)
                     .Include(g => g.Team)
                     .Where(g => g.TeamId == teamId)
+                    .AsSplitQuery() // Use split query for better performance
                     .ToListAsync();
             }
             catch (Exception ex)
@@ -106,6 +111,7 @@ namespace DataLayer.Repository.Implement
                     .Include(g => g.Lab)
                     .Include(g => g.Team)
                     .Where(g => g.GradeStatus == status)
+                    .AsSplitQuery() // Use split query for better performance
                     .ToListAsync();
             }
             catch (Exception ex)

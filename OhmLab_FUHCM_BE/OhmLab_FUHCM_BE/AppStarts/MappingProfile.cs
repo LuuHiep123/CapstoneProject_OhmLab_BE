@@ -179,6 +179,7 @@ namespace OhmLab_FUHCM_BE.AppStarts
                 .ForMember(dest => dest.UserName, opt => opt.MapFrom(src => src.User != null ? src.User.UserFullName : null))
                 .ForMember(dest => dest.UserEmail, opt => opt.MapFrom(src => src.User != null ? src.User.UserEmail : null))
                 .ForMember(dest => dest.UserRole, opt => opt.MapFrom(src => src.User != null ? src.User.UserRoleName : null))
+                .ForMember(dest => dest.UserNumberCode, opt => opt.MapFrom(src => src.User != null ? src.User.UserNumberCode : null))
                 .ForMember(dest => dest.ClassUserStatus, opt => opt.MapFrom(src => src.ClassUserStatus))
                 // Thêm mapping cho thông tin môn học
                 .ForMember(dest => dest.SubjectId, opt => opt.MapFrom(src => src.Class != null && src.Class.Subject != null ? src.Class.Subject.SubjectId : (int?)null))
@@ -205,26 +206,26 @@ namespace OhmLab_FUHCM_BE.AppStarts
                     src.Class.Subject != null && 
                     src.Class.Subject.SemesterSubjects != null && 
                     src.Class.Subject.SemesterSubjects.Any() ? 
-                    (DateTime?)src.Class.Subject.SemesterSubjects
+                    src.Class.Subject.SemesterSubjects
                         .Where(ss => ss.Semester != null && ss.Semester.SemesterStatus.ToLower() == "active")
-                        .Select(ss => ss.Semester.SemesterStartDate)
+                        .Select(ss => (DateTime?)ss.Semester.SemesterStartDate)
                         .FirstOrDefault() ?? 
-                    (DateTime?)src.Class.Subject.SemesterSubjects
+                    src.Class.Subject.SemesterSubjects
                         .Where(ss => ss.Semester != null)
-                        .Select(ss => ss.Semester.SemesterStartDate)
+                        .Select(ss => (DateTime?)ss.Semester.SemesterStartDate)
                         .FirstOrDefault() : null))
                 .ForMember(dest => dest.SemesterEndDate, opt => opt.MapFrom(src => 
                     src.Class != null && 
                     src.Class.Subject != null && 
                     src.Class.Subject.SemesterSubjects != null && 
                     src.Class.Subject.SemesterSubjects.Any() ? 
-                    (DateTime?)src.Class.Subject.SemesterSubjects
+                    src.Class.Subject.SemesterSubjects
                         .Where(ss => ss.Semester != null && ss.Semester.SemesterStatus.ToLower() == "active")
-                        .Select(ss => ss.Semester.SemesterEndDate)
+                        .Select(ss => (DateTime?)ss.Semester.SemesterEndDate)
                         .FirstOrDefault() ?? 
-                    (DateTime?)src.Class.Subject.SemesterSubjects
+                    src.Class.Subject.SemesterSubjects
                         .Where(ss => ss.Semester != null)
-                        .Select(ss => ss.Semester.SemesterEndDate)
+                        .Select(ss => (DateTime?)ss.Semester.SemesterEndDate)
                         .FirstOrDefault() : null));
             CreateMap<CreateSlotRequestModel, Slot>()
                .ForMember(dest => dest.SlotId, opt => opt.Ignore());
