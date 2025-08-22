@@ -25,6 +25,7 @@ namespace DataLayer.Repository.Implement
                 return await _DBContext.Teams
                     .Include(t => t.Class)
                     .Include(t => t.TeamUsers)
+                        .ThenInclude(tu => tu.User)
                     .ToListAsync();
             }
             catch (Exception ex)
@@ -40,6 +41,7 @@ namespace DataLayer.Repository.Implement
                 return await _DBContext.Teams
                     .Include(t => t.Class)
                     .Include(t => t.TeamUsers)
+                        .ThenInclude(tu => tu.User)
                     .FirstOrDefaultAsync(t => t.TeamId == id);
             }
             catch (Exception ex)
@@ -55,6 +57,7 @@ namespace DataLayer.Repository.Implement
                 return await _DBContext.Teams
                     .Include(t => t.Class)
                     .Include(t => t.TeamUsers)
+                        .ThenInclude(tu => tu.User)
                     .Where(t => t.ClassId == classId)
                     .ToListAsync();
             }

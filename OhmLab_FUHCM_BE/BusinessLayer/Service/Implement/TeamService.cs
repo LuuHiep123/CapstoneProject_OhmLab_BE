@@ -122,7 +122,6 @@ namespace BusinessLayer.Service.Implement
                     ClassId = t.ClassId,
                     TeamName = t.TeamName,
                     TeamDescription = t.TeamDescription,
-                   
                     ClassName = t.Class?.ClassName,
                     TeamUsers = t.TeamUsers?.Select(tu => new TeamUserResponseModel
                     {
@@ -130,6 +129,7 @@ namespace BusinessLayer.Service.Implement
                         UserId = tu.UserId,
                         UserName = tu.User?.UserFullName,
                         UserEmail = tu.User?.UserEmail,
+                        UserNumberCode = tu.User?.UserNumberCode,
                         TeamUserStatus = tu.TeamUserStatus
                     }).ToList()
                 }).ToList();
@@ -165,7 +165,6 @@ namespace BusinessLayer.Service.Implement
                     ClassId = t.ClassId,
                     TeamName = t.TeamName,
                     TeamDescription = t.TeamDescription,
-                    
                     ClassName = t.Class?.ClassName,
                     TeamUsers = t.TeamUsers?.Select(tu => new TeamUserResponseModel
                     {
@@ -173,6 +172,7 @@ namespace BusinessLayer.Service.Implement
                         UserId = tu.UserId,
                         UserName = tu.User?.UserFullName,
                         UserEmail = tu.User?.UserEmail,
+                        UserNumberCode = tu.User?.UserNumberCode,
                         TeamUserStatus = tu.TeamUserStatus
                     }).ToList()
                 }).ToList();
