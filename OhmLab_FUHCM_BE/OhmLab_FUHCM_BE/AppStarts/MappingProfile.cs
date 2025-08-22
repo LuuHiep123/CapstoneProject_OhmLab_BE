@@ -24,6 +24,8 @@ using BusinessLayer.ResponseModel.Slot;
 using BusinessLayer.RequestModel.ScheduleType;
 using BusinessLayer.ResponseModel.ScheduleType;
 using BusinessLayer.ResponseModel.Schedule;
+using BusinessLayer.RequestModel.Team;
+using BusinessLayer.ResponseModel.Team;
 using System;
 using System.Linq;
 
@@ -253,6 +255,23 @@ namespace OhmLab_FUHCM_BE.AppStarts
                 .ForMember(dest => dest.SlotId, opt => opt.MapFrom(src => src.Class != null && src.Class.ScheduleType != null && src.Class.ScheduleType.Slot != null ? src.Class.ScheduleType.Slot.SlotId : 0))
                 .ForMember(dest => dest.SlotStartTime, opt => opt.MapFrom(src => src.Class != null && src.Class.ScheduleType != null && src.Class.ScheduleType.Slot != null ? src.Class.ScheduleType.Slot.SlotStartTime : null))
                 .ForMember(dest => dest.SlotEndTime, opt => opt.MapFrom(src => src.Class != null && src.Class.ScheduleType != null && src.Class.ScheduleType.Slot != null ? src.Class.ScheduleType.Slot.SlotEndTime : null));
+
+            //Team
+            CreateMap<Team, TeamResponseModel>()
+                .ForMember(dest => dest.ClassName, opt => opt.MapFrom(src => src.Class != null ? src.Class.ClassName : null))
+                .ForMember(dest => dest.TeamUsers, opt => opt.MapFrom(src => src.TeamUsers))
+                .ForMember(dest => dest.TeamStatus, opt => opt.MapFrom(src => "Active")); // Default status
+
+            //TeamUser
+            CreateMap<TeamUser, TeamUserResponseModel>()
+                .ForMember(dest => dest.UserName, opt => opt.MapFrom(src => src.User != null ? src.User.UserFullName : null))
+                .ForMember(dest => dest.UserEmail, opt => opt.MapFrom(src => src.User != null ? src.User.UserEmail : null));
+
+            //Team Request Models
+            CreateMap<CreateTeamRequestModel, Team>()
+                .ForMember(dest => dest.TeamId, opt => opt.Ignore());
+            CreateMap<UpdateTeamRequestModel, Team>()
+                .ForMember(dest => dest.TeamId, opt => opt.Ignore());
 
 
 

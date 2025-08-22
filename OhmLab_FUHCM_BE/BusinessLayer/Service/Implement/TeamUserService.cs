@@ -14,19 +14,21 @@ namespace BusinessLayer.Service.Implement
         private readonly ITeamUserRepository _teamUserRepository;
         private readonly ITeamRepository _teamRepository;
         private readonly IUserRepositoty _userRepository;
+        private readonly IClassUserRepository _classUserRepository;
 
-        public TeamUserService(ITeamUserRepository teamUserRepository, ITeamRepository teamRepository, IUserRepositoty userRepository)
+        public TeamUserService(ITeamUserRepository teamUserRepository, ITeamRepository teamRepository, IUserRepositoty userRepository, IClassUserRepository classUserRepository)
         {
             _teamUserRepository = teamUserRepository;
             _teamRepository = teamRepository;
             _userRepository = userRepository;
+            _classUserRepository = classUserRepository;
         }
 
         public async Task<BaseResponse<TeamUserResponseModel>> AddUserToTeamAsync(int teamId, Guid userId)
         {
             try
             {
-                // Kiểm tra team có tồn tại không
+                
                 var team = await _teamRepository.GetByIdAsync(teamId);
                 if (team == null)
                 {
@@ -38,8 +40,19 @@ namespace BusinessLayer.Service.Implement
                         Data = null
                     };
                 }
+                var isUserInClass = await _classUserRepository.IsUserInClassAsync(userId, team.ClassId);
+                if (!isUserInClass)
+                {
+                    return new BaseResponse<TeamUserResponseModel>
+                    {
+                        Code = 404,
+                        Success = false,
+                        Message = "Người dùng không thuộc lớp học của nhóm này!",
+                        Data = null
+                    };
+                }
 
-                // Kiểm tra user có tồn tại không
+               
                 var user = await _userRepository.GetUserById(userId);
                 if (user == null)
                 {
@@ -52,7 +65,20 @@ namespace BusinessLayer.Service.Implement
                     };
                 }
 
-                // Kiểm tra user đã trong team chưa
+                
+                var userTeams = await _teamUserRepository.GetByUserIdAsync(userId);
+                if (userTeams.Any(tu => tu.TeamId != teamId))
+                {
+                    return new BaseResponse<TeamUserResponseModel>
+                    {
+                        Code = 400,
+                        Success = false,
+                        Message = "Người dùng đã có trong một nhóm khác!",
+                        Data = null
+                    };
+                }
+
+                
                 var isUserInTeam = await _teamUserRepository.IsUserInTeamAsync(userId, teamId);
                 if (isUserInTeam)
                 {
@@ -264,6 +290,32 @@ namespace BusinessLayer.Service.Implement
                     Message = "Kiểm tra thành công!",
                     Data = result
                 };
+            }
+            catch (System.Exception ex)
+            {
+                return new BaseResponse<bool>
+                {
+                    Code = 500,
+                    Success = false,
+                    Message = $"Lỗi: {ex.Message}",
+                    Data = false
+                };
+            }
+        }
+
+        public async Task<BaseResponse<bool>> IsUserInClassAsync(Guid userId, int classId)
+        {
+            try
+            {
+                var result = await _classUserRepository.IsUserInClassAsync(userId, classId);
+                return new BaseResponse<bool>
+                {
+                    Code = 200,
+                    Success = true,
+                    Message = "Kiểm tra thành công!",
+                    Data = result
+                };
+
             }
             catch (System.Exception ex)
             {
