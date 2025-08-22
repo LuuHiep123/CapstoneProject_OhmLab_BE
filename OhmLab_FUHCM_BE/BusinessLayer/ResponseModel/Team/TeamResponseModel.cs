@@ -9,7 +9,6 @@ namespace BusinessLayer.ResponseModel.Team
         public int ClassId { get; set; }
         public string TeamName { get; set; }
         public string? TeamDescription { get; set; }
-        public string TeamStatus { get; set; }
         public string? ClassName { get; set; }
         public List<TeamUserResponseModel>? TeamUsers { get; set; }
     }
@@ -20,6 +19,7 @@ namespace BusinessLayer.ResponseModel.Team
         public Guid UserId { get; set; }
         public string? UserName { get; set; }
         public string? UserEmail { get; set; }
+        public string? UserNumberCode { get; set; }
         public string TeamUserStatus { get; set; }
     }
 } 

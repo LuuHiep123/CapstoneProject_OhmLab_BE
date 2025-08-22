@@ -259,13 +259,13 @@ namespace OhmLab_FUHCM_BE.AppStarts
             //Team
             CreateMap<Team, TeamResponseModel>()
                 .ForMember(dest => dest.ClassName, opt => opt.MapFrom(src => src.Class != null ? src.Class.ClassName : null))
-                .ForMember(dest => dest.TeamUsers, opt => opt.MapFrom(src => src.TeamUsers))
-                .ForMember(dest => dest.TeamStatus, opt => opt.MapFrom(src => "Active")); // Default status
+                .ForMember(dest => dest.TeamUsers, opt => opt.MapFrom(src => src.TeamUsers));
 
             //TeamUser
             CreateMap<TeamUser, TeamUserResponseModel>()
                 .ForMember(dest => dest.UserName, opt => opt.MapFrom(src => src.User != null ? src.User.UserFullName : null))
-                .ForMember(dest => dest.UserEmail, opt => opt.MapFrom(src => src.User != null ? src.User.UserEmail : null));
+                .ForMember(dest => dest.UserEmail, opt => opt.MapFrom(src => src.User != null ? src.User.UserEmail : null))
+                .ForMember(dest => dest.UserNumberCode, opt => opt.MapFrom(src => src.User != null ? src.User.UserNumberCode : null));
 
             //Team Request Models
             CreateMap<CreateTeamRequestModel, Team>()
