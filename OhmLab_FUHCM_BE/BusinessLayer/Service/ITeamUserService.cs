@@ -14,5 +14,6 @@ namespace BusinessLayer.Service
         Task<BaseResponse<List<TeamUserResponseModel>>> GetTeamUsersByUserIdAsync(Guid userId);
         Task<BaseResponse<bool>> RemoveUserFromTeamAsync(int teamUserId);
         Task<BaseResponse<bool>> IsUserInTeamAsync(Guid userId, int teamId);
+        Task<BaseResponse<bool>> IsUserInClassAsync(Guid userId, int classId);
     }
 } 
