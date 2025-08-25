@@ -656,11 +656,30 @@ namespace BusinessLayer.Service.Implement
                         Data = null
                     };
                 }
-
+                if (!model.LecturerId.HasValue)
+                {
+                    return new BaseResponse<ClassResponseModel>
+                    {
+                        Code = 400,
+                        Success = false,
+                        Message = "LecturerId không được để trống!",
+                    };
+                }
+                var existinglecturer = await _userRepository.GetUserById(model.LecturerId.Value);
+                if (existingClass == null) {
+                    return new BaseResponse<ClassResponseModel>
+                    {
+                        Code = 400,
+                        Success = false,
+                        Message = "Không tìm thấy giảng viên với ID đã cung cấp!",
+                    };
+}
                 existingClass.SubjectId = model.SubjectId;
                 existingClass.ClassName = model.ClassName;
                 existingClass.ClassDescription = model.ClassDescription;
                 existingClass.ClassStatus = model.ClassStatus;
+                existingClass.LecturerId = model.LecturerId;
+                
                 
                 // Cập nhật ScheduleTypeId
                 if (model.ScheduleTypeId.HasValue && model.ScheduleTypeId.Value > 0)
