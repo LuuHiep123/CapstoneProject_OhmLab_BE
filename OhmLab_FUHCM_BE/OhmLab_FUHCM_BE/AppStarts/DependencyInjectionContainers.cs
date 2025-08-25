@@ -39,6 +39,8 @@ namespace OhmLab_FUHCM_BE.AppStarts
                 provider.GetRequiredService<ILabKitTemplateRepository>(),
                 provider.GetRequiredService<IEquipmentTypeRepository>(),
                 provider.GetRequiredService<IKitTemplateRepository>(),
+                provider.GetRequiredService<IClassRepository>(),
+                provider.GetRequiredService<IScheduleRepository>(),
                 provider.GetRequiredService<IMapper>()
             ));
             services.AddScoped<IEquipmentService, EquipmentService>();

@@ -1,6 +1,5 @@
 using BusinessLayer.RequestModel.Lab;
 using BusinessLayer.RequestModel.Subject;
-using BusinessLayer.Service;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -12,7 +11,8 @@ using BusinessLayer.ResponseModel.Subject;
 using System.Collections.Generic;
 using DataLayer.Repository;
 using DataLayer.Entities;
-
+using System.Security.Claims;
+using BusinessLayer.Service;
 namespace OhmLab_FUHCM_BE.Controller
 {
     [Route("api/[controller]")]
@@ -22,12 +22,14 @@ namespace OhmLab_FUHCM_BE.Controller
         private readonly ISubjectService _subjectService;
         private readonly ILabService _labService;
         private readonly IClassRepository _classRepository;
+        private readonly IUserService _userService;
 
-        public CourseController(ISubjectService subjectService, ILabService labService, IClassRepository classRepository)
+        public CourseController(ISubjectService subjectService, ILabService labService, IClassRepository classRepository, IUserService userService)
         {
             _subjectService = subjectService;
             _labService = labService;
             _classRepository = classRepository;
+            _userService = userService;
         }
 
         // --- Subject Endpoints ---
@@ -176,7 +178,22 @@ namespace OhmLab_FUHCM_BE.Controller
         {
             try
             {
-                await _labService.AddLab(labModel);
+                // ✅ SỬA: Truyền đúng tham số theo signature mới
+                var currentUserId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+                if (string.IsNullOrEmpty(currentUserId))
+                {
+                    return Unauthorized("Không xác định được người dùng!");
+                }
+
+                var userId = Guid.Parse(currentUserId);
+                var user = await _userService.GetUserById(userId);
+                
+                if (user?.Data?.UserRoleName != "HeadOfDepartment")
+                {
+                    return Forbid("Bạn không có quyền tạo bài lab!");
+                }
+
+                await _labService.AddLab(labModel, userId, user.Data.UserRoleName);
                 return Ok(new {
                     success = true,
                     message = "Tạo bài lab thành công!",
