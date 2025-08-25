@@ -7,6 +7,10 @@
       "RelativeMoniker": "D:0:0:{4BBB523E-D4B5-4AF7-9FC4-70160820133F}|OhmLab_FUHCM_BE\\OhmLab_FUHCM_BE.csproj|solutionrelative:ohmlab_fuhcm_be\\controller\\kitcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{E21759DF-68CE-4E02-A661-54A872D48543}|BusinessLayer\\BusinessLayer.csproj|d:\\cn9\\sep\\capstoneproject_ohmlab_be\\ohmlab_fuhcm_be\\businesslayer\\service\\implement\\classservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E21759DF-68CE-4E02-A661-54A872D48543}|BusinessLayer\\BusinessLayer.csproj|solutionrelative:businesslayer\\service\\implement\\classservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{4BBB523E-D4B5-4AF7-9FC4-70160820133F}|OhmLab_FUHCM_BE\\OhmLab_FUHCM_BE.csproj|d:\\cn9\\sep\\capstoneproject_ohmlab_be\\ohmlab_fuhcm_be\\ohmlab_fuhcm_be\\controller\\teamusercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{4BBB523E-D4B5-4AF7-9FC4-70160820133F}|OhmLab_FUHCM_BE\\OhmLab_FUHCM_BE.csproj|solutionrelative:ohmlab_fuhcm_be\\controller\\teamusercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -57,10 +61,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{9326A667-EBB2-47AE-B671-4F345AD0F85A}|DataLayer\\DataLayer.csproj|d:\\cn9\\sep\\capstoneproject_ohmlab_be\\ohmlab_fuhcm_be\\datalayer\\repository\\implement\\classrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{9326A667-EBB2-47AE-B671-4F345AD0F85A}|DataLayer\\DataLayer.csproj|solutionrelative:datalayer\\repository\\implement\\classrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E21759DF-68CE-4E02-A661-54A872D48543}|BusinessLayer\\BusinessLayer.csproj|d:\\cn9\\sep\\capstoneproject_ohmlab_be\\ohmlab_fuhcm_be\\businesslayer\\service\\implement\\classservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E21759DF-68CE-4E02-A661-54A872D48543}|BusinessLayer\\BusinessLayer.csproj|solutionrelative:businesslayer\\service\\implement\\classservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{E21759DF-68CE-4E02-A661-54A872D48543}|BusinessLayer\\BusinessLayer.csproj|d:\\cn9\\sep\\capstoneproject_ohmlab_be\\ohmlab_fuhcm_be\\businesslayer\\service\\implement\\classuserservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -699,7 +699,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 10,
+          "SelectedChildIndex": 8,
           "Children": [
             {
               "$type": "Bookmark",
@@ -723,32 +723,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "TeamUserController.cs",
-              "DocumentMoniker": "D:\\CN9\\SEP\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\OhmLab_FUHCM_BE\\Controller\\TeamUserController.cs",
-              "RelativeDocumentMoniker": "OhmLab_FUHCM_BE\\Controller\\TeamUserController.cs",
-              "ToolTip": "D:\\CN9\\SEP\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\OhmLab_FUHCM_BE\\Controller\\TeamUserController.cs",
-              "RelativeToolTip": "OhmLab_FUHCM_BE\\Controller\\TeamUserController.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-22T03:13:04.555Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "TeamService.cs",
-              "DocumentMoniker": "D:\\CN9\\SEP\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\Service\\Implement\\TeamService.cs",
-              "RelativeDocumentMoniker": "BusinessLayer\\Service\\Implement\\TeamService.cs",
-              "ToolTip": "D:\\CN9\\SEP\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\Service\\Implement\\TeamService.cs",
-              "RelativeToolTip": "BusinessLayer\\Service\\Implement\\TeamService.cs",
-              "ViewState": "AQIAAJcAAAAAAAAAAAAkwJwAAAA9AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-10T13:48:14.571Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "MappingProfile.cs",
               "DocumentMoniker": "D:\\CN9\\SEP\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\OhmLab_FUHCM_BE\\AppStarts\\MappingProfile.cs",
               "RelativeDocumentMoniker": "OhmLab_FUHCM_BE\\AppStarts\\MappingProfile.cs",
@@ -760,7 +735,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "TeamResponseModel.cs",
               "DocumentMoniker": "D:\\CN9\\SEP\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\ResponseModel\\Team\\TeamResponseModel.cs",
               "RelativeDocumentMoniker": "BusinessLayer\\ResponseModel\\Team\\TeamResponseModel.cs",
@@ -772,7 +747,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "TeamUserService.cs",
               "DocumentMoniker": "D:\\CN9\\SEP\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\Service\\Implement\\TeamUserService.cs",
               "RelativeDocumentMoniker": "BusinessLayer\\Service\\Implement\\TeamUserService.cs",
@@ -797,7 +772,44 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 1,
+              "Title": "ClassService.cs",
+              "DocumentMoniker": "D:\\CN9\\SEP\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\Service\\Implement\\ClassService.cs",
+              "RelativeDocumentMoniker": "BusinessLayer\\Service\\Implement\\ClassService.cs",
+              "ToolTip": "D:\\CN9\\SEP\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\Service\\Implement\\ClassService.cs",
+              "RelativeToolTip": "BusinessLayer\\Service\\Implement\\ClassService.cs",
+              "ViewState": "AQIAAJACAAAAAAAAAAAswKgCAAA8AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-06T02:35:25.507Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "TeamService.cs",
+              "DocumentMoniker": "D:\\CN9\\SEP\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\Service\\Implement\\TeamService.cs",
+              "RelativeDocumentMoniker": "BusinessLayer\\Service\\Implement\\TeamService.cs",
+              "ToolTip": "D:\\CN9\\SEP\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\Service\\Implement\\TeamService.cs",
+              "RelativeToolTip": "BusinessLayer\\Service\\Implement\\TeamService.cs",
+              "ViewState": "AQIAAJcAAAAAAAAAAAAkwJwAAAA9AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-10T13:48:14.571Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "TeamUserController.cs",
+              "DocumentMoniker": "D:\\CN9\\SEP\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\OhmLab_FUHCM_BE\\Controller\\TeamUserController.cs",
+              "RelativeDocumentMoniker": "OhmLab_FUHCM_BE\\Controller\\TeamUserController.cs",
+              "ToolTip": "D:\\CN9\\SEP\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\OhmLab_FUHCM_BE\\Controller\\TeamUserController.cs",
+              "RelativeToolTip": "OhmLab_FUHCM_BE\\Controller\\TeamUserController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-22T03:13:04.555Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
               "Title": "ITeamUserRepository.cs",
               "DocumentMoniker": "D:\\CN9\\SEP\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\DataLayer\\Repository\\ITeamUserRepository.cs",
               "RelativeDocumentMoniker": "DataLayer\\Repository\\ITeamUserRepository.cs",
@@ -809,7 +821,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "TeamController.cs",
               "DocumentMoniker": "D:\\CN9\\SEP\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\OhmLab_FUHCM_BE\\Controller\\TeamController.cs",
               "RelativeDocumentMoniker": "OhmLab_FUHCM_BE\\Controller\\TeamController.cs",
@@ -821,7 +833,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "TeamUserRepository.cs",
               "DocumentMoniker": "D:\\CN9\\SEP\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\DataLayer\\Repository\\Implement\\TeamUserRepository.cs",
               "RelativeDocumentMoniker": "DataLayer\\Repository\\Implement\\TeamUserRepository.cs",
@@ -833,7 +845,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "ITeamUserService.cs",
               "DocumentMoniker": "D:\\CN9\\SEP\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\Service\\ITeamUserService.cs",
               "RelativeDocumentMoniker": "BusinessLayer\\Service\\ITeamUserService.cs",
@@ -845,7 +857,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 11,
               "Title": "ClassUserController.cs",
               "DocumentMoniker": "D:\\CN9\\SEP\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\OhmLab_FUHCM_BE\\Controller\\ClassUserController.cs",
               "RelativeDocumentMoniker": "OhmLab_FUHCM_BE\\Controller\\ClassUserController.cs",
@@ -857,7 +869,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 12,
               "Title": "ClassUserResponseModel.cs",
               "DocumentMoniker": "D:\\CN9\\SEP\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\ResponseModel\\User\\ClassUserResponseModel.cs",
               "RelativeDocumentMoniker": "BusinessLayer\\ResponseModel\\User\\ClassUserResponseModel.cs",
@@ -870,18 +882,6 @@
             {
               "$type": "Document",
               "DocumentIndex": 14,
-              "Title": "ClassService.cs",
-              "DocumentMoniker": "D:\\CN9\\SEP\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\Service\\Implement\\ClassService.cs",
-              "RelativeDocumentMoniker": "BusinessLayer\\Service\\Implement\\ClassService.cs",
-              "ToolTip": "D:\\CN9\\SEP\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\Service\\Implement\\ClassService.cs",
-              "RelativeToolTip": "BusinessLayer\\Service\\Implement\\ClassService.cs",
-              "ViewState": "AQIAAEEBAAAAAAAAAAAiwHECAAARAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-06T02:35:25.507Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
               "Title": "ClassRepository.cs",
               "DocumentMoniker": "D:\\CN9\\SEP\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\DataLayer\\Repository\\Implement\\ClassRepository.cs",
               "RelativeDocumentMoniker": "DataLayer\\Repository\\Implement\\ClassRepository.cs",
@@ -893,7 +893,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 13,
               "Title": "ClassResponseModel.cs",
               "DocumentMoniker": "D:\\CN9\\SEP\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\ResponseModel\\Class\\ClassResponseModel.cs",
               "RelativeDocumentMoniker": "BusinessLayer\\ResponseModel\\Class\\ClassResponseModel.cs",
@@ -1041,8 +1041,7 @@
               "RelativeToolTip": "OhmLab_FUHCM_BE\\Controller\\CourseController.cs",
               "ViewState": "AQIAADoAAAAAAAAAAAAgwEYAAABbAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-30T14:24:49.735Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-30T14:24:49.735Z"
             },
             {
               "$type": "Document",
@@ -1402,8 +1401,7 @@
               "RelativeToolTip": "OhmLab_FUHCM_BE\\Controller\\SemesterController.cs",
               "ViewState": "AQIAABYAAAAAAAAAAAAQwC8AAAANAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-24T13:52:54.178Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-24T13:52:54.178Z"
             },
             {
               "$type": "Document",
@@ -1559,8 +1557,7 @@
               "RelativeToolTip": "OhmLab_FUHCM_BE\\Controller\\AssignmentController.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-21T15:04:47.724Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-21T15:04:47.724Z"
             },
             {
               "$type": "Document",
@@ -1704,8 +1701,7 @@
               "RelativeToolTip": "OhmLab_FUHCM_BE\\AppStarts\\DependencyInjectionContainers.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-21T01:29:10.675Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-21T01:29:10.675Z"
             },
             {
               "$type": "Document",
@@ -1717,8 +1713,7 @@
               "RelativeToolTip": "OhmLab_FUHCM_BE\\AppStarts\\AuthConfig.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-21T01:29:09.304Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-21T01:29:09.304Z"
             },
             {
               "$type": "Document",
