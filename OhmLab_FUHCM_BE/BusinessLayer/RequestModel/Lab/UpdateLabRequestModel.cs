@@ -5,6 +5,9 @@ namespace BusinessLayer.RequestModel.Lab
     public class UpdateLabRequestModel
     {
         [Required]
+
+        public string SubjectId { get; set; }
+        [Required]
         public string LabName { get; set; } = null!;
         [Required]
         public string LabRequest { get; set; } = null!;
@@ -12,5 +15,8 @@ namespace BusinessLayer.RequestModel.Lab
         public string LabTarget { get; set; } = null!;
         [Required]
         public string LabStatus { get; set; } = null!;
+
+        public List<LabEquipmentItem>? RequiredEquipments { get; set; }
+        public List<LabKitItem>? RequiredKits { get; set; }
     }
 } 

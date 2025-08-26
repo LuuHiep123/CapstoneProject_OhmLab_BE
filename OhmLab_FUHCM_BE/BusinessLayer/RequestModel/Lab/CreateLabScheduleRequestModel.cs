@@ -20,3 +20,4 @@ namespace BusinessLayer.RequestModel.Lab
         public string? LecturerNotes { get; set; }
     }
 }
+
