@@ -148,6 +148,7 @@ namespace OhmLab_FUHCM_BE.AppStarts
             //Lab
             CreateMap<Lab, LabResponseModel>()
                 .ForMember(dest => dest.SubjectName, opt => opt.MapFrom(src => src.Subject != null ? src.Subject.SubjectName : null))
+                .ForMember(dest => dest.SubjectCode,opt => opt.MapFrom(src => src.Subject != null ? src.Subject.SubjectCode : null))
                 .ForMember(dest => dest.RequiredEquipments, opt => opt.MapFrom(src => src.LabEquipmentTypes))
                 .ForMember(dest => dest.RequiredKits, opt => opt.MapFrom(src => src.LabKitTemplates));
 
