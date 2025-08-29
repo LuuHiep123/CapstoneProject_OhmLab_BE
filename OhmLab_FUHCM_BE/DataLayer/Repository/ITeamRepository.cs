@@ -14,5 +14,7 @@ namespace DataLayer.Repository
         Task<Team> UpdateAsync(Team team);
         Task<bool> DeleteAsync(int id);
         Task<bool> ExistsAsync(int id);
+        Task<List<Team>> GetTeamsByUserIdAsync(Guid userId);
+        Task<List<TeamUser>> GetTeamMembersAsync(int teamId);
     }
 } 

@@ -18,7 +18,7 @@ namespace BusinessLayer.Service.Implement
         private readonly ILabRepository _labRepository;
         private readonly IClassRepository _classRepository;
         private readonly IScheduleTypeRepository _scheduleTypeRepository;
-        private readonly IUserRepositoty _userRepository;
+        private readonly IUserRepository _userRepository;
         private readonly IMapper _mapper;
         private readonly ILogger<AssignmentService> _logger;
 
@@ -28,7 +28,7 @@ namespace BusinessLayer.Service.Implement
                               ILabRepository labRepository,
                               IClassRepository classRepository,
                               IScheduleTypeRepository scheduleTypeRepository,
-                              IUserRepositoty userRepository,
+                              IUserRepository userRepository,
                               IMapper mapper,
                               ILogger<AssignmentService> logger)
         {

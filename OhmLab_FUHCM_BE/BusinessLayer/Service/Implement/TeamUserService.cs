@@ -13,10 +13,10 @@ namespace BusinessLayer.Service.Implement
     {
         private readonly ITeamUserRepository _teamUserRepository;
         private readonly ITeamRepository _teamRepository;
-        private readonly IUserRepositoty _userRepository;
+        private readonly IUserRepository _userRepository;
         private readonly IClassUserRepository _classUserRepository;
 
-        public TeamUserService(ITeamUserRepository teamUserRepository, ITeamRepository teamRepository, IUserRepositoty userRepository, IClassUserRepository classUserRepository)
+        public TeamUserService(ITeamUserRepository teamUserRepository, ITeamRepository teamRepository, IUserRepository userRepository, IClassUserRepository classUserRepository)
         {
             _teamUserRepository = teamUserRepository;
             _teamRepository = teamRepository;

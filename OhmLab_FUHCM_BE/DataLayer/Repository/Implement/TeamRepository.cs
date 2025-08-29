@@ -125,5 +125,37 @@ namespace DataLayer.Repository.Implement
                 throw ex;
             }
         }
+
+        public async Task<List<Team>> GetTeamsByUserIdAsync(Guid userId)
+        {
+            try
+            {
+                return await _DBContext.Teams
+                    .Include(t => t.Class)
+                    .Include(t => t.TeamUsers)
+                        .ThenInclude(tu => tu.User)
+                    .Where(t => t.TeamUsers.Any(tu => tu.UserId == userId))
+                    .ToListAsync();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public async Task<List<TeamUser>> GetTeamMembersAsync(int teamId)
+        {
+            try
+            {
+                return await _DBContext.TeamUsers
+                    .Include(tu => tu.User)
+                    .Where(tu => tu.TeamId == teamId)
+                    .ToListAsync();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 } 

@@ -6,7 +6,7 @@ namespace BusinessLayer.RequestModel.Lab
     {
         [Required]
 
-        public string SubjectId { get; set; }
+        public int SubjectId { get; set; }
         [Required]
         public string LabName { get; set; } = null!;
         [Required]

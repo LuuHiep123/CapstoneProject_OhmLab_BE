@@ -31,7 +31,8 @@ namespace OhmLab_FUHCM_BE.AppStarts
                 provider.GetRequiredService<IClassRepository>(),
                 provider.GetRequiredService<ISemesterRepository>(),
                 provider.GetRequiredService<ISemesterSubjectRepository>(),
-                provider.GetRequiredService<IMapper>()
+                provider.GetRequiredService<IMapper>(),
+                provider.GetRequiredService<db_abadcb_ohmlabContext>()
             ));
             services.AddScoped<ILabService>(provider => new LabService(
                 provider.GetRequiredService<ILabRepository>(),
@@ -41,6 +42,8 @@ namespace OhmLab_FUHCM_BE.AppStarts
                 provider.GetRequiredService<IKitTemplateRepository>(),
                 provider.GetRequiredService<IClassRepository>(),
                 provider.GetRequiredService<IScheduleRepository>(),
+                provider.GetRequiredService<IScheduleTypeRepository>(),
+                provider.GetRequiredService<ISlotRepository>(),
                 provider.GetRequiredService<IMapper>()
             ));
             services.AddScoped<IEquipmentService, EquipmentService>();
@@ -52,7 +55,7 @@ namespace OhmLab_FUHCM_BE.AppStarts
             services.AddScoped<ITeamUserService>(provider => new TeamUserService(
                 provider.GetRequiredService<ITeamUserRepository>(),
                 provider.GetRequiredService<ITeamRepository>(),
-                provider.GetRequiredService<IUserRepositoty>(),
+                provider.GetRequiredService<IUserRepository>(),
                 provider.GetRequiredService<IClassUserRepository>()
             ));
             services.AddScoped<IKitTemplateService, KitTemplateService>();
@@ -66,7 +69,7 @@ namespace OhmLab_FUHCM_BE.AppStarts
                 provider.GetRequiredService<IClassRepository>(),
                 provider.GetRequiredService<IClassUserRepository>(),
                 provider.GetRequiredService<ILabRepository>(),
-                provider.GetRequiredService<IUserRepositoty>(),
+                provider.GetRequiredService<IUserRepository>(),
                 provider.GetRequiredService<IReportRepository>(),
                 provider.GetRequiredService<ITeamRepository>(),
                 provider.GetRequiredService<db_abadcb_ohmlabContext>(),
@@ -78,15 +81,17 @@ namespace OhmLab_FUHCM_BE.AppStarts
             services.AddScoped<ISlotService, SlotService>();
             services.AddScoped<IScheduleTypeService, ScheduleTypeService>();
             services.AddScoped<IScheduleService, ScheduleService>();
+            services.AddScoped<IGradeService, GradeService>();
 
 
             //AddRepository
-            services.AddScoped<IUserRepositoty, UserRepository>();
+            services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<ISubjectRepository, SubjectRepository>();
             services.AddScoped<ILabRepository, LabRepository>();
             services.AddScoped<IEquipmentRepository, EquipmentRepository>();
             services.AddScoped<IEquipmentTypeRepository, EquipmentTypeRepository>();
             services.AddScoped<IGradeRepository, GradeRepository>();
+            
             services.AddScoped<IScheduleRepository, ScheduleRepository>();
             services.AddScoped<IReportRepository, ReportRepository>();
             services.AddScoped<IClassRepository, ClassRepository>();

@@ -284,10 +284,10 @@ namespace DataLayer.DBContext
                 entity.Property(e => e.UserId).HasColumnName("User_id");
 
                 entity.HasOne(d => d.Lab)
-                    .WithMany(p => p.Grades)
-                    .HasForeignKey(d => d.LabId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Grade__Lab_id__1A9EF37A");
+                     .WithMany(p => p.Grades)
+                     .HasForeignKey(d => d.LabId)
+                     .OnDelete(DeleteBehavior.ClientSetNull)
+                     .HasConstraintName("FK__Grade__Lab_id__1A9EF37A");
 
                 entity.HasOne(d => d.Team)
                     .WithMany(p => p.Grades)

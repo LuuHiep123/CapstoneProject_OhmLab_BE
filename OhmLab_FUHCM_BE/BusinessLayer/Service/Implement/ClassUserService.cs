@@ -19,11 +19,11 @@ namespace BusinessLayer.Service.Implement
     public class ClassUserService : IClassUserService
     {
         private readonly IClassUserRepository _classUserRepository;
-        private readonly IUserRepositoty _userRepository;
+        private readonly IUserRepository _userRepository;
         private readonly IClassRepository _classRepository;
         private readonly IMapper _mapper;
 
-        public ClassUserService(IClassUserRepository classUserRepository, IUserRepositoty userRepository, IClassRepository classRepository, IMapper mapper)
+        public ClassUserService(IClassUserRepository classUserRepository, IUserRepository userRepository, IClassRepository classRepository, IMapper mapper)
         {
             _classUserRepository = classUserRepository;
             _userRepository = userRepository;

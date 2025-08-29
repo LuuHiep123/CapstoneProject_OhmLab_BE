@@ -64,7 +64,7 @@ namespace OhmLab_FUHCM_BE.Controller
             }
         }
 
-        [Authorize(Roles = "Admin,HeadOfDepartment")]
+        [Authorize(Roles = "Admin,HeadOfDepartment,Lecturer")]
         [HttpGet("{id}")]
         public async Task<IActionResult> GetEquipmentById(string id)
         {
@@ -94,7 +94,7 @@ namespace OhmLab_FUHCM_BE.Controller
             }
         }
 
-        [Authorize(Roles = "Admin,HeadOfDepartment")]
+        [Authorize(Roles = "Admin,HeadOfDepartment,Lecturer")]
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateEquipment(string id, UpdateEquipmentRequestModel model)
         {

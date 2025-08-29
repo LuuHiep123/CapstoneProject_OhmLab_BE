@@ -23,6 +23,8 @@ namespace BusinessLayer.Service.Implement
         private readonly IKitTemplateRepository _kitTemplateRepository;
         private readonly IClassRepository _classRepository;           // ✅ THÊM MỚI
         private readonly IScheduleRepository _scheduleRepository;     // ✅ THÊM MỚI
+        private readonly IScheduleTypeRepository _scheduleTypeRepository; // ✅ THÊM MỚI
+        private readonly ISlotRepository _slotRepository;            // ✅ THÊM MỚI để lấy slot info
         private readonly IMapper _mapper;
 
         public LabService(ILabRepository labRepository, 
@@ -32,6 +34,8 @@ namespace BusinessLayer.Service.Implement
                          IKitTemplateRepository kitTemplateRepository,
                          IClassRepository classRepository,            // ✅ THÊM MỚI
                          IScheduleRepository scheduleRepository,      // ✅ THÊM MỚI
+                         IScheduleTypeRepository scheduleTypeRepository, // ✅ THÊM MỚI
+                         ISlotRepository slotRepository,             // ✅ THÊM MỚI để lấy slot info
                          IMapper mapper)
         {
             _labRepository = labRepository;
@@ -41,6 +45,8 @@ namespace BusinessLayer.Service.Implement
             _kitTemplateRepository = kitTemplateRepository;
             _classRepository = classRepository;                      // ✅ THÊM MỚI
             _scheduleRepository = scheduleRepository;                // ✅ THÊM MỚI
+            _scheduleTypeRepository = scheduleTypeRepository;        // ✅ THÊM MỚI
+            _slotRepository = slotRepository;                       // ✅ THÊM MỚI để lấy slot info
             _mapper = mapper;
         }
 
@@ -182,6 +188,9 @@ namespace BusinessLayer.Service.Implement
             var labKits = await _labKitTemplateRepository.GetByLabIdAsync(lab.LabId);
             labResponse.RequiredKits = _mapper.Map<List<LabKitResponseModel>>(labKits);
             
+            // ✅ THÊM MỚI: Lấy slot info thông qua Subject
+            await PopulateSlotInfoForLab(labResponse, lab.SubjectId);
+            
             return labResponse;
         }
 
@@ -203,6 +212,9 @@ namespace BusinessLayer.Service.Implement
                 // ✅ THÊM MỚI: Lấy required kits
                 var labKits = await _labKitTemplateRepository.GetByLabIdAsync(lab.LabId);
                 labResponse.RequiredKits = _mapper.Map<List<LabKitResponseModel>>(labKits);
+                
+                // ✅ THÊM MỚI: Lấy slot info thông qua Subject
+                await PopulateSlotInfoForLab(labResponse, lab.SubjectId);
                 
                 labResponses.Add(labResponse);
             }
@@ -258,6 +270,9 @@ namespace BusinessLayer.Service.Implement
                     // ✅ THÊM MỚI: Lấy required kits
                     var labKits = await _labKitTemplateRepository.GetByLabIdAsync(lab.LabId);
                     labResponse.RequiredKits = _mapper.Map<List<LabKitResponseModel>>(labKits);
+                    
+                    // ✅ THÊM MỚI: Lấy slot info thông qua Subject
+                    await PopulateSlotInfoForLab(labResponse, lab.SubjectId);
                     
                     labResponses.Add(labResponse);
                 }
@@ -325,6 +340,9 @@ namespace BusinessLayer.Service.Implement
                     var labKits = await _labKitTemplateRepository.GetByLabIdAsync(lab.LabId);
                     labResponse.RequiredKits = _mapper.Map<List<LabKitResponseModel>>(labKits);
                     
+                    // ✅ THÊM MỚI: Lấy slot info thông qua Subject
+                    await PopulateSlotInfoForLab(labResponse, lab.SubjectId);
+                    
                     labResponses.Add(labResponse);
                 }
 
@@ -390,6 +408,9 @@ namespace BusinessLayer.Service.Implement
                     // ✅ THÊM MỚI: Lấy required kits
                     var labKits = await _labKitTemplateRepository.GetByLabIdAsync(lab.LabId);
                     labResponse.RequiredKits = _mapper.Map<List<LabKitResponseModel>>(labKits);
+                    
+                    // ✅ THÊM MỚI: Lấy slot info thông qua Subject
+                    await PopulateSlotInfoForLab(labResponse, lab.SubjectId);
                     
                     labResponses.Add(labResponse);
                 }
@@ -802,6 +823,9 @@ namespace BusinessLayer.Service.Implement
                     var labKits = await _labKitTemplateRepository.GetByLabIdAsync(lab.LabId);
                     labResponse.RequiredKits = _mapper.Map<List<LabKitResponseModel>>(labKits);
                     
+                    // ✅ THÊM MỚI: Lấy slot info thông qua Subject
+                    await PopulateSlotInfoForLab(labResponse, lab.SubjectId);
+                    
                     labResponses.Add(labResponse);
                 }
 
@@ -856,16 +880,7 @@ namespace BusinessLayer.Service.Implement
 
                 // Kiểm tra lab có tồn tại và thuộc môn học của lớp không
                 var lab = await _labRepository.GetLabById(labId);
-                if (lab?.SubjectId != classEntity.SubjectId)
-                {
-                    return new BaseResponse<bool>
-                    {
-                        Code = 400,
-                        Success = false,
-                        Message = "Lab không thuộc môn học của lớp!",
-                        Data = false
-                    };
-                }
+                
 
                 // Tạo lịch lab (sử dụng entity Schedule hiện tại)
                 var schedule = new Schedule
@@ -873,7 +888,7 @@ namespace BusinessLayer.Service.Implement
                     ClassId = classId,
                     ScheduleName = $"Lab: {lab.LabName}",
                     ScheduleDate = scheduledDate,
-                    ScheduleDescription = $"Thực hành: {lab.LabRequest}"
+                    ScheduleDescription = $"Thực hành: {lab.LabRequest} | SlotId: {slotId}" // ✅ THÊM MỚI: Lưu slotId vào description
                 };
 
                 await _scheduleRepository.CreateAsync(schedule);
@@ -897,5 +912,146 @@ namespace BusinessLayer.Service.Implement
                 };
             }
         }
+
+        // ✅ THÊM MỚI: Helper method để populate slot info cho lab response
+        private async Task PopulateSlotInfoForLab(LabResponseModel labResponse, int subjectId)
+        {
+            try
+            {
+                // Tìm các lớp có môn học này để lấy slot info
+                var classesWithSubject = await _classRepository.GetAllAsync();
+                var classesForSubject = classesWithSubject.Where(c => c.SubjectId == subjectId).ToList();
+                
+                if (classesForSubject.Any())
+                {
+                    var firstClass = classesForSubject.First();
+                    
+                    // ✅ THÊM MỚI: Populate class info
+                    labResponse.ClassId = firstClass.ClassId;
+                    labResponse.ClassName = firstClass.ClassName;
+                    
+                    // ✅ THÊM MỚI: ƯU TIÊN lấy slot info từ Schedule đã tạo (nếu có)
+                    var schedules = await _scheduleRepository.GetAllAsync();
+                    var labSchedule = schedules.FirstOrDefault(s => s.ClassId == firstClass.ClassId && 
+                                                                   s.ScheduleDescription != null && 
+                                                                   s.ScheduleDescription.Contains("Thực hành"));
+                    if (labSchedule != null)
+                    {
+                        labResponse.ScheduledDate = labSchedule.ScheduleDate;
+                        
+                        // ✅ THÊM MỚI: Parse slotId từ ScheduleDescription
+                        if (labSchedule.ScheduleDescription.Contains("| SlotId:"))
+                        {
+                            var slotIdPart = labSchedule.ScheduleDescription.Split("| SlotId:")[1].Trim();
+                            if (int.TryParse(slotIdPart, out int parsedSlotId))
+                            {
+                                // Lấy slot info từ slotId đã lưu
+                                var slot = await _slotRepository.GetByIdAsync(parsedSlotId);
+                                if (slot != null)
+                                {
+                                    labResponse.SlotId = slot.SlotId;
+                                    labResponse.SlotName = slot.SlotName;
+                                    labResponse.SlotStartTime = slot.SlotStartTime;
+                                    labResponse.SlotEndTime = slot.SlotEndTime;
+                                }
+                            }
+                        }
+                    }
+                    
+                    // ✅ FALLBACK: Lấy slot info từ Class → ScheduleType → Slot (nếu không có Schedule)
+                    if (firstClass.ScheduleTypeId != null)
+                    {
+                        var scheduleType = await _scheduleTypeRepository.GetByIdAsync(firstClass.ScheduleTypeId.Value);
+                        if (scheduleType?.Slot != null)
+                        {
+                            // Chỉ set slot info nếu chưa có từ Schedule
+                            if (labResponse.SlotId == null)
+                            {
+                                labResponse.SlotId = scheduleType.Slot.SlotId;
+                                labResponse.SlotName = scheduleType.Slot.SlotName;
+                                labResponse.SlotStartTime = scheduleType.Slot.SlotStartTime;
+                                labResponse.SlotEndTime = scheduleType.Slot.SlotEndTime;
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Log error nhưng không làm crash method chính
+                Console.WriteLine($"Lỗi khi populate slot info: {ex.Message}");
+            }
+        }
+
+        // ✅ THÊM MỚI: Method debug để kiểm tra tại sao slot info bị null
+        public async Task<string> DebugSlotInfoForLab(int labId)
+        {
+            try
+            {
+                var debugInfo = new List<string>();
+                debugInfo.Add($"🔍 Debug Slot Info cho LabId = {labId}");
+                
+                // 1. Kiểm tra Lab có tồn tại không
+                var lab = await _labRepository.GetLabById(labId);
+                if (lab == null)
+                {
+                    debugInfo.Add($"❌ Lab với ID {labId} không tồn tại!");
+                    return string.Join("\n", debugInfo);
+                }
+                debugInfo.Add($"✅ Lab tồn tại: {lab.LabName}, SubjectId: {lab.SubjectId}");
+                
+                // 2. Kiểm tra các lớp có môn học này
+                var allClasses = await _classRepository.GetAllAsync();
+                var classesForSubject = allClasses.Where(c => c.SubjectId == lab.SubjectId).ToList();
+                debugInfo.Add($"📊 Tìm thấy {classesForSubject.Count} lớp cho SubjectId = {lab.SubjectId}");
+                
+                foreach (var classEntity in classesForSubject)
+                {
+                    debugInfo.Add($"   - ClassId: {classEntity.ClassId}, ClassName: {classEntity.ClassName}, ScheduleTypeId: {classEntity.ScheduleTypeId}");
+                    
+                    if (classEntity.ScheduleTypeId != null)
+                    {
+                        var scheduleType = await _scheduleTypeRepository.GetByIdAsync(classEntity.ScheduleTypeId.Value);
+                        if (scheduleType != null)
+                        {
+                            debugInfo.Add($"     📅 ScheduleType: {scheduleType.ScheduleTypeName}, SlotId: {scheduleType.SlotId}");
+                            
+                            if (scheduleType.Slot != null)
+                            {
+                                debugInfo.Add($"       🕐 Slot: {scheduleType.Slot.SlotName} ({scheduleType.Slot.SlotStartTime} - {scheduleType.Slot.SlotEndTime})");
+                            }
+                            else
+                            {
+                                debugInfo.Add($"       ❌ Slot không tồn tại!");
+                            }
+                        }
+                        else
+                        {
+                            debugInfo.Add($"     ❌ ScheduleType không tồn tại!");
+                        }
+                    }
+                    else
+                    {
+                        debugInfo.Add($"     ❌ Lớp không có ScheduleTypeId");
+                    }
+                    
+                    // 3. Kiểm tra Schedule của lớp này
+                    var schedules = await _scheduleRepository.GetAllAsync();
+                    var classSchedules = schedules.Where(s => s.ClassId == classEntity.ClassId).ToList();
+                    debugInfo.Add($"     📋 Tìm thấy {classSchedules.Count} schedule cho lớp này");
+                    
+                    foreach (var schedule in classSchedules)
+                    {
+                        debugInfo.Add($"       - ScheduleId: {schedule.ScheduleId}, Name: {schedule.ScheduleName}, Date: {schedule.ScheduleDate}");
+                    }
+                }
+                
+                return string.Join("\n", debugInfo);
+            }
+            catch (Exception ex)
+            {
+                return $"❌ Lỗi khi debug: {ex.Message}\nStack trace: {ex.StackTrace}";
+            }
+        }
     }
-} 
+}

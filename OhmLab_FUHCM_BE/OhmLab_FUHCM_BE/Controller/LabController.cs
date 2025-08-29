@@ -201,6 +201,30 @@ namespace OhmLab_FUHCM_BE.Controller
             }
         }
 
+        // ✅ THÊM MỚI: Debug endpoint để kiểm tra slot info
+        [HttpGet("debug/slot-info/{labId}")]
+        [Authorize(Roles = "Admin,HeadOfDepartment,Lecturer")]
+        public async Task<IActionResult> DebugSlotInfo(int labId)
+        {
+            try
+            {
+                var debugInfo = await _labService.DebugSlotInfoForLab(labId);
+                return Ok(new {
+                    success = true,
+                    message = "Debug slot info thành công!",
+                    data = debugInfo
+                });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new {
+                    success = false,
+                    message = ex.Message,
+                    data = (object)null
+                });
+            }
+        }
+
         // ✅ Lecturer: Xem lab theo môn học
         [HttpGet("subject/{subjectId}")]
         [Authorize(Roles = "Admin,HeadOfDepartment,Lecturer")]
