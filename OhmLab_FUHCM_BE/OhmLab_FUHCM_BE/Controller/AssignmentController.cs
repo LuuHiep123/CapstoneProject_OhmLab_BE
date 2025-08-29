@@ -23,9 +23,9 @@ namespace OhmLab_FUHCM_BE.Controller
         private readonly ILogger<AssignmentController> _logger;
         private readonly IClassRepository _classRepository;
         //private readonly IWeekRepository _weekRepository;
-        private readonly IUserRepositoty _teamEquipmentRepository;
+        private readonly IUserRepository _teamEquipmentRepository;
 
-        public AssignmentController(IAssignmentService assignmentService, ILogger<AssignmentController> logger, IClassRepository classRepository,IUserRepositoty userRepositoty)
+        public AssignmentController(IAssignmentService assignmentService, ILogger<AssignmentController> logger, IClassRepository classRepository,IUserRepository userRepositoty)
         {
             _assignmentService = assignmentService;
             _logger = logger;

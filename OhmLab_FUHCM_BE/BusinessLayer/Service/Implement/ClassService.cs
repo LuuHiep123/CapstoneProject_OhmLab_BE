@@ -25,13 +25,13 @@ namespace BusinessLayer.Service.Implement
         private readonly IScheduleRepository _scheduleRepository;
         private readonly ISemesterSubjectRepository _semesterSubjectRepository;
         private readonly ILabRepository _labRepository;
-        private readonly IUserRepositoty _userRepository;
+        private readonly IUserRepository _userRepository;
         private readonly IReportRepository _reportRepository;
         private readonly ITeamRepository _teamRepository;
         private readonly db_abadcb_ohmlabContext _dbContext;
         private readonly IMapper _mapper;
 
-        public ClassService(IScheduleRepository scheduleRepository, ISemesterSubjectRepository semesterSubjectRepository, ISemesterRepository semesterRepository, ISubjectRepository subjectRepository, IScheduleTypeRepository scheduleTypeRepository, IClassRepository classRepository, IClassUserRepository classUserRepository, ILabRepository labRepository, IUserRepositoty userRepository, IReportRepository reportRepository, ITeamRepository teamRepository, db_abadcb_ohmlabContext dbContext, IMapper mapper)
+        public ClassService(IScheduleRepository scheduleRepository, ISemesterSubjectRepository semesterSubjectRepository, ISemesterRepository semesterRepository, ISubjectRepository subjectRepository, IScheduleTypeRepository scheduleTypeRepository, IClassRepository classRepository, IClassUserRepository classUserRepository, ILabRepository labRepository, IUserRepository userRepository, IReportRepository reportRepository, ITeamRepository teamRepository, db_abadcb_ohmlabContext dbContext, IMapper mapper)
         {
             _scheduleRepository = scheduleRepository;
             _semesterSubjectRepository = semesterSubjectRepository;

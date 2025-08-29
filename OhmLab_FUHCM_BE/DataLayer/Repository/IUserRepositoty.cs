@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DataLayer.Repository
 {
-    public interface IUserRepositoty
+    public interface IUserRepository
     {
         public Task<bool> CreateUser(User user);
         public Task<bool> UpdateUser(User user);

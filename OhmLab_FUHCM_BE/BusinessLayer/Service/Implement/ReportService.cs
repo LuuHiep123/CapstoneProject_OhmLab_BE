@@ -15,7 +15,7 @@ namespace BusinessLayer.Service.Implement
     {
         private readonly IReportRepository _reportRepository;
         private readonly IScheduleRepository _scheduleRepository;
-        private readonly IUserRepositoty _userRepository;
+        private readonly IUserRepository _userRepository;
         private readonly IClassRepository _classRepository;
         private readonly ISubjectRepository _subjectRepository;
         private readonly IMapper _mapper;
@@ -24,7 +24,7 @@ namespace BusinessLayer.Service.Implement
         public ReportService(
             IReportRepository reportRepository,
             IScheduleRepository scheduleRepository,
-            IUserRepositoty userRepository,
+            IUserRepository userRepository,
             IClassRepository classRepository,
             ISubjectRepository subjectRepository,
             IMapper mapper,

@@ -28,12 +28,12 @@ namespace BusinessLayer.Service.Implement
 {
     public class UserService : IUserService
     {
-        private readonly IUserRepositoty _teamEquipmentRepository;
+        private readonly IUserRepository _teamEquipmentRepository;
         private readonly IConfiguration _configuration;
         private readonly IMapper _mapper;
         private readonly IMemoryCache _memoryCache;
 
-        public UserService(IUserRepositoty userRepository, IConfiguration configuration, IMapper mapper, IMemoryCache memoryCache)
+        public UserService(IUserRepository userRepository, IConfiguration configuration, IMapper mapper, IMemoryCache memoryCache)
         {
             _teamEquipmentRepository = userRepository;
             _configuration = configuration;

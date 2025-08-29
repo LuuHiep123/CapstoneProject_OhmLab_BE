@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace DataLayer.Repository.Implement
 {
-    public class UserRepository : IUserRepositoty
+    public class UserRepository : IUserRepository
     {
         private readonly db_abadcb_ohmlabContext _DBContext;
 
@@ -71,6 +71,18 @@ namespace DataLayer.Repository.Implement
         }
 
         public async Task<User> GetUserById(Guid id)
+        {
+            try
+            {
+                return await _DBContext.Users.FirstOrDefaultAsync(u => u.UserId == id);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public async Task<User?> GetByIdAsync(Guid id)
         {
             try
             {
