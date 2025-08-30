@@ -10,3 +10,4 @@ namespace BusinessLayer.RequestModel.Assignment
         public string GradeStatus { get; set; }    // Graded, Late, etc.
     }
 }
+

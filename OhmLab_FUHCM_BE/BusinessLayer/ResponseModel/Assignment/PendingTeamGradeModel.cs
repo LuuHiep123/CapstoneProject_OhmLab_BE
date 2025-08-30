@@ -15,3 +15,4 @@ namespace BusinessLayer.ResponseModel.Assignment
         public string Status { get; set; } = "Pending"; // Pending, In Progress, Completed
     }
 }
+

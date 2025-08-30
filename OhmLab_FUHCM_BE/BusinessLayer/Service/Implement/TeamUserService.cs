@@ -66,16 +66,25 @@ namespace BusinessLayer.Service.Implement
                 }
 
                 
+                // Kiểm tra user đã có trong team khác ở CÙNG LỚP chưa
                 var userTeams = await _teamUserRepository.GetByUserIdAsync(userId);
-                if (userTeams.Any(tu => tu.TeamId != teamId))
+                var conflictingTeam = userTeams.FirstOrDefault(tu => tu.TeamId != teamId);
+                
+                if (conflictingTeam != null)
                 {
-                    return new BaseResponse<TeamUserResponseModel>
+                    // Lấy thông tin team xung đột để kiểm tra lớp
+                    var conflictingTeamInfo = await _teamRepository.GetByIdAsync(conflictingTeam.TeamId);
+                    if (conflictingTeamInfo != null && conflictingTeamInfo.ClassId == team.ClassId)
                     {
-                        Code = 400,
-                        Success = false,
-                        Message = "Người dùng đã có trong một nhóm khác!",
-                        Data = null
-                    };
+                        return new BaseResponse<TeamUserResponseModel>
+                        {
+                            Code = 400,
+                            Success = false,
+                            Message = "Người dùng đã có trong một nhóm khác ở cùng lớp này!",
+                            Data = null
+                        };
+                    }
+                    // Nếu team xung đột ở lớp khác thì cho phép (khác lớp vẫn được)
                 }
 
                 

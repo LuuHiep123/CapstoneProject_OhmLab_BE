@@ -96,7 +96,7 @@ namespace OhmLab_FUHCM_BE.Controller
 
         // Team xem điểm của mình
         [HttpGet("labs/{labId}/teams/{teamId}/grade")]
-        [Authorize(Roles = "Student")]
+        [Authorize(Roles = "Student,Lecturer")]
         public async Task<IActionResult> GetTeamGrade(int labId, int teamId)
         {
             try
@@ -167,13 +167,28 @@ namespace OhmLab_FUHCM_BE.Controller
         }
 
         // Xem tất cả điểm của lab (cho HeadOfDepartment)
-        [HttpGet("labs/{labId}/all-grades")]
-        [Authorize(Roles = "HeadOfDepartment")]
+        [HttpGet("labs/{labId}/Grade-for-id")]
+        [Authorize(Roles = "HeadOfDepartment,Lecturer")]
         public async Task<IActionResult> GetAllLabGrades(int labId)
         {
             try
             {
-                var result = await _gradeService.GetAllLabGradesAsync(labId);
+                var result = await _gradeService.GetGradeById(labId);
+                return StatusCode(result.Code, result);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error in GetAllLabGrades: {Message}", ex.Message);
+                return StatusCode(500, new { success = false, message = ex.Message });
+            }
+        }
+        [HttpGet("labs/all-grades")]
+        [Authorize(Roles = "HeadOfDepartment")]
+        public async Task<IActionResult> GetAllLabGrades()
+        {
+            try
+            {
+                var result = await _gradeService.GetAllGrade();
                 return StatusCode(result.Code, result);
             }
             catch (Exception ex)

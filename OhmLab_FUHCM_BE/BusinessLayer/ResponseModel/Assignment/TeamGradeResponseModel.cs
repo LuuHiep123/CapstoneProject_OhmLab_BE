@@ -24,3 +24,4 @@ namespace BusinessLayer.ResponseModel.Assignment
         public string? IndividualComment { get; set; } // Nhận xét cá nhân
     }
 }
+
