@@ -603,7 +603,7 @@ namespace BusinessLayer.Service.Implement
             }
         }
 
-        public async Task<BaseResponse<List<TeamGradeResponseModel>>> GetAllLabGradesAsync(int labId)
+        public async Task<BaseResponse<List<TeamGradeResponseModel>>> GetGradeById(int labId)
         {
             try
             {
@@ -674,6 +674,101 @@ namespace BusinessLayer.Service.Implement
                     Code = 200,
                     Success = true,
                     Message = "Lấy tất cả điểm lab thành công!",
+                    Data = allTeamGrades
+                };
+            }
+            catch (Exception ex)
+            {
+                return new BaseResponse<List<TeamGradeResponseModel>>
+                {
+                    Code = 500,
+                    Success = false,
+                    Message = $"Lỗi: {ex.Message}",
+                    Data = null
+                };
+            }
+        }
+
+        public async Task<BaseResponse<List<TeamGradeResponseModel>>> GetAllGrade()
+        {
+            try
+            {
+                // Lấy tất cả grade trong hệ thống
+                var allGrades = await _gradeRepository.GetAllAsync();
+                
+                if (!allGrades.Any())
+                {
+                    return new BaseResponse<List<TeamGradeResponseModel>>
+                    {
+                        Code = 200,
+                        Success = true,
+                        Message = "Không có điểm nào trong hệ thống!",
+                        Data = new List<TeamGradeResponseModel>()
+                    };
+                }
+
+                // Nhóm grade theo Lab và Team
+                var labTeamGroups = allGrades
+                    .GroupBy(g => new { g.LabId, g.TeamId })
+                    .ToList();
+
+                var allTeamGrades = new List<TeamGradeResponseModel>();
+
+                foreach (var group in labTeamGroups)
+                {
+                    var labId = group.Key.LabId;
+                    var teamId = group.Key.TeamId;
+
+                    // Lấy thông tin lab
+                    var lab = await _labRepository.GetLabById(labId);
+                    if (lab == null) continue;
+
+                    // Lấy thông tin team
+                    var team = await _teamRepository.GetByIdAsync(teamId);
+                    if (team == null) continue;
+
+                    // Tất cả grade đều là của thành viên trong team (cùng điểm)
+                    var memberGrades = group.Where(g => g.UserId != Guid.Empty).ToList();
+                    var teamGrade = memberGrades.FirstOrDefault(); // Lấy grade đầu tiên làm điểm chung
+
+                    var response = new TeamGradeResponseModel
+                    {
+                        TeamId = teamId,
+                        TeamName = team.TeamName,
+                        LabId = labId,
+                        LabName = lab.LabName,
+                        TeamGrade = teamGrade?.Grade1 ?? 0,
+                        TeamComment = teamGrade?.GradeDescription,
+                        GradeStatus = teamGrade?.GradeStatus ?? "Pending",
+                        GradedDate = teamGrade != null ? DateTime.Now : null
+                    };
+
+                    // Lấy thông tin các member
+                    if (team.TeamUsers != null)
+                    {
+                        foreach (var member in team.TeamUsers)
+                        {
+                            var memberGrade = memberGrades.FirstOrDefault(g => g.UserId == member.UserId);
+                            var memberUser = await _userRepository.GetUserById(member.UserId);
+
+                            response.Members.Add(new TeamMemberGradeModel
+                            {
+                                StudentId = member.UserId,
+                                StudentName = memberUser?.UserFullName ?? "Unknown",
+                                IndividualGrade = memberGrade?.Grade1 ?? 0,
+                                IndividualComment = memberGrade?.GradeDescription
+                            });
+                        }
+                    }
+
+                    allTeamGrades.Add(response);
+                }
+
+                return new BaseResponse<List<TeamGradeResponseModel>>
+                {
+                    Code = 200,
+                    Success = true,
+                    Message = "Lấy tất cả điểm trong hệ thống thành công!",
                     Data = allTeamGrades
                 };
             }

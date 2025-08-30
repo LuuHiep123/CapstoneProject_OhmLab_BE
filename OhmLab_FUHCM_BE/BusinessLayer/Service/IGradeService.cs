@@ -28,6 +28,9 @@ namespace BusinessLayer.Service
         Task<BaseResponse<object>> GetTeamGradeStatisticsAsync(int labId, Guid lecturerId);
         
         // Xem tất cả điểm của lab (cho HeadOfDepartment)
-        Task<BaseResponse<List<TeamGradeResponseModel>>> GetAllLabGradesAsync(int labId);
+        Task<BaseResponse<List<TeamGradeResponseModel>>> GetGradeById(int labId);
+        
+        // Xem tất cả điểm trong hệ thống (cho HeadOfDepartment)
+        Task<BaseResponse<List<TeamGradeResponseModel>>> GetAllGrade(); 
     }
 }
