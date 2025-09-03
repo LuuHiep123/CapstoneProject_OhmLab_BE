@@ -43,7 +43,6 @@ namespace OhmLab_FUHCM_BE.AppStarts
                 provider.GetRequiredService<IClassRepository>(),
                 provider.GetRequiredService<IScheduleRepository>(),
                 provider.GetRequiredService<IScheduleTypeRepository>(),
-                provider.GetRequiredService<ISlotRepository>(),
                 provider.GetRequiredService<IMapper>()
             ));
             services.AddScoped<IEquipmentService, EquipmentService>();

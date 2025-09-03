@@ -35,7 +35,6 @@ namespace BusinessLayer.Service
         Task<BaseResponse<bool>> RemoveKitFromLab(int labId, string kitTemplateId);
         Task<BaseResponse<List<LabKitResponseModel>>> GetLabKits(int labId);
         
-        // ✅ THÊM MỚI: Method debug để kiểm tra slot info
-        Task<string> DebugSlotInfoForLab(int labId);
+
     } 
 } 

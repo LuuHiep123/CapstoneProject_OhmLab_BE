@@ -11,7 +11,7 @@ namespace BusinessLayer.RequestModel.Lab
         public DateTime ScheduledDate { get; set; }
         
         [Required]
-        public int SlotId { get; set; }
+        public int ScheduleTypeId { get; set; }  // ✅ Thay thế SlotId bằng ScheduleTypeId
         
         public string? ScheduleDescription { get; set; }
         

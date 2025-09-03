@@ -105,7 +105,7 @@ namespace OhmLab_FUHCM_BE.Controller
                 }
 
                 var userId = Guid.Parse(currentUserId);
-                var result = await _labService.CreateLabSchedule(labId, model.ClassId, model.ScheduledDate, model.SlotId, userId);
+                var result = await _labService.CreateLabSchedule(labId, model.ClassId, model.ScheduledDate, model.ScheduleTypeId, userId);
                 return StatusCode(result.Code, result);
             }
             catch (Exception ex)
@@ -117,6 +117,7 @@ namespace OhmLab_FUHCM_BE.Controller
                 });
             }
         }
+
 
         // ✅ Admin/HeadOfDepartment: Xem tất cả lab
         [HttpGet]
@@ -201,29 +202,7 @@ namespace OhmLab_FUHCM_BE.Controller
             }
         }
 
-        // ✅ THÊM MỚI: Debug endpoint để kiểm tra slot info
-        [HttpGet("debug/slot-info/{labId}")]
-        [Authorize(Roles = "Admin,HeadOfDepartment,Lecturer")]
-        public async Task<IActionResult> DebugSlotInfo(int labId)
-        {
-            try
-            {
-                var debugInfo = await _labService.DebugSlotInfoForLab(labId);
-                return Ok(new {
-                    success = true,
-                    message = "Debug slot info thành công!",
-                    data = debugInfo
-                });
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(new {
-                    success = false,
-                    message = ex.Message,
-                    data = (object)null
-                });
-            }
-        }
+
 
         // ✅ Lecturer: Xem lab theo môn học
         [HttpGet("subject/{subjectId}")]
@@ -236,7 +215,7 @@ namespace OhmLab_FUHCM_BE.Controller
 
         // ✅ Lecturer: Xem lab theo lớp
         [HttpGet("class/{classId}")]
-        [Authorize(Roles = "Admin,HeadOfDepartment,Lecturer")]
+        
         public async Task<IActionResult> GetLabsByClassId(int classId)
         {
             var result = await _labService.GetLabsByClassId(classId);
