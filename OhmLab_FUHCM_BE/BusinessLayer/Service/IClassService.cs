@@ -15,6 +15,7 @@ namespace BusinessLayer.Service
         Task<DynamicResponse<ClassResponseModel>> GetAllClassesAsync();
         Task<DynamicResponse<ClassResponseModel>> GetAllClassesAsync(GetAllClassRequestModel model);
         Task<BaseResponse<List<ClassResponseModel>>> GetClassesByLecturerIdAsync(Guid lecturerId);
+        Task<BaseResponse<List<ClassResponseModel>>> GetClassesByStudentIdAsync(Guid studentId);
         Task<BaseResponse<ClassResponseModel>> UpdateClassAsync(int id, UpdateClassRequestModel model);
         Task<BaseResponse<bool>> UpdateClassStatusAsync(int id, string status);
         Task<BaseResponse<bool>> AddScheduleForClassAsync(AddScheduleForClassRequestModel model);

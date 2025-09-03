@@ -10,6 +10,7 @@ namespace DataLayer.Repository
         Task<Class> GetByIdAsync(int id);
         Task<Class> GetByName(string name);
         Task<List<Class>> GetByLecturerIdAsync(Guid lecturerId);
+        Task<List<Class>> GetByStudentIdAsync(Guid studentId);
         Task<List<Class>> GetAllAsync();
         Task<Class> CreateAsync(Class classEntity);
         Task<Class> UpdateAsync(Class classEntity);

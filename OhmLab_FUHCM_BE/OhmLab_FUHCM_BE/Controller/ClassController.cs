@@ -56,6 +56,14 @@ namespace OhmLab_FUHCM_BE.Controller
             return StatusCode(result.Code, result);
         }
 
+        [Authorize(Roles = "Admin,HeadOfDepartment,Student")]
+        [HttpGet("student/{studentId}")]
+        public async Task<IActionResult> GetClassesByStudentId(Guid studentId)
+        {
+            var result = await _classService.GetClassesByStudentIdAsync(studentId);
+            return StatusCode(result.Code, result);
+        }
+
         [Authorize(Roles = "Admin,HeadOfDepartment")]
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateClass(int id, [FromBody] UpdateClassRequestModel model)
