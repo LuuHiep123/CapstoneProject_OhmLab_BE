@@ -43,7 +43,7 @@ namespace BusinessLayer.Service.Implement
         {
             try
             {
-                // Validate user exists
+                // Validate user exists and has proper role
                 var user = await _userRepository.GetUserById(userId);
                 if (user == null)
                 {
@@ -56,16 +56,28 @@ namespace BusinessLayer.Service.Implement
                     };
                 }
 
+                // Only Student and Lecturer can create reports
+                if (user.UserRoleName != "Student" && user.UserRoleName != "Lecturer")
+                {
+                    return new BaseResponse<ReportResponseModel>
+                    {
+                        Code = 403,
+                        Success = false,
+                        Message = "Chỉ sinh viên và giảng viên mới có thể tạo báo cáo!",
+                        Data = null
+                    };
+                }
+
                 // Find schedule based on today's date, slot, and class
                 var today = DateTime.Today;
-                var schedule = await FindScheduleByUserSelectionAsync(userId, today, model.SelectedSlot, model.SelectedClass);
+                var schedule = await FindScheduleByUserSelectionAsync(userId, today, model.SelectedSlot, model.SelectedClass, user.UserRoleName);
                 if (schedule == null)
                 {
                     return new BaseResponse<ReportResponseModel>
                     {
                         Code = 404,
                         Success = false,
-                        Message = "Không tìm thấy lịch học phù hợp cho hôm nay!",
+                        Message = "Không tìm thấy lịch học phù hợp cho hôm nay hoặc bạn không có quyền truy cập!",
                         Data = null
                     };
                 }
@@ -120,21 +132,55 @@ namespace BusinessLayer.Service.Implement
                     };
                 }
 
-                var today = DateTime.Today;
-                var schedules = await GetUserSchedulesAsync(userId);
-                var todaySchedules = schedules.Where(s => s.ScheduleDate.Date == today).ToList();
-
-                var availableSlots = todaySchedules
-                    .GroupBy(s => s.Class?.ScheduleType?.Slot?.SlotName ?? "Unknown")
-                    .Select(g => new BusinessLayer.ResponseModel.Report.SlotResponseModel
+                // Only Student and Lecturer can access this
+                if (user.UserRoleName != "Student" && user.UserRoleName != "Lecturer")
+                {
+                    return new BaseResponse<object>
                     {
-                        SlotName = g.Key,
-                        SlotStartTime = g.First().Class?.ScheduleType?.Slot?.SlotStartTime ?? "Unknown",
-                        SlotEndTime = g.First().Class?.ScheduleType?.Slot?.SlotEndTime ?? "Unknown",
-                        ScheduleCount = g.Count()
-                    })
-                    .OrderBy(s => s.SlotStartTime)
+                        Code = 403,
+                        Success = false,
+                        Message = "Chỉ sinh viên và giảng viên mới có thể xem lịch học!",
+                        Data = null
+                    };
+                }
+
+                var today = DateTime.Today;
+                var todaySchedules = await GetUserTodaySchedulesAsync(userId, user.UserRoleName);
+
+                var availableSlots = new List<BusinessLayer.ResponseModel.Report.SlotResponseModel>();
+                
+                // Filter schedules with complete navigation properties
+                var validSchedules = todaySchedules
+                    .Where(s => s.Class?.ScheduleType?.Slot != null)
                     .ToList();
+
+                _logger.LogInformation($"Found {validSchedules.Count} valid schedules with complete navigation properties out of {todaySchedules.Count} total");
+
+                if (validSchedules.Any())
+                {
+                    availableSlots = validSchedules
+                        .GroupBy(s => new { 
+                            SlotId = s.Class.ScheduleType.Slot.SlotId,
+                            SlotName = s.Class.ScheduleType.Slot.SlotName,
+                            SlotStartTime = s.Class.ScheduleType.Slot.SlotStartTime,
+                            SlotEndTime = s.Class.ScheduleType.Slot.SlotEndTime
+                        })
+                        .Select(g => new BusinessLayer.ResponseModel.Report.SlotResponseModel
+                        {
+                            SlotName = g.Key.SlotName,
+                            SlotStartTime = g.Key.SlotStartTime,
+                            SlotEndTime = g.Key.SlotEndTime,
+                            ScheduleCount = g.Count()
+                        })
+                        .OrderBy(s => s.SlotStartTime)
+                        .ToList();
+
+                    _logger.LogInformation($"Grouped into {availableSlots.Count} unique slots");
+                }
+                else
+                {
+                    _logger.LogWarning("No schedules found with complete navigation properties (Class->ScheduleType->Slot)");
+                }
 
                 var result = new
                 {
@@ -180,12 +226,28 @@ namespace BusinessLayer.Service.Implement
                     };
                 }
 
-                var today = DateTime.Today;
-                var schedules = await GetUserSchedulesAsync(userId);
-                var filteredSchedules = schedules
-                    .Where(s => s.ScheduleDate.Date == today && 
-                               s.Class?.ScheduleType?.Slot?.SlotName == slotName)
+                // Only Student and Lecturer can access this
+                if (user.UserRoleName != "Student" && user.UserRoleName != "Lecturer")
+                {
+                    return new BaseResponse<object>
+                    {
+                        Code = 403,
+                        Success = false,
+                        Message = "Chỉ sinh viên và giảng viên mới có thể xem lịch học!",
+                        Data = null
+                    };
+                }
+
+                var todaySchedules = await GetUserTodaySchedulesAsync(userId, user.UserRoleName);
+                var filteredSchedules = todaySchedules
+                    .Where(s => s.Class?.ScheduleType?.Slot?.SlotName == slotName)
                     .ToList();
+
+                // Debug: Log schedule details
+                foreach (var schedule in filteredSchedules)
+                {
+                    _logger.LogDebug($"Schedule {schedule.ScheduleId}: Class {schedule.Class?.ClassName}, Date: {schedule.ScheduleDate:yyyy-MM-dd HH:mm}, Slot: {schedule.Class?.ScheduleType?.Slot?.SlotName}");
+                }
 
                 var availableClasses = filteredSchedules
                     .Select(s => new BusinessLayer.ResponseModel.Report.ClassResponseModel
@@ -198,11 +260,13 @@ namespace BusinessLayer.Service.Implement
                     .OrderBy(c => c.ClassName)
                     .ToList();
 
+                _logger.LogInformation($"Found {availableClasses.Count} classes for slot '{slotName}' on {DateTime.Today:yyyy-MM-dd}");
+
                 var result = new
                 {
                     Classes = availableClasses,
                     TotalCount = availableClasses.Count,
-                    Today = today.ToString("dd/MM/yyyy"),
+                    Today = DateTime.Today.ToString("dd/MM/yyyy"),
                     SlotName = slotName
                 };
 
@@ -228,6 +292,83 @@ namespace BusinessLayer.Service.Implement
         }
 
         // Helper methods
+        private async Task<List<Schedule>> GetUserTodaySchedulesAsync(Guid userId, string userRole)
+        {
+            try
+            {
+                var today = DateTime.Today;
+                var todaySchedules = await _scheduleRepository.GetByDateAsync(today);
+                var userSchedules = new List<Schedule>();
+
+                _logger.LogInformation($"Found {todaySchedules.Count()} schedules for today: {today:yyyy-MM-dd}");
+
+                if (userRole == "Student")
+                {
+                    var studentClasses = await _classRepository.GetByStudentIdAsync(userId);
+                    var classIds = studentClasses.Select(c => c.ClassId).ToList();
+                    userSchedules = todaySchedules.Where(s => classIds.Contains(s.ClassId)).ToList();
+                    
+                    _logger.LogInformation($"Student {userId} has {studentClasses.Count} classes, {userSchedules.Count} schedules today");
+                }
+                else if (userRole == "Lecturer")
+                {
+                    var lecturerClasses = await _classRepository.GetByLecturerIdAsync(userId);
+                    var classIds = lecturerClasses.Select(c => c.ClassId).ToList();
+                    userSchedules = todaySchedules.Where(s => classIds.Contains(s.ClassId)).ToList();
+                    
+                    _logger.LogInformation($"Lecturer {userId} has {lecturerClasses.Count} classes, {userSchedules.Count} schedules today");
+                }
+
+                // Validate navigation properties are loaded
+                foreach (var schedule in userSchedules)
+                {
+                    if (schedule.Class == null)
+                    {
+                        _logger.LogWarning($"Schedule {schedule.ScheduleId} has null Class");
+                        continue;
+                    }
+                    if (schedule.Class.ScheduleType == null)
+                    {
+                        _logger.LogWarning($"Schedule {schedule.ScheduleId} Class {schedule.Class.ClassId} has null ScheduleType");
+                        continue;
+                    }
+                    if (schedule.Class.ScheduleType.Slot == null)
+                    {
+                        _logger.LogWarning($"Schedule {schedule.ScheduleId} ScheduleType {schedule.Class.ScheduleType.ScheduleTypeId} has null Slot");
+                        continue;
+                    }
+                    
+                    _logger.LogDebug($"Schedule {schedule.ScheduleId}: Class {schedule.Class.ClassName} -> ScheduleType {schedule.Class.ScheduleType.ScheduleTypeName} -> Slot {schedule.Class.ScheduleType.Slot.SlotName}");
+                }
+
+                return userSchedules;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error in GetUserTodaySchedulesAsync for user {UserId}, role {UserRole}", userId, userRole);
+                return new List<Schedule>();
+            }
+        }
+
+        private async Task<bool> ValidateUserAccessToSchedule(Guid userId, int scheduleId, string userRole)
+        {
+            var schedule = await _scheduleRepository.GetByIdAsync(scheduleId);
+            if (schedule == null) return false;
+
+            if (userRole == "Student")
+            {
+                var studentClasses = await _classRepository.GetByStudentIdAsync(userId);
+                return studentClasses.Any(c => c.ClassId == schedule.ClassId);
+            }
+            else if (userRole == "Lecturer")
+            {
+                var lecturerClasses = await _classRepository.GetByLecturerIdAsync(userId);
+                return lecturerClasses.Any(c => c.ClassId == schedule.ClassId);
+            }
+
+            return false;
+        }
+
         private async Task<List<Schedule>> GetUserSchedulesAsync(Guid userId)
         {
             var user = await _userRepository.GetUserById(userId);
@@ -238,8 +379,7 @@ namespace BusinessLayer.Service.Implement
 
             if (user.UserRoleName == "Student")
             {
-                var classUsers = await _classRepository.GetAllAsync();
-                var studentClasses = classUsers.Where(c => c.ClassUsers.Any(cu => cu.UserId == userId));
+                var studentClasses = await _classRepository.GetByStudentIdAsync(userId);
                 var classIds = studentClasses.Select(c => c.ClassId).ToList();
                 userSchedules = allSchedules.Where(s => classIds.Contains(s.ClassId)).ToList();
             }
@@ -258,11 +398,10 @@ namespace BusinessLayer.Service.Implement
             return userSchedules;
         }
 
-        private async Task<Schedule?> FindScheduleByUserSelectionAsync(Guid userId, DateTime date, string slotName, string className)
+        private async Task<Schedule?> FindScheduleByUserSelectionAsync(Guid userId, DateTime date, string slotName, string className, string userRole)
         {
-            var schedules = await GetUserSchedulesAsync(userId);
-            return schedules.FirstOrDefault(s => 
-                s.ScheduleDate.Date == date.Date &&
+            var todaySchedules = await GetUserTodaySchedulesAsync(userId, userRole);
+            return todaySchedules.FirstOrDefault(s => 
                 s.Class?.ScheduleType?.Slot?.SlotName == slotName &&
                 s.Class?.ClassName == className);
         }
