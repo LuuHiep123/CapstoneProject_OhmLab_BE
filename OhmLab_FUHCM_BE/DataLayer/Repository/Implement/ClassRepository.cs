@@ -48,6 +48,23 @@ namespace DataLayer.Repository.Implement
                 .ToListAsync();
         }
 
+        public async Task<List<Class>> GetByStudentIdAsync(Guid studentId)
+        {
+            return await _DBContext.Classes
+                .Include(c => c.Subject)
+                    .ThenInclude(s => s.SemesterSubjects)
+                        .ThenInclude(ss => ss.Semester)
+                .Include(c => c.Lecturer)
+                .Include(c => c.ScheduleType)
+                    .ThenInclude(st => st.Slot)
+                .Include(c => c.ClassUsers)
+                    .ThenInclude(cu => cu.User)
+                .Include(c => c.Teams)
+                .Where(c => c.ClassUsers.Any(cu => cu.UserId == studentId))
+                .AsSplitQuery() // Use split query for better performance
+                .ToListAsync();
+        }
+
         public async Task<List<Class>> GetAllAsync()
         {
             return await _DBContext.Classes

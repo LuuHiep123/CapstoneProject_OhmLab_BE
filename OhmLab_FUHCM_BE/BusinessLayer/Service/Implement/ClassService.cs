@@ -567,6 +567,92 @@ namespace BusinessLayer.Service.Implement
             }
         }
 
+        public async Task<BaseResponse<List<ClassResponseModel>>> GetClassesByStudentIdAsync(Guid studentId)
+        {
+            try
+            {
+                // Validation cho StudentId
+                if (studentId == Guid.Empty)
+                {
+                    return new BaseResponse<List<ClassResponseModel>>
+                    {
+                        Code = 400,
+                        Success = false,
+                        Message = "StudentId không hợp lệ!",
+                        Data = null
+                    };
+                }
+
+                // Kiểm tra student có tồn tại không
+                var student = await _userRepository.GetUserById(studentId);
+                if (student == null)
+                {
+                    return new BaseResponse<List<ClassResponseModel>>
+                    {
+                        Code = 404,
+                        Success = false,
+                        Message = "Không tìm thấy sinh viên!",
+                        Data = null
+                    };
+                }
+
+                if (student.UserRoleName.ToLower() != "student")
+                {
+                    return new BaseResponse<List<ClassResponseModel>>
+                    {
+                        Code = 400,
+                        Success = false,
+                        Message = "Người dùng này không phải là sinh viên!",
+                        Data = null
+                    };
+                }
+
+                var classes = await _classRepository.GetByStudentIdAsync(studentId);
+                var response = _mapper.Map<List<ClassResponseModel>>(classes);
+
+                // Lấy thông tin semester trực tiếp
+                var allSemesters = await _semesterRepository.GetAllAsync();
+                var currentSemester = allSemesters.FirstOrDefault(s => s.SemesterStatus.ToLower() == "active");
+                if (currentSemester == null)
+                {
+                    currentSemester = allSemesters.FirstOrDefault();
+                }
+
+                // Lấy ClassUsers cho từng class và cập nhật semester
+                foreach (var classResponse in response)
+                {
+                    var classUsers = await _classUserRepository.GetByClassIdAsync(classResponse.ClassId);
+                    classResponse.ClassUsers = _mapper.Map<List<ClassUserResponseModel>>(classUsers);
+                    
+                    // Cập nhật thông tin semester
+                    if (currentSemester != null)
+                    {
+                        classResponse.SemesterName = currentSemester.SemesterName;
+                        classResponse.SemesterStartDate = currentSemester.SemesterStartDate;
+                        classResponse.SemesterEndDate = currentSemester.SemesterEndDate;
+                    }
+                }
+
+                return new BaseResponse<List<ClassResponseModel>>
+                {
+                    Code = 200,
+                    Success = true,
+                    Message = "Lấy danh sách lớp học theo sinh viên thành công!",
+                    Data = response
+                };
+            }
+            catch (System.Exception ex)
+            {
+                return new BaseResponse<List<ClassResponseModel>>
+                {
+                    Code = 500,
+                    Success = false,
+                    Message = $"Lỗi: {ex.Message}",
+                    Data = null
+                };
+            }
+        }
+
         public async Task<BaseResponse<ClassResponseModel>> UpdateClassAsync(int id, UpdateClassRequestModel model)
         {
             try
