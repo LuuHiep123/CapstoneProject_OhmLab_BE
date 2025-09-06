@@ -791,8 +791,19 @@ namespace BusinessLayer.Service.Implement
         {
             try
             {
+                // ✅ DEBUG: Log lecturer ID
+                Console.WriteLine($"DEBUG GetLabsForMyClasses - LecturerId: {lecturerId}");
+                
                 // Lấy các lớp mà lecturer này phụ trách
                 var myClasses = await _classRepository.GetByLecturerIdAsync(lecturerId);
+                
+                // ✅ DEBUG: Log số lượng class và chi tiết
+                Console.WriteLine($"DEBUG - Found {myClasses.Count} classes for lecturer {lecturerId}");
+                foreach (var cls in myClasses)
+                {
+                    Console.WriteLine($"DEBUG - Class: {cls.ClassId} - {cls.ClassName} - LecturerId: {cls.LecturerId}");
+                }
+                
                 var mySubjectIds = myClasses.Select(c => c.SubjectId).Distinct().ToList();
                 
                 // Lấy các lab thuộc các môn mà lecturer dạy

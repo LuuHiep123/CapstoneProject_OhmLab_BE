@@ -1,4 +1,4 @@
-﻿using BusinessLayer.Service.Implement;
+using BusinessLayer.Service.Implement;
 using BusinessLayer.Service;
 using DataLayer.DBContext;
 using Microsoft.EntityFrameworkCore;
@@ -81,6 +81,7 @@ namespace OhmLab_FUHCM_BE.AppStarts
             services.AddScoped<IScheduleTypeService, ScheduleTypeService>();
             services.AddScoped<IScheduleService, ScheduleService>();
             services.AddScoped<IGradeService, GradeService>();
+            services.AddScoped<IAnalyticsService, AnalyticsService>();
 
 
             //AddRepository

@@ -477,9 +477,21 @@ namespace BusinessLayer.Service.Implement
 
                 // Lấy team của student
                 var studentTeams = await _teamRepository.GetTeamsByUserIdAsync(studentId);
-                var teamWithLab = studentTeams.FirstOrDefault(t => 
-                    t.ClassId != null && 
-                    t.ClassId == lab.SubjectId);
+                
+                // Tìm team thuộc class có cùng subject với lab
+                Team teamWithLab = null;
+                foreach (var team in studentTeams)
+                {
+                    if (team.ClassId > 0)
+                    {
+                        var teamClass = await _classRepository.GetByIdAsync(team.ClassId);
+                        if (teamClass != null && teamClass.SubjectId == lab.SubjectId)
+                        {
+                            teamWithLab = team;
+                            break;
+                        }
+                    }
+                }
 
                 if (teamWithLab == null)
                 {
