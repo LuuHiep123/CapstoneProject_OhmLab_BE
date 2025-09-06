@@ -99,8 +99,8 @@ namespace BusinessLayer.Service.Implement
                     {
                         SlotId = group.Key.SlotId,
                         SlotName = group.Key.SlotName ?? "Unknown",
-                        StartTime = group.Key.SlotStartTime,
-                        EndTime = group.Key.SlotEndTime,
+                        StartTime = TimeSpan.TryParse(group.Key.SlotStartTime, out var startTime) ? startTime : TimeSpan.Zero,
+                        EndTime = TimeSpan.TryParse(group.Key.SlotEndTime, out var endTime) ? endTime : TimeSpan.Zero,
                         SessionCount = group.Count(),
                         UsagePercentage = report.TotalSessions > 0 ? (double)group.Count() / report.TotalSessions * 100 : 0,
                         PopularSubjects = subjects
@@ -219,8 +219,8 @@ namespace BusinessLayer.Service.Implement
                     SubjectName = s.Class?.Subject?.SubjectName ?? "Unknown",
                     LecturerName = s.Class?.Lecturer?.UserFullName ?? "Unknown",
                     SlotName = s.Class?.ScheduleType?.Slot?.SlotName ?? "Unknown",
-                    StartTime = s.Class?.ScheduleType?.Slot?.SlotStartTime ?? TimeSpan.Zero,
-                    EndTime = s.Class?.ScheduleType?.Slot?.SlotEndTime ?? TimeSpan.Zero,
+                    StartTime = TimeSpan.TryParse(s.Class?.ScheduleType?.Slot?.SlotStartTime, out var startTime) ? startTime : TimeSpan.Zero,
+                    EndTime = TimeSpan.TryParse(s.Class?.ScheduleType?.Slot?.SlotEndTime, out var endTime) ? endTime : TimeSpan.Zero,
                     Status = "Active" // Default status since Schedule entity doesn't have status field
                 }).OrderBy(d => d.ScheduleDate).ThenBy(d => d.StartTime).ToList();
 
