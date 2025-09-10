@@ -161,5 +161,40 @@ namespace OhmLab_FUHCM_BE.Controller
                 return StatusCode(500, new { Code = 500, Success = false, Message = "Lỗi hệ thống!" });
             }
         }
+
+        /// <summary>
+        /// API thống kê tổng quan hệ thống - Tổng số User, Equipment và Report
+        /// Trả về thông tin bằng tiếng Việt để dễ hiểu
+        /// </summary>
+        /// <returns>Thống kê tổng quan với mô tả tiếng Việt</returns>
+        [HttpGet("system-overview")]
+        [Authorize(Roles = "Admin,HeadOfDepartment")]
+        public async Task<IActionResult> GetSystemOverview()
+        {
+            try
+            {
+                _logger.LogInformation("API thống kê tổng quan hệ thống được gọi");
+                
+                var result = await _analyticsService.GetSystemOverviewAsync();
+                
+                if (result.Success)
+                {
+                    _logger.LogInformation("Lấy thống kê tổng quan thành công: {UserCount} người dùng, {EquipmentCount} thiết bị, {ReportCount} báo cáo", 
+                        result.Data?.TongSoNguoiDung, result.Data?.TongSoThietBi, result.Data?.TongSoBaoCao);
+                }
+                
+                return StatusCode(result.Code, result);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Lỗi trong API GetSystemOverview: {Message}", ex.Message);
+                return StatusCode(500, new { 
+                    Code = 500, 
+                    Success = false, 
+                    Message = "Lỗi hệ thống khi lấy thống kê tổng quan!", 
+                    Data = (object?)null 
+                });
+            }
+        }
     }
 }
