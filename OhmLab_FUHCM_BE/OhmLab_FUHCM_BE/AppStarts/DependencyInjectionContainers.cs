@@ -81,7 +81,14 @@ namespace OhmLab_FUHCM_BE.AppStarts
             services.AddScoped<IScheduleTypeService, ScheduleTypeService>();
             services.AddScoped<IScheduleService, ScheduleService>();
             services.AddScoped<IGradeService, GradeService>();
-            services.AddScoped<IAnalyticsService, AnalyticsService>();
+            services.AddScoped<IAnalyticsService>(provider => new AnalyticsService(
+                provider.GetRequiredService<IScheduleRepository>(),
+                provider.GetRequiredService<IClassRepository>(),
+                provider.GetRequiredService<IUserRepository>(),
+                provider.GetRequiredService<IEquipmentRepository>(),
+                provider.GetRequiredService<IReportRepository>(),
+                provider.GetRequiredService<ILogger<AnalyticsService>>()
+            ));
 
 
             //AddRepository

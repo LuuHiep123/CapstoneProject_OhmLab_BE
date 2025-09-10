@@ -15,17 +15,23 @@ namespace BusinessLayer.Service.Implement
         private readonly IScheduleRepository _scheduleRepository;
         private readonly IClassRepository _classRepository;
         private readonly IUserRepository _userRepository;
+        private readonly IEquipmentRepository _equipmentRepository;
+        private readonly IReportRepository _reportRepository;
         private readonly ILogger<AnalyticsService> _logger;
 
         public AnalyticsService(
             IScheduleRepository scheduleRepository,
             IClassRepository classRepository,
             IUserRepository userRepository,
+            IEquipmentRepository equipmentRepository,
+            IReportRepository reportRepository,
             ILogger<AnalyticsService> logger)
         {
             _scheduleRepository = scheduleRepository;
             _classRepository = classRepository;
             _userRepository = userRepository;
+            _equipmentRepository = equipmentRepository;
+            _reportRepository = reportRepository;
             _logger = logger;
         }
 
@@ -270,6 +276,162 @@ namespace BusinessLayer.Service.Implement
                     Data = null
                 };
             }
+        }
+
+        /// <summary>
+        /// Lấy thống kê tổng quan hệ thống - Tổng số User, Equipment và Report
+        /// </summary>
+        /// <returns>Thống kê tổng quan hệ thống với mô tả tiếng Việt</returns>
+        public async Task<BaseResponse<SystemOverviewModel>> GetSystemOverviewAsync()
+        {
+            try
+            {
+                _logger.LogInformation("Bắt đầu lấy thống kê tổng quan hệ thống");
+
+                // Lấy tất cả dữ liệu cần thiết
+                var allUsers = await _userRepository.GetAllUser();
+                var allEquipments = await _equipmentRepository.GetAllEquipment();
+                var allReports = await _reportRepository.GetAllAsync();
+
+                var usersList = allUsers.ToList();
+                var equipmentsList = allEquipments.ToList();
+                var reportsList = allReports.ToList();
+
+                // Tạo model thống kê tổng quan
+                var overview = new SystemOverviewModel
+                {
+                    TongSoNguoiDung = usersList.Count,
+                    TongSoThietBi = equipmentsList.Count,
+                    TongSoBaoCao = reportsList.Count,
+                    ThoiGianCapNhat = DateTime.Now
+                };
+
+                // Thống kê người dùng theo vai trò
+                var userRoleGroups = usersList.GroupBy(u => u.UserRoleName ?? "Unknown").ToList();
+                foreach (var group in userRoleGroups)
+                {
+                    var roleName = group.Key;
+                    var roleDescription = GetRoleDescription(roleName);
+                    var count = group.Count();
+                    var percentage = overview.TongSoNguoiDung > 0 ? (double)count / overview.TongSoNguoiDung * 100 : 0;
+
+                    overview.ThongKeNguoiDungTheoVaiTro.Add(new UserRoleStatsModel
+                    {
+                        TenVaiTro = roleName,
+                        SoLuong = count,
+                        PhanTram = Math.Round(percentage, 2),
+                        MoTaVaiTro = roleDescription
+                    });
+                }
+
+                // Thống kê thiết bị theo loại
+                var equipmentTypeGroups = equipmentsList
+                    .Where(e => e.EquipmentType != null)
+                    .GroupBy(e => new { e.EquipmentType.EquipmentTypeId, e.EquipmentType.EquipmentTypeName })
+                    .ToList();
+
+                foreach (var group in equipmentTypeGroups)
+                {
+                    var count = group.Count();
+                    var percentage = overview.TongSoThietBi > 0 ? (double)count / overview.TongSoThietBi * 100 : 0;
+                    
+                    // Đếm thiết bị theo trạng thái (chỉ có ACTIVE và INACTIVE)
+                    var workingCount = group.Count(e => e.EquipmentStatus == "Available");
+                    var brokenCount = group.Count(e => e.EquipmentStatus == "INACTIVE");
+
+                    overview.ThongKeThietBiTheoLoai.Add(new EquipmentTypeStatsModel
+                    {
+                        LoaiThietBiId = group.Key.EquipmentTypeId,
+                        TenLoaiThietBi = group.Key.EquipmentTypeName ?? "Không xác định",
+                        SoLuong = count,
+                        PhanTram = Math.Round(percentage, 2),
+                        SoLuongHoatDong = workingCount,
+                        SoLuongKhongHoatDong = brokenCount
+                    });
+                }
+
+                // Thống kê báo cáo theo trạng thái
+                var reportStatusGroups = reportsList.GroupBy(r => r.ReportStatus ?? "Unknown").ToList();
+                foreach (var group in reportStatusGroups)
+                {
+                    var status = group.Key;
+                    var statusDescription = GetReportStatusDescription(status);
+                    var count = group.Count();
+                    var percentage = overview.TongSoBaoCao > 0 ? (double)count / overview.TongSoBaoCao * 100 : 0;
+
+                    overview.ThongKeBaoCaoTheoTrangThai.Add(new ReportStatusStatsModel
+                    {
+                        TrangThai = status,
+                        SoLuong = count,
+                        PhanTram = Math.Round(percentage, 2),
+                        MoTaTrangThai = statusDescription
+                    });
+                }
+
+                // Sắp xếp kết quả theo số lượng giảm dần
+                overview.ThongKeNguoiDungTheoVaiTro = overview.ThongKeNguoiDungTheoVaiTro
+                    .OrderByDescending(x => x.SoLuong).ToList();
+                overview.ThongKeThietBiTheoLoai = overview.ThongKeThietBiTheoLoai
+                    .OrderByDescending(x => x.SoLuong).ToList();
+                overview.ThongKeBaoCaoTheoTrangThai = overview.ThongKeBaoCaoTheoTrangThai
+                    .OrderByDescending(x => x.SoLuong).ToList();
+
+                _logger.LogInformation("Lấy thống kê tổng quan thành công: {UserCount} người dùng, {EquipmentCount} thiết bị, {ReportCount} báo cáo", 
+                    overview.TongSoNguoiDung, overview.TongSoThietBi, overview.TongSoBaoCao);
+
+                return new BaseResponse<SystemOverviewModel>
+                {
+                    Code = 200,
+                    Success = true,
+                    Message = "Lấy thống kê tổng quan hệ thống thành công!",
+                    Data = overview
+                };
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Lỗi khi lấy thống kê tổng quan hệ thống: {Message}", ex.Message);
+                return new BaseResponse<SystemOverviewModel>
+                {
+                    Code = 500,
+                    Success = false,
+                    Message = $"Lỗi hệ thống: {ex.Message}",
+                    Data = null
+                };
+            }
+        }
+
+        /// <summary>
+        /// Lấy mô tả vai trò bằng tiếng Việt
+        /// </summary>
+        private string GetRoleDescription(string role)
+        {
+            return role switch
+            {
+                "Admin" => "Quản trị viên hệ thống",
+                "HeadOfDepartment" => "Trưởng khoa/Trưởng bộ môn",
+                "Lecturer" => "Giảng viên",
+                "Student" => "Sinh viên",
+                _ => "Vai trò không xác định"
+            };
+        }
+
+        /// <summary>
+        /// Lấy mô tả trạng thái báo cáo bằng tiếng Việt
+        /// </summary>
+        private string GetReportStatusDescription(string status)
+        {
+            return status switch
+            {
+                "Pending" => "Đang chờ xử lý",
+                "InProgress" => "Đang xử lý",
+                "Completed" => "Đã hoàn thành",
+                "Approved" => "Đã phê duyệt",
+                "Rejected" => "Đã từ chối",
+                "Draft" => "Bản nháp",
+                "Submitted" => "Đã nộp",
+                "Graded" => "Đã chấm điểm",
+                _ => "Trạng thái không xác định"
+            };
         }
 
     }

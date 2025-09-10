@@ -12,5 +12,8 @@ namespace BusinessLayer.Service
         Task<BaseResponse<LabUsageReportModel>> GetLabUsageMonthlyAsync(int year, int month);
         Task<BaseResponse<List<LabUsageDetailModel>>> GetLabUsageDetailAsync(DateTime startDate, DateTime endDate, int? subjectId = null, Guid? lecturerId = null);
         Task<BaseResponse<LabUsageReportModel>> GetLabUsageBySemesterAsync(int semesterId);
+        
+        // API thống kê tổng quan hệ thống
+        Task<BaseResponse<SystemOverviewModel>> GetSystemOverviewAsync();
     }
 }
