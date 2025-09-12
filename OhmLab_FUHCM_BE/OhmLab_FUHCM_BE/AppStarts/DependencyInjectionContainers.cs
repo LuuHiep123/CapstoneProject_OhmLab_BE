@@ -87,6 +87,7 @@ namespace OhmLab_FUHCM_BE.AppStarts
                 provider.GetRequiredService<IUserRepository>(),
                 provider.GetRequiredService<IEquipmentRepository>(),
                 provider.GetRequiredService<IReportRepository>(),
+                provider.GetRequiredService<ISemesterRepository>(),
                 provider.GetRequiredService<ILogger<AnalyticsService>>()
             ));
 
