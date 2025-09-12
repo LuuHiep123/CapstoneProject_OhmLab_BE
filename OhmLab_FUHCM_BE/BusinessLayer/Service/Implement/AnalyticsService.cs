@@ -17,6 +17,7 @@ namespace BusinessLayer.Service.Implement
         private readonly IUserRepository _userRepository;
         private readonly IEquipmentRepository _equipmentRepository;
         private readonly IReportRepository _reportRepository;
+        private readonly ISemesterRepository _semesterRepository;
         private readonly ILogger<AnalyticsService> _logger;
 
         public AnalyticsService(
@@ -25,6 +26,7 @@ namespace BusinessLayer.Service.Implement
             IUserRepository userRepository,
             IEquipmentRepository equipmentRepository,
             IReportRepository reportRepository,
+            ISemesterRepository semesterRepository,
             ILogger<AnalyticsService> logger)
         {
             _scheduleRepository = scheduleRepository;
@@ -32,6 +34,7 @@ namespace BusinessLayer.Service.Implement
             _userRepository = userRepository;
             _equipmentRepository = equipmentRepository;
             _reportRepository = reportRepository;
+            _semesterRepository = semesterRepository;
             _logger = logger;
         }
 
@@ -255,24 +258,44 @@ namespace BusinessLayer.Service.Implement
         {
             try
             {
-                // Giả sử semester có startDate và endDate
-                // Nếu không có Semester entity, có thể dùng cách khác
-                var startDate = new DateTime(2024, 1, 1); // Placeholder
-                var endDate = new DateTime(2024, 6, 30);   // Placeholder
+                // Lấy thông tin semester từ database
+                var semester = await _semesterRepository.GetByIdAsync(semesterId);
+                if (semester == null)
+                {
+                    return new BaseResponse<LabUsageReportModel>
+                    {
+                        Code = 404,
+                        Success = false,
+                        Message = "Không tìm thấy học kỳ với ID đã cung cấp!",
+                        Data = null
+                    };
+                }
+
+                // Sử dụng ngày bắt đầu và kết thúc từ semester entity
+                var startDate = semester.SemesterStartDate;
+                var endDate = semester.SemesterEndDate;
                 
-                // TODO: Implement proper semester date lookup
-                _logger.LogWarning("GetLabUsageBySemesterAsync using placeholder dates. Implement proper semester lookup.");
+                _logger.LogInformation("Getting lab usage report for semester {SemesterName} from {StartDate} to {EndDate}", 
+                    semester.SemesterName, startDate.ToString("dd/MM/yyyy"), endDate.ToString("dd/MM/yyyy"));
                 
-                return await GetLabUsageReportAsync(startDate, endDate);
+                var result = await GetLabUsageReportAsync(startDate, endDate);
+                
+                // Cập nhật message để bao gồm thông tin semester
+                if (result.Success && result.Data != null)
+                {
+                    result.Message = $"Lấy báo cáo sử dụng lab cho học kỳ {semester.SemesterName} thành công!";
+                }
+                
+                return result;
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Error in GetLabUsageBySemesterAsync: {Message}", ex.Message);
+                _logger.LogError(ex, "Error in GetLabUsageBySemesterAsync for semesterId {SemesterId}: {Message}", semesterId, ex.Message);
                 return new BaseResponse<LabUsageReportModel>
                 {
                     Code = 500,
                     Success = false,
-                    Message = $"Lỗi: {ex.Message}",
+                    Message = $"Lỗi khi lấy báo cáo theo học kỳ: {ex.Message}",
                     Data = null
                 };
             }
