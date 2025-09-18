@@ -92,6 +92,19 @@ namespace OhmLab_FUHCM_BE.AppStarts
             ));
             services.AddScoped<ITeamKitService, TeamKitService>();
 
+            services.AddScoped<IStudentDashboardService>(provider => new StudentDashboardService(
+                provider.GetRequiredService<IClassUserRepository>(),
+                provider.GetRequiredService<IScheduleRepository>(),
+                provider.GetRequiredService<IGradeRepository>(),
+                provider.GetRequiredService<IReportRepository>(),
+                provider.GetRequiredService<ILabRepository>(),
+                provider.GetRequiredService<IEquipmentTypeRepository>(),
+                provider.GetRequiredService<IKitTemplateRepository>(),
+                provider.GetRequiredService<ITeamRepository>(),
+                provider.GetRequiredService<ITeamUserRepository>(),
+                provider.GetRequiredService<IUserRepository>(),
+                provider.GetRequiredService<IMapper>()
+            ));
 
 
             //AddRepository

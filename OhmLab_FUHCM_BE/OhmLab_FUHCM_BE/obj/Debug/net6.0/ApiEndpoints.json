@@ -2035,6 +2035,53 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "OhmLab_FUHCM_BE.Controller.StudentDashboardController",
+    "Method": "GetStudentDashboard",
+    "RelativePath": "api/student/dashboard",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OhmLab_FUHCM_BE.Controller.StudentDashboardController",
+    "Method": "GetLabInstructions",
+    "RelativePath": "api/student/dashboard/labs/{labId}/instructions",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "labId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OhmLab_FUHCM_BE.Controller.StudentDashboardController",
+    "Method": "GetEnhancedSchedule",
+    "RelativePath": "api/student/dashboard/schedules/enhanced",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "startDate",
+        "Type": "System.Nullable\u00601[[System.DateTime, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "endDate",
+        "Type": "System.Nullable\u00601[[System.DateTime, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "OhmLab_FUHCM_BE.Controller.TeamController",
     "Method": "CreateTeam",
     "RelativePath": "api/team",
