@@ -52,6 +52,7 @@ namespace DataLayer.Repository.Implement
             {
                 var listTeamEquipment = await _DBContext.TeamEquipments
                     .Include(TE => TE.Team)
+                        .ThenInclude(t => t.Class)
                     .Include(TE => TE.Equipment)
                     .AsSplitQuery() // Use split query for better performance
                     .ToListAsync();
@@ -70,6 +71,7 @@ namespace DataLayer.Repository.Implement
                 var listTeamEquipment = await _DBContext.TeamEquipments
                     .Where(TE => TE.EquipmentId.Equals(equipmentId))
                     .Include(TE => TE.Team)
+                        .ThenInclude(t => t.Class)
                     .Include(TE => TE.Equipment)
                     .AsSplitQuery() // Use split query for better performance
                     .ToListAsync();
@@ -88,6 +90,7 @@ namespace DataLayer.Repository.Implement
                 var listTeamEquipment = await _DBContext.TeamEquipments
                     .Where(TE => TE.TeamId == teamId)
                     .Include(TE => TE.Team)
+                        .ThenInclude(t => t.Class)
                     .Include(TE => TE.Equipment)
                     .AsSplitQuery() // Use split query for better performance
                     .ToListAsync();
@@ -105,6 +108,7 @@ namespace DataLayer.Repository.Implement
             {
                 var TeamEquipment = await _DBContext.TeamEquipments
                     .Include(TE => TE.Team)
+                        .ThenInclude(t => t.Class)
                     .Include(TE => TE.Equipment)
                     .AsSplitQuery() // Use split query for better performance
                     .FirstOrDefaultAsync(TE => TE.TeamEquipmentId == id);
@@ -122,6 +126,7 @@ namespace DataLayer.Repository.Implement
             {
                 var TeamEquipment = await _DBContext.TeamEquipments
                     .Include(TE => TE.Team)
+                        .ThenInclude(t => t.Class)
                     .Include(TE => TE.Equipment)
                     .AsSplitQuery() // Use split query for better performance
                     .FirstOrDefaultAsync(TE => TE.TeamId == teamId);

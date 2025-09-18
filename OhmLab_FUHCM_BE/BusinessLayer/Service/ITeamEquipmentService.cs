@@ -1,7 +1,9 @@
 ﻿using BusinessLayer.RequestModel.TeamEquipment;
+using BusinessLayer.RequestModel.TeamKit;
 using BusinessLayer.RequestModel.User;
 using BusinessLayer.ResponseModel.BaseResponse;
 using BusinessLayer.ResponseModel.TeamEquipment;
+using BusinessLayer.ResponseModel.TeamKit;
 using BusinessLayer.ResponseModel.User;
 using System;
 using System.Collections.Generic;
@@ -19,6 +21,7 @@ namespace BusinessLayer.Service
         Task<BaseResponse<List<TeamEquipmentAllResponseModel>>> GetListTeamEquipmentByTeamId(int teamId);
         Task<BaseResponse<List<TeamEquipmentAllResponseModel>>> GetListTeamEquipmentByEquipmentId(string equipmentId);
         Task<BaseResponse<TeamEquipmentAllResponseModel>> FillBorrowDateForTeamEquipment(int teamEquipmentId);
-
+        Task<BaseResponse<TeamEquipmentAllResponseModel>> UpdateTeamEquipment(int teamEquipmentId, UpdateTeamEquipmentRequestModel model);
+        Task<BaseResponse<TeamEquipmentAllResponseModel>> DeleteTeamEquipment(int teamEquipmentId);
     }
 }

@@ -11,6 +11,8 @@ namespace BusinessLayer.ResponseModel.TeamEquipment
         public int TeamEquipmentId { get; set; }
         public int TeamId { get; set; }
         public string TeamName { get; set; } = null!;
+        public int ClassId { get; set; }
+        public string ClassName { get; set; } = null!;
         public string EquipmentId { get; set; } = null!;
         public string EquipmentName { get; set; } = null!;
         public string EquipmentCode { get; set; } = null!;

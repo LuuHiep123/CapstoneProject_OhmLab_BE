@@ -90,6 +90,8 @@ namespace OhmLab_FUHCM_BE.AppStarts
                 provider.GetRequiredService<ISemesterRepository>(),
                 provider.GetRequiredService<ILogger<AnalyticsService>>()
             ));
+            services.AddScoped<ITeamKitService, TeamKitService>();
+
 
 
             //AddRepository
@@ -115,6 +117,7 @@ namespace OhmLab_FUHCM_BE.AppStarts
             services.AddScoped<ITeamUserRepository, TeamUserRepository>();
             services.AddScoped<ILabEquipmentTypeRepository, LabEquipmentTypeRepository>();
             services.AddScoped<ILabKitTemplateRepository, LabKitTemplateRepository>();
+            services.AddScoped<ITeamKitRepository, TeamKitRepository>();
         }
     }
 }

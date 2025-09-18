@@ -1,4 +1,5 @@
 ﻿using BusinessLayer.RequestModel.TeamEquipment;
+using BusinessLayer.RequestModel.TeamKit;
 using BusinessLayer.RequestModel.User;
 using BusinessLayer.Service;
 using Microsoft.AspNetCore.Authorization;
@@ -33,7 +34,7 @@ namespace OhmLab_FUHCM_BE.Controller
             }
         }
 
-        [Authorize(Roles = "Admin,HeadOfDepartment")]
+        [Authorize(Roles = "Admin,HeadOfDepartment,Lecturer")]
         [HttpPost("BorrowEquipment")]
         public async Task<IActionResult> CreateTeamEquipment(CreateTeamEquipmentRequestModel model)
         {
@@ -48,7 +49,7 @@ namespace OhmLab_FUHCM_BE.Controller
             }
         }
 
-        [Authorize(Roles = "Admin,HeadOfDepartment")]
+        [Authorize(Roles = "Admin,HeadOfDepartment,Lecturer")]
         [HttpPost("GivebackEquipment")]
         public async Task<IActionResult> GiveBackEquipment(int teamEquipment)
         {
@@ -63,7 +64,7 @@ namespace OhmLab_FUHCM_BE.Controller
             }
         }
 
-        [Authorize(Roles = "Admin,HeadOfDepartment")]
+        [Authorize(Roles = "Admin,HeadOfDepartment,Lecturer")]
         [HttpGet("{id}")]
         public async Task<IActionResult> GetTeamEquipmentById(int id)
         {
@@ -78,7 +79,7 @@ namespace OhmLab_FUHCM_BE.Controller
             }
         }
 
-        [Authorize(Roles = "Admin,HeadOfDepartment")]
+        [Authorize(Roles = "Admin,HeadOfDepartment,Lecturer")]
         [HttpGet("ListTeamEquipmentByTeamId/{teamId}")]
         public async Task<IActionResult> GetTeamEquipmentByTeamId(int teamId)
         {
@@ -93,7 +94,7 @@ namespace OhmLab_FUHCM_BE.Controller
             }
         }
 
-        [Authorize(Roles = "Admin,HeadOfDepartment")]
+        [Authorize(Roles = "Admin,HeadOfDepartment,Lecturer")]
         [HttpGet("ListTeamEquipmentByEquipmentId/{equipmentId}")]
         public async Task<IActionResult> GetTeamEquipmentByEquipmentId(string equipmentId)
         {
@@ -107,5 +108,36 @@ namespace OhmLab_FUHCM_BE.Controller
                 return StatusCode(500, new { Message = ex.Message });
             }
         }
+
+        [Authorize(Roles = "Admin,HeadOfDepartment")]
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateTeamEquipment(int id, UpdateTeamEquipmentRequestModel model)
+        {
+            try
+            {
+                var result = await _service.UpdateTeamEquipment(id, model);
+                return StatusCode(result.Code, result);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        [Authorize(Roles = "Admin,HeadOfDepartment")]
+        [HttpPost("Delete/{id}")]
+        public async Task<IActionResult> DeleteTeamEquipment(int id)
+        {
+            try
+            {
+                var result = await _service.DeleteTeamEquipment(id);
+                return StatusCode(result.Code, result);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+
     }
 }

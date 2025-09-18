@@ -28,6 +28,8 @@ using BusinessLayer.RequestModel.Team;
 using BusinessLayer.ResponseModel.Team;
 using System;
 using System.Linq;
+using BusinessLayer.RequestModel.TeamKit;
+using BusinessLayer.ResponseModel.TeamKit;
 
 namespace OhmLab_FUHCM_BE.AppStarts
 {
@@ -89,12 +91,29 @@ namespace OhmLab_FUHCM_BE.AppStarts
             CreateMap<GetAllTeamEquipmentRequestModel, TeamEquipment>().ReverseMap();
             CreateMap<TeamEquipment, TeamEquipmentAllResponseModel>()
                 .ForMember(dest => dest.TeamName, opt => opt.MapFrom(src => src.Team.TeamName))
+                .ForMember(dest => dest.ClassName, opt => opt.MapFrom(src => src.Team.Class.ClassName))
+                .ForMember(dest => dest.ClassId, opt => opt.MapFrom(src => src.Team.Class.ClassId))
                 .ForMember(dest => dest.EquipmentName, opt => opt.MapFrom(src => src.Equipment.EquipmentName))
                 .ForMember(dest => dest.EquipmentCode, opt => opt.MapFrom(src => src.Equipment.EquipmentCode))
                 .ForMember(dest => dest.EquipmentNumberSerial, opt => opt.MapFrom(src => src.Equipment.EquipmentNumberSerial))
                 .ReverseMap();
             CreateMap <GetAllTeamEquipmentRequestModel, TeamEquipmentAllResponseModel>().ReverseMap();
             CreateMap <CreateTeamEquipmentRequestModel, TeamEquipment>().ReverseMap();
+            CreateMap <UpdateTeamEquipmentRequestModel, TeamEquipment>().ReverseMap();
+
+            //TeamKit
+            CreateMap<GetAllTeamKitRequestModel, TeamEquipment>().ReverseMap();
+            CreateMap<TeamKit, TeamKitAllResponseModel>()
+                .ForMember(dest => dest.TeamName, opt => opt.MapFrom(src => src.Team.TeamName))
+                .ForMember(dest => dest.ClassName, opt => opt.MapFrom(src => src.Team.Class.ClassName))
+                .ForMember(dest => dest.ClassId, opt => opt.MapFrom(src => src.Team.Class.ClassId))
+                .ForMember(dest => dest.KitName, opt => opt.MapFrom(src => src.Kit.KitName))
+                .ForMember(dest => dest.KitDesription, opt => opt.MapFrom(src => src.Kit.KitDescription))
+                .ForMember(dest => dest.KitImgUrl, opt => opt.MapFrom(src => src.Kit.KitUrlImg))
+                .ReverseMap();
+            CreateMap<GetAllTeamKitRequestModel, TeamKitAllResponseModel>().ReverseMap();
+            CreateMap<CreateTeamKitRequestModel, TeamKit>().ReverseMap();
+            CreateMap<UpdateTeamKitRequestModel, TeamKit>().ReverseMap();
 
 
             //KitTemplate

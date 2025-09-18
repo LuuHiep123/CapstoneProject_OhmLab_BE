@@ -1,9 +1,12 @@
 ﻿using AutoMapper;
 using BusinessLayer.RequestModel.TeamEquipment;
+using BusinessLayer.RequestModel.TeamKit;
 using BusinessLayer.ResponseModel.BaseResponse;
 using BusinessLayer.ResponseModel.TeamEquipment;
+using BusinessLayer.ResponseModel.TeamKit;
 using DataLayer.Entities;
 using DataLayer.Repository;
+using DataLayer.Repository.Implement;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -41,11 +44,29 @@ namespace BusinessLayer.Service.Implement
                         Data = null
                     };
                 }
-                else
+                else if (equipment.EquipmentStatus.Equals("Maintenance"))
                 {
-                    var teamEquipment = _mapper.Map<TeamEquipment>(model);
+                    return new BaseResponse<TeamEquipmentAllResponseModel>()
+                    {
+                        Code = 401,
+                        Success = false,
+                        Message = "Equipment in Maintenance!",
+                        Data = null
+                    };
+                } else if(equipment.EquipmentStatus.Equals("Damaged"))
+                {
+                    return new BaseResponse<TeamEquipmentAllResponseModel>()
+                    {
+                        Code = 401,
+                        Success = false,
+                        Message = "Equipment in Damaged!",
+                        Data = null
+                    };
+                } else
+                {
+                    var teamEquipment = _mapper.Map<TeamEquipment>(model);      
                     teamEquipment.TeamEquipmentDateBorrow = DateTime.Now;
-                    teamEquipment.TeamEquipmentStatus = "Valid";
+                    teamEquipment.TeamEquipmentStatus = "AreBorrowing";
                     await _teamEquipmentRepository.CreateTeamEquipment(teamEquipment);
 
                     equipment.EquipmentStatus = "InUse";
@@ -81,6 +102,7 @@ namespace BusinessLayer.Service.Implement
                     };
                 }
                 teamEquipment.TeamEquipmentDateGiveBack = DateTime.Now;
+                teamEquipment.TeamEquipmentStatus = "Paid";
                 await _teamEquipmentRepository.UpdateTeamEquipment(teamEquipment);
 
                 var equipment = await _equipmentRepository.GetEquipmentById(teamEquipment.EquipmentId);
@@ -217,6 +239,70 @@ namespace BusinessLayer.Service.Implement
                     Success = true,
                     Message = "list TeamEquipment by EquipmentId",
                     Data = result
+                };
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public async Task<BaseResponse<TeamEquipmentAllResponseModel>> UpdateTeamEquipment(int teamEquipmentId, UpdateTeamEquipmentRequestModel model)
+        {
+            try
+            {
+                var teamEquipment = await _teamEquipmentRepository.GetTeamEquipmentById(teamEquipmentId);
+                if (teamEquipment == null)
+                {
+                    return new BaseResponse<TeamEquipmentAllResponseModel>()
+                    {
+                        Code = 404,
+                        Success = false,
+                        Message = "Not fount TeamEquipment!",
+                        Data = null
+                    };
+                }
+                var result = _mapper.Map(model, teamEquipment);
+                await _teamEquipmentRepository.UpdateTeamEquipment(result);
+
+                return new BaseResponse<TeamEquipmentAllResponseModel>()
+                {
+                    Code = 200,
+                    Success = true,
+                    Message = "Update TeamEquipment success!",
+                    Data = null
+                };
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public async Task<BaseResponse<TeamEquipmentAllResponseModel>> DeleteTeamEquipment(int teamEquipmentId)
+        {
+            try
+            {
+                var teamEquipment = await _teamEquipmentRepository.GetTeamEquipmentById(teamEquipmentId);
+                if (teamEquipment == null)
+                {
+                    return new BaseResponse<TeamEquipmentAllResponseModel>()
+                    {
+                        Code = 404,
+                        Success = false,
+                        Message = "Not fount TeamEquipment!",
+                        Data = null
+                    };
+                }
+                teamEquipment.TeamEquipmentStatus = "Delete";
+                await _teamEquipmentRepository.UpdateTeamEquipment(teamEquipment);
+
+                return new BaseResponse<TeamEquipmentAllResponseModel>()
+                {
+                    Code = 200,
+                    Success = true,
+                    Message = "Delete TeamEquipment success!",
+                    Data = null
                 };
             }
             catch (Exception ex)
