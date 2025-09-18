@@ -95,7 +95,7 @@ namespace OhmLab_FUHCM_BE.Controller
         }
 
 
-        [Authorize(Roles = "Admin,HeadOfDepartment,Lecturer")]
+        [Authorize(Roles = "Admin,HeadOfDepartment")]
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateTeamKit(int id, UpdateTeamKitRequestModel model)
         {

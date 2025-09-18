@@ -20,7 +20,7 @@ namespace OhmLab_FUHCM_BE.Controller
         }
 
 
-        [Authorize(Roles = "Admin,HeadOfDepartment")]
+        [Authorize(Roles = "Admin,HeadOfDepartment,Lecturer")]
         [HttpPost("KitTempalte")]
         public async Task<IActionResult> CreateKitTemplate(CreateKitTemplateRequestModel model)
         {
@@ -36,7 +36,7 @@ namespace OhmLab_FUHCM_BE.Controller
             }
         }
 
-        [Authorize(Roles = "Admin,HeadOfDepartment")]
+        [Authorize(Roles = "Admin,HeadOfDepartment,Lecturer")]
         [HttpPost("Search")]
         public async Task<IActionResult> GetAllKitTemplate(GetAllKitTemplateRequestModel model)
         {
@@ -51,7 +51,7 @@ namespace OhmLab_FUHCM_BE.Controller
             }
         }
 
-        [Authorize(Roles = "Admin,HeadOfDepartment")]
+        [Authorize(Roles = "Admin,HeadOfDepartment,Lecturer")]
         [HttpGet("{id}")]
         public async Task<IActionResult> GetKitTemplateById(string id)
         {
