@@ -212,5 +212,38 @@ namespace DataLayer.Repository.Implement
                 throw ex;
             }
         }
+
+        public async Task<List<Grade>> GetGradesByStudentId(Guid studentId)
+        {
+            try
+            {
+                return await _DBContext.Grades
+                    .Include(g => g.Lab)
+                    .Include(g => g.Team)
+                    .Include(g => g.User)
+                    .Where(g => g.UserId == studentId)
+                    
+                    .ToListAsync();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public async Task<List<Grade>> GetGradesByLabAndTeam(int labId, int teamId)
+        {
+            try
+            {
+                return await _DBContext.Grades
+                    .Include(g => g.User)
+                    .Where(g => g.LabId == labId && g.TeamId == teamId)
+                    .ToListAsync();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
-} 
+}

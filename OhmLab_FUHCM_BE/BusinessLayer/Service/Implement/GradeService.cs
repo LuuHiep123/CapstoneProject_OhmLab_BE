@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using BusinessLayer.RequestModel.Assignment;
 using BusinessLayer.ResponseModel.Assignment;
 using BusinessLayer.ResponseModel.BaseResponse;
+using BusinessLayer.ResponseModel.Grade;
 using BusinessLayer.Service;
 using DataLayer.Entities;
 using DataLayer.Repository;
@@ -19,6 +20,7 @@ namespace BusinessLayer.Service.Implement
         private readonly ITeamRepository _teamRepository;
         private readonly IUserRepository _userRepository;
         private readonly IClassUserRepository _classUserRepository;
+        private readonly ITeamUserRepository _teamUserRepository;
 
         public GradeService(
             IGradeRepository gradeRepository,
@@ -26,7 +28,8 @@ namespace BusinessLayer.Service.Implement
             IClassRepository classRepository,
             ITeamRepository teamRepository,
             IUserRepository userRepository,
-            IClassUserRepository classUserRepository)
+            IClassUserRepository classUserRepository,
+            ITeamUserRepository teamUserRepository)
         {
             _gradeRepository = gradeRepository;
             _labRepository = labRepository;
@@ -34,6 +37,7 @@ namespace BusinessLayer.Service.Implement
             _teamRepository = teamRepository;
             _userRepository = userRepository;
             _classUserRepository = classUserRepository;
+            _teamUserRepository = teamUserRepository;
         }
 
         public async Task<BaseResponse<bool>> GradeTeamLabAsync(GradeTeamLabRequestModel model, int labId, int teamId, Guid lecturerId)
@@ -792,6 +796,131 @@ namespace BusinessLayer.Service.Implement
                     Success = false,
                     Message = $"Lỗi: {ex.Message}",
                     Data = null
+                };
+            }
+        }
+
+        public async Task<BaseResponse<StudentLabGradesResponseModel>> GetStudentLabGradesAsync(Guid studentId, Guid requestUserId, string userRole)
+        {
+            try
+            {
+                // Validation: Check if student exists
+                var student = await _userRepository.GetUserById(studentId);
+                if (student == null)
+                {
+                    return new BaseResponse<StudentLabGradesResponseModel>
+                    {
+                        Code = 404,
+                        Success = false,
+                        Message = "Sinh viên không tồn tại!"
+                    };
+                }
+
+                // Access control based on role
+                if (userRole == "Student" && studentId != requestUserId)
+                {
+                    return new BaseResponse<StudentLabGradesResponseModel>
+                    {
+                        Code = 403,
+                        Success = false,
+                        Message = "Sinh viên chỉ xem được điểm của chính mình!"
+                    };
+                }
+
+                // Get student's classes
+                var studentClasses = await _classUserRepository.GetByUserIdAsync(studentId);
+                var classIds = studentClasses.Select(cu => cu.ClassId).ToList();
+
+                // For Lecturer: Check if they teach any of the student's classes
+                if (userRole == "Lecturer")
+                {
+                    var lecturerClasses = await _classRepository.GetByLecturerIdAsync(requestUserId);
+                    var lecturerClassIds = lecturerClasses.Select(c => c.ClassId).ToList();
+                    
+                    if (!classIds.Any(id => lecturerClassIds.Contains(id)))
+                    {
+                        return new BaseResponse<StudentLabGradesResponseModel>
+                        {
+                            Code = 403,
+                            Success = false,
+                            Message = "Bạn không phụ trách lớp nào của sinh viên này!"
+                        };
+                    }
+                }
+
+                // Get all grades for the student
+                var grades = await _gradeRepository.GetGradesByStudentId(studentId);
+                
+                // Get detailed information for each grade
+                var labGrades = new List<StudentLabGradeModel>();
+                
+                foreach (var grade in grades)
+                {
+                    var lab = await _labRepository.GetLabById(grade.LabId);
+                    var team = await _teamRepository.GetByIdAsync(grade.TeamId);
+                    var classEntity = await _classRepository.GetByIdAsync(team.ClassId);
+                    
+                    // Check if user has access to this grade
+                    if (userRole == "Lecturer" && classEntity.LecturerId != requestUserId)
+                    {
+                        continue; // Skip grades from classes not taught by this lecturer
+                    }
+
+                    // Determine if this is a team grade or individual grade
+                    var teamMembers = await _teamUserRepository.GetByTeamIdAsync(grade.TeamId);
+                    var isTeamGrade = teamMembers.Count > 1;
+                    
+                    // Check if there are individual grades for team members
+                    var hasIndividualGrade = false;
+                    if (isTeamGrade)
+                    {
+                        var teamGrades = await _gradeRepository.GetGradesByLabAndTeam(grade.LabId, grade.TeamId);
+                        hasIndividualGrade = teamGrades.Any(g => g.UserId != studentId);
+                    }
+
+                    labGrades.Add(new StudentLabGradeModel
+                    {
+                        GradeId = grade.GradeId,
+                        LabId = grade.LabId,
+                        LabName = lab.LabName,
+                        LabTarget = lab.LabTarget,
+                        SubjectName = classEntity.Subject.SubjectName,
+                        ClassName = classEntity.ClassName,
+                        TeamId = grade.TeamId,
+                        TeamName = team.TeamName,
+                        GradeScore = grade.Grade1,
+                        GradeDescription = grade.GradeDescription,
+                        GradeStatus = grade.GradeStatus,
+                        
+                        IsTeamGrade = isTeamGrade,
+                        HasIndividualGrade = hasIndividualGrade,
+                        LecturerName = classEntity.Lecturer.UserFullName
+                    });
+                }
+
+                var response = new StudentLabGradesResponseModel
+                {
+                    StudentId = studentId,
+                    StudentName = student.UserFullName,
+                    StudentEmail = student.UserEmail,
+                    LabGrades = labGrades.OrderByDescending(g => g).ToList()
+                };
+
+                return new BaseResponse<StudentLabGradesResponseModel>
+                {
+                    Code = 200,
+                    Success = true,
+                    Message = "Lấy danh sách điểm thành công!",
+                    Data = response
+                };
+            }
+            catch (Exception ex)
+            {
+                return new BaseResponse<StudentLabGradesResponseModel>
+                {
+                    Code = 500,
+                    Success = false,
+                    Message = $"Lỗi hệ thống: {ex.Message}"
                 };
             }
         }

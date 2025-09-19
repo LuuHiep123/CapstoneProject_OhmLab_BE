@@ -197,5 +197,31 @@ namespace OhmLab_FUHCM_BE.Controller
                 return StatusCode(500, new { success = false, message = ex.Message });
             }
         }
+
+        // Xem điểm của sinh viên cho tất cả các lab
+        [HttpGet("students/{studentId}/labs")]
+        [Authorize(Roles = "Student,Lecturer,HeadOfDepartment")]
+        public async Task<IActionResult> GetStudentLabGrades(Guid studentId)
+        {
+            try
+            {
+                // Lấy userId và role từ token
+                var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+                var roleClaim = User.FindFirst(ClaimTypes.Role)?.Value;
+                
+                if (!Guid.TryParse(userIdClaim, out Guid userId))
+                {
+                    return Unauthorized(new { success = false, message = "Token không hợp lệ!" });
+                }
+
+                var result = await _gradeService.GetStudentLabGradesAsync(studentId, userId, roleClaim);
+                return StatusCode(result.Code, result);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error in GetStudentLabGrades: {Message}", ex.Message);
+                return StatusCode(500, new { success = false, message = ex.Message });
+            }
+        }
     }
 }

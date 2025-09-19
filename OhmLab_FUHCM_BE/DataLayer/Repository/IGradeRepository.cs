@@ -16,5 +16,7 @@ namespace DataLayer.Repository
         Task<bool> ExistsAsync(int id);
         Task<decimal> GetAverageScoreByLabAsync(int labId);
         Task<decimal> GetAverageScoreByUserAsync(Guid userId);
+        Task<List<Grade>> GetGradesByStudentId(Guid studentId);
+        Task<List<Grade>> GetGradesByLabAndTeam(int labId, int teamId);
     }
-} 
+}
