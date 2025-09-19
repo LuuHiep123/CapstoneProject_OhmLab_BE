@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using BusinessLayer.RequestModel.Assignment;
 using BusinessLayer.ResponseModel.Assignment;
 using BusinessLayer.ResponseModel.BaseResponse;
+using BusinessLayer.ResponseModel.Grade;
 
 namespace BusinessLayer.Service
 {
@@ -32,5 +33,8 @@ namespace BusinessLayer.Service
         
         // Xem tất cả điểm trong hệ thống (cho HeadOfDepartment)
         Task<BaseResponse<List<TeamGradeResponseModel>>> GetAllGrade(); 
+        
+        // Xem điểm của sinh viên cho tất cả các lab
+        Task<BaseResponse<StudentLabGradesResponseModel>> GetStudentLabGradesAsync(Guid studentId, Guid requestUserId, string userRole); 
     }
 }
