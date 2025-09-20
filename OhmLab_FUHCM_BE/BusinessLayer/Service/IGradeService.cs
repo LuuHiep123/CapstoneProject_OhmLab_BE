@@ -35,6 +35,9 @@ namespace BusinessLayer.Service
         Task<BaseResponse<List<TeamGradeResponseModel>>> GetAllGrade(); 
         
         // Xem điểm của sinh viên cho tất cả các lab
-        Task<BaseResponse<StudentLabGradesResponseModel>> GetStudentLabGradesAsync(Guid studentId, Guid requestUserId, string userRole); 
+        Task<BaseResponse<StudentLabGradesResponseModel>> GetStudentLabGradesAsync(Guid studentId, Guid requestUserId, string userRole);
+        
+        // Lấy điểm số của tất cả sinh viên trong một lớp học theo từng lab
+        Task<BaseResponse<ClassGradesResponseModel>> GetClassGradesAsync(int classId, Guid requestUserId, string userRole);
     }
 }

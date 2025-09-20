@@ -924,5 +924,145 @@ namespace BusinessLayer.Service.Implement
                 };
             }
         }
+
+        public async Task<BaseResponse<ClassGradesResponseModel>> GetClassGradesAsync(int classId, Guid requestUserId, string userRole)
+        {
+            try
+            {
+                // Kiểm tra class tồn tại
+                var classEntity = await _classRepository.GetByIdAsync(classId);
+                if (classEntity == null)
+                {
+                    return new BaseResponse<ClassGradesResponseModel>
+                    {
+                        Code = 404,
+                        Success = false,
+                        Message = "Không tìm thấy lớp học!",
+                        Data = null
+                    };
+                }
+
+                // Validate quyền truy cập
+                if (userRole == "Lecturer")
+                {
+                    // Chỉ lecturer phụ trách lớp mới được xem
+                    if (classEntity.LecturerId != requestUserId)
+                    {
+                        return new BaseResponse<ClassGradesResponseModel>
+                        {
+                            Code = 403,
+                            Success = false,
+                            Message = "Bạn không phụ trách lớp này!",
+                            Data = null
+                        };
+                    }
+                }
+                else if (userRole == "Student")
+                {
+                    // Chỉ student trong lớp mới được xem
+                    var isStudentInClass = await _classUserRepository.IsUserInClassAsync(requestUserId, classId);
+                    if (!isStudentInClass)
+                    {
+                        return new BaseResponse<ClassGradesResponseModel>
+                        {
+                            Code = 403,
+                            Success = false,
+                            Message = "Bạn không thuộc lớp này!",
+                            Data = null
+                        };
+                    }
+                }
+                else
+                {
+                    return new BaseResponse<ClassGradesResponseModel>
+                    {
+                        Code = 403,
+                        Success = false,
+                        Message = "Bạn không có quyền truy cập!",
+                        Data = null
+                    };
+                }
+
+                // Lấy tất cả labs thuộc subject của lớp
+                var labs = await _labRepository.GetLabsBySubjectId(classEntity.SubjectId);
+                var labInfoList = labs.Select(lab => new LabInfoModel
+                {
+                    LabId = lab.LabId,
+                    LabName = lab.LabName
+                }).OrderBy(l => l.LabId).ToList();
+
+                // Lấy tất cả sinh viên trong lớp
+                var classUsers = await _classUserRepository.GetByClassIdAsync(classId);
+                var studentIds = classUsers.Select(cu => cu.UserId).ToList();
+                
+                // Lấy thông tin chi tiết của sinh viên
+                var students = new List<StudentGradeModel>();
+                foreach (var studentId in studentIds)
+                {
+                    var user = await _userRepository.GetUserById(studentId);
+                    if (user != null)
+                    {
+                        // Lấy team của sinh viên trong lớp này
+                        var teamUser = await _teamUserRepository.GetByUserIdAndClassIdAsync(studentId, classId);
+                        int? teamId = teamUser?.TeamId;
+                        string teamName = teamUser?.Team?.TeamName ?? "Chưa có team";
+
+                        // Lấy điểm của sinh viên cho tất cả các labs
+                        var studentGrades = new List<StudentLabGradeDetailModel>();
+                        foreach (var lab in labs)
+                        {
+                            var grade = (await _gradeRepository.GetByUserIdAsync(studentId))
+                                .FirstOrDefault(g => g.LabId == lab.LabId);
+
+                            studentGrades.Add(new StudentLabGradeDetailModel
+                            {
+                                LabId = lab.LabId,
+                                Grade = grade?.Grade1,
+                                GradeStatus = grade?.GradeStatus ?? "Chưa chấm điểm",
+                                GradeDescription = grade?.GradeDescription,
+                                IsTeamGrade = grade != null,
+                                HasIndividualGrade = false // Có thể thêm logic sau nếu cần
+                            });
+                        }
+
+                        students.Add(new StudentGradeModel
+                        {
+                            StudentId = studentId,
+                            StudentName = user.UserFullName,
+                            StudentEmail = user.UserEmail,
+                            TeamId = teamId,
+                            TeamName = teamName,
+                            Grades = studentGrades.OrderBy(g => g.LabId).ToList()
+                        });
+                    }
+                }
+
+                var response = new ClassGradesResponseModel
+                {
+                    ClassId = classId,
+                    ClassName = classEntity.ClassName,
+                    Labs = labInfoList,
+                    Students = students.OrderBy(s => s.StudentName).ToList()
+                };
+
+                return new BaseResponse<ClassGradesResponseModel>
+                {
+                    Code = 200,
+                    Success = true,
+                    Message = "Lấy danh sách điểm thành công!",
+                    Data = response
+                };
+            }
+            catch (Exception ex)
+            {
+                return new BaseResponse<ClassGradesResponseModel>
+                {
+                    Code = 500,
+                    Success = false,
+                    Message = $"Lỗi hệ thống: {ex.Message}",
+                    Data = null
+                };
+            }
+        }
     }
 }
