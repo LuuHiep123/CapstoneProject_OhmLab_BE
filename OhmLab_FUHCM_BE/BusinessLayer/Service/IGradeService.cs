@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using BusinessLayer.RequestModel.Assignment;
+using BusinessLayer.RequestModel.Grade;
 using BusinessLayer.ResponseModel.Assignment;
 using BusinessLayer.ResponseModel.BaseResponse;
 using BusinessLayer.ResponseModel.Grade;
@@ -39,5 +40,8 @@ namespace BusinessLayer.Service
         
         // Lấy điểm số của tất cả sinh viên trong một lớp học theo từng lab
         Task<BaseResponse<ClassGradesResponseModel>> GetClassGradesAsync(int classId, Guid requestUserId, string userRole);
+        
+        // Cập nhật điểm số cho nhiều sinh viên trong lớp học
+        Task<BaseResponse<UpdateClassGradesResponseModel>> UpdateClassGradesAsync(int classId, UpdateClassGradesRequestModel model, Guid lecturerId);
     }
 }
