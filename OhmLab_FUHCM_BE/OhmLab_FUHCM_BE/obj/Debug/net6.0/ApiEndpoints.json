@@ -1655,6 +1655,22 @@
   },
   {
     "ContainingType": "OhmLab_FUHCM_BE.Controller.RegistrationScheduleController",
+    "Method": "GetListSlotEmptyByDate",
+    "RelativePath": "api/registrationschedule/listslotemptybydate/{date}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "date",
+        "Type": "System.DateTime",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OhmLab_FUHCM_BE.Controller.RegistrationScheduleController",
     "Method": "CreateRegistrationSchedule",
     "RelativePath": "api/registrationschedule/registrationschedule",
     "HttpMethod": "POST",

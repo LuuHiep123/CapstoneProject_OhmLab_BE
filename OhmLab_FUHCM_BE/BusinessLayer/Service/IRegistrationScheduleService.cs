@@ -3,6 +3,7 @@ using BusinessLayer.RequestModel.RegistrationSchedule;
 using BusinessLayer.ResponseModel.BaseResponse;
 using BusinessLayer.ResponseModel.Kit;
 using BusinessLayer.ResponseModel.RegistrationSchedule;
+using BusinessLayer.ResponseModel.Slot;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,5 +23,6 @@ namespace BusinessLayer.Service
         Task<BaseResponse<RegistrationScheduleAllResponseModel>> AcceptRegistrtionSchedule(AcceptRejectRegistrationScheduleRequestModel model);
         Task<BaseResponse<RegistrationScheduleAllResponseModel>> RejectRegistrtionSchedule(AcceptRejectRegistrationScheduleRequestModel model);
         Task<BaseResponse<RegistrationScheduleAllResponseModel>> CheckDupplicateRegistrtionSchedule(CheckDupplicateRegitrationScheduleRequestModel model);
+        Task<BaseResponse<List<SlotResponseModel>>> GetSlotEmptyByDate(DateTime date);
     }
 }

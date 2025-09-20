@@ -2,6 +2,7 @@
 using BusinessLayer.RequestModel.RegistrationSchedule;
 using BusinessLayer.ResponseModel.BaseResponse;
 using BusinessLayer.ResponseModel.RegistrationSchedule;
+using BusinessLayer.ResponseModel.Slot;
 using BusinessLayer.ResponseModel.Schedule;
 using BusinessLayer.ResponseModel.TeamKit;
 using BusinessLayer.ResponseModel.User;
@@ -25,16 +26,18 @@ namespace BusinessLayer.Service.Implement
         private readonly IRegistrationScheduleRepository _registrationScheduleRepository;
         private readonly IClassRepository _classRepository;
         private readonly ISlotRepository _slotRepository;
+        private readonly IScheduleRepository _scheduleRepository;
         private readonly ILabRepository _labRepository;
         private readonly IUserRepository _userRepository;
         private readonly IConfiguration _configuration;
         private readonly IMapper _mapper;
         private readonly IMemoryCache _memoryCache;
 
-        public RegistrationScheduleService(ILabRepository labRepository, IUserRepository userRepository, ISlotRepository slotRepository, IClassRepository classRepository, IRegistrationScheduleRepository registrationScheduleRepository, IConfiguration configuration, IMapper mapper, IMemoryCache memoryCache)
+        public RegistrationScheduleService(IScheduleRepository scheduleRepository, ILabRepository labRepository, IUserRepository userRepository, ISlotRepository slotRepository, IClassRepository classRepository, IRegistrationScheduleRepository registrationScheduleRepository, IConfiguration configuration, IMapper mapper, IMemoryCache memoryCache)
         {
             _registrationScheduleRepository = registrationScheduleRepository;
             _labRepository = labRepository;
+            _scheduleRepository = scheduleRepository;
             _userRepository = userRepository;
             _slotRepository = slotRepository;
             _classRepository = classRepository;
@@ -398,6 +401,82 @@ namespace BusinessLayer.Service.Implement
                     Success = false,
                     Message = null,
                     Data = null,
+                };
+            }
+        }
+
+        public async Task<BaseResponse<List<SlotResponseModel>>> GetSlotEmptyByDate(DateTime date)
+        {
+
+            try
+            {
+                var listSchedule = await _scheduleRepository.GetAllAsync();
+                var listScheduleFilter = listSchedule.Where(s => s.ScheduleDate == date);
+
+                var listRegistrationSchedule = await _registrationScheduleRepository.GetAllRegistrationSchedule();
+                var listRegistrationScheduleFilter = listRegistrationSchedule.Where(rs => rs.RegistrationScheduleDate == date && rs.RegistrationScheduleStatus.ToLower().Equals("accept"));
+
+                var listSlot = await _slotRepository.GetAllAsync();
+                var listSlotDupplicate = new List<Slot>();
+                if (listScheduleFilter.Any())
+                {
+                    foreach (var schedule in listScheduleFilter)
+                    {
+                        listSlotDupplicate.Add(schedule.Class.ScheduleType.Slot);
+                    }
+                }
+                if (listRegistrationScheduleFilter.Any())
+                {
+                    foreach (var registrationSchedule in listRegistrationScheduleFilter)
+                    {
+                        listSlotDupplicate.Add(registrationSchedule.Slot);
+                    }
+                }
+                if(listSlotDupplicate.Count() == listSlot.Count())
+                {
+                    return new BaseResponse<List<SlotResponseModel>>()
+                    {
+                        Code = 200,
+                        Success = true,
+                        Message = "Hết slot cho ngày đã chọn",
+                        Data = null,
+
+                    };
+                }
+                if (listSlotDupplicate.Any())
+                {
+                    var result = listSlot.Except(listSlotDupplicate).ToList();
+                    var resultMap = _mapper.Map<List<SlotResponseModel>>(result);
+                    return new BaseResponse<List<SlotResponseModel>>()
+                    {
+                        Code = 200,
+                        Success = true,
+                        Message = null,
+                        Data = resultMap,
+
+                    };
+                }
+                else
+                {
+                    var resultMap = _mapper.Map<List<SlotResponseModel>>(listSlot);
+                    return new BaseResponse<List<SlotResponseModel>>()
+                    {
+                        Code = 200,
+                        Success = true,
+                        Message = null,
+                        Data = resultMap,
+
+                    };
+                }
+            }
+            catch (Exception ex)
+            {
+                return new BaseResponse<List<SlotResponseModel>>()
+                {
+                    Code = 500,
+                    Success = false,
+                    Message = "Server Error!"
+
                 };
             }
         }

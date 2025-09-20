@@ -2779,6 +2779,29 @@
         }
       }
     },
+    "/api/registrationschedule/listslotemptybydate/{date}": {
+      "post": {
+        "tags": [
+          "RegistrationSchedule"
+        ],
+        "parameters": [
+          {
+            "name": "date",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
     "/api/report": {
       "post": {
         "tags": [

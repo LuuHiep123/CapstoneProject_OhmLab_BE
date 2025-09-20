@@ -153,7 +153,20 @@ namespace OhmLab_FUHCM_BE.Controller
                 throw new Exception(ex.Message);
             }
         }
-
+        [Authorize]
+        [HttpPost("ListSlotEmptyByDate/{date}")]
+        public async Task<IActionResult> GetListSlotEmptyByDate(DateTime date)
+        {
+            try
+            {
+                var result = await _service.GetSlotEmptyByDate(date);
+                return StatusCode(result.Code, result);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
 
     }
 }
