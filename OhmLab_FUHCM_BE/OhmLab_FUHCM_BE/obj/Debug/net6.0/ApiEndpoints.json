@@ -1058,6 +1058,22 @@
   },
   {
     "ContainingType": "OhmLab_FUHCM_BE.Controller.GradeController",
+    "Method": "GetClassGrades",
+    "RelativePath": "api/grade/classes/{classId}/grades",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "classId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OhmLab_FUHCM_BE.Controller.GradeController",
     "Method": "GetAllLabGrades",
     "RelativePath": "api/grade/labs/{labId}/grade-for-id",
     "HttpMethod": "GET",
@@ -1206,6 +1222,22 @@
     "IsController": true,
     "Order": 0,
     "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OhmLab_FUHCM_BE.Controller.GradeController",
+    "Method": "GetStudentLabGrades",
+    "RelativePath": "api/grade/students/{studentId}/labs",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "studentId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
     "ReturnTypes": []
   },
   {
