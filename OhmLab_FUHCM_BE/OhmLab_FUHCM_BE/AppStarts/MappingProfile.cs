@@ -30,6 +30,8 @@ using System;
 using System.Linq;
 using BusinessLayer.RequestModel.TeamKit;
 using BusinessLayer.ResponseModel.TeamKit;
+using BusinessLayer.RequestModel.RegistrationSchedule;
+using BusinessLayer.ResponseModel.RegistrationSchedule;
 
 namespace OhmLab_FUHCM_BE.AppStarts
 {
@@ -293,7 +295,20 @@ namespace OhmLab_FUHCM_BE.AppStarts
             CreateMap<UpdateTeamRequestModel, Team>()
                 .ForMember(dest => dest.TeamId, opt => opt.Ignore());
 
-
+            //Registration
+            CreateMap<GetAllRegistrationScheduleRequestModel, RegistrationSchedule>().ReverseMap();
+            CreateMap<RegistrationSchedule, RegistrationScheduleAllResponseModel>()
+                .ForMember(dest => dest.TeacherName, opt => opt.MapFrom(src => src.User.UserFullName))
+                .ForMember(dest => dest.TeacherRollNumber, opt => opt.MapFrom(src => src.User.UserRollNumber))
+                .ForMember(dest => dest.ClassName, opt => opt.MapFrom(src => src.Class.ClassName))
+                .ForMember(dest => dest.LabName, opt => opt.MapFrom(src => src.Lab.LabName))
+                .ForMember(dest => dest.SlotName, opt => opt.MapFrom(src => src.Slot.SlotName))
+                .ForMember(dest => dest.SlotStartTime, opt => opt.MapFrom(src => src.Slot.SlotStartTime))
+                .ForMember(dest => dest.SlotEndTime, opt => opt.MapFrom(src => src.Slot.SlotEndTime))
+                .ReverseMap();
+            CreateMap<GetAllRegistrationScheduleRequestModel, RegistrationScheduleAllResponseModel>().ReverseMap();
+            CreateMap<CreateRegistrationScheduleRequestModel, RegistrationSchedule>().ReverseMap();
+            CreateMap<UpdateRegistrationScheduleRequestModel, RegistrationSchedule>().ReverseMap();
 
 
         }

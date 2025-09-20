@@ -10,6 +10,7 @@ namespace DataLayer.Entities
             ClassUsers = new HashSet<ClassUser>();
             Schedules = new HashSet<Schedule>();
             Teams = new HashSet<Team>();
+            RegistrationSchedules = new HashSet<RegistrationSchedule>();
         }
 
         public int ClassId { get; set; }
@@ -26,5 +27,7 @@ namespace DataLayer.Entities
         public virtual ICollection<ClassUser> ClassUsers { get; set; }
         public virtual ICollection<Schedule> Schedules { get; set; }
         public virtual ICollection<Team> Teams { get; set; }
+        public virtual ICollection<RegistrationSchedule> RegistrationSchedules { get; set; }
+
     }
 }

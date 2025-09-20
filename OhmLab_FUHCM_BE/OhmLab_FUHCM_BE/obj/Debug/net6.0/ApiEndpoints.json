@@ -1537,6 +1537,155 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "OhmLab_FUHCM_BE.Controller.RegistrationScheduleController",
+    "Method": "UpdateRegistrationSchedule",
+    "RelativePath": "api/registrationschedule/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "model",
+        "Type": "BusinessLayer.RequestModel.RegistrationSchedule.UpdateRegistrationScheduleRequestModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OhmLab_FUHCM_BE.Controller.RegistrationScheduleController",
+    "Method": "AcceptRegistrationSchedule",
+    "RelativePath": "api/registrationschedule/accept",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "BusinessLayer.RequestModel.RegistrationSchedule.AcceptRejectRegistrationScheduleRequestModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OhmLab_FUHCM_BE.Controller.RegistrationScheduleController",
+    "Method": "CheckDupplicateRegistrationSchedule",
+    "RelativePath": "api/registrationschedule/checkdupplicate",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "BusinessLayer.RequestModel.RegistrationSchedule.CheckDupplicateRegitrationScheduleRequestModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OhmLab_FUHCM_BE.Controller.RegistrationScheduleController",
+    "Method": "DeleteRegistrationSchedule",
+    "RelativePath": "api/registrationschedule/delete/{id}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OhmLab_FUHCM_BE.Controller.RegistrationScheduleController",
+    "Method": "GetAllRegistrationScheduleByTeacherId",
+    "RelativePath": "api/registrationschedule/listregistrationschedulebyteacherid/{teacherId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "teacherId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OhmLab_FUHCM_BE.Controller.RegistrationScheduleController",
+    "Method": "CreateRegistrationSchedule",
+    "RelativePath": "api/registrationschedule/registrationschedule",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "BusinessLayer.RequestModel.RegistrationSchedule.CreateRegistrationScheduleRequestModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OhmLab_FUHCM_BE.Controller.RegistrationScheduleController",
+    "Method": "GetRegistrationScheduleById",
+    "RelativePath": "api/registrationschedule/registrationschedule/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OhmLab_FUHCM_BE.Controller.RegistrationScheduleController",
+    "Method": "RejectRegistrationSchedule",
+    "RelativePath": "api/registrationschedule/reject",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "BusinessLayer.RequestModel.RegistrationSchedule.AcceptRejectRegistrationScheduleRequestModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OhmLab_FUHCM_BE.Controller.RegistrationScheduleController",
+    "Method": "GetAllRegistrationSchedule",
+    "RelativePath": "api/registrationschedule/search",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "BusinessLayer.RequestModel.RegistrationSchedule.GetAllRegistrationScheduleRequestModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "OhmLab_FUHCM_BE.Controller.ReportController",
     "Method": "CreateReport",
     "RelativePath": "api/report",

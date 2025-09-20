@@ -31,6 +31,7 @@ namespace DataLayer.DBContext
         public virtual DbSet<Lab> Labs { get; set; } = null!;
         public virtual DbSet<LabEquipmentType> LabEquipmentTypes { get; set; } = null!;
         public virtual DbSet<LabKitTemplate> LabKitTemplates { get; set; } = null!;
+        public virtual DbSet<RegistrationSchedule> RegistrationSchedules { get; set; } = null!;
         public virtual DbSet<Report> Reports { get; set; } = null!;
         public virtual DbSet<Schedule> Schedules { get; set; } = null!;
         public virtual DbSet<ScheduleType> ScheduleTypes { get; set; } = null!;
@@ -476,6 +477,62 @@ namespace DataLayer.DBContext
                     .HasForeignKey(d => d.LabId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK__Lab_KitTe__Lab_i__6FB49575");
+            });
+
+            modelBuilder.Entity<RegistrationSchedule>(entity =>
+            {
+                entity.ToTable("RegistrationSchedule");
+
+                entity.Property(e => e.RegistrationScheduleId).HasColumnName("RegistrationSchedule_Id");
+
+                entity.Property(e => e.RegistrationScheduleName)
+                    .HasMaxLength(100)
+                    .HasColumnName("RegistrationSchedule_Name");
+
+                entity.Property(e => e.RegistrationScheduleDate)
+                    .HasColumnType("date")
+                    .HasColumnName("RegistrationSchedule_Date");
+
+                entity.Property(e => e.RegistrationScheduleDescription)
+                    .HasMaxLength(200)
+                    .HasColumnName("RegistrationSchedule_Description");
+
+                entity.Property(e => e.RegistrationScheduleNote)
+                    .HasMaxLength(400)
+                    .HasColumnName("RegistrationSchedule_Note");
+
+                entity.Property(e => e.RegistrationScheduleStatus)
+                    .HasMaxLength(100)
+                    .HasColumnName("RegistrationSchedule_Status");
+
+                entity.Property(e => e.TeacherId).HasColumnName("Teacher_Id");
+
+                entity.Property(e => e.ClassId).HasColumnName("Class_Id");
+
+                entity.Property(e => e.LabId).HasColumnName("Lab_Id");
+                entity.Property(e => e.SlotId).HasColumnName("Slot_Id");
+
+                entity.HasOne(d => d.User)
+                    .WithMany(p => p.RegistrationSchedules)
+                    .HasForeignKey(d => d.TeacherId)
+                    .HasConstraintName("FK__RegistrationSchedule__User_2");
+
+                entity.HasOne(d => d.Class)
+                    .WithMany(p => p.RegistrationSchedules)
+                    .HasForeignKey(d => d.ClassId)
+                    .HasConstraintName("FK__RegistrationSchedule__Class__1");
+
+                entity.HasOne(d => d.Lab)
+                    .WithMany(p => p.RegistrationSchedules)
+                    .HasForeignKey(d => d.LabId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK__RegistrationSchedule__Lab__3");
+
+                entity.HasOne(d => d.Slot)
+                    .WithMany(p => p.RegistrationSchedules)
+                    .HasForeignKey(d => d.SlotId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK__RegistrationSchedule__Slot__4");    
             });
 
             modelBuilder.Entity<Report>(entity =>

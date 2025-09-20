@@ -2467,6 +2467,272 @@
         }
       }
     },
+    "/api/registrationschedule/registrationschedule": {
+      "post": {
+        "tags": [
+          "RegistrationSchedule"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateRegistrationScheduleRequestModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateRegistrationScheduleRequestModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateRegistrationScheduleRequestModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/registrationschedule/search": {
+      "post": {
+        "tags": [
+          "RegistrationSchedule"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetAllRegistrationScheduleRequestModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetAllRegistrationScheduleRequestModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetAllRegistrationScheduleRequestModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/registrationschedule/listregistrationschedulebyteacherid/{teacherId}": {
+      "get": {
+        "tags": [
+          "RegistrationSchedule"
+        ],
+        "parameters": [
+          {
+            "name": "teacherId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/registrationschedule/registrationschedule/{id}": {
+      "get": {
+        "tags": [
+          "RegistrationSchedule"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/registrationschedule/{id}": {
+      "put": {
+        "tags": [
+          "RegistrationSchedule"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateRegistrationScheduleRequestModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateRegistrationScheduleRequestModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateRegistrationScheduleRequestModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/registrationschedule/delete/{id}": {
+      "post": {
+        "tags": [
+          "RegistrationSchedule"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/registrationschedule/accept": {
+      "post": {
+        "tags": [
+          "RegistrationSchedule"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AcceptRejectRegistrationScheduleRequestModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AcceptRejectRegistrationScheduleRequestModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/AcceptRejectRegistrationScheduleRequestModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/registrationschedule/reject": {
+      "post": {
+        "tags": [
+          "RegistrationSchedule"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AcceptRejectRegistrationScheduleRequestModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AcceptRejectRegistrationScheduleRequestModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/AcceptRejectRegistrationScheduleRequestModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/registrationschedule/checkdupplicate": {
+      "post": {
+        "tags": [
+          "RegistrationSchedule"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CheckDupplicateRegitrationScheduleRequestModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CheckDupplicateRegitrationScheduleRequestModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CheckDupplicateRegitrationScheduleRequestModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
     "/api/report": {
       "post": {
         "tags": [
@@ -4303,6 +4569,20 @@
   },
   "components": {
     "schemas": {
+      "AcceptRejectRegistrationScheduleRequestModel": {
+        "type": "object",
+        "properties": {
+          "registrationScheduleId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "registrationScheduleNote": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "AddScheduleForClassRequestModel": {
         "required": [
           "classId",
@@ -4333,6 +4613,20 @@
             "format": "uuid"
           },
           "classId": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "CheckDupplicateRegitrationScheduleRequestModel": {
+        "type": "object",
+        "properties": {
+          "registrationScheduleDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "slotId": {
             "type": "integer",
             "format": "int32"
           }
@@ -4536,6 +4830,40 @@
             "format": "int32"
           },
           "lecturerNotes": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "CreateRegistrationScheduleRequestModel": {
+        "type": "object",
+        "properties": {
+          "registrationScheduleName": {
+            "type": "string",
+            "nullable": true
+          },
+          "teacherId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "classId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "labId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "slotId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "registrationScheduleDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "registrationScheduleDescription": {
             "type": "string",
             "nullable": true
           }
@@ -4860,6 +5188,28 @@
         "additionalProperties": false
       },
       "GetAllKitTemplateRequestModel": {
+        "type": "object",
+        "properties": {
+          "pageNum": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "pageSize": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "keyWord": {
+            "type": "string",
+            "nullable": true
+          },
+          "status": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "GetAllRegistrationScheduleRequestModel": {
         "type": "object",
         "properties": {
           "pageNum": {
@@ -5318,6 +5668,44 @@
             "items": {
               "$ref": "#/components/schemas/LabKitItem"
             },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "UpdateRegistrationScheduleRequestModel": {
+        "type": "object",
+        "properties": {
+          "registrationScheduleName": {
+            "type": "string",
+            "nullable": true
+          },
+          "teacherId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "classId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "labId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "slotId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "registrationScheduleDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "registrationScheduleDescription": {
+            "type": "string",
+            "nullable": true
+          },
+          "registrationScheduleStatus": {
+            "type": "string",
             "nullable": true
           }
         },

@@ -12,6 +12,8 @@ namespace DataLayer.Entities
             Grades = new HashSet<Grade>();
             Reports = new HashSet<Report>();
             TeamUsers = new HashSet<TeamUser>();
+            RegistrationSchedules = new HashSet<RegistrationSchedule>();
+
         }
 
         public Guid UserId { get; set; }
@@ -27,5 +29,7 @@ namespace DataLayer.Entities
         public virtual ICollection<Grade> Grades { get; set; }
         public virtual ICollection<Report> Reports { get; set; }
         public virtual ICollection<TeamUser> TeamUsers { get; set; }
+        public virtual ICollection<RegistrationSchedule> RegistrationSchedules { get; set; }
+
     }
 }

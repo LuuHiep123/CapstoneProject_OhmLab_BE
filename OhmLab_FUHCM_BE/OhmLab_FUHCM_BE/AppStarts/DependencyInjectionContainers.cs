@@ -59,6 +59,7 @@ namespace OhmLab_FUHCM_BE.AppStarts
             ));
             services.AddScoped<IKitTemplateService, KitTemplateService>();
             services.AddScoped<IKitService, KitService>();
+            services.AddScoped<IRegistrationScheduleService, RegistrationScheduleService>();
             services.AddScoped<IClassService>(provider => new ClassService(
                 provider.GetRequiredService<IScheduleRepository>(),
                 provider.GetRequiredService<ISemesterSubjectRepository>(),
@@ -131,6 +132,7 @@ namespace OhmLab_FUHCM_BE.AppStarts
             services.AddScoped<ILabEquipmentTypeRepository, LabEquipmentTypeRepository>();
             services.AddScoped<ILabKitTemplateRepository, LabKitTemplateRepository>();
             services.AddScoped<ITeamKitRepository, TeamKitRepository>();
+            services.AddScoped<IRegistrationScheduleRepository, RegistrationScheduleRepository>();
         }
     }
 }
