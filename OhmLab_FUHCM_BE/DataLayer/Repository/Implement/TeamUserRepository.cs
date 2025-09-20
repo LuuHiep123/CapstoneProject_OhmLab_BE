@@ -150,5 +150,21 @@ namespace DataLayer.Repository.Implement
                 throw ex;
             }
         }
+
+        public async Task<TeamUser> GetByUserIdAndClassIdAsync(Guid userId, int classId)
+        {
+            try
+            {
+                return await _DBContext.TeamUsers
+                    .Include(tu => tu.Team)
+                    .ThenInclude(t => t.Class)
+                    .Include(tu => tu.User)
+                    .FirstOrDefaultAsync(tu => tu.UserId == userId && tu.Team.ClassId == classId);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }
