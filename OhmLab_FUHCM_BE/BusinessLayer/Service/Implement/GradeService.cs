@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using BusinessLayer.RequestModel.Assignment;
+using BusinessLayer.RequestModel.Grade;
 using BusinessLayer.ResponseModel.Assignment;
 using BusinessLayer.ResponseModel.BaseResponse;
 using BusinessLayer.ResponseModel.Grade;
@@ -1063,6 +1064,156 @@ namespace BusinessLayer.Service.Implement
                     Data = null
                 };
             }
+        }
+
+        public async Task<BaseResponse<UpdateClassGradesResponseModel>> UpdateClassGradesAsync(int classId, UpdateClassGradesRequestModel model, Guid lecturerId)
+        {
+            var response = new BaseResponse<UpdateClassGradesResponseModel>();
+            
+            try
+            {
+                // 1. Validate class exists and lecturer owns it
+                var classEntity = await _classRepository.GetByIdAsync(classId);
+                if (classEntity == null)
+                {
+                    response.Code = 404;
+                    response.Success = false;
+                    response.Message = "Không tìm thấy lớp học!";
+                    return response;
+                }
+
+                if (classEntity.LecturerId != lecturerId)
+                {
+                    response.Code = 403;
+                    response.Success = false;
+                    response.Message = "Bạn không có quyền cập nhật điểm cho lớp này!";
+                    return response;
+                }
+
+                // 2. Validate input data
+                if (model.Grades == null || !model.Grades.Any())
+                {
+                    response.Code = 400;
+                    response.Success = false;
+                    response.Message = "Danh sách điểm không được rỗng!";
+                    return response;
+                }
+
+                var updatedGrades = new List<UpdatedGradeItemModel>();
+                var subjectId = classEntity.SubjectId;
+
+                // 3. Process each grade
+                foreach (var gradeItem in model.Grades)
+                {
+                    // Parse student ID
+                    if (!Guid.TryParse(gradeItem.StudentId, out Guid studentId))
+                    {
+                        response.Code = 400;
+                        response.Success = false;
+                        response.Message = $"StudentId '{gradeItem.StudentId}' không hợp lệ!";
+                        return response;
+                    }
+
+                    // Parse lab ID
+                    if (!int.TryParse(gradeItem.LabId.Replace("LAB-", ""), out int labId))
+                    {
+                        response.Code = 400;
+                        response.Success = false;
+                        response.Message = $"LabId '{gradeItem.LabId}' không hợp lệ!";
+                        return response;
+                    }
+
+                    // Validate student exists in class
+                    var studentInClass = await _classUserRepository.GetByUserIdAsync(studentId);
+                    if (studentInClass == null || !studentInClass.Any(c => c.ClassId == classId))
+                    {
+                        response.Code = 400;
+                        response.Success = false;
+                        response.Message = $"Sinh viên '{gradeItem.StudentId}' không thuộc lớp này!";
+                        return response;
+                    }
+
+                    // Validate lab exists and belongs to subject
+                    var lab = await _labRepository.GetLabById(labId);
+                    if (lab == null || lab.SubjectId != subjectId)
+                    {
+                        response.Code = 400;
+                        response.Success = false;
+                        response.Message = $"Lab '{gradeItem.LabId}' không thuộc môn học của lớp này!";
+                        return response;
+                    }
+
+                    // Validate grade range
+                    if (gradeItem.Grade < 0 || gradeItem.Grade > 10)
+                    {
+                        response.Code = 400;
+                        response.Success = false;
+                        response.Message = $"Điểm phải nằm trong khoảng từ 0 đến 10!";
+                        return response;
+                    }
+
+                    // Get team information for the student in this class
+                    var teamUser = await _teamUserRepository.GetByUserIdAndClassIdAsync(studentId, classId);
+                    var teamId = teamUser?.TeamId ?? 0;
+
+                    // Get or create grade record
+                    var existingGrades = await _gradeRepository.GetGradesByLabAndTeam(labId, teamId);
+                    var existingGrade = existingGrades?.FirstOrDefault(g => g.UserId == studentId);
+                    
+                    if (existingGrade != null)
+                    {
+                        // Update existing grade
+                        existingGrade.Grade1 = (int)gradeItem.Grade;
+                        existingGrade.GradeDescription = gradeItem.GradeDescription;
+                        existingGrade.GradeStatus = gradeItem.GradeStatus ?? "Đã chấm điểm";
+                        
+                        await _gradeRepository.UpdateAsync(existingGrade);
+                    }
+                    else
+                    {
+                        // Create new grade
+                        var newGrade = new Grade
+                        {
+                            UserId = studentId,
+                            TeamId = teamId,
+                            LabId = labId,
+                            Grade1 = (int)gradeItem.Grade,
+                            GradeDescription = gradeItem.GradeDescription,
+                            GradeStatus = gradeItem.GradeStatus ?? "Đã chấm điểm"
+                        };
+                        
+                        await _gradeRepository.CreateAsync(newGrade);
+                    }
+
+                    // Add to response
+                    updatedGrades.Add(new UpdatedGradeItemModel
+                    {
+                        StudentId = gradeItem.StudentId,
+                        LabId = gradeItem.LabId,
+                        Grade = gradeItem.Grade,
+                        UpdatedAt = DateTime.UtcNow
+                    });
+                }
+
+                // 4. Prepare response
+                response.Code = 200;
+                response.Success = true;
+                response.Message = "Cập nhật điểm thành công!";
+                response.Data = new UpdateClassGradesResponseModel
+                {
+                    Message = "Grades updated successfully",
+                    UpdatedCount = updatedGrades.Count,
+                    UpdatedGrades = updatedGrades
+                };
+            }
+            catch (Exception ex)
+            {
+                response.Code = 500;
+                response.Success = false;
+                response.Message = $"Lỗi khi cập nhật điểm: {ex.Message}";
+            }
+            
+            return response;
         }
     }
 }

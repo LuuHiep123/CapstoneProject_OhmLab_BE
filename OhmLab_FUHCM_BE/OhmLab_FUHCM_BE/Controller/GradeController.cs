@@ -5,7 +5,9 @@ using System;
 using System.Security.Claims;
 using BusinessLayer.Service;
 using BusinessLayer.RequestModel.Assignment;
+using BusinessLayer.RequestModel.Grade;
 using BusinessLayer.ResponseModel.BaseResponse;
+using BusinessLayer.ResponseModel.Grade;
 
 namespace OhmLab_FUHCM_BE.Controller
 {
@@ -246,6 +248,30 @@ namespace OhmLab_FUHCM_BE.Controller
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Error in GetClassGrades: {Message}", ex.Message);
+                return StatusCode(500, new { success = false, message = ex.Message });
+            }
+        }
+
+        // Cập nhật điểm số cho nhiều sinh viên trong lớp học
+        [HttpPut("classes/{classId}/grades")]
+        [Authorize(Roles = "Lecturer")]
+        public async Task<IActionResult> UpdateClassGrades(int classId, [FromBody] UpdateClassGradesRequestModel model)
+        {
+            try
+            {
+                // Lấy lecturerId từ token
+                var lecturerIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+                if (!Guid.TryParse(lecturerIdClaim, out Guid lecturerId))
+                {
+                    return Unauthorized(new { success = false, message = "Token không hợp lệ!" });
+                }
+
+                var result = await _gradeService.UpdateClassGradesAsync(classId, model, lecturerId);
+                return StatusCode(result.Code, result);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error in UpdateClassGrades: {Message}", ex.Message);
                 return StatusCode(500, new { success = false, message = ex.Message });
             }
         }

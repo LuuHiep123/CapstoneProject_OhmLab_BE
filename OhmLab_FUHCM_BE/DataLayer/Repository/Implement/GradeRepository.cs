@@ -134,18 +134,10 @@ namespace DataLayer.Repository.Implement
             }
         }
 
-        public async Task<Grade> UpdateAsync(Grade grade)
+        public Task<Grade> UpdateAsync(Grade grade)
         {
-            try
-            {
-                _DBContext.Grades.Update(grade);
-                await _DBContext.SaveChangesAsync();
-                return grade;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
+            _DBContext.Grades.Update(grade);
+            return Task.FromResult(grade);
         }
 
         public async Task<bool> DeleteAsync(int id)
