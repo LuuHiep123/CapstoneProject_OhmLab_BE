@@ -22,6 +22,7 @@ namespace BusinessLayer.ResponseModel.RegistrationSchedule
         public string SlotStartTime { get; set; }
         public string SlotEndTime { get; set; }
         public DateTime RegistrationScheduleDate { get; set; }
+        public DateTime RegistrationScheduleCreateDate { get; set; }
         public string? RegistrationScheduleDescription { get; set; }
         public string? RegistrationScheduleNote { get; set; }
         public string RegistrationScheduleStatus { get; set; } = null!;

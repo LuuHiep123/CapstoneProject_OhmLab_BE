@@ -123,7 +123,7 @@ namespace BusinessLayer.Service.Implement
                 {
                     return new BaseResponse<RegistrationScheduleAllResponseModel>()
                     {
-                        Code = 401,
+                        Code = 409,
                         Success = false,
                         Message = "Dupplicate RegistrationSchedule!"
 
@@ -208,6 +208,7 @@ namespace BusinessLayer.Service.Implement
 
                 var registrationSchedule = _mapper.Map<RegistrationSchedule>(model);
                 registrationSchedule.RegistrationScheduleStatus = "Pending";
+                registrationSchedule.RegistrationScheduleCreateDate = DateTime.Now;
 
                 await _registrationScheduleRepository.CreateRegistrationSchedule(registrationSchedule);
                 return new BaseResponse<RegistrationScheduleAllResponseModel>()
@@ -564,6 +565,7 @@ namespace BusinessLayer.Service.Implement
                 else
                 {
                     var result = _mapper.Map<RegistrationSchedule>(UpdateRegistrationSchedule);
+                    result.RegistrationScheduleCreateDate = DateTime.Now;
                     await _registrationScheduleRepository.UpdateRegistrationSchedule(result);
                     return new BaseResponse<RegistrationScheduleAllResponseModel>()
                     {

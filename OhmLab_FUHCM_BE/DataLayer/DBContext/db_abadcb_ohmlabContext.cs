@@ -504,6 +504,9 @@ namespace DataLayer.DBContext
                 entity.Property(e => e.RegistrationScheduleStatus)
                     .HasMaxLength(100)
                     .HasColumnName("RegistrationSchedule_Status");
+                entity.Property(e => e.RegistrationScheduleCreateDate)
+                    .HasColumnType("datetime2")
+                    .HasColumnName("RegistrationSchedule_CreateDate");
 
                 entity.Property(e => e.TeacherId).HasColumnName("Teacher_Id");
 

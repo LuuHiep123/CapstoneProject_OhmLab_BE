@@ -18,6 +18,7 @@ namespace DataLayer.Entities
         public string? RegistrationScheduleDescription { get; set; }
         public string RegistrationScheduleStatus { get; set; } = null!;
         public string? RegistrationScheduleNote { get; set; }
+        public DateTime RegistrationScheduleCreateDate { get; set; }
 
 
         public virtual User User { get; set; } = null!;
