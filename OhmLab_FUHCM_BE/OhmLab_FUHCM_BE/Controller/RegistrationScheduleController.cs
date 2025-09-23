@@ -1,6 +1,7 @@
 ﻿using BusinessLayer.RequestModel.Kit;
 using BusinessLayer.RequestModel.RegistrationSchedule;
 using BusinessLayer.Service;
+using BusinessLayer.Service.Implement;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -62,6 +63,21 @@ namespace OhmLab_FUHCM_BE.Controller
             catch (Exception ex)
             {
                 return StatusCode(500, new { Message = ex.Message });
+            }
+        }
+
+        [Authorize(Roles = "Admin,HeadOfDepartment,Student")]
+        [HttpGet("Student/{StudentId}")]
+        public async Task<IActionResult> GetRegistrationScheduleByStudentId(Guid StudentId)
+        {
+            try
+            {
+                var result = await _service.GetRegistrationScheduleByStudentId(StudentId);
+                return StatusCode(result.Code, result);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
             }
         }
 

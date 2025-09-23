@@ -29,15 +29,17 @@ namespace BusinessLayer.Service.Implement
         private readonly IScheduleRepository _scheduleRepository;
         private readonly ILabRepository _labRepository;
         private readonly IUserRepository _userRepository;
+        private readonly IClassUserRepository _classUserRepository;
         private readonly IConfiguration _configuration;
         private readonly IMapper _mapper;
         private readonly IMemoryCache _memoryCache;
 
-        public RegistrationScheduleService(IScheduleRepository scheduleRepository, ILabRepository labRepository, IUserRepository userRepository, ISlotRepository slotRepository, IClassRepository classRepository, IRegistrationScheduleRepository registrationScheduleRepository, IConfiguration configuration, IMapper mapper, IMemoryCache memoryCache)
+        public RegistrationScheduleService(IClassUserRepository classUserRepository, IScheduleRepository scheduleRepository, ILabRepository labRepository, IUserRepository userRepository, ISlotRepository slotRepository, IClassRepository classRepository, IRegistrationScheduleRepository registrationScheduleRepository, IConfiguration configuration, IMapper mapper, IMemoryCache memoryCache)
         {
             _registrationScheduleRepository = registrationScheduleRepository;
             _labRepository = labRepository;
             _scheduleRepository = scheduleRepository;
+            _classUserRepository = classUserRepository;
             _userRepository = userRepository;
             _slotRepository = slotRepository;
             _classRepository = classRepository;
@@ -123,7 +125,7 @@ namespace BusinessLayer.Service.Implement
                 {
                     return new BaseResponse<RegistrationScheduleAllResponseModel>()
                     {
-                        Code = 409,
+                        Code = 200,
                         Success = false,
                         Message = "Dupplicate RegistrationSchedule!"
 
@@ -406,6 +408,38 @@ namespace BusinessLayer.Service.Implement
             }
         }
 
+        public async Task<BaseResponse<List<RegistrationScheduleAllResponseModel>>> GetRegistrationScheduleByStudentId(Guid studentId)
+        {
+            try
+            {
+                var listRegistrationSchedule = await _registrationScheduleRepository.GetAllRegistrationSchedule();
+                var listClassUser = await _classUserRepository.GetByUserIdAsync(studentId);
+
+                var filteredRegistrationSchedules = listRegistrationSchedule
+                    .Where(s => listClassUser.Any(cu => cu.ClassId == s.ClassId))
+                    .ToList();
+
+                var result = _mapper.Map<List<RegistrationScheduleAllResponseModel>>(filteredRegistrationSchedules);
+                return new BaseResponse<List<RegistrationScheduleAllResponseModel>>()
+                {
+                    Code = 200,
+                    Success = true,
+                    Message = "List RegisterSchedule by StudentId",
+                    Data = result
+                };
+            }
+            catch (Exception ex)
+            {
+                return new BaseResponse<List<RegistrationScheduleAllResponseModel>>()
+                {
+                    Code = 500,
+                    Success = false,
+                    Message = "Server Error!"
+
+                };
+            }
+        }
+
         public async Task<BaseResponse<List<SlotResponseModel>>> GetSlotEmptyByDate(DateTime date)
         {
 
@@ -565,7 +599,7 @@ namespace BusinessLayer.Service.Implement
                 else
                 {
                     var result = _mapper.Map<RegistrationSchedule>(UpdateRegistrationSchedule);
-                    result.RegistrationScheduleCreateDate = DateTime.Now;
+                    result.RegistrationScheduleCreateDate = DateTime.Now;   
                     await _registrationScheduleRepository.UpdateRegistrationSchedule(result);
                     return new BaseResponse<RegistrationScheduleAllResponseModel>()
                     {

@@ -20,6 +20,7 @@ namespace BusinessLayer.Service
         Task<DynamicResponse<RegistrationScheduleAllResponseModel>> GetAllRegistrationSchedule(GetAllRegistrationScheduleRequestModel model);
         Task<BaseResponse<List<RegistrationScheduleAllResponseModel>>> GetAllRegistrationScheduleByTeacherId(Guid teacherId);
         Task<BaseResponse<RegistrationScheduleAllResponseModel>> GetRegistrationScheduleById(int id);
+        Task<BaseResponse<List<RegistrationScheduleAllResponseModel>>> GetRegistrationScheduleByStudentId(Guid studentId);
         Task<BaseResponse<RegistrationScheduleAllResponseModel>> AcceptRegistrtionSchedule(AcceptRejectRegistrationScheduleRequestModel model);
         Task<BaseResponse<RegistrationScheduleAllResponseModel>> RejectRegistrtionSchedule(AcceptRejectRegistrationScheduleRequestModel model);
         Task<BaseResponse<RegistrationScheduleAllResponseModel>> CheckDupplicateRegistrtionSchedule(CheckDupplicateRegitrationScheduleRequestModel model);
