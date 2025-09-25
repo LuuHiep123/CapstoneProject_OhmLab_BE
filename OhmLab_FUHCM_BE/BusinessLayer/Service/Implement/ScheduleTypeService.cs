@@ -44,16 +44,17 @@ namespace BusinessLayer.Service.Implement
                     return new BaseResponse<ScheduleTypeResponseModel>
                     {
                         Code = 404,
-                        Success = false,
                         Message = "Không tìm thấy ca học!",
                         Data = null
                     };
                 }
 
-                // Kiểm tra tên ScheduleType đã tồn tại chưa
+                // Kiểm tra ScheduleType đã tồn tại chưa (kiểm tra trùng lặp đầy đủ)
                 var existingScheduleTypes = await _scheduleTypeRepository.GetAllAsync();
                 var existingScheduleType = existingScheduleTypes.FirstOrDefault(st => 
-                    st.ScheduleTypeName.ToLower() == model.ScheduleTypeName.ToLower());
+                    st.ScheduleTypeName.ToLower() == model.ScheduleTypeName.ToLower() &&
+                    st.SlotId == model.SlotId &&
+                    st.ScheduleTypeDow.ToLower() == model.ScheduleTypeDow.ToLower());
                 
                 if (existingScheduleType != null)
                 {
@@ -61,7 +62,7 @@ namespace BusinessLayer.Service.Implement
                     {
                         Code = 409,
                         Success = false,
-                        Message = "Tên loại lịch học đã tồn tại!",
+                        Message = "Loại lịch học đã tồn tại! ",
                         Data = null
                     };
                 }
@@ -201,11 +202,13 @@ namespace BusinessLayer.Service.Implement
                     };
                 }
 
-                // Kiểm tra tên ScheduleType đã tồn tại chưa (trừ chính nó)
+                // Kiểm tra ScheduleType đã tồn tại chưa (kiểm tra trùng lặp đầy đủ, trừ chính nó)
                 var existingScheduleTypes = await _scheduleTypeRepository.GetAllAsync();
                 var existingScheduleType = existingScheduleTypes.FirstOrDefault(st => 
                     st.ScheduleTypeId != id && 
-                    st.ScheduleTypeName.ToLower() == model.ScheduleTypeName.ToLower());
+                    st.ScheduleTypeName.ToLower() == model.ScheduleTypeName.ToLower() &&
+                    st.SlotId == model.SlotId &&
+                    st.ScheduleTypeDow.ToLower() == model.ScheduleTypeDow.ToLower());
                 
                 if (existingScheduleType != null)
                 {
@@ -213,7 +216,7 @@ namespace BusinessLayer.Service.Implement
                     {
                         Code = 409,
                         Success = false,
-                        Message = "Tên loại lịch học đã tồn tại!",
+                        Message = "Loại lịch học đã tồn tại! (Tên, ca học và thứ trong tuần trùng nhau)",
                         Data = null
                     };
                 }
