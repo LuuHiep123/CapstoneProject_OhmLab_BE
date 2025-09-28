@@ -310,5 +310,65 @@ namespace BusinessLayer.Service.Implement
                 throw ex;
             }
         }
+
+        public async Task<DynamicResponse<TeamEquipmentAllResponseModel>> GetListTeamEquipmentByLecturerId(GetAllTeamEquipmentByLecturerIdRequestModel model)
+        {
+            try
+            {
+                var listTeamEquipment = await _teamEquipmentRepository.GetAllTeamEquipment();
+                if (!string.IsNullOrEmpty(model.keyWord))
+                {
+                    List<TeamEquipment> listTeamEquipmetByName = listTeamEquipment.Where(TE => TE.Team.TeamName.Contains(model.keyWord) && TE.Team.Class.LecturerId.Equals(model.LecturerId)).ToList();
+                    listTeamEquipment = listTeamEquipmetByName
+                               .GroupBy(TE => TE.TeamEquipmentId)
+                               .Select(g => g.First())
+                               .ToList();
+                }
+                else
+                {
+                    List<TeamEquipment> listTeamEquipmetByName = listTeamEquipment.Where(TE => TE.Team.Class.LecturerId.Equals(model.LecturerId)).ToList();
+                    listTeamEquipment = listTeamEquipmetByName
+                               .GroupBy(TE => TE.TeamEquipmentId)
+                               .Select(g => g.First())
+                               .ToList();
+                }
+                    var result = _mapper.Map<List<TeamEquipmentAllResponseModel>>(listTeamEquipment);
+
+                // Nếu không có lỗi, thực hiện phân trang
+                var pagedUsers = result// Giả sử result là danh sách người dùng
+                    .OrderBy(u => u.TeamEquipmentId) // Sắp xếp theo Id tăng dần
+                    .ToPagedList(model.pageNum, model.pageSize); // Phân trang với X.PagedList
+                return new DynamicResponse<TeamEquipmentAllResponseModel>()
+                {
+                    Code = 200,
+                    Success = true,
+                    Message = null,
+
+                    Data = new MegaData<TeamEquipmentAllResponseModel>()
+                    {
+                        PageInfo = new PagingMetaData()
+                        {
+                            Page = pagedUsers.PageNumber,
+                            Size = pagedUsers.PageSize,
+                            Sort = "Ascending",
+                            Order = "Id",
+                            TotalPage = pagedUsers.PageCount,
+                            TotalItem = pagedUsers.TotalItemCount,
+                        },
+                        SearchInfo = new SearchCondition()
+                        {
+                            keyWord = model.keyWord,
+                            role = null,
+                            status = null,
+                        },
+                        PageData = pagedUsers.ToList(),
+                    },
+                };
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }

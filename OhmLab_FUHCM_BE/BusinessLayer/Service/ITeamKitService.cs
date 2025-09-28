@@ -14,6 +14,7 @@ namespace BusinessLayer.Service
     public interface ITeamKitService
     {
         Task<DynamicResponse<TeamKitAllResponseModel>> GetListTeamKit(GetAllTeamKitRequestModel model);
+        Task<DynamicResponse<TeamKitAllResponseModel>> GetListTeamKitByLecturerId(GetAllTeamKitByLecturerIdRequestModel model);
         Task<BaseResponse<TeamKitAllResponseModel>> CreateTeamKit(CreateTeamKitRequestModel model);
         Task<BaseResponse<TeamKitAllResponseModel>> GetTeamKitById(int id);
         Task<BaseResponse<List<TeamKitAllResponseModel>>> GetListTeamKitTeamId(int teamId);

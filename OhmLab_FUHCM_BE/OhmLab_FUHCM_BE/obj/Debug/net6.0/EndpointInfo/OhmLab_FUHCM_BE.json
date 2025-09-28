@@ -1965,6 +1965,46 @@
             "description": "Success"
           }
         }
+      },
+      "put": {
+        "tags": [
+          "Grade"
+        ],
+        "parameters": [
+          {
+            "name": "classId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateClassGradesRequestModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateClassGradesRequestModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateClassGradesRequestModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
       }
     },
     "/api/kit/kit": {
@@ -2583,6 +2623,29 @@
         "parameters": [
           {
             "name": "teacherId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/registrationschedule/student/{StudentId}": {
+      "get": {
+        "tags": [
+          "RegistrationSchedule"
+        ],
+        "parameters": [
+          {
+            "name": "StudentId",
             "in": "path",
             "required": true,
             "schema": {
@@ -3811,6 +3874,37 @@
         }
       }
     },
+    "/api/teamequipment/searchbylecturerid": {
+      "post": {
+        "tags": [
+          "TeamEquipment"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetAllTeamEquipmentByLecturerIdRequestModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetAllTeamEquipmentByLecturerIdRequestModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetAllTeamEquipmentByLecturerIdRequestModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
     "/api/teamequipment/borrowequipment": {
       "post": {
         "tags": [
@@ -4015,6 +4109,37 @@
             "application/*+json": {
               "schema": {
                 "$ref": "#/components/schemas/GetAllTeamKitRequestModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/teamkit/searchbylecturerid": {
+      "post": {
+        "tags": [
+          "TeamKit"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetAllTeamKitByLecturerIdRequestModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetAllTeamKitByLecturerIdRequestModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetAllTeamKitByLecturerIdRequestModel"
               }
             }
           }
@@ -5322,6 +5447,32 @@
         },
         "additionalProperties": false
       },
+      "GetAllTeamEquipmentByLecturerIdRequestModel": {
+        "type": "object",
+        "properties": {
+          "pageNum": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "pageSize": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "lecturerId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "keyWord": {
+            "type": "string",
+            "nullable": true
+          },
+          "status": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "GetAllTeamEquipmentRequestModel": {
         "type": "object",
         "properties": {
@@ -5334,6 +5485,32 @@
             "format": "int32"
           },
           "keyWord": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "GetAllTeamKitByLecturerIdRequestModel": {
+        "type": "object",
+        "properties": {
+          "pageNum": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "pageSize": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "lecturerId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "keyWord": {
+            "type": "string",
+            "nullable": true
+          },
+          "status": {
             "type": "string",
             "nullable": true
           }
@@ -5498,6 +5675,19 @@
         },
         "additionalProperties": false
       },
+      "UpdateClassGradesRequestModel": {
+        "type": "object",
+        "properties": {
+          "grades": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/UpdateGradeItemModel"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "UpdateClassRequestModel": {
         "required": [
           "className",
@@ -5603,6 +5793,32 @@
             "nullable": true
           },
           "equipmentTypeStatus": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "UpdateGradeItemModel": {
+        "type": "object",
+        "properties": {
+          "studentId": {
+            "type": "string",
+            "nullable": true
+          },
+          "labId": {
+            "type": "string",
+            "nullable": true
+          },
+          "grade": {
+            "type": "number",
+            "format": "double"
+          },
+          "gradeDescription": {
+            "type": "string",
+            "nullable": true
+          },
+          "gradeStatus": {
             "type": "string",
             "nullable": true
           }

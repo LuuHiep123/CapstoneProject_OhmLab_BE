@@ -35,6 +35,21 @@ namespace OhmLab_FUHCM_BE.Controller
         }
 
         [Authorize(Roles = "Admin,HeadOfDepartment,Lecturer")]
+        [HttpPost("SearchByLecturerId")]
+        public async Task<IActionResult> GetAllTeamKitByLecturerId(GetAllTeamKitByLecturerIdRequestModel model)
+        {
+            try
+            {
+                var result = await _service.GetListTeamKitByLecturerId(model);
+                return StatusCode(result.Code, result);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { Message = ex.Message });
+            }
+        }
+
+        [Authorize(Roles = "Admin,HeadOfDepartment,Lecturer")]
         [HttpPost("BorrowKit")]
         public async Task<IActionResult> CreateTeamKit(CreateTeamKitRequestModel model)
         {

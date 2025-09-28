@@ -239,6 +239,67 @@ namespace BusinessLayer.Service.Implement
             }
         }
 
+        public async Task<DynamicResponse<TeamKitAllResponseModel>> GetListTeamKitByLecturerId(GetAllTeamKitByLecturerIdRequestModel model)
+        {
+            try
+            {
+                var listTeamKit = await _teamKitRepository.GetAllTeamKit();
+                if (!string.IsNullOrEmpty(model.keyWord))
+                {
+                    List<TeamKit> listTeamKitByTeamName = listTeamKit.Where(TK => TK.Team.TeamName.Contains(model.keyWord) && TK.Team.Class.LecturerId.Equals(model.LecturerId)).ToList();
+                    listTeamKit = listTeamKitByTeamName
+                               .GroupBy(TK => TK.TeamKitId)
+                               .Select(g => g.First())
+                               .ToList();
+                }
+                else
+                {
+                    List<TeamKit> listTeamKitByTeamName = listTeamKit.Where(TK => TK.Team.Class.LecturerId.Equals(model.LecturerId)).ToList();
+                    listTeamKit = listTeamKitByTeamName
+                               .GroupBy(TK => TK.TeamKitId)
+                               .Select(g => g.First())
+                               .ToList();
+                }
+                    var result = _mapper.Map<List<TeamKitAllResponseModel>>(listTeamKit);
+
+
+                // Nếu không có lỗi, thực hiện phân trang
+                var pagedUsers = result// Giả sử result là danh sách người dùng
+                    .OrderBy(u => u.TeamKitId) // Sắp xếp theo Id tăng dần
+                    .ToPagedList(model.pageNum, model.pageSize); // Phân trang với X.PagedList
+                return new DynamicResponse<TeamKitAllResponseModel>()
+                {
+                    Code = 200,
+                    Success = true,
+                    Message = null,
+
+                    Data = new MegaData<TeamKitAllResponseModel>()
+                    {
+                        PageInfo = new PagingMetaData()
+                        {
+                            Page = pagedUsers.PageNumber,
+                            Size = pagedUsers.PageSize,
+                            Sort = "Ascending",
+                            Order = "Id",
+                            TotalPage = pagedUsers.PageCount,
+                            TotalItem = pagedUsers.TotalItemCount,
+                        },
+                        SearchInfo = new SearchCondition()
+                        {
+                            keyWord = model.keyWord,
+                            role = null,
+                            status = null,
+                        },
+                        PageData = pagedUsers.ToList(),
+                    },
+                };
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public async Task<BaseResponse<List<TeamKitAllResponseModel>>> GetListTeamKitTeamId(int teamId)
         {
             try

@@ -1074,6 +1074,27 @@
   },
   {
     "ContainingType": "OhmLab_FUHCM_BE.Controller.GradeController",
+    "Method": "UpdateClassGrades",
+    "RelativePath": "api/grade/classes/{classId}/grades",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "classId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "model",
+        "Type": "BusinessLayer.RequestModel.Grade.UpdateClassGradesRequestModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OhmLab_FUHCM_BE.Controller.GradeController",
     "Method": "GetAllLabGrades",
     "RelativePath": "api/grade/labs/{labId}/grade-for-id",
     "HttpMethod": "GET",
@@ -1728,6 +1749,22 @@
       {
         "Name": "model",
         "Type": "BusinessLayer.RequestModel.RegistrationSchedule.GetAllRegistrationScheduleRequestModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OhmLab_FUHCM_BE.Controller.RegistrationScheduleController",
+    "Method": "GetRegistrationScheduleByStudentId",
+    "RelativePath": "api/registrationschedule/student/{StudentId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "StudentId",
+        "Type": "System.Guid",
         "IsRequired": true
       }
     ],
@@ -2507,6 +2544,22 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "OhmLab_FUHCM_BE.Controller.TeamEquipmentController",
+    "Method": "GetAllTeamEquipmentByLecturerId",
+    "RelativePath": "api/teamequipment/searchbylecturerid",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "BusinessLayer.RequestModel.TeamEquipment.GetAllTeamEquipmentByLecturerIdRequestModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "OhmLab_FUHCM_BE.Controller.TeamKitController",
     "Method": "GetTeamKitById",
     "RelativePath": "api/teamkit/{id}",
@@ -2618,6 +2671,22 @@
       {
         "Name": "model",
         "Type": "BusinessLayer.RequestModel.TeamKit.GetAllTeamKitRequestModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OhmLab_FUHCM_BE.Controller.TeamKitController",
+    "Method": "GetAllTeamKitByLecturerId",
+    "RelativePath": "api/teamkit/searchbylecturerid",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "BusinessLayer.RequestModel.TeamKit.GetAllTeamKitByLecturerIdRequestModel",
         "IsRequired": true
       }
     ],
