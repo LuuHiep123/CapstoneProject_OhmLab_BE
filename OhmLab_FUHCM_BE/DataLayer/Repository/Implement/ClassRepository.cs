@@ -106,7 +106,6 @@ namespace DataLayer.Repository.Implement
             }
             return false;
         }
-
         public async Task<bool> ExistsAsync(int id)
         {
             return await _DBContext.Classes.AnyAsync(c => c.ClassId == id);
@@ -117,5 +116,10 @@ namespace DataLayer.Repository.Implement
             var Class = await _DBContext.Classes.FirstOrDefaultAsync(c => c.ClassName.Equals(name));
             return Class;
         }
+
+        public async Task<bool> CheckLecturerExistsAsync(Guid lecturerId)
+        {
+            return await _DBContext.Users.AnyAsync(u => u.UserId == lecturerId && u.UserRoleName == "Lecturer");
+        }
     }
-} 
+}
