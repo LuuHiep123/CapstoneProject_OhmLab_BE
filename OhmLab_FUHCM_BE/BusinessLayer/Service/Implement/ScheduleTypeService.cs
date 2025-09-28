@@ -53,7 +53,7 @@ namespace BusinessLayer.Service.Implement
                 // Kiểm tra tên ScheduleType đã tồn tại chưa
                 var existingScheduleTypes = await _scheduleTypeRepository.GetAllAsync();
                 var existingScheduleType = existingScheduleTypes.FirstOrDefault(st => 
-                    st.ScheduleTypeName.ToLower() == model.ScheduleTypeName.ToLower());
+                    st.ScheduleTypeName.ToLower() == model.ScheduleTypeName.ToLower() && st.SlotId == model.SlotId && st.ScheduleTypeDow == model.ScheduleTypeDow);
                 
                 if (existingScheduleType != null)
                 {
@@ -205,7 +205,7 @@ namespace BusinessLayer.Service.Implement
                 var existingScheduleTypes = await _scheduleTypeRepository.GetAllAsync();
                 var existingScheduleType = existingScheduleTypes.FirstOrDefault(st => 
                     st.ScheduleTypeId != id && 
-                    st.ScheduleTypeName.ToLower() == model.ScheduleTypeName.ToLower());
+                    st.ScheduleTypeName.ToLower() == model.ScheduleTypeName.ToLower() && st.ScheduleTypeDow.ToLower() ==model.ScheduleTypeDow.ToLower() && st.SlotId == model.SlotId);
                 
                 if (existingScheduleType != null)
                 {
