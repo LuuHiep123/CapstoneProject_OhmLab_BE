@@ -16,5 +16,6 @@ namespace DataLayer.Repository
         Task<bool> ExistsAsync(int id);
         Task<List<Team>> GetTeamsByUserIdAsync(Guid userId);
         Task<List<TeamUser>> GetTeamMembersAsync(int teamId);
+        Task<List<Team>> GetByLecturerIdAsync(Guid lecturerId);
     }
-} 
+}

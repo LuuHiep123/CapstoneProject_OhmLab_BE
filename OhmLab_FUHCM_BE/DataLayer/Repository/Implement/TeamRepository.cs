@@ -145,8 +145,7 @@ namespace DataLayer.Repository.Implement
 
         public async Task<List<TeamUser>> GetTeamMembersAsync(int teamId)
         {
-            try
-            {
+            try { 
                 return await _DBContext.TeamUsers
                     .Include(tu => tu.User)
                     .Where(tu => tu.TeamId == teamId)
@@ -157,5 +156,22 @@ namespace DataLayer.Repository.Implement
                 throw ex;
             }
         }
+
+        public async Task<List<Team>> GetByLecturerIdAsync(Guid lecturerId)
+        {
+            try
+            {
+                return await _DBContext.Teams
+                    .Include(t => t.Class)
+                    .Include(t => t.TeamUsers)
+                        .ThenInclude(tu => tu.User)
+                    .Where(t => t.Class.LecturerId == lecturerId)
+                    .ToListAsync();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
-} 
+}

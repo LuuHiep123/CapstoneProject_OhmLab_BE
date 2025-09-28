@@ -11,10 +11,13 @@ namespace DataLayer.Repository
         Task<Class> GetByName(string name);
         Task<List<Class>> GetByLecturerIdAsync(Guid lecturerId);
         Task<List<Class>> GetByStudentIdAsync(Guid studentId);
+        Task<List<Class>> GetByLecturerIdWithIncludesAsync(Guid lecturerId);
+        Task<List<Class>> GetByStudentIdWithIncludesAsync(Guid studentId);
         Task<List<Class>> GetAllAsync();
         Task<Class> CreateAsync(Class classEntity);
         Task<Class> UpdateAsync(Class classEntity);
         Task<bool> DeleteAsync(int id);
         Task<bool> ExistsAsync(int id);
+        Task<bool> CheckLecturerExistsAsync(Guid lecturerId);
     }
-} 
+}

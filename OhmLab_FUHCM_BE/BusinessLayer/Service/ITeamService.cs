@@ -14,5 +14,6 @@ namespace BusinessLayer.Service
         Task<BaseResponse<List<TeamResponseModel>>> GetTeamsByClassIdAsync(int classId);
         Task<BaseResponse<TeamResponseModel>> UpdateTeamAsync(int id, UpdateTeamRequestModel model);
         Task<BaseResponse<bool>> DeleteTeamAsync(int id);
+        Task<BaseResponse<List<TeamResponseModel>>> GetTeamsByLecturerIdAsync(Guid lecturerId);
     }
-} 
+}

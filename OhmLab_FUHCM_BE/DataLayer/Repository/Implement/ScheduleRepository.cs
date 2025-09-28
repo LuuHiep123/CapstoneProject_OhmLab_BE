@@ -262,5 +262,29 @@ namespace DataLayer.Repository.Implement
                 throw;
             }
         }
+
+        public async Task<List<Schedule>> GetByDateWithIncludesAsync(DateTime date)
+        {
+            try
+            {
+                return await _DBContext.Schedules
+                    .Include(s => s.Class)
+                        .ThenInclude(c => c.Subject)
+                    .Include(s => s.Class)
+                        .ThenInclude(c => c.Lecturer)
+                    .Include(s => s.Class)
+                        .ThenInclude(c => c.ScheduleType)
+                            .ThenInclude(st => st.Slot)
+                    .Include(s => s.Reports)
+                    .Where(s => s.ScheduleDate.Date == date.Date)
+                    .OrderBy(s => s.ScheduleDate)
+                    .ToListAsync();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"[ERROR][GetByDateWithIncludesAsync] {ex.Message} | Inner: {ex.InnerException?.Message}");
+                throw;
+            }
+        }
     }
-} 
+}

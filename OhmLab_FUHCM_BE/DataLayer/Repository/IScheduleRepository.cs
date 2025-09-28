@@ -12,6 +12,7 @@ namespace DataLayer.Repository
         Task<IEnumerable<Schedule>> GetByWeekIdAsync(int weekId);
         Task<IEnumerable<Schedule>> GetByDateRangeAsync(DateTime startDate, DateTime endDate);
         Task<IEnumerable<Schedule>> GetByDateAsync(DateTime date);
+        Task<List<Schedule>> GetByDateWithIncludesAsync(DateTime date);
         Task<Schedule> CreateAsync(Schedule schedule);
         Task<Schedule> UpdateAsync(Schedule schedule);
         Task<bool> DeleteAsync(int id);

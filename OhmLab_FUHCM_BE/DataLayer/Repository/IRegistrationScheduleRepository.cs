@@ -1,4 +1,4 @@
-﻿using DataLayer.Entities;
+using DataLayer.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,5 +15,8 @@ namespace DataLayer.Repository
         Task<List<RegistrationSchedule>> GetAllRegistrationSchedule();
         Task<List<RegistrationSchedule>> GetAllRegistrationScheduleByTeacherId(Guid teacherId);
         Task<RegistrationSchedule> GetRegistrationScheduleById(int id);
+        Task<List<RegistrationSchedule>> GetByDateWithIncludesAsync(DateTime date);
+        Task<List<RegistrationSchedule>> GetByTeacherIdAndDateWithIncludesAsync(Guid teacherId, DateTime date);
+        Task<List<RegistrationSchedule>> GetByClassIdAndDateWithIncludesAsync(int classId, DateTime date);
     }
 }

@@ -260,7 +260,6 @@ namespace BusinessLayer.Service.Implement
                 return new BaseResponse<bool>
                 {
                     Code = 200,
-                    Success = true,
                     Message = "Xóa nhóm thành công!",
                     Data = true
                 };
@@ -276,5 +275,57 @@ namespace BusinessLayer.Service.Implement
                 };
             }
         }
+
+        public async Task<BaseResponse<List<TeamResponseModel>>> GetTeamsByLecturerIdAsync(Guid lecturerId)
+        {
+            try
+            {
+                // Validation: Check lecturerId is not empty
+                if (lecturerId == Guid.Empty)
+                {
+                    return new BaseResponse<List<TeamResponseModel>>
+                    {
+                        Code = 400,
+                        Success = false,
+                        Message = "LecturerId không được để trống!",
+                        Data = null
+                    };
+                }
+
+                // Validation: Check if lecturer exists
+                var lecturerExists = await _classRepository.CheckLecturerExistsAsync(lecturerId);
+                if (!lecturerExists)
+                {
+                    return new BaseResponse<List<TeamResponseModel>>
+                    {
+                        Code = 404,
+                        Success = false,
+                        Message = "Không tìm thấy giảng viên!",
+                        Data = null
+                    };
+                }
+
+                var teams = await _teamRepository.GetByLecturerIdAsync(lecturerId);
+                var teamResponseModels = _mapper.Map<List<TeamResponseModel>>(teams);
+                
+                return new BaseResponse<List<TeamResponseModel>>
+                {
+                    Code = 200,
+                    Success = true,
+                    Message = "Lấy danh sách nhóm theo giảng viên thành công!",
+                    Data = teamResponseModels
+                };
+            }
+            catch (System.Exception ex)
+            {
+                return new BaseResponse<List<TeamResponseModel>>
+                {
+                    Code = 500,
+                    Success = false,
+                    Message = $"Lỗi: {ex.Message}",
+                    Data = null
+                };
+            }
+        }
     }
-} 
+}

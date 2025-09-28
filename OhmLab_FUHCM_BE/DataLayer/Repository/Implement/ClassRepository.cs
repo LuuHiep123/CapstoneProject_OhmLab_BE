@@ -106,7 +106,6 @@ namespace DataLayer.Repository.Implement
             }
             return false;
         }
-
         public async Task<bool> ExistsAsync(int id)
         {
             return await _DBContext.Classes.AnyAsync(c => c.ClassId == id);
@@ -117,5 +116,52 @@ namespace DataLayer.Repository.Implement
             var Class = await _DBContext.Classes.FirstOrDefaultAsync(c => c.ClassName.Equals(name));
             return Class;
         }
+
+        public async Task<List<Class>> GetByStudentIdWithIncludesAsync(Guid studentId)
+        {
+            return await _DBContext.Classes
+                .Include(c => c.Subject)
+                    .ThenInclude(s => s.SemesterSubjects)
+                        .ThenInclude(ss => ss.Semester)
+                .Include(c => c.Lecturer)
+                .Include(c => c.ScheduleType)
+                    .ThenInclude(st => st.Slot)
+                .Include(c => c.ClassUsers)
+                    .ThenInclude(cu => cu.User)
+                .Include(c => c.Teams)
+                .Where(c => c.ClassUsers.Any(cu => cu.UserId == studentId))
+                .AsSplitQuery() // Use split query for better performance
+                .ToListAsync();
+        }
+
+        public async Task<List<Class>> GetByLecturerIdWithIncludesAsync(Guid lecturerId)
+        {
+            return await _DBContext.Classes
+                .Include(c => c.Subject)
+                    .ThenInclude(s => s.SemesterSubjects)
+                        .ThenInclude(ss => ss.Semester)
+                .Include(c => c.Lecturer)
+                .Include(c => c.ScheduleType)
+                    .ThenInclude(st => st.Slot)
+                .Include(c => c.ClassUsers)
+                    .ThenInclude(cu => cu.User)
+                .Include(c => c.Teams)
+                .Where(c => c.LecturerId == lecturerId)
+                .AsSplitQuery() // Use split query for better performance
+                .ToListAsync();
+        }
+
+        public async Task<bool> CheckLecturerExistsAsync(Guid lecturerId)
+        {
+            try
+            {
+                return await _DBContext.Classes
+                    .AnyAsync(c => c.LecturerId == lecturerId);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
-} 
+}
