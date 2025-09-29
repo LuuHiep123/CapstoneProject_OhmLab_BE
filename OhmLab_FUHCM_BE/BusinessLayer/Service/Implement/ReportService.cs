@@ -5,7 +5,6 @@ using DataLayer.Entities;
 using DataLayer.Repository;
 using Microsoft.Extensions.Logging;
 using AutoMapper;
-using System.Linq;
 using BusinessLayer.ResponseModel.Slot;
 using BusinessLayer.ResponseModel.Class;
 
@@ -18,6 +17,7 @@ namespace BusinessLayer.Service.Implement
         private readonly IUserRepository _userRepository;
         private readonly IClassRepository _classRepository;
         private readonly ISubjectRepository _subjectRepository;
+        private readonly IRegistrationScheduleRepository _registrationScheduleRepository;
         private readonly IMapper _mapper;
         private readonly ILogger<ReportService> _logger;
 
@@ -27,6 +27,7 @@ namespace BusinessLayer.Service.Implement
             IUserRepository userRepository,
             IClassRepository classRepository,
             ISubjectRepository subjectRepository,
+            IRegistrationScheduleRepository registrationScheduleRepository,
             IMapper mapper,
             ILogger<ReportService> logger)
         {
@@ -35,6 +36,7 @@ namespace BusinessLayer.Service.Implement
             _userRepository = userRepository;
             _classRepository = classRepository;
             _subjectRepository = subjectRepository;
+            _registrationScheduleRepository = registrationScheduleRepository;
             _mapper = mapper;
             _logger = logger;
         }
@@ -85,7 +87,7 @@ namespace BusinessLayer.Service.Implement
                 var report = new Report
                 {
                     UserId = userId,
-                    ScheduleId = schedule.ScheduleId,
+                    ScheduleId = schedule.RegistrationScheduleId,
                     ReportTitle = model.ReportTitle,
                     ReportDescription = model.ReportDescription,
                     ReportCreateDate = DateTime.Now,
@@ -151,19 +153,19 @@ namespace BusinessLayer.Service.Implement
                 
                 // Filter schedules with complete navigation properties
                 var validSchedules = todaySchedules
-                    .Where(s => s.Class?.ScheduleType?.Slot != null)
+                    .Where(s => s.Slot != null)
                     .ToList();
 
-                _logger.LogInformation($"Found {validSchedules.Count} valid schedules with complete navigation properties out of {todaySchedules.Count} total");
+                _logger.LogInformation($"Found {validSchedules.Count} valid lab schedules with complete navigation properties out of {todaySchedules.Count} total");
 
                 if (validSchedules.Any())
                 {
                     availableSlots = validSchedules
                         .GroupBy(s => new { 
-                            SlotId = s.Class.ScheduleType.Slot.SlotId,
-                            SlotName = s.Class.ScheduleType.Slot.SlotName,
-                            SlotStartTime = s.Class.ScheduleType.Slot.SlotStartTime,
-                            SlotEndTime = s.Class.ScheduleType.Slot.SlotEndTime
+                            SlotId = s.Slot.SlotId,
+                            SlotName = s.Slot.SlotName,
+                            SlotStartTime = s.Slot.SlotStartTime,
+                            SlotEndTime = s.Slot.SlotEndTime
                         })
                         .Select(g => new BusinessLayer.ResponseModel.Report.SlotResponseModel
                         {
@@ -179,7 +181,7 @@ namespace BusinessLayer.Service.Implement
                 }
                 else
                 {
-                    _logger.LogWarning("No schedules found with complete navigation properties (Class->ScheduleType->Slot)");
+                    _logger.LogWarning("No lab schedules found with complete navigation properties (RegistrationSchedule->Slot)");
                 }
 
                 var result = new
@@ -240,13 +242,13 @@ namespace BusinessLayer.Service.Implement
 
                 var todaySchedules = await GetUserTodaySchedulesAsync(userId, user.UserRoleName);
                 var filteredSchedules = todaySchedules
-                    .Where(s => s.Class?.ScheduleType?.Slot?.SlotName == slotName)
+                    .Where(s => s.Slot?.SlotName == slotName)
                     .ToList();
 
                 // Debug: Log schedule details
                 foreach (var schedule in filteredSchedules)
                 {
-                    _logger.LogDebug($"Schedule {schedule.ScheduleId}: Class {schedule.Class?.ClassName}, Date: {schedule.ScheduleDate:yyyy-MM-dd HH:mm}, Slot: {schedule.Class?.ScheduleType?.Slot?.SlotName}");
+                    _logger.LogDebug($"RegistrationSchedule {schedule.RegistrationScheduleId}: Class {schedule.Class?.ClassName}, Date: {schedule.RegistrationScheduleDate:yyyy-MM-dd}, Slot: {schedule.Slot?.SlotName}");
                 }
 
                 var availableClasses = filteredSchedules
@@ -254,8 +256,8 @@ namespace BusinessLayer.Service.Implement
                     {
                         ClassName = s.Class?.ClassName ?? "Unknown",
                         SubjectName = s.Class?.Subject?.SubjectName ?? "Unknown",
-                        LecturerName = s.Class?.Lecturer?.UserFullName ?? "Unknown",
-                        ScheduleId = s.ScheduleId
+                        LecturerName = s.User?.UserFullName ?? "Unknown",
+                        ScheduleId = s.RegistrationScheduleId
                     })
                     .OrderBy(c => c.ClassName)
                     .ToList();
@@ -292,53 +294,65 @@ namespace BusinessLayer.Service.Implement
         }
 
         // Helper methods
-        private async Task<List<Schedule>> GetUserTodaySchedulesAsync(Guid userId, string userRole)
+        private async Task<List<RegistrationSchedule>> GetUserTodaySchedulesAsync(Guid userId, string userRole)
         {
             try
             {
                 var today = DateTime.Today;
-                var todaySchedules = await _scheduleRepository.GetByDateAsync(today);
-                var userSchedules = new List<Schedule>();
-
-                _logger.LogInformation($"Found {todaySchedules.Count()} schedules for today: {today:yyyy-MM-dd}");
+                List<RegistrationSchedule> todaySchedules;
+                var userSchedules = new List<RegistrationSchedule>();
 
                 if (userRole == "Student")
                 {
                     var studentClasses = await _classRepository.GetByStudentIdAsync(userId);
                     var classIds = studentClasses.Select(c => c.ClassId).ToList();
-                    userSchedules = todaySchedules.Where(s => classIds.Contains(s.ClassId)).ToList();
                     
-                    _logger.LogInformation($"Student {userId} has {studentClasses.Count} classes, {userSchedules.Count} schedules today");
+                    // Lấy registration schedules cho các lớp của sinh viên
+                    todaySchedules = new List<RegistrationSchedule>();
+                    foreach (var classId in classIds)
+                    {
+                        var classSchedules = await _registrationScheduleRepository.GetByClassIdAndDateWithIncludesAsync(classId, today);
+                        todaySchedules.AddRange(classSchedules);
+                    }
+                    userSchedules = todaySchedules;
+                    
+                    _logger.LogInformation($"Student {userId} has {studentClasses.Count} classes, {userSchedules.Count} lab schedules today");
                 }
                 else if (userRole == "Lecturer")
                 {
-                    var lecturerClasses = await _classRepository.GetByLecturerIdAsync(userId);
-                    var classIds = lecturerClasses.Select(c => c.ClassId).ToList();
-                    userSchedules = todaySchedules.Where(s => classIds.Contains(s.ClassId)).ToList();
+                    // Lấy registration schedules cho giảng viên
+                    todaySchedules = await _registrationScheduleRepository.GetByTeacherIdAndDateWithIncludesAsync(userId, today);
+                    userSchedules = todaySchedules;
                     
-                    _logger.LogInformation($"Lecturer {userId} has {lecturerClasses.Count} classes, {userSchedules.Count} schedules today");
+                    _logger.LogInformation($"Lecturer {userId} has {userSchedules.Count} lab schedules today");
                 }
+                else
+                {
+                    return new List<RegistrationSchedule>();
+                }
+
+                _logger.LogInformation($"Found {todaySchedules.Count} lab schedules for today: {today:yyyy-MM-dd}");
 
                 // Validate navigation properties are loaded
                 foreach (var schedule in userSchedules)
                 {
                     if (schedule.Class == null)
                     {
-                        _logger.LogWarning($"Schedule {schedule.ScheduleId} has null Class");
+                        _logger.LogWarning($"RegistrationSchedule {schedule.RegistrationScheduleId} has null Class");
                         continue;
                     }
-                    if (schedule.Class.ScheduleType == null)
+                    if (schedule.Slot == null)
                     {
-                        _logger.LogWarning($"Schedule {schedule.ScheduleId} Class {schedule.Class.ClassId} has null ScheduleType");
+                        _logger.LogWarning($"RegistrationSchedule {schedule.RegistrationScheduleId} has null Slot");
                         continue;
                     }
-                    if (schedule.Class.ScheduleType.Slot == null)
+                    if (schedule.User == null)
                     {
-                        _logger.LogWarning($"Schedule {schedule.ScheduleId} ScheduleType {schedule.Class.ScheduleType.ScheduleTypeId} has null Slot");
+                        _logger.LogWarning($"RegistrationSchedule {schedule.RegistrationScheduleId} has null User");
                         continue;
                     }
                     
-                    _logger.LogDebug($"Schedule {schedule.ScheduleId}: Class {schedule.Class.ClassName} -> ScheduleType {schedule.Class.ScheduleType.ScheduleTypeName} -> Slot {schedule.Class.ScheduleType.Slot.SlotName}");
+                    _logger.LogDebug($"RegistrationSchedule {schedule.RegistrationScheduleId}: Class {schedule.Class.ClassName} -> Slot {schedule.Slot.SlotName} -> Teacher {schedule.User.UserFullName}");
                 }
 
                 return userSchedules;
@@ -346,13 +360,12 @@ namespace BusinessLayer.Service.Implement
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Error in GetUserTodaySchedulesAsync for user {UserId}, role {UserRole}", userId, userRole);
-                return new List<Schedule>();
+                return new List<RegistrationSchedule>();
             }
         }
 
-        private async Task<bool> ValidateUserAccessToSchedule(Guid userId, int scheduleId, string userRole)
+        private async Task<bool> ValidateUserAccessToSchedule(RegistrationSchedule schedule, Guid userId, string userRole)
         {
-            var schedule = await _scheduleRepository.GetByIdAsync(scheduleId);
             if (schedule == null) return false;
 
             if (userRole == "Student")
@@ -362,8 +375,7 @@ namespace BusinessLayer.Service.Implement
             }
             else if (userRole == "Lecturer")
             {
-                var lecturerClasses = await _classRepository.GetByLecturerIdAsync(userId);
-                return lecturerClasses.Any(c => c.ClassId == schedule.ClassId);
+                return schedule.TeacherId == userId;
             }
 
             return false;
@@ -398,11 +410,11 @@ namespace BusinessLayer.Service.Implement
             return userSchedules;
         }
 
-        private async Task<Schedule?> FindScheduleByUserSelectionAsync(Guid userId, DateTime date, string slotName, string className, string userRole)
+        private async Task<RegistrationSchedule?> FindScheduleByUserSelectionAsync(Guid userId, DateTime date, string slotName, string className, string userRole)
         {
             var todaySchedules = await GetUserTodaySchedulesAsync(userId, userRole);
             return todaySchedules.FirstOrDefault(s => 
-                s.Class?.ScheduleType?.Slot?.SlotName == slotName &&
+                s.Slot?.SlotName == slotName &&
                 s.Class?.ClassName == className);
         }
 
@@ -756,7 +768,7 @@ namespace BusinessLayer.Service.Implement
             try
             {
                 var reports = await _reportRepository.GetAllAsync();
-                var resolvedReports = reports.Where(r => 
+                var resolvedReports = reports.Where(r =>
                     (r.ReportStatus == "Resolved" || r.ReportStatus == "Closed") &&
                     (r.ReportTitle.Contains("Chập mạch") ||
                      r.ReportTitle.Contains("Thiết bị hỏng") ||
@@ -765,7 +777,7 @@ namespace BusinessLayer.Service.Implement
                      r.ReportTitle.Contains("Hỏng") ||
                      r.ReportTitle.Contains("Lỗi"))
                 );
-                
+
                 var reportResponses = new List<ReportResponseModel>();
                 foreach (var report in resolvedReports)
                 {
@@ -795,15 +807,22 @@ namespace BusinessLayer.Service.Implement
                     Code = 500,
                     Success = false,
                     Message = "Lỗi hệ thống!",
-                    Data = null
                 };
-            }
+                }
         }
-
         private async Task<ReportResponseModel> MapToReportResponseModel(Report report)
         {
             var user = await _userRepository.GetUserById(report.UserId);
-            var schedule = await _scheduleRepository.GetByIdAsync(report.ScheduleId);
+            var registrationSchedule = await _registrationScheduleRepository.GetRegistrationScheduleById(report.ScheduleId);
+            var classEntity = registrationSchedule != null ? await _classRepository.GetByIdAsync(registrationSchedule.ClassId) : null;
+            var subject = classEntity != null ? await _subjectRepository.GetSubjectById(classEntity.SubjectId) : null;
+            var slot = registrationSchedule?.Slot;
+
+            string scheduleName = "Unknown";
+            if (registrationSchedule != null && classEntity != null && slot != null)
+            {
+                scheduleName = $"Lab: {classEntity.ClassName} - {slot.SlotName} ({subject?.SubjectName ?? "Unknown"})";
+            }
 
             return new ReportResponseModel
             {
@@ -811,7 +830,7 @@ namespace BusinessLayer.Service.Implement
                 UserId = report.UserId,
                 UserName = user?.UserFullName ?? "Unknown",
                 ScheduleId = report.ScheduleId,
-                ScheduleName = schedule?.ScheduleName ?? "Unknown",
+                ScheduleName = scheduleName,
                 ReportTitle = report.ReportTitle,
                 ReportDescription = report.ReportDescription,
                 ReportCreateDate = report.ReportCreateDate,
@@ -825,19 +844,16 @@ namespace BusinessLayer.Service.Implement
         private async Task<ReportDetailResponseModel> MapToReportDetailResponseModel(Report report)
         {
             var user = await _userRepository.GetUserById(report.UserId);
-            var schedule = await _scheduleRepository.GetByIdAsync(report.ScheduleId);
-            var classEntity = schedule != null ? await _classRepository.GetByIdAsync(schedule.ClassId) : null;
+            var registrationSchedule = await _registrationScheduleRepository.GetRegistrationScheduleById(report.ScheduleId);
+            var classEntity = registrationSchedule != null ? await _classRepository.GetByIdAsync(registrationSchedule.ClassId) : null;
             var subject = classEntity != null ? await _subjectRepository.GetSubjectById(classEntity.SubjectId) : null;
-            
-            string slotName = "Unknown";
-            string slotStartTime = "Unknown";
-            string slotEndTime = "Unknown";
-            
-            if (classEntity?.ScheduleType != null)
+            var slot = registrationSchedule?.Slot;
+            var teacher = registrationSchedule?.User;
+
+            string scheduleName = "Unknown";
+            if (registrationSchedule != null && classEntity != null && slot != null)
             {
-                slotName = classEntity.ScheduleType.Slot?.SlotName ?? "Unknown";
-                slotStartTime = classEntity.ScheduleType.Slot?.SlotStartTime ?? "Unknown";
-                slotEndTime = classEntity.ScheduleType.Slot?.SlotEndTime ?? "Unknown";
+                scheduleName = $"Lab: {classEntity.ClassName} - {slot.SlotName} ({subject?.SubjectName ?? "Unknown"})";
             }
 
             return new ReportDetailResponseModel
@@ -846,7 +862,7 @@ namespace BusinessLayer.Service.Implement
                 UserId = report.UserId,
                 UserName = user?.UserFullName ?? "Unknown",
                 ScheduleId = report.ScheduleId,
-                ScheduleName = schedule?.ScheduleName ?? "Unknown",
+                ScheduleName = scheduleName,
                 ReportTitle = report.ReportTitle,
                 ReportDescription = report.ReportDescription,
                 ReportCreateDate = report.ReportCreateDate,
@@ -856,11 +872,11 @@ namespace BusinessLayer.Service.Implement
                     : null,
                 ClassName = classEntity?.ClassName ?? "Unknown",
                 SubjectName = subject?.SubjectName ?? "Unknown",
-                LecturerName = classEntity?.Lecturer?.UserFullName ?? "Unknown",
-                ScheduleDate = schedule?.ScheduleDate ?? DateTime.MinValue,
-                SlotName = slotName,
-                SlotStartTime = slotStartTime,
-                SlotEndTime = slotEndTime
+                LecturerName = teacher?.UserFullName ?? "Unknown",
+                ScheduleDate = registrationSchedule?.RegistrationScheduleDate ?? DateTime.MinValue,
+                SlotName = slot?.SlotName ?? "Unknown",
+                SlotStartTime = slot?.SlotStartTime ?? "Unknown",
+                SlotEndTime = slot?.SlotEndTime ?? "Unknown"
             };
         }
     }
