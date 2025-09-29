@@ -157,7 +157,7 @@ namespace BusinessLayer.Service.Implement
                     .ToList();
 
                 _logger.LogInformation($"Found {validSchedules.Count} valid lab schedules with complete navigation properties out of {todaySchedules.Count} total");
-
+                var warnings = new List<string>();
                 if (validSchedules.Any())
                 {
                     availableSlots = validSchedules
@@ -178,6 +178,22 @@ namespace BusinessLayer.Service.Implement
                         .ToList();
 
                     _logger.LogInformation($"Grouped into {availableSlots.Count} unique slots");
+                    
+                    if(user.UserRoleName == "Lecturer")
+                    {
+                        var conflictslots = availableSlots.Where(s => s.ScheduleCount >= 2).ToList();
+                        if (conflictslots.Any())
+                        {
+                            
+                            foreach (var slot in conflictslots)
+                            {
+                                var conflictmessage =
+                                ($"Con vợ cẩn thận đấy thằng admin duyệt ngu rồi, duyệt hẳn {slot.ScheduleCount} trùng nhau kìa con vợ");
+                                _logger.LogWarning(conflictmessage);
+                                warnings.Add(conflictmessage);
+                            }
+                        }
+                    }
                 }
                 else
                 {
@@ -188,7 +204,8 @@ namespace BusinessLayer.Service.Implement
                 {
                     Slots = availableSlots,
                     TotalCount = availableSlots.Count,
-                    Today = today.ToString("dd/MM/yyyy")
+                    Today = today.ToString("dd/MM/yyyy"),
+                    Warnings = warnings
                 };
 
                 return new BaseResponse<object>
