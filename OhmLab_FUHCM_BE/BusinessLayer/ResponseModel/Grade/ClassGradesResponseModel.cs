@@ -29,7 +29,7 @@ namespace BusinessLayer.ResponseModel.Grade
     public class StudentLabGradeDetailModel
     {
         public int LabId { get; set; }
-        public int? Grade { get; set; }
+        public double? Grade { get; set; }
         public string GradeStatus { get; set; }
         public string? GradeDescription { get; set; }
         public bool IsTeamGrade { get; set; }

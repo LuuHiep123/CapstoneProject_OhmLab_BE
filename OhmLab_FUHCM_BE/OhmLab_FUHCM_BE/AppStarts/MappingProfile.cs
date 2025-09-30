@@ -48,6 +48,7 @@ namespace OhmLab_FUHCM_BE.AppStarts
             //Subject
             CreateMap<CreateSubjectRequestModel, Subject>()
                 .ForMember(dest => dest.SubjectId, opt => opt.Ignore());
+                
             CreateMap<UpdateSubjectRequestModel, Subject>();
             CreateMap<Subject, SubjectResponseModel>();
 

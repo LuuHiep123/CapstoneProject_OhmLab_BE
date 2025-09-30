@@ -10,6 +10,6 @@ namespace BusinessLayer.ResponseModel.Assignment
         public int LabId { get; set; }
         public string? GradeDescription { get; set; }
         public string GradeStatus { get; set; }
-        public int Grade { get; set; }
+        public float Grade { get; set; }
     }
-} 
+}

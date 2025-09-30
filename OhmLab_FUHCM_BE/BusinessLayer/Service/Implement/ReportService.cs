@@ -830,7 +830,9 @@ namespace BusinessLayer.Service.Implement
         private async Task<ReportResponseModel> MapToReportResponseModel(Report report)
         {
             var user = await _userRepository.GetUserById(report.UserId);
-            var registrationSchedule = await _registrationScheduleRepository.GetRegistrationScheduleById(report.ScheduleId);
+            var registrationSchedule = report.RegistrationScheduleId.HasValue 
+                ? await _registrationScheduleRepository.GetRegistrationScheduleById(report.RegistrationScheduleId.Value) 
+                : null;
             var classEntity = registrationSchedule != null ? await _classRepository.GetByIdAsync(registrationSchedule.ClassId) : null;
             var subject = classEntity != null ? await _subjectRepository.GetSubjectById(classEntity.SubjectId) : null;
             var slot = registrationSchedule?.Slot;
@@ -846,7 +848,8 @@ namespace BusinessLayer.Service.Implement
                 ReportId = report.ReportId,
                 UserId = report.UserId,
                 UserName = user?.UserFullName ?? "Unknown",
-                ScheduleId = report.ScheduleId,
+                ScheduleId = report.RegistrationScheduleId ?? 0,
+                RegistrationScheduleId = report.RegistrationScheduleId,
                 ScheduleName = scheduleName,
                 ReportTitle = report.ReportTitle,
                 ReportDescription = report.ReportDescription,
@@ -861,7 +864,9 @@ namespace BusinessLayer.Service.Implement
         private async Task<ReportDetailResponseModel> MapToReportDetailResponseModel(Report report)
         {
             var user = await _userRepository.GetUserById(report.UserId);
-            var registrationSchedule = await _registrationScheduleRepository.GetRegistrationScheduleById(report.ScheduleId);
+            var registrationSchedule = report.RegistrationScheduleId.HasValue 
+                ? await _registrationScheduleRepository.GetRegistrationScheduleById(report.RegistrationScheduleId.Value) 
+                : null;
             var classEntity = registrationSchedule != null ? await _classRepository.GetByIdAsync(registrationSchedule.ClassId) : null;
             var subject = classEntity != null ? await _subjectRepository.GetSubjectById(classEntity.SubjectId) : null;
             var slot = registrationSchedule?.Slot;
@@ -878,7 +883,8 @@ namespace BusinessLayer.Service.Implement
                 ReportId = report.ReportId,
                 UserId = report.UserId,
                 UserName = user?.UserFullName ?? "Unknown",
-                ScheduleId = report.ScheduleId,
+                ScheduleId = report.RegistrationScheduleId ?? 0,
+                RegistrationScheduleId = report.RegistrationScheduleId,
                 ScheduleName = scheduleName,
                 ReportTitle = report.ReportTitle,
                 ReportDescription = report.ReportDescription,

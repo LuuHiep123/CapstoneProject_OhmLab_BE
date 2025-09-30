@@ -11,7 +11,7 @@ namespace BusinessLayer.RequestModel.Grade
     {
         public string StudentId { get; set; }
         public string LabId { get; set; }
-        public decimal Grade { get; set; }
+        public double Grade { get; set; }
         public string? GradeDescription { get; set; }
         public string? GradeStatus { get; set; }
     }

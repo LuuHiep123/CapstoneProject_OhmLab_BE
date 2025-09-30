@@ -8,6 +8,6 @@ namespace BusinessLayer.RequestModel.Assignment
         public int TeamId { get; set; }
         public int LabId { get; set; }
         public string? GradeDescription { get; set; }
-        public int Grade { get; set; }
+        public float Grade { get; set; }
     }
-} 
+}

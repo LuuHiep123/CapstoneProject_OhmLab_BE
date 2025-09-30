@@ -15,7 +15,7 @@ namespace DataLayer.Entities
         public int? RegistrationScheduleId { get; set; }
 
         public virtual Schedule Schedule { get; set; }
-        public virtual Schedule RegistrationSchedule { get; set; }
+        public virtual RegistrationSchedule RegistrationSchedule { get; set; }
         public virtual User User { get; set; } = null!;
     }
 }

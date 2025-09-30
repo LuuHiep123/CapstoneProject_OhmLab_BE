@@ -13,7 +13,7 @@ namespace BusinessLayer.ResponseModel.Grade
     {
         public string StudentId { get; set; }
         public string LabId { get; set; }
-        public decimal Grade { get; set; }
+        public double Grade { get; set; }
         public System.DateTime UpdatedAt { get; set; }
     }
 }

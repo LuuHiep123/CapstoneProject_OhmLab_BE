@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -25,5 +25,6 @@ namespace DataLayer.Entities
         public virtual Class Class { get; set; } = null!;
         public virtual Lab Lab { get; set; } = null!;
         public virtual Slot Slot { get; set; } = null!;
+        public virtual ICollection<Report> Reports { get; set; }
     }
 }

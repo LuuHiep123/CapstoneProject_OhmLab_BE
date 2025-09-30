@@ -1,4 +1,4 @@
-﻿using DataLayer.Repository;
+using DataLayer.Repository;
 using BusinessLayer.ResponseModel.BaseResponse;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
@@ -533,10 +533,85 @@ namespace BusinessLayer.Service.Implement
         {
             try
             {
+                // Log input parameter
+                Console.WriteLine($"[LoginTest] Starting login process for email: {email}");
+
+                // Validate input
+                if (string.IsNullOrEmpty(email))
+                {
+                    Console.WriteLine("[LoginTest] Email is null or empty");
+                    return new BaseResponse<LoginResponseModel>()
+                    {
+                        Code = 400,
+                        Success = false,
+                        Message = "Email cannot be empty!",
+                        Data = null,
+                    };
+                }
+
+                Console.WriteLine("[LoginTest] Attempting to get user from repository");
                 var user = await _teamEquipmentRepository.GetUserByEmail(email);
+                
                 if (user != null)
                 {
+                    Console.WriteLine($"[LoginTest] User found: {user.UserId}, Name: {user.UserFullName}, Role: {user.UserRoleName}");
+                    
+                    // Validate user data before token generation
+                    if (string.IsNullOrEmpty(user.UserRoleName))
+                    {
+                        Console.WriteLine("[LoginTest] UserRoleName is null or empty");
+                        return new BaseResponse<LoginResponseModel>()
+                        {
+                            Code = 500,
+                            Success = false,
+                            Message = "User role is missing!",
+                            Data = null,
+                        };
+                    }
+                    
+                    if (string.IsNullOrEmpty(user.UserFullName))
+                    {
+                        Console.WriteLine("[LoginTest] UserFullName is null or empty");
+                        return new BaseResponse<LoginResponseModel>()
+                        {
+                            Code = 500,
+                            Success = false,
+                            Message = "User name is missing!",
+                            Data = null,
+                        };
+                    }
+
+                    Console.WriteLine("[LoginTest] Generating JWT token");
                     string token = GenerateJwtToken(user.UserFullName, user.UserRoleName, user.UserId);
+                    
+                    if (string.IsNullOrEmpty(token))
+                    {
+                        Console.WriteLine("[LoginTest] Failed to generate JWT token");
+                        return new BaseResponse<LoginResponseModel>()
+                        {
+                            Code = 500,
+                            Success = false,
+                            Message = "Failed to generate authentication token!",
+                            Data = null,
+                        };
+                    }
+
+                    Console.WriteLine("[LoginTest] Mapping user to response model");
+                    var userResponse = _mapper.Map<UserResponseModel>(user);
+                    
+                    if (userResponse == null)
+                    {
+                        Console.WriteLine("[LoginTest] Failed to map user to response model");
+                        return new BaseResponse<LoginResponseModel>()
+                        {
+                            Code = 500,
+                            Success = false,
+                            Message = "Failed to map user data!",
+                            Data = null,
+                        };
+                    }
+
+                    Console.WriteLine("[LoginTest] Login successful");
                     return new BaseResponse<LoginResponseModel>()
                     {
                         Code = 200,
@@ -545,12 +620,13 @@ namespace BusinessLayer.Service.Implement
                         Data = new LoginResponseModel()
                         {
                             token = token,
-                            user = _mapper.Map<UserResponseModel>(user)
+                            user = userResponse
                         },
                     };
                 }
                 else
                 {
+                    Console.WriteLine("[LoginTest] User not found");
                     return new BaseResponse<LoginResponseModel>()
                     {
                         Code = 404,
@@ -562,11 +638,53 @@ namespace BusinessLayer.Service.Implement
             }
             catch (Exception ex)
             {
+                // Detailed error logging
+                Console.WriteLine($"[LoginTest] EXCEPTION occurred:");
+                Console.WriteLine($"[LoginTest] Exception Type: {ex.GetType().Name}");
+                Console.WriteLine($"[LoginTest] Exception Message: {ex.Message}");
+                Console.WriteLine($"[LoginTest] Stack Trace: {ex.StackTrace}");
+                
+                // Check for specific exception types
+                if (ex is InvalidOperationException || ex is ArgumentException)
+                {
+                    return new BaseResponse<LoginResponseModel>()
+                    {
+                        Code = 400,
+                        Success = false,
+                        Message = $"Invalid request: {ex.Message}",
+                        Data = null,
+                    };
+                }
+                
+                if (ex is ArgumentNullException)
+                {
+                    return new BaseResponse<LoginResponseModel>()
+                    {
+                        Code = 400,
+                        Success = false,
+                        Message = $"Missing required parameter: {ex.Message}",
+                        Data = null,
+                    };
+                }
+                
+                // Database connection exceptions
+                if (ex.Message.Contains("connection") || ex.Message.Contains("database") || ex.Message.Contains("timeout"))
+                {
+                    return new BaseResponse<LoginResponseModel>()
+                    {
+                        Code = 503,
+                        Success = false,
+                        Message = "Database connection error. Please try again later.",
+                        Data = null,
+                    };
+                }
+                
+                // Generic server error
                 return new BaseResponse<LoginResponseModel>()
                 {
                     Code = 500,
                     Success = false,
-                    Message = "Server Error!.",
+                    Message = $"Server Error: {ex.Message}",
                     Data = null,
                 };
             }

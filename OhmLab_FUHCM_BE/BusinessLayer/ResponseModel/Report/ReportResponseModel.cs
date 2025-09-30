@@ -7,7 +7,8 @@ namespace BusinessLayer.ResponseModel.Report
         public int ReportId { get; set; }
         public Guid UserId { get; set; }
         public string UserName { get; set; } = null!;
-        public int ScheduleId { get; set; }
+        public int ScheduleId { get; set; } // Now refers to RegistrationScheduleId
+        public int? RegistrationScheduleId { get; set; }
         public string ScheduleName { get; set; } = null!;
         public string ReportTitle { get; set; } = null!;
         public string? ReportDescription { get; set; }
