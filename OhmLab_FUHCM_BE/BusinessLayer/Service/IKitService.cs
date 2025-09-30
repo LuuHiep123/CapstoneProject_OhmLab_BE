@@ -19,7 +19,7 @@ namespace BusinessLayer.Service
         Task<BaseResponse<KitResponseModel>> DeleteKit(string id);
         Task<BaseResponse<KitResponseModel>> UpdateKit(string id, UpdateKitRequestModel model);
         Task<DynamicResponse<KitResponseModel>> GetAllKit(GetAllKitRequestModel model);
-        Task<DynamicResponse<KitResponseModel>> GetAllKitByKitTempalteId(GetAllKitByKitTemplateIdRequestModel model);
+        Task<BaseResponse<List<KitResponseModel>>> GetAllKitByKitTempalteId(string kitTemplateId);
         Task<BaseResponse<KitResponseModel>> GetKitById(string id);
     }
 }

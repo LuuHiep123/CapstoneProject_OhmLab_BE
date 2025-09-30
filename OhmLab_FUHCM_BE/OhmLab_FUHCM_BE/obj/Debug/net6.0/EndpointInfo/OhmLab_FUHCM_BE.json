@@ -2069,30 +2069,21 @@
         }
       }
     },
-    "/api/kit/searchbykittemplateid": {
+    "/api/kit/searchbykittemplateid/{kitTemplateId}": {
       "post": {
         "tags": [
           "Kit"
         ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/GetAllKitByKitTemplateIdRequestModel"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/GetAllKitByKitTemplateIdRequestModel"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/GetAllKitByKitTemplateIdRequestModel"
-              }
+        "parameters": [
+          {
+            "name": "kitTemplateId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
             }
           }
-        },
+        ],
         "responses": {
           "200": {
             "description": "Success"
@@ -5321,32 +5312,6 @@
           "pageSize": {
             "type": "integer",
             "format": "int32"
-          },
-          "keyWord": {
-            "type": "string",
-            "nullable": true
-          },
-          "status": {
-            "type": "string",
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "GetAllKitByKitTemplateIdRequestModel": {
-        "type": "object",
-        "properties": {
-          "pageNum": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "pageSize": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "kitTemplateId": {
-            "type": "string",
-            "nullable": true
           },
           "keyWord": {
             "type": "string",

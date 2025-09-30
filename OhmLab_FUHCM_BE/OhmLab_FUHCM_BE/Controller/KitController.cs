@@ -20,7 +20,7 @@ namespace OhmLab_FUHCM_BE.Controller
         }
 
 
-        [Authorize(Roles = "Admin,HeadOfDepartment")]
+        [Authorize(Roles = "Admin,HeadOfDepartment,Lecturer")]
         [HttpPost("Kit")]
         public async Task<IActionResult> CreateKit(CreateKitRequestModel model)
         {
@@ -37,7 +37,7 @@ namespace OhmLab_FUHCM_BE.Controller
         }
 
 
-        [Authorize(Roles = "Admin,HeadOfDepartment,Lecturer")]
+        [Authorize(Roles = "Admin,HeadOfDepartment,Lecturer,Lecturer")]
         [HttpPost("Search")]
         public async Task<IActionResult> GetAllKit(GetAllKitRequestModel model)
         {
@@ -53,13 +53,13 @@ namespace OhmLab_FUHCM_BE.Controller
         }
 
 
-        [Authorize(Roles = "Admin,HeadOfDepartment")]
-        [HttpPost("SearchByKitTemplateId")]
-        public async Task<IActionResult> GetAllKitByKitTemplateId(GetAllKitByKitTemplateIdRequestModel model)
+        [Authorize(Roles = "Admin,HeadOfDepartment,Lecturer")]
+        [HttpPost("SearchByKitTemplateId/{kitTemplateId}")]
+        public async Task<IActionResult> GetAllKitByKitTemplateId(string kitTemplateId)
         {
             try
             {
-                var result = await _service.GetAllKitByKitTempalteId(model);
+                var result = await _service.GetAllKitByKitTempalteId(kitTemplateId);
                 return StatusCode(result.Code, result);
             }
             catch (Exception ex)

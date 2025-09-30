@@ -219,60 +219,24 @@ namespace BusinessLayer.Service.Implement
             }
         }
 
-        public async Task<DynamicResponse<KitResponseModel>> GetAllKitByKitTempalteId(GetAllKitByKitTemplateIdRequestModel model)
+        public async Task<BaseResponse<List<KitResponseModel>>> GetAllKitByKitTempalteId(string kitTemplateId)
         {
             try
             {
-                var listKit = await _kitRepository.GetAllKitByKitTemplateId(model.kitTemplateId);
-                if (!string.IsNullOrEmpty(model.keyWord))
-                {
-                    List<Kit> listKitByName = listKit.Where(k => k.KitName.Contains(model.keyWord)).ToList();
-
-                    listKit = listKitByName
-                               .GroupBy(u => u.KitTemplateId)
-                               .Select(g => g.First())
-                               .ToList();
-                }
-                if (!string.IsNullOrEmpty(model.status))
-                {
-                    listKit = listKit.Where(k => k.KitStatus.ToLower().Equals(model.status)).ToList();
-                }
+                var listKit = await _kitRepository.GetAllKitByKitTemplateId(kitTemplateId);
                 var result = _mapper.Map<List<KitResponseModel>>(listKit);
-
-                // Nếu không có lỗi, thực hiện phân trang
-                var pagedUsers = result// Giả sử result là danh sách người dùng
-                    .OrderBy(k => k.KitName) // Sắp xếp theo Id tăng dần
-                    .ToPagedList(model.pageNum, model.pageSize); // Phân trang với X.PagedList
-                return new DynamicResponse<KitResponseModel>()
+                return new BaseResponse<List<KitResponseModel>>()
                 {
                     Code = 200,
                     Success = true,
                     Message = null,
-
-                    Data = new MegaData<KitResponseModel>()
-                    {
-                        PageInfo = new PagingMetaData()
-                        {
-                            Page = pagedUsers.PageNumber,
-                            Size = pagedUsers.PageSize,
-                            Sort = "Ascending",
-                            Order = "Name",
-                            TotalPage = pagedUsers.PageCount,
-                            TotalItem = pagedUsers.TotalItemCount,
-                        },
-                        SearchInfo = new SearchCondition()
-                        {
-                            keyWord = model.keyWord,
-                            role = null,
-                            status = model.status,
-                        },
-                        PageData = pagedUsers.ToList(),
-                    },
+                    Data = result,
                 };
+
             }
             catch (Exception ex)
             {
-                return new DynamicResponse<KitResponseModel>()
+                return new BaseResponse<List<KitResponseModel>>()
                 {
                     Code = 500,
                     Success = false,

@@ -1349,14 +1349,14 @@
   {
     "ContainingType": "OhmLab_FUHCM_BE.Controller.KitController",
     "Method": "GetAllKitByKitTemplateId",
-    "RelativePath": "api/kit/searchbykittemplateid",
+    "RelativePath": "api/kit/searchbykittemplateid/{kitTemplateId}",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "model",
-        "Type": "BusinessLayer.RequestModel.Kit.GetAllKitByKitTemplateIdRequestModel",
+        "Name": "kitTemplateId",
+        "Type": "System.String",
         "IsRequired": true
       }
     ],

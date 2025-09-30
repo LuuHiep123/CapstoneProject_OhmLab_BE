@@ -270,7 +270,7 @@ namespace DataLayer.DBContext
 
                 entity.Property(e => e.GradeId).HasColumnName("Grade_id");
 
-                entity.Property(e => e.Grade1).HasColumnName("Grade");
+                entity.Property(e => e.Grade1).HasColumnName("Grade");  
 
                 entity.Property(e => e.GradeDescription).HasColumnName("Grade_Description");
 
@@ -559,6 +559,7 @@ namespace DataLayer.DBContext
                     .HasColumnName("Report_Title");
 
                 entity.Property(e => e.ScheduleId).HasColumnName("Schedule_id");
+                entity.Property(e => e.RegistrationScheduleId).HasColumnName("RegistrationSchedule_id");
 
                 entity.Property(e => e.UserId).HasColumnName("User_id");
 
@@ -567,6 +568,12 @@ namespace DataLayer.DBContext
                     .HasForeignKey(d => d.ScheduleId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK__Report__Schedule__15DA3E5D");
+
+                entity.HasOne(d => d.RegistrationSchedule)
+                    .WithMany(p => p.Reports)
+                    .HasForeignKey(d => d.RegistrationScheduleId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK__Report__RegistrationSchedule__2002");
 
                 entity.HasOne(d => d.User)
                     .WithMany(p => p.Reports)

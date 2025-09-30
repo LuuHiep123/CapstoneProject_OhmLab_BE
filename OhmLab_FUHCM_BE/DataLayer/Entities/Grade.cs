@@ -9,7 +9,7 @@ namespace DataLayer.Entities
         public Guid UserId { get; set; }
         public int TeamId { get; set; }
         public int LabId { get; set; }
-        public int Grade1 { get; set; }
+        public float Grade1 { get; set; }
         public string? GradeDescription { get; set; }
         public string GradeStatus { get; set; } = null!;
 

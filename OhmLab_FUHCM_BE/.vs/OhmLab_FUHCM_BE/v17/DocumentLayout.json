@@ -3,6 +3,70 @@
   "WorkspaceRootPath": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{E21759DF-68CE-4E02-A661-54A872D48543}|BusinessLayer\\BusinessLayer.csproj|d:\\cn9\\capstone_project\\ohmlab\\capstoneproject_ohmlab_be\\ohmlab_fuhcm_be\\businesslayer\\service\\implement\\gradeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E21759DF-68CE-4E02-A661-54A872D48543}|BusinessLayer\\BusinessLayer.csproj|solutionrelative:businesslayer\\service\\implement\\gradeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E21759DF-68CE-4E02-A661-54A872D48543}|BusinessLayer\\BusinessLayer.csproj|d:\\cn9\\capstone_project\\ohmlab\\capstoneproject_ohmlab_be\\ohmlab_fuhcm_be\\businesslayer\\service\\implement\\studentdashboardservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E21759DF-68CE-4E02-A661-54A872D48543}|BusinessLayer\\BusinessLayer.csproj|solutionrelative:businesslayer\\service\\implement\\studentdashboardservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E21759DF-68CE-4E02-A661-54A872D48543}|BusinessLayer\\BusinessLayer.csproj|d:\\cn9\\capstone_project\\ohmlab\\capstoneproject_ohmlab_be\\ohmlab_fuhcm_be\\businesslayer\\service\\implement\\assignmentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E21759DF-68CE-4E02-A661-54A872D48543}|BusinessLayer\\BusinessLayer.csproj|solutionrelative:businesslayer\\service\\implement\\assignmentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9326A667-EBB2-47AE-B671-4F345AD0F85A}|DataLayer\\DataLayer.csproj|d:\\cn9\\capstone_project\\ohmlab\\capstoneproject_ohmlab_be\\ohmlab_fuhcm_be\\datalayer\\entities\\report.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9326A667-EBB2-47AE-B671-4F345AD0F85A}|DataLayer\\DataLayer.csproj|solutionrelative:datalayer\\entities\\report.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4BBB523E-D4B5-4AF7-9FC4-70160820133F}|OhmLab_FUHCM_BE\\OhmLab_FUHCM_BE.csproj|d:\\cn9\\capstone_project\\ohmlab\\capstoneproject_ohmlab_be\\ohmlab_fuhcm_be\\ohmlab_fuhcm_be\\controller\\scheduletypecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4BBB523E-D4B5-4AF7-9FC4-70160820133F}|OhmLab_FUHCM_BE\\OhmLab_FUHCM_BE.csproj|solutionrelative:ohmlab_fuhcm_be\\controller\\scheduletypecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9326A667-EBB2-47AE-B671-4F345AD0F85A}|DataLayer\\DataLayer.csproj|d:\\cn9\\capstone_project\\ohmlab\\capstoneproject_ohmlab_be\\ohmlab_fuhcm_be\\datalayer\\entities\\teamequipment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9326A667-EBB2-47AE-B671-4F345AD0F85A}|DataLayer\\DataLayer.csproj|solutionrelative:datalayer\\entities\\teamequipment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9326A667-EBB2-47AE-B671-4F345AD0F85A}|DataLayer\\DataLayer.csproj|d:\\cn9\\capstone_project\\ohmlab\\capstoneproject_ohmlab_be\\ohmlab_fuhcm_be\\datalayer\\dbcontext\\db_abadcb_ohmlabcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9326A667-EBB2-47AE-B671-4F345AD0F85A}|DataLayer\\DataLayer.csproj|solutionrelative:datalayer\\dbcontext\\db_abadcb_ohmlabcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9326A667-EBB2-47AE-B671-4F345AD0F85A}|DataLayer\\DataLayer.csproj|d:\\cn9\\capstone_project\\ohmlab\\capstoneproject_ohmlab_be\\ohmlab_fuhcm_be\\datalayer\\entities\\schedule.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9326A667-EBB2-47AE-B671-4F345AD0F85A}|DataLayer\\DataLayer.csproj|solutionrelative:datalayer\\entities\\schedule.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E21759DF-68CE-4E02-A661-54A872D48543}|BusinessLayer\\BusinessLayer.csproj|d:\\cn9\\capstone_project\\ohmlab\\capstoneproject_ohmlab_be\\ohmlab_fuhcm_be\\businesslayer\\service\\implement\\reportservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E21759DF-68CE-4E02-A661-54A872D48543}|BusinessLayer\\BusinessLayer.csproj|solutionrelative:businesslayer\\service\\implement\\reportservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E21759DF-68CE-4E02-A661-54A872D48543}|BusinessLayer\\BusinessLayer.csproj|d:\\cn9\\capstone_project\\ohmlab\\capstoneproject_ohmlab_be\\ohmlab_fuhcm_be\\businesslayer\\service\\implement\\scheduleservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E21759DF-68CE-4E02-A661-54A872D48543}|BusinessLayer\\BusinessLayer.csproj|solutionrelative:businesslayer\\service\\implement\\scheduleservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E21759DF-68CE-4E02-A661-54A872D48543}|BusinessLayer\\BusinessLayer.csproj|d:\\cn9\\capstone_project\\ohmlab\\capstoneproject_ohmlab_be\\ohmlab_fuhcm_be\\businesslayer\\service\\implement\\registrationscheduleservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E21759DF-68CE-4E02-A661-54A872D48543}|BusinessLayer\\BusinessLayer.csproj|solutionrelative:businesslayer\\service\\implement\\registrationscheduleservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9326A667-EBB2-47AE-B671-4F345AD0F85A}|DataLayer\\DataLayer.csproj|d:\\cn9\\capstone_project\\ohmlab\\capstoneproject_ohmlab_be\\ohmlab_fuhcm_be\\datalayer\\entities\\grade.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9326A667-EBB2-47AE-B671-4F345AD0F85A}|DataLayer\\DataLayer.csproj|solutionrelative:datalayer\\entities\\grade.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4BBB523E-D4B5-4AF7-9FC4-70160820133F}|OhmLab_FUHCM_BE\\OhmLab_FUHCM_BE.csproj|d:\\cn9\\capstone_project\\ohmlab\\capstoneproject_ohmlab_be\\ohmlab_fuhcm_be\\ohmlab_fuhcm_be\\controller\\kitcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4BBB523E-D4B5-4AF7-9FC4-70160820133F}|OhmLab_FUHCM_BE\\OhmLab_FUHCM_BE.csproj|solutionrelative:ohmlab_fuhcm_be\\controller\\kitcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E21759DF-68CE-4E02-A661-54A872D48543}|BusinessLayer\\BusinessLayer.csproj|d:\\cn9\\capstone_project\\ohmlab\\capstoneproject_ohmlab_be\\ohmlab_fuhcm_be\\businesslayer\\service\\implement\\kitservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E21759DF-68CE-4E02-A661-54A872D48543}|BusinessLayer\\BusinessLayer.csproj|solutionrelative:businesslayer\\service\\implement\\kitservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E21759DF-68CE-4E02-A661-54A872D48543}|BusinessLayer\\BusinessLayer.csproj|d:\\cn9\\capstone_project\\ohmlab\\capstoneproject_ohmlab_be\\ohmlab_fuhcm_be\\businesslayer\\service\\ikitservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E21759DF-68CE-4E02-A661-54A872D48543}|BusinessLayer\\BusinessLayer.csproj|solutionrelative:businesslayer\\service\\ikitservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9326A667-EBB2-47AE-B671-4F345AD0F85A}|DataLayer\\DataLayer.csproj|d:\\cn9\\capstone_project\\ohmlab\\capstoneproject_ohmlab_be\\ohmlab_fuhcm_be\\datalayer\\repository\\implement\\labequipmenttyperepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9326A667-EBB2-47AE-B671-4F345AD0F85A}|DataLayer\\DataLayer.csproj|solutionrelative:datalayer\\repository\\implement\\labequipmenttyperepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{E21759DF-68CE-4E02-A661-54A872D48543}|BusinessLayer\\BusinessLayer.csproj|d:\\cn9\\capstone_project\\ohmlab\\capstoneproject_ohmlab_be\\ohmlab_fuhcm_be\\businesslayer\\service\\implement\\scheduletypeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E21759DF-68CE-4E02-A661-54A872D48543}|BusinessLayer\\BusinessLayer.csproj|solutionrelative:businesslayer\\service\\implement\\scheduletypeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -75,28 +139,12 @@
       "RelativeMoniker": "D:0:0:{E21759DF-68CE-4E02-A661-54A872D48543}|BusinessLayer\\BusinessLayer.csproj|solutionrelative:businesslayer\\requestmodel\\teamequipment\\getallteamequipmentrequestmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E21759DF-68CE-4E02-A661-54A872D48543}|BusinessLayer\\BusinessLayer.csproj|d:\\cn9\\capstone_project\\ohmlab\\capstoneproject_ohmlab_be\\ohmlab_fuhcm_be\\businesslayer\\service\\implement\\registrationscheduleservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E21759DF-68CE-4E02-A661-54A872D48543}|BusinessLayer\\BusinessLayer.csproj|solutionrelative:businesslayer\\service\\implement\\registrationscheduleservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E21759DF-68CE-4E02-A661-54A872D48543}|BusinessLayer\\BusinessLayer.csproj|d:\\cn9\\capstone_project\\ohmlab\\capstoneproject_ohmlab_be\\ohmlab_fuhcm_be\\businesslayer\\service\\implement\\studentdashboardservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E21759DF-68CE-4E02-A661-54A872D48543}|BusinessLayer\\BusinessLayer.csproj|solutionrelative:businesslayer\\service\\implement\\studentdashboardservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{E21759DF-68CE-4E02-A661-54A872D48543}|BusinessLayer\\BusinessLayer.csproj|d:\\cn9\\capstone_project\\ohmlab\\capstoneproject_ohmlab_be\\ohmlab_fuhcm_be\\businesslayer\\responsemodel\\teamequipment\\teamequipmentallresponsemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E21759DF-68CE-4E02-A661-54A872D48543}|BusinessLayer\\BusinessLayer.csproj|solutionrelative:businesslayer\\responsemodel\\teamequipment\\teamequipmentallresponsemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9326A667-EBB2-47AE-B671-4F345AD0F85A}|DataLayer\\DataLayer.csproj|d:\\cn9\\capstone_project\\ohmlab\\capstoneproject_ohmlab_be\\ohmlab_fuhcm_be\\datalayer\\entities\\teamequipment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9326A667-EBB2-47AE-B671-4F345AD0F85A}|DataLayer\\DataLayer.csproj|solutionrelative:datalayer\\entities\\teamequipment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{9326A667-EBB2-47AE-B671-4F345AD0F85A}|DataLayer\\DataLayer.csproj|d:\\cn9\\capstone_project\\ohmlab\\capstoneproject_ohmlab_be\\ohmlab_fuhcm_be\\datalayer\\entities\\class.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{9326A667-EBB2-47AE-B671-4F345AD0F85A}|DataLayer\\DataLayer.csproj|solutionrelative:datalayer\\entities\\class.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9326A667-EBB2-47AE-B671-4F345AD0F85A}|DataLayer\\DataLayer.csproj|d:\\cn9\\capstone_project\\ohmlab\\capstoneproject_ohmlab_be\\ohmlab_fuhcm_be\\datalayer\\entities\\grade.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9326A667-EBB2-47AE-B671-4F345AD0F85A}|DataLayer\\DataLayer.csproj|solutionrelative:datalayer\\entities\\grade.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{9326A667-EBB2-47AE-B671-4F345AD0F85A}|DataLayer\\DataLayer.csproj|d:\\cn9\\capstone_project\\ohmlab\\capstoneproject_ohmlab_be\\ohmlab_fuhcm_be\\datalayer\\entities\\equipment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -109,10 +157,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{9326A667-EBB2-47AE-B671-4F345AD0F85A}|DataLayer\\DataLayer.csproj|d:\\cn9\\capstone_project\\ohmlab\\capstoneproject_ohmlab_be\\ohmlab_fuhcm_be\\datalayer\\entities\\semester.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{9326A667-EBB2-47AE-B671-4F345AD0F85A}|DataLayer\\DataLayer.csproj|solutionrelative:datalayer\\entities\\semester.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9326A667-EBB2-47AE-B671-4F345AD0F85A}|DataLayer\\DataLayer.csproj|d:\\cn9\\capstone_project\\ohmlab\\capstoneproject_ohmlab_be\\ohmlab_fuhcm_be\\datalayer\\dbcontext\\db_abadcb_ohmlabcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9326A667-EBB2-47AE-B671-4F345AD0F85A}|DataLayer\\DataLayer.csproj|solutionrelative:datalayer\\dbcontext\\db_abadcb_ohmlabcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{9326A667-EBB2-47AE-B671-4F345AD0F85A}|DataLayer\\DataLayer.csproj|d:\\cn9\\capstone_project\\ohmlab\\capstoneproject_ohmlab_be\\ohmlab_fuhcm_be\\datalayer\\repository\\iregistrationschedulerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -159,16 +203,8 @@
       "RelativeMoniker": "D:0:0:{4BBB523E-D4B5-4AF7-9FC4-70160820133F}|OhmLab_FUHCM_BE\\OhmLab_FUHCM_BE.csproj|solutionrelative:ohmlab_fuhcm_be\\controller\\schedulecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4BBB523E-D4B5-4AF7-9FC4-70160820133F}|OhmLab_FUHCM_BE\\OhmLab_FUHCM_BE.csproj|d:\\cn9\\capstone_project\\ohmlab\\capstoneproject_ohmlab_be\\ohmlab_fuhcm_be\\ohmlab_fuhcm_be\\controller\\scheduletypecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4BBB523E-D4B5-4AF7-9FC4-70160820133F}|OhmLab_FUHCM_BE\\OhmLab_FUHCM_BE.csproj|solutionrelative:ohmlab_fuhcm_be\\controller\\scheduletypecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{4BBB523E-D4B5-4AF7-9FC4-70160820133F}|OhmLab_FUHCM_BE\\OhmLab_FUHCM_BE.csproj|d:\\cn9\\capstone_project\\ohmlab\\capstoneproject_ohmlab_be\\ohmlab_fuhcm_be\\ohmlab_fuhcm_be\\controller\\studentdashboardcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{4BBB523E-D4B5-4AF7-9FC4-70160820133F}|OhmLab_FUHCM_BE\\OhmLab_FUHCM_BE.csproj|solutionrelative:ohmlab_fuhcm_be\\controller\\studentdashboardcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E21759DF-68CE-4E02-A661-54A872D48543}|BusinessLayer\\BusinessLayer.csproj|d:\\cn9\\capstone_project\\ohmlab\\capstoneproject_ohmlab_be\\ohmlab_fuhcm_be\\businesslayer\\service\\implement\\scheduleservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E21759DF-68CE-4E02-A661-54A872D48543}|BusinessLayer\\BusinessLayer.csproj|solutionrelative:businesslayer\\service\\implement\\scheduleservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{4BBB523E-D4B5-4AF7-9FC4-70160820133F}|OhmLab_FUHCM_BE\\OhmLab_FUHCM_BE.csproj|d:\\cn9\\capstone_project\\ohmlab\\capstoneproject_ohmlab_be\\ohmlab_fuhcm_be\\ohmlab_fuhcm_be\\controller\\coursecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -263,10 +299,6 @@
       "RelativeMoniker": "D:0:0:{9326A667-EBB2-47AE-B671-4F345AD0F85A}|DataLayer\\DataLayer.csproj|solutionrelative:datalayer\\repository\\implement\\scheduletyperepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E21759DF-68CE-4E02-A661-54A872D48543}|BusinessLayer\\BusinessLayer.csproj|d:\\cn9\\capstone_project\\ohmlab\\capstoneproject_ohmlab_be\\ohmlab_fuhcm_be\\businesslayer\\service\\implement\\reportservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E21759DF-68CE-4E02-A661-54A872D48543}|BusinessLayer\\BusinessLayer.csproj|solutionrelative:businesslayer\\service\\implement\\reportservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{E21759DF-68CE-4E02-A661-54A872D48543}|BusinessLayer\\BusinessLayer.csproj|d:\\cn9\\capstone_project\\ohmlab\\capstoneproject_ohmlab_be\\ohmlab_fuhcm_be\\businesslayer\\service\\ireportservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E21759DF-68CE-4E02-A661-54A872D48543}|BusinessLayer\\BusinessLayer.csproj|solutionrelative:businesslayer\\service\\ireportservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -279,16 +311,8 @@
       "RelativeMoniker": "D:0:0:{9326A667-EBB2-47AE-B671-4F345AD0F85A}|DataLayer\\DataLayer.csproj|solutionrelative:datalayer\\entities\\scheduletype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9326A667-EBB2-47AE-B671-4F345AD0F85A}|DataLayer\\DataLayer.csproj|d:\\cn9\\capstone_project\\ohmlab\\capstoneproject_ohmlab_be\\ohmlab_fuhcm_be\\datalayer\\entities\\schedule.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9326A667-EBB2-47AE-B671-4F345AD0F85A}|DataLayer\\DataLayer.csproj|solutionrelative:datalayer\\entities\\schedule.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{4BBB523E-D4B5-4AF7-9FC4-70160820133F}|OhmLab_FUHCM_BE\\OhmLab_FUHCM_BE.csproj|d:\\cn9\\capstone_project\\ohmlab\\capstoneproject_ohmlab_be\\ohmlab_fuhcm_be\\ohmlab_fuhcm_be\\controller\\gradecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{4BBB523E-D4B5-4AF7-9FC4-70160820133F}|OhmLab_FUHCM_BE\\OhmLab_FUHCM_BE.csproj|solutionrelative:ohmlab_fuhcm_be\\controller\\gradecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4BBB523E-D4B5-4AF7-9FC4-70160820133F}|OhmLab_FUHCM_BE\\OhmLab_FUHCM_BE.csproj|d:\\cn9\\capstone_project\\ohmlab\\capstoneproject_ohmlab_be\\ohmlab_fuhcm_be\\ohmlab_fuhcm_be\\controller\\kitcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4BBB523E-D4B5-4AF7-9FC4-70160820133F}|OhmLab_FUHCM_BE\\OhmLab_FUHCM_BE.csproj|solutionrelative:ohmlab_fuhcm_be\\controller\\kitcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{4BBB523E-D4B5-4AF7-9FC4-70160820133F}|OhmLab_FUHCM_BE\\OhmLab_FUHCM_BE.csproj|d:\\cn9\\capstone_project\\ohmlab\\capstoneproject_ohmlab_be\\ohmlab_fuhcm_be\\ohmlab_fuhcm_be\\controller\\reportcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -297,10 +321,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{E21759DF-68CE-4E02-A661-54A872D48543}|BusinessLayer\\BusinessLayer.csproj|d:\\cn9\\capstone_project\\ohmlab\\capstoneproject_ohmlab_be\\ohmlab_fuhcm_be\\businesslayer\\service\\ilabservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E21759DF-68CE-4E02-A661-54A872D48543}|BusinessLayer\\BusinessLayer.csproj|solutionrelative:businesslayer\\service\\ilabservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E21759DF-68CE-4E02-A661-54A872D48543}|BusinessLayer\\BusinessLayer.csproj|d:\\cn9\\capstone_project\\ohmlab\\capstoneproject_ohmlab_be\\ohmlab_fuhcm_be\\businesslayer\\service\\implement\\kitservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E21759DF-68CE-4E02-A661-54A872D48543}|BusinessLayer\\BusinessLayer.csproj|solutionrelative:businesslayer\\service\\implement\\kitservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{E21759DF-68CE-4E02-A661-54A872D48543}|BusinessLayer\\BusinessLayer.csproj|d:\\cn9\\capstone_project\\ohmlab\\capstoneproject_ohmlab_be\\ohmlab_fuhcm_be\\businesslayer\\service\\implement\\kittemplateservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -317,10 +337,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{E21759DF-68CE-4E02-A661-54A872D48543}|BusinessLayer\\BusinessLayer.csproj|d:\\cn9\\capstone_project\\ohmlab\\capstoneproject_ohmlab_be\\ohmlab_fuhcm_be\\businesslayer\\requestmodel\\teamkit\\getallteamkitrequestmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E21759DF-68CE-4E02-A661-54A872D48543}|BusinessLayer\\BusinessLayer.csproj|solutionrelative:businesslayer\\requestmodel\\teamkit\\getallteamkitrequestmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E21759DF-68CE-4E02-A661-54A872D48543}|BusinessLayer\\BusinessLayer.csproj|d:\\cn9\\capstone_project\\ohmlab\\capstoneproject_ohmlab_be\\ohmlab_fuhcm_be\\businesslayer\\service\\ikitservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E21759DF-68CE-4E02-A661-54A872D48543}|BusinessLayer\\BusinessLayer.csproj|solutionrelative:businesslayer\\service\\ikitservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{9326A667-EBB2-47AE-B671-4F345AD0F85A}|DataLayer\\DataLayer.csproj|d:\\cn9\\capstone_project\\ohmlab\\capstoneproject_ohmlab_be\\ohmlab_fuhcm_be\\datalayer\\repository\\implement\\semestersubjectrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -523,20 +539,12 @@
       "RelativeMoniker": "D:0:0:{9326A667-EBB2-47AE-B671-4F345AD0F85A}|DataLayer\\DataLayer.csproj|solutionrelative:datalayer\\entities\\team.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9326A667-EBB2-47AE-B671-4F345AD0F85A}|DataLayer\\DataLayer.csproj|d:\\cn9\\capstone_project\\ohmlab\\capstoneproject_ohmlab_be\\ohmlab_fuhcm_be\\datalayer\\entities\\report.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9326A667-EBB2-47AE-B671-4F345AD0F85A}|DataLayer\\DataLayer.csproj|solutionrelative:datalayer\\entities\\report.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{4BBB523E-D4B5-4AF7-9FC4-70160820133F}|OhmLab_FUHCM_BE\\OhmLab_FUHCM_BE.csproj|d:\\cn9\\capstone_project\\ohmlab\\capstoneproject_ohmlab_be\\ohmlab_fuhcm_be\\ohmlab_fuhcm_be\\controller\\analyticscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{4BBB523E-D4B5-4AF7-9FC4-70160820133F}|OhmLab_FUHCM_BE\\OhmLab_FUHCM_BE.csproj|solutionrelative:ohmlab_fuhcm_be\\controller\\analyticscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{E21759DF-68CE-4E02-A661-54A872D48543}|BusinessLayer\\BusinessLayer.csproj|d:\\cn9\\capstone_project\\ohmlab\\capstoneproject_ohmlab_be\\ohmlab_fuhcm_be\\businesslayer\\service\\implement\\analyticsservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E21759DF-68CE-4E02-A661-54A872D48543}|BusinessLayer\\BusinessLayer.csproj|solutionrelative:businesslayer\\service\\implement\\analyticsservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E21759DF-68CE-4E02-A661-54A872D48543}|BusinessLayer\\BusinessLayer.csproj|d:\\cn9\\capstone_project\\ohmlab\\capstoneproject_ohmlab_be\\ohmlab_fuhcm_be\\businesslayer\\service\\implement\\gradeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E21759DF-68CE-4E02-A661-54A872D48543}|BusinessLayer\\BusinessLayer.csproj|solutionrelative:businesslayer\\service\\implement\\gradeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{E21759DF-68CE-4E02-A661-54A872D48543}|BusinessLayer\\BusinessLayer.csproj|d:\\cn9\\capstone_project\\ohmlab\\capstoneproject_ohmlab_be\\ohmlab_fuhcm_be\\businesslayer\\service\\implement\\classuserservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -569,10 +577,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{E21759DF-68CE-4E02-A661-54A872D48543}|BusinessLayer\\BusinessLayer.csproj|d:\\cn9\\capstone_project\\ohmlab\\capstoneproject_ohmlab_be\\ohmlab_fuhcm_be\\businesslayer\\service\\implement\\teamuserservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E21759DF-68CE-4E02-A661-54A872D48543}|BusinessLayer\\BusinessLayer.csproj|solutionrelative:businesslayer\\service\\implement\\teamuserservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E21759DF-68CE-4E02-A661-54A872D48543}|BusinessLayer\\BusinessLayer.csproj|d:\\cn9\\capstone_project\\ohmlab\\capstoneproject_ohmlab_be\\ohmlab_fuhcm_be\\businesslayer\\service\\implement\\assignmentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E21759DF-68CE-4E02-A661-54A872D48543}|BusinessLayer\\BusinessLayer.csproj|solutionrelative:businesslayer\\service\\implement\\assignmentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ACER\\.nuget\\packages\\system.drawing.common\\9.0.7\\buildTransitive\\netcoreapp2.0\\System.Drawing.Common.targets||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
@@ -894,71 +898,230 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 7,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "TeamEquipmentService.cs",
-              "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\Service\\Implement\\TeamEquipmentService.cs",
-              "RelativeDocumentMoniker": "BusinessLayer\\Service\\Implement\\TeamEquipmentService.cs",
-              "ToolTip": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\Service\\Implement\\TeamEquipmentService.cs",
-              "RelativeToolTip": "BusinessLayer\\Service\\Implement\\TeamEquipmentService.cs",
-              "ViewState": "AgIAADIBAAAAAAAAAAAUwE0BAAARAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-23T07:27:50.098Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "CreateEquipmentTypeRequestModel.cs",
-              "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\RequestModel\\EquipmentType\\CreateEquipmentTypeRequestModel.cs",
-              "RelativeDocumentMoniker": "BusinessLayer\\RequestModel\\EquipmentType\\CreateEquipmentTypeRequestModel.cs",
-              "ToolTip": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\RequestModel\\EquipmentType\\CreateEquipmentTypeRequestModel.cs",
-              "RelativeToolTip": "BusinessLayer\\RequestModel\\EquipmentType\\CreateEquipmentTypeRequestModel.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-07T08:30:44.748Z"
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 6,
-              "Title": "GetAllTeamEquipmentByLecturerIdRequestModel.cs",
-              "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\RequestModel\\TeamEquipment\\GetAllTeamEquipmentByLecturerIdRequestModel.cs",
-              "RelativeDocumentMoniker": "BusinessLayer\\RequestModel\\TeamEquipment\\GetAllTeamEquipmentByLecturerIdRequestModel.cs",
-              "ToolTip": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\RequestModel\\TeamEquipment\\GetAllTeamEquipmentByLecturerIdRequestModel.cs",
-              "RelativeToolTip": "BusinessLayer\\RequestModel\\TeamEquipment\\GetAllTeamEquipmentByLecturerIdRequestModel.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
+              "Title": "db_abadcb_ohmlabContext.cs",
+              "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\DataLayer\\DBContext\\db_abadcb_ohmlabContext.cs",
+              "RelativeDocumentMoniker": "DataLayer\\DBContext\\db_abadcb_ohmlabContext.cs",
+              "ToolTip": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\DataLayer\\DBContext\\db_abadcb_ohmlabContext.cs",
+              "RelativeToolTip": "DataLayer\\DBContext\\db_abadcb_ohmlabContext.cs",
+              "ViewState": "AgIAAMUBAAAAAAAAAAAtwD0CAABBAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-28T11:16:23.268Z"
+              "WhenOpened": "2025-07-23T13:36:40.38Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "ITeamKitService.cs",
-              "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\Service\\ITeamKitService.cs",
-              "RelativeDocumentMoniker": "BusinessLayer\\Service\\ITeamKitService.cs",
-              "ToolTip": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\Service\\ITeamKitService.cs",
-              "RelativeToolTip": "BusinessLayer\\Service\\ITeamKitService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAABbAAAAAAAAAA==",
+              "DocumentIndex": 7,
+              "Title": "Schedule.cs",
+              "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\DataLayer\\Entities\\Schedule.cs",
+              "RelativeDocumentMoniker": "DataLayer\\Entities\\Schedule.cs",
+              "ToolTip": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\DataLayer\\Entities\\Schedule.cs",
+              "RelativeToolTip": "DataLayer\\Entities\\Schedule.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAA4AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-18T01:44:48.001Z"
+              "WhenOpened": "2025-08-06T02:21:15.49Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "TeamKitService.cs",
-              "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\Service\\Implement\\TeamKitService.cs",
-              "RelativeDocumentMoniker": "BusinessLayer\\Service\\Implement\\TeamKitService.cs",
-              "ToolTip": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\Service\\Implement\\TeamKitService.cs",
-              "RelativeToolTip": "BusinessLayer\\Service\\Implement\\TeamKitService.cs",
-              "ViewState": "AgIAAPEAAAAAAAAAAAAwwP0AAAARAAAAAAAAAA==",
+              "Title": "Report.cs",
+              "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\DataLayer\\Entities\\Report.cs",
+              "RelativeDocumentMoniker": "DataLayer\\Entities\\Report.cs",
+              "ToolTip": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\DataLayer\\Entities\\Report.cs",
+              "RelativeToolTip": "DataLayer\\Entities\\Report.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAUAAAAZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-18T01:45:03.251Z"
+              "WhenOpened": "2025-08-13T05:39:31.555Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "TeamEquipment.cs",
+              "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\DataLayer\\Entities\\TeamEquipment.cs",
+              "RelativeDocumentMoniker": "DataLayer\\Entities\\TeamEquipment.cs",
+              "ToolTip": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\DataLayer\\Entities\\TeamEquipment.cs",
+              "RelativeToolTip": "DataLayer\\Entities\\TeamEquipment.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-23T07:33:40.666Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ScheduleTypeController.cs",
+              "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\OhmLab_FUHCM_BE\\Controller\\ScheduleTypeController.cs",
+              "RelativeDocumentMoniker": "OhmLab_FUHCM_BE\\Controller\\ScheduleTypeController.cs",
+              "ToolTip": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\OhmLab_FUHCM_BE\\Controller\\ScheduleTypeController.cs",
+              "RelativeToolTip": "OhmLab_FUHCM_BE\\Controller\\ScheduleTypeController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-10T14:37:11.538Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
+              "Title": "AssignmentService.cs",
+              "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\Service\\Implement\\AssignmentService.cs",
+              "RelativeDocumentMoniker": "BusinessLayer\\Service\\Implement\\AssignmentService.cs",
+              "ToolTip": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\Service\\Implement\\AssignmentService.cs",
+              "RelativeToolTip": "BusinessLayer\\Service\\Implement\\AssignmentService.cs",
+              "ViewState": "AgIAAFoBAAAAAAAAAAAjwGoBAABfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-23T04:52:52.813Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "GradeService.cs",
+              "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\Service\\Implement\\GradeService.cs",
+              "RelativeDocumentMoniker": "BusinessLayer\\Service\\Implement\\GradeService.cs",
+              "ToolTip": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\Service\\Implement\\GradeService.cs",
+              "RelativeToolTip": "BusinessLayer\\Service\\Implement\\GradeService.cs",
+              "ViewState": "AgIAAPwBAAAAAAAAAAArwAcCAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-29T17:35:07.457Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "StudentDashboardService.cs",
+              "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\Service\\Implement\\StudentDashboardService.cs",
+              "RelativeDocumentMoniker": "BusinessLayer\\Service\\Implement\\StudentDashboardService.cs",
+              "ToolTip": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\Service\\Implement\\StudentDashboardService.cs",
+              "RelativeToolTip": "BusinessLayer\\Service\\Implement\\StudentDashboardService.cs",
+              "ViewState": "AgIAAI4CAAAAAAAAAAArwJkCAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-20T01:26:10.562Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "ReportService.cs",
+              "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\Service\\Implement\\ReportService.cs",
+              "RelativeDocumentMoniker": "BusinessLayer\\Service\\Implement\\ReportService.cs",
+              "ToolTip": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\Service\\Implement\\ReportService.cs",
+              "RelativeToolTip": "BusinessLayer\\Service\\Implement\\ReportService.cs",
+              "ViewState": "AgIAACcAAAAAAAAAAAAWwBoAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-10T08:21:02.316Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "ScheduleService.cs",
+              "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\Service\\Implement\\ScheduleService.cs",
+              "RelativeDocumentMoniker": "BusinessLayer\\Service\\Implement\\ScheduleService.cs",
+              "ToolTip": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\Service\\Implement\\ScheduleService.cs",
+              "RelativeToolTip": "BusinessLayer\\Service\\Implement\\ScheduleService.cs",
+              "ViewState": "AgIAAFYAAAAAAAAAAAAwwHQAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-10T13:20:59.65Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "RegistrationScheduleService.cs",
+              "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\Service\\Implement\\RegistrationScheduleService.cs",
+              "RelativeDocumentMoniker": "BusinessLayer\\Service\\Implement\\RegistrationScheduleService.cs",
+              "ToolTip": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\Service\\Implement\\RegistrationScheduleService.cs",
+              "RelativeToolTip": "BusinessLayer\\Service\\Implement\\RegistrationScheduleService.cs",
+              "ViewState": "AgIAABIAAAAAAAAAAAAAABkAAAA4AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-19T16:36:31.681Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Grade.cs",
+              "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\DataLayer\\Entities\\Grade.cs",
+              "RelativeDocumentMoniker": "DataLayer\\Entities\\Grade.cs",
+              "ToolTip": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\DataLayer\\Entities\\Grade.cs",
+              "RelativeToolTip": "DataLayer\\Entities\\Grade.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAA4AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-17T23:45:59.605Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "KitController.cs",
+              "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\OhmLab_FUHCM_BE\\Controller\\KitController.cs",
+              "RelativeDocumentMoniker": "OhmLab_FUHCM_BE\\Controller\\KitController.cs",
+              "ToolTip": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\OhmLab_FUHCM_BE\\Controller\\KitController.cs",
+              "RelativeToolTip": "OhmLab_FUHCM_BE\\Controller\\KitController.cs",
+              "ViewState": "AgIAACwAAAAAAAAAAAAYwD8AAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-03T17:16:23.264Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "IKitService.cs",
+              "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\Service\\IKitService.cs",
+              "RelativeDocumentMoniker": "BusinessLayer\\Service\\IKitService.cs",
+              "ToolTip": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\Service\\IKitService.cs",
+              "RelativeToolTip": "BusinessLayer\\Service\\IKitService.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-03T15:30:13.016Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "KitService.cs",
+              "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\Service\\Implement\\KitService.cs",
+              "RelativeDocumentMoniker": "BusinessLayer\\Service\\Implement\\KitService.cs",
+              "ToolTip": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\Service\\Implement\\KitService.cs",
+              "RelativeToolTip": "BusinessLayer\\Service\\Implement\\KitService.cs",
+              "ViewState": "AgIAAJEAAAAAAAAAAAAiwO8AAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-03T15:30:29.577Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "ScheduleTypeService.cs",
+              "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\Service\\Implement\\ScheduleTypeService.cs",
+              "RelativeDocumentMoniker": "BusinessLayer\\Service\\Implement\\ScheduleTypeService.cs",
+              "ToolTip": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\Service\\Implement\\ScheduleTypeService.cs",
+              "RelativeToolTip": "BusinessLayer\\Service\\Implement\\ScheduleTypeService.cs",
+              "ViewState": "AgIAACQAAAAAAAAAAAAowAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-09T03:34:02.534Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "TeamKitController.cs",
+              "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\OhmLab_FUHCM_BE\\Controller\\TeamKitController.cs",
+              "RelativeDocumentMoniker": "OhmLab_FUHCM_BE\\Controller\\TeamKitController.cs",
+              "ToolTip": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\OhmLab_FUHCM_BE\\Controller\\TeamKitController.cs",
+              "RelativeToolTip": "OhmLab_FUHCM_BE\\Controller\\TeamKitController.cs",
+              "ViewState": "AgIAABgAAAAAAAAAAADwvywAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-18T10:31:51.08Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
               "Title": "TeamEquipmentController.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\OhmLab_FUHCM_BE\\Controller\\TeamEquipmentController.cs",
               "RelativeDocumentMoniker": "OhmLab_FUHCM_BE\\Controller\\TeamEquipmentController.cs",
@@ -970,28 +1133,27 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "TeamKitController.cs",
-              "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\OhmLab_FUHCM_BE\\Controller\\TeamKitController.cs",
-              "RelativeDocumentMoniker": "OhmLab_FUHCM_BE\\Controller\\TeamKitController.cs",
-              "ToolTip": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\OhmLab_FUHCM_BE\\Controller\\TeamKitController.cs",
-              "RelativeToolTip": "OhmLab_FUHCM_BE\\Controller\\TeamKitController.cs",
-              "ViewState": "AgIAABgAAAAAAAAAAADwvywAAAANAAAAAAAAAA==",
+              "DocumentIndex": 19,
+              "Title": "TeamKitService.cs",
+              "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\Service\\Implement\\TeamKitService.cs",
+              "RelativeDocumentMoniker": "BusinessLayer\\Service\\Implement\\TeamKitService.cs",
+              "ToolTip": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\Service\\Implement\\TeamKitService.cs",
+              "RelativeToolTip": "BusinessLayer\\Service\\Implement\\TeamKitService.cs",
+              "ViewState": "AgIAAPEAAAAAAAAAAAAwwP0AAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-18T10:31:51.08Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-09-18T01:45:03.251Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "ScheduleTypeService.cs",
-              "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\Service\\Implement\\ScheduleTypeService.cs",
-              "RelativeDocumentMoniker": "BusinessLayer\\Service\\Implement\\ScheduleTypeService.cs",
-              "ToolTip": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\Service\\Implement\\ScheduleTypeService.cs",
-              "RelativeToolTip": "BusinessLayer\\Service\\Implement\\ScheduleTypeService.cs",
-              "ViewState": "AgIAACQAAAAAAAAAAAAowAAAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 15,
+              "Title": "LabEquipmentTypeRepository.cs",
+              "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\DataLayer\\Repository\\Implement\\LabEquipmentTypeRepository.cs",
+              "RelativeDocumentMoniker": "DataLayer\\Repository\\Implement\\LabEquipmentTypeRepository.cs",
+              "ToolTip": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\DataLayer\\Repository\\Implement\\LabEquipmentTypeRepository.cs",
+              "RelativeToolTip": "DataLayer\\Repository\\Implement\\LabEquipmentTypeRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-09T03:34:02.534Z",
+              "WhenOpened": "2025-09-29T02:36:48.481Z",
               "EditorCaption": ""
             },
             {
@@ -1000,7 +1162,55 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 20,
+              "Title": "ITeamKitService.cs",
+              "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\Service\\ITeamKitService.cs",
+              "RelativeDocumentMoniker": "BusinessLayer\\Service\\ITeamKitService.cs",
+              "ToolTip": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\Service\\ITeamKitService.cs",
+              "RelativeToolTip": "BusinessLayer\\Service\\ITeamKitService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAABbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-18T01:44:48.001Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "GetAllTeamEquipmentByLecturerIdRequestModel.cs",
+              "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\RequestModel\\TeamEquipment\\GetAllTeamEquipmentByLecturerIdRequestModel.cs",
+              "RelativeDocumentMoniker": "BusinessLayer\\RequestModel\\TeamEquipment\\GetAllTeamEquipmentByLecturerIdRequestModel.cs",
+              "ToolTip": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\RequestModel\\TeamEquipment\\GetAllTeamEquipmentByLecturerIdRequestModel.cs",
+              "RelativeToolTip": "BusinessLayer\\RequestModel\\TeamEquipment\\GetAllTeamEquipmentByLecturerIdRequestModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-28T11:16:23.268Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "CreateEquipmentTypeRequestModel.cs",
+              "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\RequestModel\\EquipmentType\\CreateEquipmentTypeRequestModel.cs",
+              "RelativeDocumentMoniker": "BusinessLayer\\RequestModel\\EquipmentType\\CreateEquipmentTypeRequestModel.cs",
+              "ToolTip": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\RequestModel\\EquipmentType\\CreateEquipmentTypeRequestModel.cs",
+              "RelativeToolTip": "BusinessLayer\\RequestModel\\EquipmentType\\CreateEquipmentTypeRequestModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-07T08:30:44.748Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "TeamEquipmentService.cs",
+              "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\Service\\Implement\\TeamEquipmentService.cs",
+              "RelativeDocumentMoniker": "BusinessLayer\\Service\\Implement\\TeamEquipmentService.cs",
+              "ToolTip": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\Service\\Implement\\TeamEquipmentService.cs",
+              "RelativeToolTip": "BusinessLayer\\Service\\Implement\\TeamEquipmentService.cs",
+              "ViewState": "AgIAADIBAAAAAAAAAAAUwE0BAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-23T07:27:50.098Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
               "Title": "GetAllTeamKitByLecturerIdRequestModel.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\RequestModel\\TeamKit\\GetAllTeamKitByLecturerIdRequestModel.cs",
               "RelativeDocumentMoniker": "BusinessLayer\\RequestModel\\TeamKit\\GetAllTeamKitByLecturerIdRequestModel.cs",
@@ -1012,7 +1222,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 25,
               "Title": "UpdateEquipmentTypeRequestModel.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\RequestModel\\EquipmentType\\UpdateEquipmentTypeRequestModel.cs",
               "RelativeDocumentMoniker": "BusinessLayer\\RequestModel\\EquipmentType\\UpdateEquipmentTypeRequestModel.cs",
@@ -1024,7 +1234,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 26,
               "Title": "GetAllEquipmentTypeRequestModel.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\RequestModel\\EquipmentType\\GetAllEquipmentTypeRequestModel.cs",
               "RelativeDocumentMoniker": "BusinessLayer\\RequestModel\\EquipmentType\\GetAllEquipmentTypeRequestModel.cs",
@@ -1036,7 +1246,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 28,
               "Title": "TeamKitRepository.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\DataLayer\\Repository\\Implement\\TeamKitRepository.cs",
               "RelativeDocumentMoniker": "DataLayer\\Repository\\Implement\\TeamKitRepository.cs",
@@ -1048,7 +1258,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 29,
               "Title": "TeamEquipmentRepository.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\DataLayer\\Repository\\Implement\\TeamEquipmentRepository.cs",
               "RelativeDocumentMoniker": "DataLayer\\Repository\\Implement\\TeamEquipmentRepository.cs",
@@ -1060,7 +1270,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 30,
               "Title": "EquipmentTypeController.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\OhmLab_FUHCM_BE\\Controller\\EquipmentTypeController.cs",
               "RelativeDocumentMoniker": "OhmLab_FUHCM_BE\\Controller\\EquipmentTypeController.cs",
@@ -1072,7 +1282,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 32,
               "Title": "GetAllEquipmentRequestModel.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\RequestModel\\Equipment\\GetAllEquipmentRequestModel.cs",
               "RelativeDocumentMoniker": "BusinessLayer\\RequestModel\\Equipment\\GetAllEquipmentRequestModel.cs",
@@ -1084,7 +1294,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 27,
               "Title": "GetAllKitByKitTemplateIdRequestModel.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\RequestModel\\Kit\\GetAllKitByKitTemplateIdRequestModel.cs",
               "RelativeDocumentMoniker": "BusinessLayer\\RequestModel\\Kit\\GetAllKitByKitTemplateIdRequestModel.cs",
@@ -1096,7 +1306,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 31,
               "Title": "ITeamEquipmentService.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\Service\\ITeamEquipmentService.cs",
               "RelativeDocumentMoniker": "BusinessLayer\\Service\\ITeamEquipmentService.cs",
@@ -1108,31 +1318,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
-              "Title": "StudentDashboardService.cs",
-              "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\Service\\Implement\\StudentDashboardService.cs",
-              "RelativeDocumentMoniker": "BusinessLayer\\Service\\Implement\\StudentDashboardService.cs",
-              "ToolTip": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\Service\\Implement\\StudentDashboardService.cs",
-              "RelativeToolTip": "BusinessLayer\\Service\\Implement\\StudentDashboardService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-20T01:26:10.562Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 18,
-              "Title": "RegistrationScheduleService.cs",
-              "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\Service\\Implement\\RegistrationScheduleService.cs",
-              "RelativeDocumentMoniker": "BusinessLayer\\Service\\Implement\\RegistrationScheduleService.cs",
-              "ToolTip": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\Service\\Implement\\RegistrationScheduleService.cs",
-              "RelativeToolTip": "BusinessLayer\\Service\\Implement\\RegistrationScheduleService.cs",
-              "ViewState": "AgIAABIAAAAAAAAAAAAAABkAAAA4AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-19T16:36:31.681Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 33,
               "Title": "GetAllTeamEquipmentRequestModel.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\RequestModel\\TeamEquipment\\GetAllTeamEquipmentRequestModel.cs",
               "RelativeDocumentMoniker": "BusinessLayer\\RequestModel\\TeamEquipment\\GetAllTeamEquipmentRequestModel.cs",
@@ -1144,7 +1330,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 34,
               "Title": "TeamEquipmentAllResponseModel.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\ResponseModel\\TeamEquipment\\TeamEquipmentAllResponseModel.cs",
               "RelativeDocumentMoniker": "BusinessLayer\\ResponseModel\\TeamEquipment\\TeamEquipmentAllResponseModel.cs",
@@ -1156,19 +1342,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
-              "Title": "TeamEquipment.cs",
-              "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\DataLayer\\Entities\\TeamEquipment.cs",
-              "RelativeDocumentMoniker": "DataLayer\\Entities\\TeamEquipment.cs",
-              "ToolTip": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\DataLayer\\Entities\\TeamEquipment.cs",
-              "RelativeToolTip": "DataLayer\\Entities\\TeamEquipment.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-23T07:33:40.666Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 35,
               "Title": "Class.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\DataLayer\\Entities\\Class.cs",
               "RelativeDocumentMoniker": "DataLayer\\Entities\\Class.cs",
@@ -1180,19 +1354,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
-              "Title": "Grade.cs",
-              "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\DataLayer\\Entities\\Grade.cs",
-              "RelativeDocumentMoniker": "DataLayer\\Entities\\Grade.cs",
-              "ToolTip": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\DataLayer\\Entities\\Grade.cs",
-              "RelativeToolTip": "DataLayer\\Entities\\Grade.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-17T23:45:59.605Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 36,
               "Title": "Equipment.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\DataLayer\\Entities\\Equipment.cs",
               "RelativeDocumentMoniker": "DataLayer\\Entities\\Equipment.cs",
@@ -1204,7 +1366,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 37,
               "Title": "Slot.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\DataLayer\\Entities\\Slot.cs",
               "RelativeDocumentMoniker": "DataLayer\\Entities\\Slot.cs",
@@ -1216,7 +1378,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 26,
+              "DocumentIndex": 38,
               "Title": "Semester.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\DataLayer\\Entities\\Semester.cs",
               "RelativeDocumentMoniker": "DataLayer\\Entities\\Semester.cs",
@@ -1228,19 +1390,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 27,
-              "Title": "db_abadcb_ohmlabContext.cs",
-              "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\DataLayer\\DBContext\\db_abadcb_ohmlabContext.cs",
-              "RelativeDocumentMoniker": "DataLayer\\DBContext\\db_abadcb_ohmlabContext.cs",
-              "ToolTip": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\DataLayer\\DBContext\\db_abadcb_ohmlabContext.cs",
-              "RelativeToolTip": "DataLayer\\DBContext\\db_abadcb_ohmlabContext.cs",
-              "ViewState": "AgIAACQAAAAAAAAAAAAqwP0BAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-23T13:36:40.38Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 29,
+              "DocumentIndex": 40,
               "Title": "RegistrationScheduleRepository.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\DataLayer\\Repository\\Implement\\RegistrationScheduleRepository.cs",
               "RelativeDocumentMoniker": "DataLayer\\Repository\\Implement\\RegistrationScheduleRepository.cs",
@@ -1252,7 +1402,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 28,
+              "DocumentIndex": 39,
               "Title": "IRegistrationScheduleRepository.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\DataLayer\\Repository\\IRegistrationScheduleRepository.cs",
               "RelativeDocumentMoniker": "DataLayer\\Repository\\IRegistrationScheduleRepository.cs",
@@ -1264,7 +1414,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 30,
+              "DocumentIndex": 41,
               "Title": "RegistrationScheduleController.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\OhmLab_FUHCM_BE\\Controller\\RegistrationScheduleController.cs",
               "RelativeDocumentMoniker": "OhmLab_FUHCM_BE\\Controller\\RegistrationScheduleController.cs",
@@ -1276,7 +1426,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 31,
+              "DocumentIndex": 42,
               "Title": "IRegistrationScheduleService.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\Service\\IRegistrationScheduleService.cs",
               "RelativeDocumentMoniker": "BusinessLayer\\Service\\IRegistrationScheduleService.cs",
@@ -1288,7 +1438,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 32,
+              "DocumentIndex": 43,
               "Title": "SwaggerConfig.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\OhmLab_FUHCM_BE\\AppStarts\\SwaggerConfig.cs",
               "RelativeDocumentMoniker": "OhmLab_FUHCM_BE\\AppStarts\\SwaggerConfig.cs",
@@ -1300,7 +1450,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 33,
+              "DocumentIndex": 44,
               "Title": "DependencyInjectionContainers.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\OhmLab_FUHCM_BE\\AppStarts\\DependencyInjectionContainers.cs",
               "RelativeDocumentMoniker": "OhmLab_FUHCM_BE\\AppStarts\\DependencyInjectionContainers.cs",
@@ -1308,11 +1458,12 @@
               "RelativeToolTip": "OhmLab_FUHCM_BE\\AppStarts\\DependencyInjectionContainers.cs",
               "ViewState": "AgIAAFsAAAAAAAAAAAAAAIUAAABIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-21T01:29:10.675Z"
+              "WhenOpened": "2025-06-21T01:29:10.675Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 34,
+              "DocumentIndex": 45,
               "Title": "MappingProfile.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\OhmLab_FUHCM_BE\\AppStarts\\MappingProfile.cs",
               "RelativeDocumentMoniker": "OhmLab_FUHCM_BE\\AppStarts\\MappingProfile.cs",
@@ -1324,7 +1475,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 35,
+              "DocumentIndex": 46,
               "Title": "AutoMapperConfig.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\OhmLab_FUHCM_BE\\AppStarts\\AutoMapperConfig.cs",
               "RelativeDocumentMoniker": "OhmLab_FUHCM_BE\\AppStarts\\AutoMapperConfig.cs",
@@ -1336,7 +1487,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 36,
+              "DocumentIndex": 47,
               "Title": "ClassUserController.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\OhmLab_FUHCM_BE\\Controller\\ClassUserController.cs",
               "RelativeDocumentMoniker": "OhmLab_FUHCM_BE\\Controller\\ClassUserController.cs",
@@ -1348,7 +1499,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 38,
+              "DocumentIndex": 49,
               "Title": "ScheduleController.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\OhmLab_FUHCM_BE\\Controller\\ScheduleController.cs",
               "RelativeDocumentMoniker": "OhmLab_FUHCM_BE\\Controller\\ScheduleController.cs",
@@ -1360,7 +1511,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 37,
+              "DocumentIndex": 48,
               "Title": "LabRepository.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\DataLayer\\Repository\\Implement\\LabRepository.cs",
               "RelativeDocumentMoniker": "DataLayer\\Repository\\Implement\\LabRepository.cs",
@@ -1372,19 +1523,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 39,
-              "Title": "ScheduleTypeController.cs",
-              "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\OhmLab_FUHCM_BE\\Controller\\ScheduleTypeController.cs",
-              "RelativeDocumentMoniker": "OhmLab_FUHCM_BE\\Controller\\ScheduleTypeController.cs",
-              "ToolTip": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\OhmLab_FUHCM_BE\\Controller\\ScheduleTypeController.cs",
-              "RelativeToolTip": "OhmLab_FUHCM_BE\\Controller\\ScheduleTypeController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-10T14:37:11.538Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 40,
+              "DocumentIndex": 50,
               "Title": "StudentDashboardController.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\OhmLab_FUHCM_BE\\Controller\\StudentDashboardController.cs",
               "RelativeDocumentMoniker": "OhmLab_FUHCM_BE\\Controller\\StudentDashboardController.cs",
@@ -1396,19 +1535,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 41,
-              "Title": "ScheduleService.cs",
-              "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\Service\\Implement\\ScheduleService.cs",
-              "RelativeDocumentMoniker": "BusinessLayer\\Service\\Implement\\ScheduleService.cs",
-              "ToolTip": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\Service\\Implement\\ScheduleService.cs",
-              "RelativeToolTip": "BusinessLayer\\Service\\Implement\\ScheduleService.cs",
-              "ViewState": "AgIAAFYAAAAAAAAAAAAwwHQAAAANAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-10T13:20:59.65Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 44,
+              "DocumentIndex": 53,
               "Title": "SemesterController.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\OhmLab_FUHCM_BE\\Controller\\SemesterController.cs",
               "RelativeDocumentMoniker": "OhmLab_FUHCM_BE\\Controller\\SemesterController.cs",
@@ -1416,11 +1543,12 @@
               "RelativeToolTip": "OhmLab_FUHCM_BE\\Controller\\SemesterController.cs",
               "ViewState": "AgIAABYAAAAAAAAAAAAQwC8AAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-24T13:52:54.178Z"
+              "WhenOpened": "2025-07-24T13:52:54.178Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 50,
+              "DocumentIndex": 59,
               "Title": "AcceptRejectRegistrationScheduleRequestModel.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\RequestModel\\RegistrationSchedule\\AcceptRejectRegistrationScheduleRequestModel.cs",
               "RelativeDocumentMoniker": "BusinessLayer\\RequestModel\\RegistrationSchedule\\AcceptRejectRegistrationScheduleRequestModel.cs",
@@ -1432,7 +1560,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 46,
+              "DocumentIndex": 55,
               "Title": "UpdateRegistrationScheduleRequestModel.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\RequestModel\\RegistrationSchedule\\UpdateRegistrationScheduleRequestModel.cs",
               "RelativeDocumentMoniker": "BusinessLayer\\RequestModel\\RegistrationSchedule\\UpdateRegistrationScheduleRequestModel.cs",
@@ -1444,7 +1572,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 47,
+              "DocumentIndex": 56,
               "Title": "GetAllRegistrationScheduleRequestModel.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\RequestModel\\RegistrationSchedule\\GetAllRegistrationScheduleRequestModel.cs",
               "RelativeDocumentMoniker": "BusinessLayer\\RequestModel\\RegistrationSchedule\\GetAllRegistrationScheduleRequestModel.cs",
@@ -1456,7 +1584,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 48,
+              "DocumentIndex": 57,
               "Title": "CreateRegistrationScheduleRequestModel.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\RequestModel\\RegistrationSchedule\\CreateRegistrationScheduleRequestModel.cs",
               "RelativeDocumentMoniker": "BusinessLayer\\RequestModel\\RegistrationSchedule\\CreateRegistrationScheduleRequestModel.cs",
@@ -1468,7 +1596,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 43,
+              "DocumentIndex": 52,
               "Title": "TeamService.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\Service\\Implement\\TeamService.cs",
               "RelativeDocumentMoniker": "BusinessLayer\\Service\\Implement\\TeamService.cs",
@@ -1480,7 +1608,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 42,
+              "DocumentIndex": 51,
               "Title": "CourseController.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\OhmLab_FUHCM_BE\\Controller\\CourseController.cs",
               "RelativeDocumentMoniker": "OhmLab_FUHCM_BE\\Controller\\CourseController.cs",
@@ -1488,11 +1616,12 @@
               "RelativeToolTip": "OhmLab_FUHCM_BE\\Controller\\CourseController.cs",
               "ViewState": "AgIAAA4AAAAAAAAAAAAAABYAAAAxAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-30T14:24:49.735Z"
+              "WhenOpened": "2025-06-30T14:24:49.735Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 49,
+              "DocumentIndex": 58,
               "Title": "CheckDupplicateRegitrationScheduleRequestModel.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\RequestModel\\RegistrationSchedule\\CheckDupplicateRegitrationScheduleRequestModel.cs",
               "RelativeDocumentMoniker": "BusinessLayer\\RequestModel\\RegistrationSchedule\\CheckDupplicateRegitrationScheduleRequestModel.cs",
@@ -1504,7 +1633,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 45,
+              "DocumentIndex": 54,
               "Title": "RegistrationScheduleAllResponseModel.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\ResponseModel\\RegistrationSchedule\\RegistrationScheduleAllResponseModel.cs",
               "RelativeDocumentMoniker": "BusinessLayer\\ResponseModel\\RegistrationSchedule\\RegistrationScheduleAllResponseModel.cs",
@@ -1516,7 +1645,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 51,
+              "DocumentIndex": 60,
               "Title": "RegistrationSchedule.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\DataLayer\\Entities\\RegistrationSchedule.cs",
               "RelativeDocumentMoniker": "DataLayer\\Entities\\RegistrationSchedule.cs",
@@ -1528,7 +1657,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 52,
+              "DocumentIndex": 61,
               "Title": "LabKitTemplate.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\DataLayer\\Entities\\LabKitTemplate.cs",
               "RelativeDocumentMoniker": "DataLayer\\Entities\\LabKitTemplate.cs",
@@ -1540,7 +1669,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 53,
+              "DocumentIndex": 62,
               "Title": "Kit.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\DataLayer\\Entities\\Kit.cs",
               "RelativeDocumentMoniker": "DataLayer\\Entities\\Kit.cs",
@@ -1552,7 +1681,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 54,
+              "DocumentIndex": 63,
               "Title": "SlotResponseModel.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\ResponseModel\\Slot\\SlotResponseModel.cs",
               "RelativeDocumentMoniker": "BusinessLayer\\ResponseModel\\Slot\\SlotResponseModel.cs",
@@ -1564,7 +1693,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 55,
+              "DocumentIndex": 64,
               "Title": "LabService.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\Service\\Implement\\LabService.cs",
               "RelativeDocumentMoniker": "BusinessLayer\\Service\\Implement\\LabService.cs",
@@ -1576,7 +1705,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 56,
+              "DocumentIndex": 65,
               "Title": "SlotService.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\Service\\Implement\\SlotService.cs",
               "RelativeDocumentMoniker": "BusinessLayer\\Service\\Implement\\SlotService.cs",
@@ -1588,7 +1717,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 57,
+              "DocumentIndex": 66,
               "Title": "SlotRepository.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\DataLayer\\Repository\\Implement\\SlotRepository.cs",
               "RelativeDocumentMoniker": "DataLayer\\Repository\\Implement\\SlotRepository.cs",
@@ -1600,7 +1729,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 58,
+              "DocumentIndex": 67,
               "Title": "UserService.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\Service\\Implement\\UserService.cs",
               "RelativeDocumentMoniker": "BusinessLayer\\Service\\Implement\\UserService.cs",
@@ -1612,7 +1741,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 59,
+              "DocumentIndex": 68,
               "Title": "BaseReponse.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\ResponseModel\\BaseResponse\\BaseReponse.cs",
               "RelativeDocumentMoniker": "BusinessLayer\\ResponseModel\\BaseResponse\\BaseReponse.cs",
@@ -1624,7 +1753,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 63,
+              "DocumentIndex": 72,
               "Title": "ScheduleRepository.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\DataLayer\\Repository\\Implement\\ScheduleRepository.cs",
               "RelativeDocumentMoniker": "DataLayer\\Repository\\Implement\\ScheduleRepository.cs",
@@ -1636,7 +1765,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 61,
+              "DocumentIndex": 70,
               "Title": "CreateSlotRequestModel.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\RequestModel\\Slot\\CreateSlotRequestModel.cs",
               "RelativeDocumentMoniker": "BusinessLayer\\RequestModel\\Slot\\CreateSlotRequestModel.cs",
@@ -1648,7 +1777,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 60,
+              "DocumentIndex": 69,
               "Title": "GetAllSlotRequestModel.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\RequestModel\\Slot\\GetAllSlotRequestModel.cs",
               "RelativeDocumentMoniker": "BusinessLayer\\RequestModel\\Slot\\GetAllSlotRequestModel.cs",
@@ -1660,7 +1789,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 64,
+              "DocumentIndex": 73,
               "Title": "ScheduleTypeRepository.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\DataLayer\\Repository\\Implement\\ScheduleTypeRepository.cs",
               "RelativeDocumentMoniker": "DataLayer\\Repository\\Implement\\ScheduleTypeRepository.cs",
@@ -1672,19 +1801,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 65,
-              "Title": "ReportService.cs",
-              "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\Service\\Implement\\ReportService.cs",
-              "RelativeDocumentMoniker": "BusinessLayer\\Service\\Implement\\ReportService.cs",
-              "ToolTip": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\Service\\Implement\\ReportService.cs",
-              "RelativeToolTip": "BusinessLayer\\Service\\Implement\\ReportService.cs",
-              "ViewState": "AgIAACcAAAAAAAAAAAAWwBoAAAAaAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-10T08:21:02.316Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 66,
+              "DocumentIndex": 74,
               "Title": "IReportService.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\Service\\IReportService.cs",
               "RelativeDocumentMoniker": "BusinessLayer\\Service\\IReportService.cs",
@@ -1696,7 +1813,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 62,
+              "DocumentIndex": 71,
               "Title": "IReportRepository.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\DataLayer\\Repository\\IReportRepository.cs",
               "RelativeDocumentMoniker": "DataLayer\\Repository\\IReportRepository.cs",
@@ -1708,7 +1825,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 67,
+              "DocumentIndex": 75,
               "Title": "ScheduleResponseAllModel.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\ResponseModel\\Schedule\\ScheduleResponseAllModel.cs",
               "RelativeDocumentMoniker": "BusinessLayer\\ResponseModel\\Schedule\\ScheduleResponseAllModel.cs",
@@ -1720,7 +1837,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 68,
+              "DocumentIndex": 76,
               "Title": "ScheduleType.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\DataLayer\\Entities\\ScheduleType.cs",
               "RelativeDocumentMoniker": "DataLayer\\Entities\\ScheduleType.cs",
@@ -1732,19 +1849,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 69,
-              "Title": "Schedule.cs",
-              "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\DataLayer\\Entities\\Schedule.cs",
-              "RelativeDocumentMoniker": "DataLayer\\Entities\\Schedule.cs",
-              "ToolTip": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\DataLayer\\Entities\\Schedule.cs",
-              "RelativeToolTip": "DataLayer\\Entities\\Schedule.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-06T02:21:15.49Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 70,
+              "DocumentIndex": 77,
               "Title": "GradeController.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\OhmLab_FUHCM_BE\\Controller\\GradeController.cs",
               "RelativeDocumentMoniker": "OhmLab_FUHCM_BE\\Controller\\GradeController.cs",
@@ -1752,23 +1857,12 @@
               "RelativeToolTip": "OhmLab_FUHCM_BE\\Controller\\GradeController.cs",
               "ViewState": "AgIAAHgAAAAAAAAAAAAIwL8AAAA3AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-29T17:34:24.573Z"
+              "WhenOpened": "2025-08-29T17:34:24.573Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 71,
-              "Title": "KitController.cs",
-              "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\OhmLab_FUHCM_BE\\Controller\\KitController.cs",
-              "RelativeDocumentMoniker": "OhmLab_FUHCM_BE\\Controller\\KitController.cs",
-              "ToolTip": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\OhmLab_FUHCM_BE\\Controller\\KitController.cs",
-              "RelativeToolTip": "OhmLab_FUHCM_BE\\Controller\\KitController.cs",
-              "ViewState": "AgIAAFcAAAAAAAAAAAA8wGoAAAA3AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-03T17:16:23.264Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 72,
+              "DocumentIndex": 78,
               "Title": "ReportController.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\OhmLab_FUHCM_BE\\Controller\\ReportController.cs",
               "RelativeDocumentMoniker": "OhmLab_FUHCM_BE\\Controller\\ReportController.cs",
@@ -1780,7 +1874,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 73,
+              "DocumentIndex": 79,
               "Title": "ILabService.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\Service\\ILabService.cs",
               "RelativeDocumentMoniker": "BusinessLayer\\Service\\ILabService.cs",
@@ -1792,19 +1886,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 74,
-              "Title": "KitService.cs",
-              "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\Service\\Implement\\KitService.cs",
-              "RelativeDocumentMoniker": "BusinessLayer\\Service\\Implement\\KitService.cs",
-              "ToolTip": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\Service\\Implement\\KitService.cs",
-              "RelativeToolTip": "BusinessLayer\\Service\\Implement\\KitService.cs",
-              "ViewState": "AgIAABIAAAAAAAAAAAAAABkAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-03T15:30:29.577Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 75,
+              "DocumentIndex": 80,
               "Title": "KitTemplateService.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\Service\\Implement\\KitTemplateService.cs",
               "RelativeDocumentMoniker": "BusinessLayer\\Service\\Implement\\KitTemplateService.cs",
@@ -1816,7 +1898,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 76,
+              "DocumentIndex": 81,
               "Title": "ISubjectService.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\Service\\ISubjectService.cs",
               "RelativeDocumentMoniker": "BusinessLayer\\Service\\ISubjectService.cs",
@@ -1828,7 +1910,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 77,
+              "DocumentIndex": 82,
               "Title": "CreateTeamEquipmentRequestModel.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\RequestModel\\TeamEquipment\\CreateTeamEquipmentRequestModel.cs",
               "RelativeDocumentMoniker": "BusinessLayer\\RequestModel\\TeamEquipment\\CreateTeamEquipmentRequestModel.cs",
@@ -1840,7 +1922,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 78,
+              "DocumentIndex": 83,
               "Title": "GetAllTeamKitRequestModel.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\RequestModel\\TeamKit\\GetAllTeamKitRequestModel.cs",
               "RelativeDocumentMoniker": "BusinessLayer\\RequestModel\\TeamKit\\GetAllTeamKitRequestModel.cs",
@@ -1852,7 +1934,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 81,
+              "DocumentIndex": 85,
               "Title": "KitRepository.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\DataLayer\\Repository\\Implement\\KitRepository.cs",
               "RelativeDocumentMoniker": "DataLayer\\Repository\\Implement\\KitRepository.cs",
@@ -1864,19 +1946,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 79,
-              "Title": "IKitService.cs",
-              "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\Service\\IKitService.cs",
-              "RelativeDocumentMoniker": "BusinessLayer\\Service\\IKitService.cs",
-              "ToolTip": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\Service\\IKitService.cs",
-              "RelativeToolTip": "BusinessLayer\\Service\\IKitService.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAABYAAABDAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-03T15:30:13.016Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 82,
+              "DocumentIndex": 86,
               "Title": "SubjectService.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\Service\\Implement\\SubjectService.cs",
               "RelativeDocumentMoniker": "BusinessLayer\\Service\\Implement\\SubjectService.cs",
@@ -1888,7 +1958,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 80,
+              "DocumentIndex": 84,
               "Title": "SemesterSubjectRepository.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\DataLayer\\Repository\\Implement\\SemesterSubjectRepository.cs",
               "RelativeDocumentMoniker": "DataLayer\\Repository\\Implement\\SemesterSubjectRepository.cs",
@@ -1900,7 +1970,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 83,
+              "DocumentIndex": 87,
               "Title": "ReportRepository.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\DataLayer\\Repository\\Implement\\ReportRepository.cs",
               "RelativeDocumentMoniker": "DataLayer\\Repository\\Implement\\ReportRepository.cs",
@@ -1912,7 +1982,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 84,
+              "DocumentIndex": 88,
               "Title": "IKitRepository.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\DataLayer\\Repository\\IKitRepository.cs",
               "RelativeDocumentMoniker": "DataLayer\\Repository\\IKitRepository.cs",
@@ -1924,7 +1994,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 85,
+              "DocumentIndex": 89,
               "Title": "ISubjectRepository.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\DataLayer\\Repository\\ISubjectRepository.cs",
               "RelativeDocumentMoniker": "DataLayer\\Repository\\ISubjectRepository.cs",
@@ -1936,7 +2006,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 86,
+              "DocumentIndex": 90,
               "Title": "IAccessoryRepository.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\DataLayer\\Repository\\IAccessoryRepository.cs",
               "RelativeDocumentMoniker": "DataLayer\\Repository\\IAccessoryRepository.cs",
@@ -1948,7 +2018,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 87,
+              "DocumentIndex": 91,
               "Title": "User.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\DataLayer\\Entities\\User.cs",
               "RelativeDocumentMoniker": "DataLayer\\Entities\\User.cs",
@@ -1960,7 +2030,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 88,
+              "DocumentIndex": 92,
               "Title": "Lab.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\DataLayer\\Entities\\Lab.cs",
               "RelativeDocumentMoniker": "DataLayer\\Entities\\Lab.cs",
@@ -1972,7 +2042,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 91,
+              "DocumentIndex": 95,
               "Title": "TeamKit.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\DataLayer\\Entities\\TeamKit.cs",
               "RelativeDocumentMoniker": "DataLayer\\Entities\\TeamKit.cs",
@@ -1984,7 +2054,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 92,
+              "DocumentIndex": 96,
               "Title": "TeamUser.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\DataLayer\\Entities\\TeamUser.cs",
               "RelativeDocumentMoniker": "DataLayer\\Entities\\TeamUser.cs",
@@ -1996,7 +2066,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 90,
+              "DocumentIndex": 94,
               "Title": "SemesterSubject.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\DataLayer\\Entities\\SemesterSubject.cs",
               "RelativeDocumentMoniker": "DataLayer\\Entities\\SemesterSubject.cs",
@@ -2008,7 +2078,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 89,
+              "DocumentIndex": 93,
               "Title": "Subject.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\DataLayer\\Entities\\Subject.cs",
               "RelativeDocumentMoniker": "DataLayer\\Entities\\Subject.cs",
@@ -2020,7 +2090,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 93,
+              "DocumentIndex": 97,
               "Title": "EquipmentType.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\DataLayer\\Entities\\EquipmentType.cs",
               "RelativeDocumentMoniker": "DataLayer\\Entities\\EquipmentType.cs",
@@ -2032,7 +2102,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 94,
+              "DocumentIndex": 98,
               "Title": "ClassUser.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\DataLayer\\Entities\\ClassUser.cs",
               "RelativeDocumentMoniker": "DataLayer\\Entities\\ClassUser.cs",
@@ -2044,7 +2114,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 95,
+              "DocumentIndex": 99,
               "Title": "KitAccessory.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\DataLayer\\Entities\\KitAccessory.cs",
               "RelativeDocumentMoniker": "DataLayer\\Entities\\KitAccessory.cs",
@@ -2056,7 +2126,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 96,
+              "DocumentIndex": 100,
               "Title": "AccessoryKitTemplate.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\DataLayer\\Entities\\AccessoryKitTemplate.cs",
               "RelativeDocumentMoniker": "DataLayer\\Entities\\AccessoryKitTemplate.cs",
@@ -2068,7 +2138,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 97,
+              "DocumentIndex": 101,
               "Title": "Accessory.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\DataLayer\\Entities\\Accessory.cs",
               "RelativeDocumentMoniker": "DataLayer\\Entities\\Accessory.cs",
@@ -2080,7 +2150,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 98,
+              "DocumentIndex": 102,
               "Title": "AccessoryRepository.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\DataLayer\\Repository\\Implement\\AccessoryRepository.cs",
               "RelativeDocumentMoniker": "DataLayer\\Repository\\Implement\\AccessoryRepository.cs",
@@ -2092,7 +2162,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 99,
+              "DocumentIndex": 103,
               "Title": "ClassRepository.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\DataLayer\\Repository\\Implement\\ClassRepository.cs",
               "RelativeDocumentMoniker": "DataLayer\\Repository\\Implement\\ClassRepository.cs",
@@ -2104,7 +2174,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 102,
+              "DocumentIndex": 106,
               "Title": "TeamController.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\OhmLab_FUHCM_BE\\Controller\\TeamController.cs",
               "RelativeDocumentMoniker": "OhmLab_FUHCM_BE\\Controller\\TeamController.cs",
@@ -2116,7 +2186,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 101,
+              "DocumentIndex": 105,
               "Title": "LabController.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\OhmLab_FUHCM_BE\\Controller\\LabController.cs",
               "RelativeDocumentMoniker": "OhmLab_FUHCM_BE\\Controller\\LabController.cs",
@@ -2124,11 +2194,12 @@
               "RelativeToolTip": "OhmLab_FUHCM_BE\\Controller\\LabController.cs",
               "ViewState": "AgIAAMEAAAAAAAAAAAAqwNkAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-25T17:37:51.958Z"
+              "WhenOpened": "2025-08-25T17:37:51.958Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 100,
+              "DocumentIndex": 104,
               "Title": "KitTemplateController.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\OhmLab_FUHCM_BE\\Controller\\KitTemplateController.cs",
               "RelativeDocumentMoniker": "OhmLab_FUHCM_BE\\Controller\\KitTemplateController.cs",
@@ -2140,7 +2211,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 103,
+              "DocumentIndex": 107,
               "Title": "ITeamKitRepository.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\DataLayer\\Repository\\ITeamKitRepository.cs",
               "RelativeDocumentMoniker": "DataLayer\\Repository\\ITeamKitRepository.cs",
@@ -2152,7 +2223,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 104,
+              "DocumentIndex": 108,
               "Title": "ITeamEquipmentRepository.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\DataLayer\\Repository\\ITeamEquipmentRepository.cs",
               "RelativeDocumentMoniker": "DataLayer\\Repository\\ITeamEquipmentRepository.cs",
@@ -2164,7 +2235,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 105,
+              "DocumentIndex": 109,
               "Title": "IUserService.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\Service\\IUserService.cs",
               "RelativeDocumentMoniker": "BusinessLayer\\Service\\IUserService.cs",
@@ -2176,7 +2247,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 106,
+              "DocumentIndex": 110,
               "Title": "ITeamUserService.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\Service\\ITeamUserService.cs",
               "RelativeDocumentMoniker": "BusinessLayer\\Service\\ITeamUserService.cs",
@@ -2188,7 +2259,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 107,
+              "DocumentIndex": 111,
               "Title": "ITeamService.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\Service\\ITeamService.cs",
               "RelativeDocumentMoniker": "BusinessLayer\\Service\\ITeamService.cs",
@@ -2200,7 +2271,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 108,
+              "DocumentIndex": 112,
               "Title": "ISemesterService.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\Service\\ISemesterService.cs",
               "RelativeDocumentMoniker": "BusinessLayer\\Service\\ISemesterService.cs",
@@ -2212,7 +2283,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 109,
+              "DocumentIndex": 113,
               "Title": "ISlotService.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\Service\\ISlotService.cs",
               "RelativeDocumentMoniker": "BusinessLayer\\Service\\ISlotService.cs",
@@ -2224,7 +2295,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 110,
+              "DocumentIndex": 114,
               "Title": "IScheduleTypeService.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\Service\\IScheduleTypeService.cs",
               "RelativeDocumentMoniker": "BusinessLayer\\Service\\IScheduleTypeService.cs",
@@ -2236,7 +2307,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 111,
+              "DocumentIndex": 115,
               "Title": "IScheduleService.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\Service\\IScheduleService.cs",
               "RelativeDocumentMoniker": "BusinessLayer\\Service\\IScheduleService.cs",
@@ -2248,7 +2319,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 112,
+              "DocumentIndex": 116,
               "Title": "IKitTemplateService.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\Service\\IKitTemplateService.cs",
               "RelativeDocumentMoniker": "BusinessLayer\\Service\\IKitTemplateService.cs",
@@ -2260,7 +2331,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 113,
+              "DocumentIndex": 117,
               "Title": "IGradeService.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\Service\\IGradeService.cs",
               "RelativeDocumentMoniker": "BusinessLayer\\Service\\IGradeService.cs",
@@ -2272,7 +2343,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 114,
+              "DocumentIndex": 118,
               "Title": "IEquipmentService.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\Service\\IEquipmentService.cs",
               "RelativeDocumentMoniker": "BusinessLayer\\Service\\IEquipmentService.cs",
@@ -2284,7 +2355,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 115,
+              "DocumentIndex": 119,
               "Title": "IClassUserService.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\Service\\IClassUserService.cs",
               "RelativeDocumentMoniker": "BusinessLayer\\Service\\IClassUserService.cs",
@@ -2296,7 +2367,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 116,
+              "DocumentIndex": 120,
               "Title": "IEquipmentTypeService.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\Service\\IEquipmentTypeService.cs",
               "RelativeDocumentMoniker": "BusinessLayer\\Service\\IEquipmentTypeService.cs",
@@ -2308,7 +2379,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 117,
+              "DocumentIndex": 121,
               "Title": "UpdateTeamEquipmentRequestModel.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\RequestModel\\TeamEquipment\\UpdateTeamEquipmentRequestModel.cs",
               "RelativeDocumentMoniker": "BusinessLayer\\RequestModel\\TeamEquipment\\UpdateTeamEquipmentRequestModel.cs",
@@ -2320,7 +2391,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 118,
+              "DocumentIndex": 122,
               "Title": "TeamUserController.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\OhmLab_FUHCM_BE\\Controller\\TeamUserController.cs",
               "RelativeDocumentMoniker": "OhmLab_FUHCM_BE\\Controller\\TeamUserController.cs",
@@ -2332,7 +2403,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 119,
+              "DocumentIndex": 123,
               "Title": "ClassController.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\OhmLab_FUHCM_BE\\Controller\\ClassController.cs",
               "RelativeDocumentMoniker": "OhmLab_FUHCM_BE\\Controller\\ClassController.cs",
@@ -2344,7 +2415,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 120,
+              "DocumentIndex": 124,
               "Title": "ClassService.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\Service\\Implement\\ClassService.cs",
               "RelativeDocumentMoniker": "BusinessLayer\\Service\\Implement\\ClassService.cs",
@@ -2356,7 +2427,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 121,
+              "DocumentIndex": 125,
               "Title": "UpdateTeamKitRequestModel.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\RequestModel\\TeamKit\\UpdateTeamKitRequestModel.cs",
               "RelativeDocumentMoniker": "BusinessLayer\\RequestModel\\TeamKit\\UpdateTeamKitRequestModel.cs",
@@ -2368,7 +2439,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 122,
+              "DocumentIndex": 126,
               "Title": "TeamKitAllResponseModel.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\ResponseModel\\TeamKit\\TeamKitAllResponseModel.cs",
               "RelativeDocumentMoniker": "BusinessLayer\\ResponseModel\\TeamKit\\TeamKitAllResponseModel.cs",
@@ -2380,7 +2451,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 123,
+              "DocumentIndex": 127,
               "Title": "CreateTeamKitRequestModel.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\RequestModel\\TeamKit\\CreateTeamKitRequestModel.cs",
               "RelativeDocumentMoniker": "BusinessLayer\\RequestModel\\TeamKit\\CreateTeamKitRequestModel.cs",
@@ -2392,7 +2463,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 125,
+              "DocumentIndex": 129,
               "Title": "ITeamRepository.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\DataLayer\\Repository\\ITeamRepository.cs",
               "RelativeDocumentMoniker": "DataLayer\\Repository\\ITeamRepository.cs",
@@ -2404,7 +2475,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 124,
+              "DocumentIndex": 128,
               "Title": "SubjectRepository.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\DataLayer\\Repository\\Implement\\SubjectRepository.cs",
               "RelativeDocumentMoniker": "DataLayer\\Repository\\Implement\\SubjectRepository.cs",
@@ -2416,7 +2487,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 126,
+              "DocumentIndex": 130,
               "Title": "AuthConfig.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\OhmLab_FUHCM_BE\\AppStarts\\AuthConfig.cs",
               "RelativeDocumentMoniker": "OhmLab_FUHCM_BE\\AppStarts\\AuthConfig.cs",
@@ -2424,11 +2495,12 @@
               "RelativeToolTip": "OhmLab_FUHCM_BE\\AppStarts\\AuthConfig.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-21T01:29:09.304Z"
+              "WhenOpened": "2025-06-21T01:29:09.304Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 127,
+              "DocumentIndex": 131,
               "Title": "KitTemplate.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\DataLayer\\Entities\\KitTemplate.cs",
               "RelativeDocumentMoniker": "DataLayer\\Entities\\KitTemplate.cs",
@@ -2440,7 +2512,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 128,
+              "DocumentIndex": 132,
               "Title": "LabEquipmentType.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\DataLayer\\Entities\\LabEquipmentType.cs",
               "RelativeDocumentMoniker": "DataLayer\\Entities\\LabEquipmentType.cs",
@@ -2452,7 +2524,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 129,
+              "DocumentIndex": 133,
               "Title": "Team.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\DataLayer\\Entities\\Team.cs",
               "RelativeDocumentMoniker": "DataLayer\\Entities\\Team.cs",
@@ -2464,19 +2536,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 130,
-              "Title": "Report.cs",
-              "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\DataLayer\\Entities\\Report.cs",
-              "RelativeDocumentMoniker": "DataLayer\\Entities\\Report.cs",
-              "ToolTip": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\DataLayer\\Entities\\Report.cs",
-              "RelativeToolTip": "DataLayer\\Entities\\Report.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-13T05:39:31.555Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 131,
+              "DocumentIndex": 134,
               "Title": "AnalyticsController.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\OhmLab_FUHCM_BE\\Controller\\AnalyticsController.cs",
               "RelativeDocumentMoniker": "OhmLab_FUHCM_BE\\Controller\\AnalyticsController.cs",
@@ -2488,7 +2548,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 132,
+              "DocumentIndex": 135,
               "Title": "AnalyticsService.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\Service\\Implement\\AnalyticsService.cs",
               "RelativeDocumentMoniker": "BusinessLayer\\Service\\Implement\\AnalyticsService.cs",
@@ -2500,19 +2560,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 133,
-              "Title": "GradeService.cs",
-              "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\Service\\Implement\\GradeService.cs",
-              "RelativeDocumentMoniker": "BusinessLayer\\Service\\Implement\\GradeService.cs",
-              "ToolTip": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\Service\\Implement\\GradeService.cs",
-              "RelativeToolTip": "BusinessLayer\\Service\\Implement\\GradeService.cs",
-              "ViewState": "AQIAAJkAAAAAAAAAAAA8wO4BAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-29T17:35:07.457Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 136,
+              "DocumentIndex": 138,
               "Title": "GradeRepository.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\DataLayer\\Repository\\Implement\\GradeRepository.cs",
               "RelativeDocumentMoniker": "DataLayer\\Repository\\Implement\\GradeRepository.cs",
@@ -2524,7 +2572,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 134,
+              "DocumentIndex": 136,
               "Title": "ClassUserService.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\Service\\Implement\\ClassUserService.cs",
               "RelativeDocumentMoniker": "BusinessLayer\\Service\\Implement\\ClassUserService.cs",
@@ -2536,7 +2584,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 135,
+              "DocumentIndex": 137,
               "Title": "IClassRepository.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\DataLayer\\Repository\\IClassRepository.cs",
               "RelativeDocumentMoniker": "DataLayer\\Repository\\IClassRepository.cs",
@@ -2548,7 +2596,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 137,
+              "DocumentIndex": 139,
               "Title": "IGradeRepository.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\DataLayer\\Repository\\IGradeRepository.cs",
               "RelativeDocumentMoniker": "DataLayer\\Repository\\IGradeRepository.cs",
@@ -2560,7 +2608,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 141,
+              "DocumentIndex": 143,
               "Title": "TeamUserService.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\Service\\Implement\\TeamUserService.cs",
               "RelativeDocumentMoniker": "BusinessLayer\\Service\\Implement\\TeamUserService.cs",
@@ -2572,7 +2620,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 138,
+              "DocumentIndex": 140,
               "Title": "GradeTeamMemberRequestModel.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\RequestModel\\Assignment\\GradeTeamMemberRequestModel.cs",
               "RelativeDocumentMoniker": "BusinessLayer\\RequestModel\\Assignment\\GradeTeamMemberRequestModel.cs",
@@ -2584,7 +2632,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 139,
+              "DocumentIndex": 141,
               "Title": "AssignmentController.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\OhmLab_FUHCM_BE\\Controller\\AssignmentController.cs",
               "RelativeDocumentMoniker": "OhmLab_FUHCM_BE\\Controller\\AssignmentController.cs",
@@ -2592,11 +2640,12 @@
               "RelativeToolTip": "OhmLab_FUHCM_BE\\Controller\\AssignmentController.cs",
               "ViewState": "AQIAABUAAAAAAAAAAAAcwBsAAACRAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-21T15:04:47.724Z"
+              "WhenOpened": "2025-07-21T15:04:47.724Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 140,
+              "DocumentIndex": 142,
               "Title": "IUserRepositoty.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\DataLayer\\Repository\\IUserRepositoty.cs",
               "RelativeDocumentMoniker": "DataLayer\\Repository\\IUserRepositoty.cs",
@@ -2608,19 +2657,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 142,
-              "Title": "AssignmentService.cs",
-              "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\Service\\Implement\\AssignmentService.cs",
-              "RelativeDocumentMoniker": "BusinessLayer\\Service\\Implement\\AssignmentService.cs",
-              "ToolTip": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\Service\\Implement\\AssignmentService.cs",
-              "RelativeToolTip": "BusinessLayer\\Service\\Implement\\AssignmentService.cs",
-              "ViewState": "AQIAABAAAAAAAAAAAAAWwB4AAAAtAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-23T04:52:52.813Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 144,
+              "DocumentIndex": 145,
               "Title": "LabResponseModel.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\ResponseModel\\Lab\\LabResponseModel.cs",
               "RelativeDocumentMoniker": "BusinessLayer\\ResponseModel\\Lab\\LabResponseModel.cs",
@@ -2632,7 +2669,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 143,
+              "DocumentIndex": 144,
               "Title": "System.Drawing.Common.targets",
               "DocumentMoniker": "C:\\Users\\ACER\\.nuget\\packages\\system.drawing.common\\9.0.7\\buildTransitive\\netcoreapp2.0\\System.Drawing.Common.targets",
               "ToolTip": "C:\\Users\\ACER\\.nuget\\packages\\system.drawing.common\\9.0.7\\buildTransitive\\netcoreapp2.0\\System.Drawing.Common.targets",
@@ -2642,7 +2679,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 145,
+              "DocumentIndex": 146,
               "Title": "LabKitResponseModel.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\ResponseModel\\Lab\\LabKitResponseModel.cs",
               "RelativeDocumentMoniker": "BusinessLayer\\ResponseModel\\Lab\\LabKitResponseModel.cs",
@@ -2654,7 +2691,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 146,
+              "DocumentIndex": 147,
               "Title": "EquipmentController.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\OhmLab_FUHCM_BE\\Controller\\EquipmentController.cs",
               "RelativeDocumentMoniker": "OhmLab_FUHCM_BE\\Controller\\EquipmentController.cs",
@@ -2666,7 +2703,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 147,
+              "DocumentIndex": 148,
               "Title": "UpdateLabRequestModel.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\RequestModel\\Lab\\UpdateLabRequestModel.cs",
               "RelativeDocumentMoniker": "BusinessLayer\\RequestModel\\Lab\\UpdateLabRequestModel.cs",
@@ -2678,7 +2715,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 148,
+              "DocumentIndex": 149,
               "Title": "CreateLabRequestModel.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\RequestModel\\Lab\\CreateLabRequestModel.cs",
               "RelativeDocumentMoniker": "BusinessLayer\\RequestModel\\Lab\\CreateLabRequestModel.cs",
@@ -2690,7 +2727,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 149,
+              "DocumentIndex": 150,
               "Title": "EquipmentService.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\Service\\Implement\\EquipmentService.cs",
               "RelativeDocumentMoniker": "BusinessLayer\\Service\\Implement\\EquipmentService.cs",
@@ -2702,7 +2739,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 150,
+              "DocumentIndex": 151,
               "Title": "TeamResponseModel.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\ResponseModel\\Team\\TeamResponseModel.cs",
               "RelativeDocumentMoniker": "BusinessLayer\\ResponseModel\\Team\\TeamResponseModel.cs",
@@ -2714,7 +2751,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 152,
+              "DocumentIndex": 153,
               "Title": "ITeamUserRepository.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\DataLayer\\Repository\\ITeamUserRepository.cs",
               "RelativeDocumentMoniker": "DataLayer\\Repository\\ITeamUserRepository.cs",
@@ -2726,7 +2763,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 151,
+              "DocumentIndex": 152,
               "Title": "TeamUserRepository.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\DataLayer\\Repository\\Implement\\TeamUserRepository.cs",
               "RelativeDocumentMoniker": "DataLayer\\Repository\\Implement\\TeamUserRepository.cs",
@@ -2738,7 +2775,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 153,
+              "DocumentIndex": 154,
               "Title": "ClassUserResponseModel.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\ResponseModel\\User\\ClassUserResponseModel.cs",
               "RelativeDocumentMoniker": "BusinessLayer\\ResponseModel\\User\\ClassUserResponseModel.cs",
@@ -2750,7 +2787,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 154,
+              "DocumentIndex": 155,
               "Title": "ClassResponseModel.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\ResponseModel\\Class\\ClassResponseModel.cs",
               "RelativeDocumentMoniker": "BusinessLayer\\ResponseModel\\Class\\ClassResponseModel.cs",
@@ -2762,7 +2799,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 156,
+              "DocumentIndex": 157,
               "Title": "BusinessLayer.csproj",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\BusinessLayer.csproj",
               "RelativeDocumentMoniker": "BusinessLayer\\BusinessLayer.csproj",
@@ -2774,7 +2811,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 155,
+              "DocumentIndex": 156,
               "Title": "Program.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\OhmLab_FUHCM_BE\\Program.cs",
               "RelativeDocumentMoniker": "OhmLab_FUHCM_BE\\Program.cs",
@@ -2786,7 +2823,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 157,
+              "DocumentIndex": 158,
               "Title": "readme.txt",
               "DocumentMoniker": "C:\\Users\\ACER\\.nuget\\packages\\epplus\\8.1.0\\readme.txt",
               "ToolTip": "C:\\Users\\ACER\\.nuget\\packages\\epplus\\8.1.0\\readme.txt",
@@ -2796,7 +2833,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 158,
+              "DocumentIndex": 159,
               "Title": "UserController.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\OhmLab_FUHCM_BE\\Controller\\UserController.cs",
               "RelativeDocumentMoniker": "OhmLab_FUHCM_BE\\Controller\\UserController.cs",
@@ -2808,7 +2845,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 159,
+              "DocumentIndex": 160,
               "Title": "UserRepository.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\DataLayer\\Repository\\Implement\\UserRepository.cs",
               "RelativeDocumentMoniker": "DataLayer\\Repository\\Implement\\UserRepository.cs",
@@ -2820,7 +2857,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 160,
+              "DocumentIndex": 161,
               "Title": "ImportUsersFromExcelRequestModel.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\RequestModel\\Class\\ImportUsersFromExcelRequestModel.cs",
               "RelativeDocumentMoniker": "BusinessLayer\\RequestModel\\Class\\ImportUsersFromExcelRequestModel.cs",
@@ -2832,7 +2869,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 161,
+              "DocumentIndex": 162,
               "Title": "readme.txt",
               "DocumentMoniker": "C:\\Users\\ACER\\.nuget\\packages\\epplus\\8.0.8\\readme.txt",
               "ToolTip": "C:\\Users\\ACER\\.nuget\\packages\\epplus\\8.0.8\\readme.txt",
@@ -2842,7 +2879,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 163,
+              "DocumentIndex": 164,
               "Title": "CreateSubjectRequestModel.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\RequestModel\\Subject\\CreateSubjectRequestModel.cs",
               "RelativeDocumentMoniker": "BusinessLayer\\RequestModel\\Subject\\CreateSubjectRequestModel.cs",
@@ -2854,7 +2891,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 162,
+              "DocumentIndex": 163,
               "Title": "SubjectResponseModel.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\ResponseModel\\Subject\\SubjectResponseModel.cs",
               "RelativeDocumentMoniker": "BusinessLayer\\ResponseModel\\Subject\\SubjectResponseModel.cs",
@@ -2866,7 +2903,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 164,
+              "DocumentIndex": 165,
               "Title": "CreateSemesterRequestModel.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\RequestModel\\Semester\\CreateSemesterRequestModel.cs",
               "RelativeDocumentMoniker": "BusinessLayer\\RequestModel\\Semester\\CreateSemesterRequestModel.cs",
@@ -2878,7 +2915,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 165,
+              "DocumentIndex": 166,
               "Title": "CreateClassRequestModel.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\RequestModel\\Class\\CreateClassRequestModel.cs",
               "RelativeDocumentMoniker": "BusinessLayer\\RequestModel\\Class\\CreateClassRequestModel.cs",
@@ -2890,7 +2927,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 167,
+              "DocumentIndex": 168,
               "Title": "IClassService.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\Service\\IClassService.cs",
               "RelativeDocumentMoniker": "BusinessLayer\\Service\\IClassService.cs",
@@ -2902,7 +2939,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 166,
+              "DocumentIndex": 167,
               "Title": "ILabRepository.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\DataLayer\\Repository\\ILabRepository.cs",
               "RelativeDocumentMoniker": "DataLayer\\Repository\\ILabRepository.cs",
@@ -2914,7 +2951,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 168,
+              "DocumentIndex": 169,
               "Title": "UpdateClassRequestModel.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\RequestModel\\Class\\UpdateClassRequestModel.cs",
               "RelativeDocumentMoniker": "BusinessLayer\\RequestModel\\Class\\UpdateClassRequestModel.cs",
@@ -2926,7 +2963,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 169,
+              "DocumentIndex": 170,
               "Title": "GetAllClassRequestModel.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\RequestModel\\Class\\GetAllClassRequestModel.cs",
               "RelativeDocumentMoniker": "BusinessLayer\\RequestModel\\Class\\GetAllClassRequestModel.cs",
@@ -2938,7 +2975,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 170,
+              "DocumentIndex": 171,
               "Title": "SemesterService.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\Service\\Implement\\SemesterService.cs",
               "RelativeDocumentMoniker": "BusinessLayer\\Service\\Implement\\SemesterService.cs",
@@ -2950,7 +2987,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 173,
+              "DocumentIndex": 174,
               "Title": "SemesterRepository.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\DataLayer\\Repository\\Implement\\SemesterRepository.cs",
               "RelativeDocumentMoniker": "DataLayer\\Repository\\Implement\\SemesterRepository.cs",
@@ -2962,7 +2999,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 172,
+              "DocumentIndex": 173,
               "Title": "SemesterResponseModel.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\ResponseModel\\Semester\\SemesterResponseModel.cs",
               "RelativeDocumentMoniker": "BusinessLayer\\ResponseModel\\Semester\\SemesterResponseModel.cs",
@@ -2974,7 +3011,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 171,
+              "DocumentIndex": 172,
               "Title": "GetAllSemesterRequestModel.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\RequestModel\\Semester\\GetAllSemesterRequestModel.cs",
               "RelativeDocumentMoniker": "BusinessLayer\\RequestModel\\Semester\\GetAllSemesterRequestModel.cs",
@@ -2986,7 +3023,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 175,
+              "DocumentIndex": 176,
               "Title": "IScheduleRepository.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\DataLayer\\Repository\\IScheduleRepository.cs",
               "RelativeDocumentMoniker": "DataLayer\\Repository\\IScheduleRepository.cs",
@@ -2998,7 +3035,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 174,
+              "DocumentIndex": 175,
               "Title": "IScheduleTypeRepository.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\DataLayer\\Repository\\IScheduleTypeRepository.cs",
               "RelativeDocumentMoniker": "DataLayer\\Repository\\IScheduleTypeRepository.cs",
@@ -3010,7 +3047,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 176,
+              "DocumentIndex": 177,
               "Title": "ClassUserRepository.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\DataLayer\\Repository\\Implement\\ClassUserRepository.cs",
               "RelativeDocumentMoniker": "DataLayer\\Repository\\Implement\\ClassUserRepository.cs",
@@ -3022,7 +3059,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 177,
+              "DocumentIndex": 178,
               "Title": "AddScheduleForClassRequestModel.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\RequestModel\\Class\\AddScheduleForClassRequestModel.cs",
               "RelativeDocumentMoniker": "BusinessLayer\\RequestModel\\Class\\AddScheduleForClassRequestModel.cs",
@@ -3034,7 +3071,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 179,
+              "DocumentIndex": 180,
               "Title": "CreateScheduleTypeRequestModel.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\RequestModel\\ScheduleType\\CreateScheduleTypeRequestModel.cs",
               "RelativeDocumentMoniker": "BusinessLayer\\RequestModel\\ScheduleType\\CreateScheduleTypeRequestModel.cs",
@@ -3046,7 +3083,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 178,
+              "DocumentIndex": 179,
               "Title": "UpdateScheduleTypeRequestModel.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\RequestModel\\ScheduleType\\UpdateScheduleTypeRequestModel.cs",
               "RelativeDocumentMoniker": "BusinessLayer\\RequestModel\\ScheduleType\\UpdateScheduleTypeRequestModel.cs",
@@ -3058,7 +3095,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 180,
+              "DocumentIndex": 181,
               "Title": "IClassUserRepository.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\DataLayer\\Repository\\IClassUserRepository.cs",
               "RelativeDocumentMoniker": "DataLayer\\Repository\\IClassUserRepository.cs",
@@ -3070,7 +3107,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 181,
+              "DocumentIndex": 182,
               "Title": "ScheduleResponseModel.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\ResponseModel\\Assignment\\ScheduleResponseModel.cs",
               "RelativeDocumentMoniker": "BusinessLayer\\ResponseModel\\Assignment\\ScheduleResponseModel.cs",
@@ -3082,7 +3119,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 182,
+              "DocumentIndex": 183,
               "Title": "ReportResponseModel.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\ResponseModel\\Assignment\\ReportResponseModel.cs",
               "RelativeDocumentMoniker": "BusinessLayer\\ResponseModel\\Assignment\\ReportResponseModel.cs",
@@ -3094,7 +3131,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 183,
+              "DocumentIndex": 184,
               "Title": "GradeResponseModel.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\ResponseModel\\Assignment\\GradeResponseModel.cs",
               "RelativeDocumentMoniker": "BusinessLayer\\ResponseModel\\Assignment\\GradeResponseModel.cs",
@@ -3106,7 +3143,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 184,
+              "DocumentIndex": 185,
               "Title": "AssignmentDetailResponseModel.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\ResponseModel\\Assignment\\AssignmentDetailResponseModel.cs",
               "RelativeDocumentMoniker": "BusinessLayer\\ResponseModel\\Assignment\\AssignmentDetailResponseModel.cs",
@@ -3118,7 +3155,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 185,
+              "DocumentIndex": 186,
               "Title": "SlotController.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\OhmLab_FUHCM_BE\\Controller\\SlotController.cs",
               "RelativeDocumentMoniker": "OhmLab_FUHCM_BE\\Controller\\SlotController.cs",
@@ -3130,7 +3167,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 187,
+              "DocumentIndex": 188,
               "Title": "IEquipmentRepository.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\DataLayer\\Repository\\IEquipmentRepository.cs",
               "RelativeDocumentMoniker": "DataLayer\\Repository\\IEquipmentRepository.cs",
@@ -3142,7 +3179,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 186,
+              "DocumentIndex": 187,
               "Title": "EquipmentTypeService.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\Service\\Implement\\EquipmentTypeService.cs",
               "RelativeDocumentMoniker": "BusinessLayer\\Service\\Implement\\EquipmentTypeService.cs",
@@ -3154,7 +3191,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 188,
+              "DocumentIndex": 189,
               "Title": "EquipmentRepository.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\DataLayer\\Repository\\Implement\\EquipmentRepository.cs",
               "RelativeDocumentMoniker": "DataLayer\\Repository\\Implement\\EquipmentRepository.cs",
@@ -3166,7 +3203,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 189,
+              "DocumentIndex": 190,
               "Title": "IEquipmentTypeRepository.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\DataLayer\\Repository\\IEquipmentTypeRepository.cs",
               "RelativeDocumentMoniker": "DataLayer\\Repository\\IEquipmentTypeRepository.cs",
@@ -3178,7 +3215,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 190,
+              "DocumentIndex": 191,
               "Title": "EquipmentTypeRepository.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\DataLayer\\Repository\\Implement\\EquipmentTypeRepository.cs",
               "RelativeDocumentMoniker": "DataLayer\\Repository\\Implement\\EquipmentTypeRepository.cs",
@@ -3190,7 +3227,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 191,
+              "DocumentIndex": 192,
               "Title": "EquipmentResponseModel.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\ResponseModel\\Equipment\\EquipmentResponseModel.cs",
               "RelativeDocumentMoniker": "BusinessLayer\\ResponseModel\\Equipment\\EquipmentResponseModel.cs",
@@ -3202,7 +3239,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 192,
+              "DocumentIndex": 193,
               "Title": "EquipmentTypeResponseModel.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\ResponseModel\\EquipmentType\\EquipmentTypeResponseModel.cs",
               "RelativeDocumentMoniker": "BusinessLayer\\ResponseModel\\EquipmentType\\EquipmentTypeResponseModel.cs",
@@ -3214,7 +3251,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 193,
+              "DocumentIndex": 194,
               "Title": "CreateEquipmentRequestModel.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\RequestModel\\Equipment\\CreateEquipmentRequestModel.cs",
               "RelativeDocumentMoniker": "BusinessLayer\\RequestModel\\Equipment\\CreateEquipmentRequestModel.cs",
@@ -3226,7 +3263,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 194,
+              "DocumentIndex": 195,
               "Title": "ISemesterSubjectRepository.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\DataLayer\\Repository\\ISemesterSubjectRepository.cs",
               "RelativeDocumentMoniker": "DataLayer\\Repository\\ISemesterSubjectRepository.cs",
@@ -3238,7 +3275,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 195,
+              "DocumentIndex": 196,
               "Title": "KitTemplateRepository.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\DataLayer\\Repository\\Implement\\KitTemplateRepository.cs",
               "RelativeDocumentMoniker": "DataLayer\\Repository\\Implement\\KitTemplateRepository.cs",
@@ -3250,7 +3287,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 196,
+              "DocumentIndex": 197,
               "Title": "IKitTemplateRepository.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\DataLayer\\Repository\\IKitTemplateRepository.cs",
               "RelativeDocumentMoniker": "DataLayer\\Repository\\IKitTemplateRepository.cs",
@@ -3262,7 +3299,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 197,
+              "DocumentIndex": 198,
               "Title": "CreateKitRequestModel.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\RequestModel\\Kit\\CreateKitRequestModel.cs",
               "RelativeDocumentMoniker": "BusinessLayer\\RequestModel\\Kit\\CreateKitRequestModel.cs",
@@ -3274,7 +3311,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 198,
+              "DocumentIndex": 199,
               "Title": "UpdateKitTemplateRequestModel.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\RequestModel\\KitTemplate\\UpdateKitTemplateRequestModel.cs",
               "RelativeDocumentMoniker": "BusinessLayer\\RequestModel\\KitTemplate\\UpdateKitTemplateRequestModel.cs",
@@ -3286,7 +3323,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 199,
+              "DocumentIndex": 200,
               "Title": "Microsoft.Common.CurrentVersion.targets",
               "DocumentMoniker": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Current\\Bin\\amd64\\Microsoft.Common.CurrentVersion.targets",
               "ToolTip": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Current\\Bin\\amd64\\Microsoft.Common.CurrentVersion.targets",
@@ -3296,7 +3333,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 200,
+              "DocumentIndex": 201,
               "Title": "AddUserToClassRequestModel.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\RequestModel\\Class\\AddUserToClassRequestModel.cs",
               "RelativeDocumentMoniker": "BusinessLayer\\RequestModel\\Class\\AddUserToClassRequestModel.cs",
@@ -3308,7 +3345,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 201,
+              "DocumentIndex": 202,
               "Title": "IAssignmentService.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\Service\\IAssignmentService.cs",
               "RelativeDocumentMoniker": "BusinessLayer\\Service\\IAssignmentService.cs",
@@ -3320,7 +3357,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 202,
+              "DocumentIndex": 203,
               "Title": "ISlotRepository.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\DataLayer\\Repository\\ISlotRepository.cs",
               "RelativeDocumentMoniker": "DataLayer\\Repository\\ISlotRepository.cs",
@@ -3332,7 +3369,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 203,
+              "DocumentIndex": 204,
               "Title": "ISemesterRepository.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\DataLayer\\Repository\\ISemesterRepository.cs",
               "RelativeDocumentMoniker": "DataLayer\\Repository\\ISemesterRepository.cs",
@@ -3344,7 +3381,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 204,
+              "DocumentIndex": 205,
               "Title": "TeamRepository.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\DataLayer\\Repository\\Implement\\TeamRepository.cs",
               "RelativeDocumentMoniker": "DataLayer\\Repository\\Implement\\TeamRepository.cs",
@@ -3356,7 +3393,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 205,
+              "DocumentIndex": 206,
               "Title": "OhmLab_FUHCM_BE.csproj",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\OhmLab_FUHCM_BE\\OhmLab_FUHCM_BE.csproj",
               "RelativeDocumentMoniker": "OhmLab_FUHCM_BE\\OhmLab_FUHCM_BE.csproj",
@@ -3368,7 +3405,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 206,
+              "DocumentIndex": 207,
               "Title": "CreateKitTemplateRequestModel.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\RequestModel\\KitTemplate\\CreateKitTemplateRequestModel.cs",
               "RelativeDocumentMoniker": "BusinessLayer\\RequestModel\\KitTemplate\\CreateKitTemplateRequestModel.cs",
@@ -3380,7 +3417,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 207,
+              "DocumentIndex": 208,
               "Title": "KitResponseModel.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\ResponseModel\\Kit\\KitResponseModel.cs",
               "RelativeDocumentMoniker": "BusinessLayer\\ResponseModel\\Kit\\KitResponseModel.cs",
@@ -3392,7 +3429,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 208,
+              "DocumentIndex": 209,
               "Title": "GetAllKitRequestModel.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\RequestModel\\Kit\\GetAllKitRequestModel.cs",
               "RelativeDocumentMoniker": "BusinessLayer\\RequestModel\\Kit\\GetAllKitRequestModel.cs",
@@ -3404,7 +3441,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 209,
+              "DocumentIndex": 210,
               "Title": "UpdateKitRequestModel.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\RequestModel\\Kit\\UpdateKitRequestModel.cs",
               "RelativeDocumentMoniker": "BusinessLayer\\RequestModel\\Kit\\UpdateKitRequestModel.cs",
@@ -3416,7 +3453,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 210,
+              "DocumentIndex": 211,
               "Title": "GetAllKitTemplateRequestModel.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\RequestModel\\KitTemplate\\GetAllKitTemplateRequestModel.cs",
               "RelativeDocumentMoniker": "BusinessLayer\\RequestModel\\KitTemplate\\GetAllKitTemplateRequestModel.cs",
@@ -3428,7 +3465,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 211,
+              "DocumentIndex": 212,
               "Title": "GetAllUserRequestModel.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\RequestModel\\User\\GetAllUserRequestModel.cs",
               "RelativeDocumentMoniker": "BusinessLayer\\RequestModel\\User\\GetAllUserRequestModel.cs",
@@ -3440,7 +3477,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 212,
+              "DocumentIndex": 213,
               "Title": "KitTemplateResponseModel.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\ResponseModel\\KitTemplate\\KitTemplateResponseModel.cs",
               "RelativeDocumentMoniker": "BusinessLayer\\ResponseModel\\KitTemplate\\KitTemplateResponseModel.cs",
@@ -3452,7 +3489,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 213,
+              "DocumentIndex": 214,
               "Title": "appsettings.json",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\OhmLab_FUHCM_BE\\appsettings.json",
               "RelativeDocumentMoniker": "OhmLab_FUHCM_BE\\appsettings.json",
@@ -3464,7 +3501,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 214,
+              "DocumentIndex": 215,
               "Title": "UpdateEquipmentRequestModel.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\RequestModel\\Equipment\\UpdateEquipmentRequestModel.cs",
               "RelativeDocumentMoniker": "BusinessLayer\\RequestModel\\Equipment\\UpdateEquipmentRequestModel.cs",
@@ -3476,7 +3513,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 215,
+              "DocumentIndex": 216,
               "Title": "UserResponseModel.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\ResponseModel\\User\\UserResponseModel.cs",
               "RelativeDocumentMoniker": "BusinessLayer\\ResponseModel\\User\\UserResponseModel.cs",
@@ -3488,7 +3525,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 216,
+              "DocumentIndex": 217,
               "Title": "UpdateSubjectRequestModel.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\RequestModel\\Subject\\UpdateSubjectRequestModel.cs",
               "RelativeDocumentMoniker": "BusinessLayer\\RequestModel\\Subject\\UpdateSubjectRequestModel.cs",
@@ -3500,7 +3537,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 217,
+              "DocumentIndex": 218,
               "Title": "LoginResponseModel.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\ResponseModel\\User\\LoginResponseModel.cs",
               "RelativeDocumentMoniker": "BusinessLayer\\ResponseModel\\User\\LoginResponseModel.cs",
@@ -3512,7 +3549,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 218,
+              "DocumentIndex": 219,
               "Title": "LoginMailModel.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\RequestModel\\User\\LoginMailModel.cs",
               "RelativeDocumentMoniker": "BusinessLayer\\RequestModel\\User\\LoginMailModel.cs",
@@ -3524,7 +3561,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 219,
+              "DocumentIndex": 220,
               "Title": "UpdateRequestModel.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\RequestModel\\User\\UpdateRequestModel.cs",
               "RelativeDocumentMoniker": "BusinessLayer\\RequestModel\\User\\UpdateRequestModel.cs",
@@ -3536,7 +3573,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 220,
+              "DocumentIndex": 221,
               "Title": "RegisterRequestModel.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\RequestModel\\User\\RegisterRequestModel.cs",
               "RelativeDocumentMoniker": "BusinessLayer\\RequestModel\\User\\RegisterRequestModel.cs",
@@ -3548,7 +3585,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 221,
+              "DocumentIndex": 222,
               "Title": "LoginRequestModel.cs",
               "DocumentMoniker": "D:\\CN9\\Capstone_Project\\OhmLab\\CapstoneProject_OhmLab_BE\\OhmLab_FUHCM_BE\\BusinessLayer\\RequestModel\\User\\LoginRequestModel.cs",
               "RelativeDocumentMoniker": "BusinessLayer\\RequestModel\\User\\LoginRequestModel.cs",
