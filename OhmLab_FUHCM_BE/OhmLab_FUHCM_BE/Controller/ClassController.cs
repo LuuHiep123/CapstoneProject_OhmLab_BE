@@ -34,19 +34,13 @@ namespace OhmLab_FUHCM_BE.Controller
             return StatusCode(result.Code, result);
         }
 
-        
-
         [Authorize(Roles = "Admin,HeadOfDepartment,Lecturer")]
         [HttpGet]
-        public async Task<IActionResult> GetAllClasses([FromQuery] string? status = null)
+        public async Task<IActionResult> GetAllClasses()
         {
-            var requestModel = new GetAllClassRequestModel { Status = status };
-            var result = await _classService.GetAllClassesAsync(requestModel);
+            var result = await _classService.GetAllClassesAsync();
             return StatusCode(result.Code, result);
         }
-
-
-      
 
         [Authorize(Roles = "Admin,HeadOfDepartment,Lecturer")]
         [HttpGet("lecturer/{lecturerId}")]

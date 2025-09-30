@@ -2,6 +2,7 @@ using DataLayer.DBContext;
 using DataLayer.Entities;
 using DataLayer.Repository;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,10 +13,12 @@ namespace DataLayer.Repository.Implement
     public class TeamRepository : ITeamRepository
     {
         private readonly db_abadcb_ohmlabContext _DBContext;
+        private readonly ILogger<TeamRepository> _logger;
 
-        public TeamRepository(db_abadcb_ohmlabContext context)
+        public TeamRepository(db_abadcb_ohmlabContext context, ILogger<TeamRepository> logger)
         {
             _DBContext = context;
+            _logger = logger;
         }
 
         public async Task<List<Team>> GetAllAsync()
@@ -157,5 +160,23 @@ namespace DataLayer.Repository.Implement
                 throw ex;
             }
         }
+
+        public async Task<List<Team>> GetByLecturerIdAsync(Guid lecturerId)
+        {
+            try
+            {
+                return await _DBContext.Teams
+                    .Include(t => t.Class)
+                    .Include(t => t.TeamUsers)
+                        .ThenInclude(tu => tu.User)
+                    .Where(t => t.Class.LecturerId == lecturerId)
+                    .ToListAsync();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, $"Error getting teams by lecturer ID {lecturerId}");
+                throw;
+            }
+        }
     }
-} 
+}

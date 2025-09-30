@@ -1,4 +1,4 @@
-﻿using DataLayer.DBContext;
+using DataLayer.DBContext;
 using DataLayer.Entities;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -94,6 +94,63 @@ namespace DataLayer.Repository.Implement
                     .Include(rs => rs.Slot)
                     .FirstOrDefaultAsync(rs => rs.RegistrationScheduleId == id);
                 return listRegistrationSchedule;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public async Task<List<RegistrationSchedule>> GetByDateWithIncludesAsync(DateTime date)
+        {
+            try
+            {
+                var registrationSchedules = await _context.RegistrationSchedules
+                    .Include(rs => rs.Class)
+                    .Include(rs => rs.Lab)
+                    .Include(rs => rs.User)
+                    .Include(rs => rs.Slot)
+                    .Where(rs => rs.RegistrationScheduleDate.Date == date.Date)
+                    .ToListAsync();
+                return registrationSchedules;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public async Task<List<RegistrationSchedule>> GetByTeacherIdAndDateWithIncludesAsync(Guid teacherId, DateTime date)
+        {
+            try
+            {
+                var registrationSchedules = await _context.RegistrationSchedules
+                    .Include(rs => rs.Class)
+                    .Include(rs => rs.Lab)
+                    .Include(rs => rs.User)
+                    .Include(rs => rs.Slot)
+                    .Where(rs => rs.TeacherId == teacherId && rs.RegistrationScheduleDate.Date == date.Date)
+                    .ToListAsync();
+                return registrationSchedules;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public async Task<List<RegistrationSchedule>> GetByClassIdAndDateWithIncludesAsync(int classId, DateTime date)
+        {
+            try
+            {
+                var registrationSchedules = await _context.RegistrationSchedules
+                    .Include(rs => rs.Class)
+                    .Include(rs => rs.Lab)
+                    .Include(rs => rs.User)
+                    .Include(rs => rs.Slot)
+                    .Where(rs => rs.ClassId == classId && rs.RegistrationScheduleDate.Date == date.Date)
+                    .ToListAsync();
+                return registrationSchedules;
             }
             catch (Exception ex)
             {

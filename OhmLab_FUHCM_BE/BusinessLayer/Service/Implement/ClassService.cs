@@ -343,7 +343,7 @@ namespace BusinessLayer.Service.Implement
                 // Thực hiện phân trang với giá trị mặc định
                 var pagedClasses = response
                     .OrderBy(c => c.ClassName) // Sắp xếp theo tên lớp học
-                    .ToPagedList(1, 10); // Mặc định page 1, size 10
+                    .ToPagedList(1, 1000); // Mặc định page 1, size 10
 
                 return new DynamicResponse<ClassResponseModel>()
                 {
