@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("BusinessLayer")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5849ac5b24155b96c266b90d76cf9e52d7e781ff")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1181585af2bfdf7af25516b7f7e5265a82d66f32")]
 [assembly: System.Reflection.AssemblyProductAttribute("BusinessLayer")]
 [assembly: System.Reflection.AssemblyTitleAttribute("BusinessLayer")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
