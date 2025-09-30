@@ -500,7 +500,7 @@ namespace BusinessLayer.Service.Implement
                 ReportDescription = r.ReportDescription,
                 ReportCreateDate = r.ReportCreateDate,
                 ReportStatus = r.ReportStatus,
-                ScheduleId = r.ScheduleId,
+                ScheduleId = r.ScheduleId ?? 0,
                 ScheduleName = r.Schedule.ScheduleName,
                 ScheduleDate = r.Schedule.ScheduleDate,
                 ClassName = r.Schedule.Class.ClassName,

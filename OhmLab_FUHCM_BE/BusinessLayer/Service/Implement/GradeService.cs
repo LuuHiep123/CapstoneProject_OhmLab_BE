@@ -1163,7 +1163,7 @@ namespace BusinessLayer.Service.Implement
                     if (existingGrade != null)
                     {
                         // Update existing grade
-                        existingGrade.Grade1 = (int)gradeItem.Grade;
+                        existingGrade.Grade1 = gradeItem.Grade;
                         existingGrade.GradeDescription = gradeItem.GradeDescription;
                         existingGrade.GradeStatus = gradeItem.GradeStatus ?? "Đã chấm điểm";
                         
@@ -1177,7 +1177,7 @@ namespace BusinessLayer.Service.Implement
                             UserId = studentId,
                             TeamId = teamId,
                             LabId = labId,
-                            Grade1 = (int)gradeItem.Grade,
+                            Grade1 = gradeItem.Grade,
                             GradeDescription = gradeItem.GradeDescription,
                             GradeStatus = gradeItem.GradeStatus ?? "Đã chấm điểm"
                         };

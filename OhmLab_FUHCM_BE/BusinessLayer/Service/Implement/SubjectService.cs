@@ -74,7 +74,7 @@ namespace BusinessLayer.Service.Implement
                 {
                     SubjectId = subject.SubjectId,
                     SemesterId = subjectModel.SemesterId,
-                    SemesterSubject1 = $"{semester.SemesterName} - {subject.SubjectName}"
+                    SemesterSubject1 = "valid"
                 };
                 await _semesterSubjectRepository.AddAsync(semesterSubject);
             }

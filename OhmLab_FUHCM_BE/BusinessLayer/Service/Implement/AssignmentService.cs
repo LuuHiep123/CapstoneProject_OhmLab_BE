@@ -354,71 +354,7 @@ namespace BusinessLayer.Service.Implement
             }
         }
 
-        // Sinh viên nộp bài thực hành (Report)
-        public async Task<BaseResponse<ReportResponseModel>> SubmitPracticeReportAsync(Report report)
-        {
-            try
-            {
-                // Kiểm tra lịch thực hành tồn tại
-                var scheduleEntity = await _scheduleRepository.GetByIdAsync(report.ScheduleId);
-                if (scheduleEntity == null)
-                {
-                    return new BaseResponse<ReportResponseModel>
-                    {
-                        Code = 404,
-                        Success = false,
-                        Message = "Không tìm thấy lịch thực hành!",
-                        Data = null
-                    };
-                }
-                // Kiểm tra đã nộp chưa
-                var reports = await _reportRepository.GetByUserIdAsync(report.UserId);
-                bool hasSubmitted = reports.Any(r => r.ScheduleId == report.ScheduleId);
-                if (hasSubmitted)
-                {
-                    return new BaseResponse<ReportResponseModel>
-                    {
-                        Code = 409,
-                        Success = false,
-                        Message = "Bạn đã nộp báo cáo cho buổi này!",
-                        Data = null
-                    };
-                }
-                // Kiểm tra lịch đã kết thúc chưa
-                if (scheduleEntity.ScheduleDate < DateTime.Now)
-                {
-                    return new BaseResponse<ReportResponseModel>
-                    {
-                        Code = 400,
-                        Success = false,
-                        Message = "Không thể nộp báo cáo cho lịch đã kết thúc!",
-                        Data = null
-                    };
-                }
-                report.ReportCreateDate = DateTime.Now;
-                report.ReportStatus = "Submitted";
-                await _reportRepository.CreateAsync(report);
-                var dto = _mapper.Map<ReportResponseModel>(report);
-                return new BaseResponse<ReportResponseModel>
-                {
-                    Code = 200,
-                    Success = true,
-                    Message = "Nộp báo cáo thực hành thành công!",
-                    Data = dto
-                };
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, "Error in SubmitPracticeReport: {Message} | Inner: {Inner}", ex.Message, ex.InnerException?.Message);
-                return new BaseResponse<ReportResponseModel>
-                {
-                    Code = 500,
-                    Success = false,
-                    Message = ex.Message,
-                    Data = null
-                };
-            }
-        }
+     
 
         public async Task<BaseResponse<ReportResponseModel>> GetReportByIdAsync(int reportId)
         {
@@ -1241,6 +1177,11 @@ namespace BusinessLayer.Service.Implement
                     Data = false
                 };
             }
+        }
+
+        public Task<BaseResponse<ReportResponseModel>> SubmitPracticeReportAsync(Report report)
+        {
+            throw new NotImplementedException();
         }
     }
 } 

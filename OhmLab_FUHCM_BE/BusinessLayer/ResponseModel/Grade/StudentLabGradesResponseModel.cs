@@ -21,7 +21,7 @@ namespace BusinessLayer.ResponseModel.Grade
         public string ClassName { get; set; }
         public int TeamId { get; set; }
         public string TeamName { get; set; }
-        public int? GradeScore { get; set; }
+        public double? GradeScore { get; set; }
         public string? GradeDescription { get; set; }
         public string GradeStatus { get; set; }
         public bool IsTeamGrade { get; set; }

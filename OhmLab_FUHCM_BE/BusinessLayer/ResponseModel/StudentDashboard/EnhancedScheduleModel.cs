@@ -104,7 +104,7 @@ namespace BusinessLayer.ResponseModel.StudentDashboard
     {
         public int GradeId { get; set; }
         public string GradeStatus { get; set; }
-        public int? GradeScore { get; set; }
+        public double? GradeScore { get; set; }
         public string? GradeDescription { get; set; }
         public DateTime? SubmittedDate { get; set; }
         public DateTime? GradedDate { get; set; }
