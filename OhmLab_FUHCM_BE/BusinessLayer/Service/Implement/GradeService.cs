@@ -904,7 +904,7 @@ namespace BusinessLayer.Service.Implement
                     StudentId = studentId,
                     StudentName = student.UserFullName,
                     StudentEmail = student.UserEmail,
-                    LabGrades = labGrades.OrderByDescending(g => g).ToList()
+                    LabGrades = labGrades.OrderByDescending(g => g.LabId).ToList()
                 };
 
                 return new BaseResponse<StudentLabGradesResponseModel>
