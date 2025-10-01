@@ -848,7 +848,7 @@ namespace BusinessLayer.Service.Implement
                 ReportId = report.ReportId,
                 UserId = report.UserId,
                 UserName = user?.UserFullName ?? "Unknown",
-                ScheduleId = report.RegistrationScheduleId ?? 0,
+               
                 RegistrationScheduleId = report.RegistrationScheduleId,
                 ScheduleName = scheduleName,
                 ReportTitle = report.ReportTitle,
@@ -883,7 +883,7 @@ namespace BusinessLayer.Service.Implement
                 ReportId = report.ReportId,
                 UserId = report.UserId,
                 UserName = user?.UserFullName ?? "Unknown",
-                ScheduleId = report.RegistrationScheduleId ?? 0,
+                
                 RegistrationScheduleId = report.RegistrationScheduleId,
                 ScheduleName = scheduleName,
                 ReportTitle = report.ReportTitle,
