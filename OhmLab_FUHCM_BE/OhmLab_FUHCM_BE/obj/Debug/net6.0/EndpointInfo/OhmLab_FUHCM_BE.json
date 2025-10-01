@@ -639,15 +639,6 @@
         "tags": [
           "Class"
         ],
-        "parameters": [
-          {
-            "name": "status",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
         "responses": {
           "200": {
             "description": "Success"
@@ -3834,6 +3825,29 @@
         }
       }
     },
+    "/api/team/lecturer/{lecturerId}": {
+      "get": {
+        "tags": [
+          "Team"
+        ],
+        "parameters": [
+          {
+            "name": "lecturerId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
     "/api/teamequipment/search": {
       "post": {
         "tags": [
@@ -5546,8 +5560,8 @@
             "nullable": true
           },
           "grade": {
-            "type": "integer",
-            "format": "int32"
+            "type": "number",
+            "format": "float"
           }
         },
         "additionalProperties": false
@@ -5560,8 +5574,8 @@
             "format": "int32"
           },
           "grade": {
-            "type": "integer",
-            "format": "int32"
+            "type": "number",
+            "format": "float"
           },
           "gradeDescription": {
             "type": "string",
@@ -5578,8 +5592,8 @@
         "type": "object",
         "properties": {
           "individualGrade": {
-            "type": "integer",
-            "format": "int32"
+            "type": "number",
+            "format": "float"
           },
           "individualComment": {
             "type": "string",

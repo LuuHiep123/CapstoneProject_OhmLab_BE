@@ -1017,15 +1017,8 @@ namespace BusinessLayer.Service.Implement
                         Data = false
                     };
                 }
-                // Lấy semester hiện tại hoặc semester đầu tiên có sẵn
-                var allSemesters = await _semesterRepository.GetAllAsync();
-                var currentSemester = allSemesters.FirstOrDefault(s => s.SemesterStatus.ToLower() == "active");
-                
-                if (currentSemester == null)
-                {
-                    // Nếu không có semester active, lấy semester đầu tiên
-                    currentSemester = allSemesters.FirstOrDefault();
-                }
+                // Lấy semester cua class
+                var currentSemester = await _semesterRepository.GetByIdAsync(Class.Subject.SemesterSubjects.FirstOrDefault().SemesterId);
                 
                 if (currentSemester == null)
                 {

@@ -309,13 +309,10 @@ namespace BusinessLayer.Service.Implement
             {
                 var scheduleTypes = await _scheduleTypeRepository.GetAllAsync();
                 var availableScheduleTypes = scheduleTypes.Where(st => st.ScheduleTypeStatus == "Active").ToList();
-                var responses = new List<ScheduleTypeResponseModel>();
+                var listClass = await _classRepository.GetAllAsync();
 
-                foreach (var scheduleType in availableScheduleTypes)
-                {
-                    var response = await MapToScheduleTypeResponseModel(scheduleType);
-                    responses.Add(response);
-                }
+                var result = availableScheduleTypes.Where(abs => !listClass.Any(lc => lc.ScheduleTypeId == abs.ScheduleTypeId)).ToList();
+                var responses = _mapper.Map<List<ScheduleTypeResponseModel>>(result);
 
                 return new BaseResponse<List<ScheduleTypeResponseModel>>
                 {
