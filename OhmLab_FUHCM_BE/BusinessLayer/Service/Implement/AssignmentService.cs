@@ -432,11 +432,11 @@ namespace BusinessLayer.Service.Implement
             }
         }
 
-        public async Task<DynamicResponse<ReportResponseModel>> GetReportsByScheduleAsync(int scheduleId)
+        public async Task<DynamicResponse<ReportResponseModel>> GetReportsByRegistrationScheduleAsync(int registrationScheduleId)
         {
             try
             {
-                var reports = await _reportRepository.GetReportsByScheduleAsync(scheduleId);
+                var reports = await _reportRepository.GetByRegistrationScheduleIdAsync(registrationScheduleId);
                 
                 return new DynamicResponse<ReportResponseModel>
                 {
