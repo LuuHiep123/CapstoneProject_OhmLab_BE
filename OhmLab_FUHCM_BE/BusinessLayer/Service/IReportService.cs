@@ -20,7 +20,7 @@ namespace BusinessLayer.Service
         
         // User-specific reports
         Task<BaseResponse<object>> GetReportsByUserAsync(Guid userId);
-        Task<BaseResponse<object>> GetReportsByScheduleAsync(int scheduleId);
+        Task<BaseResponse<object>> GetReportsByRegistrationScheduleAsync(int registrationScheduleId);
         
         // Form helpers for creating reports (today only)
         Task<BaseResponse<object>> GetTodaySlotsAsync(Guid userId);

@@ -158,6 +158,7 @@ namespace DataLayer.Repository.Implement
             }
         }
 
+
         public async Task<bool> UpdateRegistrationSchedule(RegistrationSchedule registrationSchedule)
         {
             try
