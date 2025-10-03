@@ -1,4 +1,4 @@
-﻿using AutoMapper;
+using AutoMapper;
 using BusinessLayer.RequestModel.Accessory;
 using BusinessLayer.RequestModel.AccessoryKitTemplate;
 using BusinessLayer.RequestModel.Class;
@@ -95,7 +95,9 @@ namespace OhmLab_FUHCM_BE.AppStarts
                 .ForMember(dest => dest.SlotEndTime, opt => opt.Ignore());
 
             CreateMap<Grade, GradeResponseModel>()
-                .ForMember(dest => dest.Grade, opt => opt.MapFrom(src => src.Grade1));
+                .ForMember(dest => dest.IndividualGrade, opt => opt.MapFrom(src => src.Grade1))
+                .ForMember(dest => dest.TeamGrade, opt => opt.MapFrom(src => src.GradeTeamGrade));
+
 
             //TeamEquipment
             CreateMap<GetAllTeamEquipmentRequestModel, TeamEquipment>().ReverseMap();

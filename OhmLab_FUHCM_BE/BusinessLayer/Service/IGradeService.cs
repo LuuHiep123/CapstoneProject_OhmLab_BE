@@ -43,5 +43,8 @@ namespace BusinessLayer.Service
         
         // Cập nhật điểm số cho nhiều sinh viên trong lớp học
         Task<BaseResponse<UpdateClassGradesResponseModel>> UpdateClassGradesAsync(int classId, UpdateClassGradesRequestModel model, Guid lecturerId);
+        
+        // Cập nhật điểm cho toàn bộ thành viên trong team
+        Task<BaseResponse<bool>> UpdateTeamGradesAsync(int labId, int teamId, UpdateTeamGradesRequestModel model, Guid lecturerId);
     }
 }

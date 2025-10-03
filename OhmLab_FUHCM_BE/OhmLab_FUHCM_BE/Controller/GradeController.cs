@@ -48,6 +48,30 @@ namespace OhmLab_FUHCM_BE.Controller
             }
         }
 
+        // Cập nhật điểm cho toàn bộ thành viên trong team
+        [HttpPut("labs/{labId}/teams/{teamId}/grades")]
+        [Authorize(Roles = "Lecturer")]
+        public async Task<IActionResult> UpdateTeamGrades(int labId, int teamId, [FromBody] UpdateTeamGradesRequestModel model)
+        {
+            try
+            {
+                // Lấy lecturerId từ token
+                var lecturerIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+                if (!Guid.TryParse(lecturerIdClaim, out Guid lecturerId))
+                {
+                    return Unauthorized(new { success = false, message = "Token không hợp lệ!" });
+                }
+
+                var result = await _gradeService.UpdateTeamGradesAsync(labId, teamId, model, lecturerId);
+                return StatusCode(result.Code, result);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Lỗi khi cập nhật điểm cho nhóm: {Message}", ex.Message);
+                return StatusCode(500, new { success = false, message = "Đã xảy ra lỗi khi cập nhật điểm: " + ex.Message });
+            }
+        }
+
         // Giảng viên chấm điểm chi tiết cho từng member
         [HttpPost("labs/{labId}/teams/{teamId}/members/{studentId}/grade")]
         [Authorize(Roles = "Lecturer")]

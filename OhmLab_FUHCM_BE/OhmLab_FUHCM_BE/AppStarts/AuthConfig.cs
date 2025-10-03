@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 
@@ -9,7 +9,12 @@ namespace SWD392_FA24_SportShop.AppStarts
         public static void ConfigureAuthService(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-            var secrectKey = configuration["Jwt:Key"];
+            var secretKey = configuration["Jwt:Key"];
+            
+            if (string.IsNullOrEmpty(secretKey))
+            {
+                throw new ArgumentNullException(nameof(secretKey), "JWT Secret Key is not configured in appsettings.json");
+            }
 
             services.AddAuthentication(options =>
             {
@@ -20,7 +25,7 @@ namespace SWD392_FA24_SportShop.AppStarts
             {
                 o.TokenValidationParameters = new TokenValidationParameters
                 {
-                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secrectKey)),
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secretKey)),
                     ValidateIssuer = false,
                     ValidateAudience = false,
                     ValidateLifetime = true,

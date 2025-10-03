@@ -20,7 +20,9 @@ namespace BusinessLayer.ResponseModel.Assignment
     {
         public Guid StudentId { get; set; }
         public string StudentName { get; set; } = null!;
-        public double IndividualGrade { get; set; }   // Điểm cá nhân
+        public double IndividualGrade { get; set; }   // Điểm cá nhân (có thể đã được điều chỉnh)
+        public double TeamGrade { get; set; }         // Điểm gốc của team
+        public bool IsAdjusted { get; set; }          // Kiểm tra xem điểm cá nhân có khác điểm team không
         public string? IndividualComment { get; set; } // Nhận xét cá nhân
     }
 }
