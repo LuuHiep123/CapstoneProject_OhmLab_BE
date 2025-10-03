@@ -23,12 +23,16 @@ namespace BusinessLayer.Service.Implement
     {
         private readonly IKitRepository _kitRepository;
         private readonly IKitTemplateRepository _kitTemplateRepository;
+        private readonly IKitAccessoryRepository _kitAccessoryRepository;
+        private readonly IAccessoryKitTemplateRepository _accessoryKitTemplateRepository;
         private readonly IConfiguration _configuration;
         private readonly IMapper _mapper;
         private readonly IMemoryCache _memoryCache;
 
-        public KitService(IKitRepository kitRepository, IKitTemplateRepository kitTemplateRepository, IConfiguration configuration, IMapper mapper, IMemoryCache memoryCache)
+        public KitService(IKitAccessoryRepository kitAccessoryRepository, IAccessoryKitTemplateRepository accessoryKitTemplateRepository, IKitRepository kitRepository, IKitTemplateRepository kitTemplateRepository, IConfiguration configuration, IMapper mapper, IMemoryCache memoryCache)
         {
+            _kitAccessoryRepository = kitAccessoryRepository;
+            _accessoryKitTemplateRepository = accessoryKitTemplateRepository;
             _kitRepository = kitRepository;
             _kitTemplateRepository = kitTemplateRepository;
             _configuration = configuration;
@@ -93,18 +97,44 @@ namespace BusinessLayer.Service.Implement
                 kit.KitCreateDate = DateTime.Now;
                 kit.KitUrlQr = GenerateQRCodeBase64(kidId);
 
-                await _kitRepository.CreateKit(kit);
-
-                kitTemplate.KitTemplateQuantity += 1;
-                await _kitTemplateRepository.UpdateKitTemplate(kitTemplate);
-
-                return new BaseResponse<KitResponseModel>()
+                var listAccessoryKitTemplate = await _accessoryKitTemplateRepository.GetAllAccessoryKitTemplate();
+                listAccessoryKitTemplate = listAccessoryKitTemplate.Where(ak => ak.KitTemplateId.Equals(kit.KitTemplateId)).ToList();
+                if (listAccessoryKitTemplate.Any())
                 {
-                    Code = 200,
-                    Success = true,
-                    Message = "Create Kit Success!.",
-                    Data = null
-                };
+                    await _kitRepository.CreateKit(kit);
+                    kitTemplate.KitTemplateQuantity += 1;
+                    await _kitTemplateRepository.UpdateKitTemplate(kitTemplate);
+
+                    foreach (var AccessoryKitTemplate in listAccessoryKitTemplate)
+                    {
+                        var kitAccessory = new KitAccessory()
+                        {
+                            KitId = kidId,
+                            AccessoryId = AccessoryKitTemplate.AccessoryId,
+                            AccessoryQuantity = AccessoryKitTemplate.AccessoryQuantity,
+                            KitAccessoryStatus = "Valid"
+                        };
+                        await _kitAccessoryRepository.CreateKitAccessory(kitAccessory);
+                    }
+                    return new BaseResponse<KitResponseModel>()
+                    {
+                        Code = 200,
+                        Success = true,
+                        Message = "Create Kit Success!.",
+                        Data = null
+                    };
+                }
+                else
+                {
+                    return new BaseResponse<KitResponseModel>()
+                    {
+                        Code = 404,
+                        Success = false,
+                        Message = "Not found list AccessoryKitTemplate!.",
+                        Data = null
+                    };
+                }
+                
             }
             catch (Exception ex)
             {

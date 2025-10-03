@@ -5,6 +5,324 @@
     "version": "v1"
   },
   "paths": {
+    "/api/accessory/search": {
+      "post": {
+        "tags": [
+          "Accessory"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetAllAccessoryRequestModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetAllAccessoryRequestModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetAllAccessoryRequestModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/accessory/{id}": {
+      "get": {
+        "tags": [
+          "Accessory"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Accessory"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateAccessoryRequestModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateAccessoryRequestModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateAccessoryRequestModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/accessory/accessory": {
+      "post": {
+        "tags": [
+          "Accessory"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateAccessoryRequestModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateAccessoryRequestModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateAccessoryRequestModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/accessory/delete/{id}": {
+      "post": {
+        "tags": [
+          "Accessory"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/accessorykittemplate/search": {
+      "post": {
+        "tags": [
+          "AccessoryKitTemplate"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetAllAccessoryKitTemplateRequestModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetAllAccessoryKitTemplateRequestModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetAllAccessoryKitTemplateRequestModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/accessorykittemplate/kittemplate/{kitTemplateId}": {
+      "get": {
+        "tags": [
+          "AccessoryKitTemplate"
+        ],
+        "parameters": [
+          {
+            "name": "kitTemplateId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/accessorykittemplate/{id}": {
+      "get": {
+        "tags": [
+          "AccessoryKitTemplate"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "AccessoryKitTemplate"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateAccessoryKitTemplateRequestModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateAccessoryKitTemplateRequestModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateAccessoryKitTemplateRequestModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/accessorykittemplate/accessorykittemplate": {
+      "post": {
+        "tags": [
+          "AccessoryKitTemplate"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateAccessoryKitTemplateRequestModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateAccessoryKitTemplateRequestModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateAccessoryKitTemplateRequestModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/accessorykittemplate/delete/{id}": {
+      "post": {
+        "tags": [
+          "AccessoryKitTemplate"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
     "/api/analytics/lab-usage": {
       "get": {
         "tags": [
@@ -1991,6 +2309,176 @@
             }
           }
         },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/kitaccessory/search": {
+      "post": {
+        "tags": [
+          "KiAccessory"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetALlKitAccessoryRequestModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetALlKitAccessoryRequestModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetALlKitAccessoryRequestModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/kitaccessory/kit/{kitId}": {
+      "get": {
+        "tags": [
+          "KiAccessory"
+        ],
+        "parameters": [
+          {
+            "name": "kitId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/kitaccessory/{id}": {
+      "get": {
+        "tags": [
+          "KiAccessory"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "KiAccessory"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateKitAccessoryRequestModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateKitAccessoryRequestModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateKitAccessoryRequestModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/kitaccessory/kitaccessory": {
+      "post": {
+        "tags": [
+          "KiAccessory"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateKitAccessoryRequestModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateKitAccessoryRequestModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateKitAccessoryRequestModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/kitaccessory/delete/{id}": {
+      "post": {
+        "tags": [
+          "KiAccessory"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "Success"
@@ -4832,6 +5320,50 @@
         },
         "additionalProperties": false
       },
+      "CreateAccessoryKitTemplateRequestModel": {
+        "type": "object",
+        "properties": {
+          "kitTemplateId": {
+            "type": "string",
+            "nullable": true
+          },
+          "accessoryId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "accessoryQuantity": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "CreateAccessoryRequestModel": {
+        "type": "object",
+        "properties": {
+          "accessoryName": {
+            "type": "string",
+            "nullable": true
+          },
+          "accessoryDescription": {
+            "type": "string",
+            "nullable": true
+          },
+          "accessoryUrlImg": {
+            "type": "string",
+            "nullable": true
+          },
+          "accessoryValueCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "accessoryCase": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "CreateClassRequestModel": {
         "required": [
           "className"
@@ -4914,6 +5446,24 @@
         },
         "additionalProperties": false
       },
+      "CreateKitAccessoryRequestModel": {
+        "type": "object",
+        "properties": {
+          "kitId": {
+            "type": "string",
+            "nullable": true
+          },
+          "accessoryId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "accessoryQuantity": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
       "CreateKitRequestModel": {
         "type": "object",
         "properties": {
@@ -4949,6 +5499,13 @@
           },
           "kitTemplateUrlImg": {
             "type": "string",
+            "nullable": true
+          },
+          "listAccessory": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ListAccessoryRequestModel"
+            },
             "nullable": true
           }
         },
@@ -5294,6 +5851,72 @@
         },
         "additionalProperties": false
       },
+      "GetALlKitAccessoryRequestModel": {
+        "type": "object",
+        "properties": {
+          "pageNum": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "pageSize": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "keyWord": {
+            "type": "string",
+            "nullable": true
+          },
+          "status": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "GetAllAccessoryKitTemplateRequestModel": {
+        "type": "object",
+        "properties": {
+          "pageNum": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "pageSize": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "keyWord": {
+            "type": "string",
+            "nullable": true
+          },
+          "status": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "GetAllAccessoryRequestModel": {
+        "type": "object",
+        "properties": {
+          "pageNum": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "pageSize": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "keyWord": {
+            "type": "string",
+            "nullable": true
+          },
+          "status": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "GetAllEquipmentRequestModel": {
         "type": "object",
         "properties": {
@@ -5622,6 +6245,20 @@
         },
         "additionalProperties": false
       },
+      "ListAccessoryRequestModel": {
+        "type": "object",
+        "properties": {
+          "accessoryId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "accessoryQuantity": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
       "LoginMailModel": {
         "type": "object",
         "properties": {
@@ -5648,6 +6285,58 @@
             "nullable": true
           },
           "userNumberCode": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "UpdateAccessoryKitTemplateRequestModel": {
+        "type": "object",
+        "properties": {
+          "kitTemplateId": {
+            "type": "string",
+            "nullable": true
+          },
+          "accessoryId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "accessoryQuantity": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "accessoryKitTemplateStatus": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "UpdateAccessoryRequestModel": {
+        "type": "object",
+        "properties": {
+          "accessoryName": {
+            "type": "string",
+            "nullable": true
+          },
+          "accessoryDescription": {
+            "type": "string",
+            "nullable": true
+          },
+          "accessoryUrlImg": {
+            "type": "string",
+            "nullable": true
+          },
+          "accessoryValueCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "accessoryCase": {
+            "type": "string",
+            "nullable": true
+          },
+          "accessoryStatus": {
             "type": "string",
             "nullable": true
           }
@@ -5824,6 +6513,28 @@
             "nullable": true
           },
           "gradeStatus": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "UpdateKitAccessoryRequestModel": {
+        "type": "object",
+        "properties": {
+          "kitId": {
+            "type": "string",
+            "nullable": true
+          },
+          "accessoryId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "accessoryQuantity": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "kitAccessoryStatus": {
             "type": "string",
             "nullable": true
           }

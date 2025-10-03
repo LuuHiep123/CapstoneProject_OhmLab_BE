@@ -37,7 +37,7 @@ namespace OhmLab_FUHCM_BE.Controller
         }
 
 
-        [Authorize(Roles = "Admin,HeadOfDepartment,Lecturer,Lecturer")]
+        [Authorize(Roles = "Admin,HeadOfDepartment,Lecturer")]
         [HttpPost("Search")]
         public async Task<IActionResult> GetAllKit(GetAllKitRequestModel model)
         {

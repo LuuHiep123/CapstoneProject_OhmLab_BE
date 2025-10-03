@@ -1,37 +1,43 @@
 ﻿using AutoMapper;
+using BusinessLayer.RequestModel.Accessory;
+using BusinessLayer.RequestModel.AccessoryKitTemplate;
+using BusinessLayer.RequestModel.Class;
+using BusinessLayer.RequestModel.Equipment;
+using BusinessLayer.RequestModel.EquipmentType;
+using BusinessLayer.RequestModel.Kit;
+using BusinessLayer.RequestModel.KitAccessory;
+using BusinessLayer.RequestModel.KitTemplate;
+using BusinessLayer.RequestModel.Lab;
+using BusinessLayer.RequestModel.RegistrationSchedule;
+using BusinessLayer.RequestModel.ScheduleType;
+using BusinessLayer.RequestModel.Slot;
+using BusinessLayer.RequestModel.Subject;
+using BusinessLayer.RequestModel.Team;
+using BusinessLayer.RequestModel.TeamEquipment;
+using BusinessLayer.RequestModel.TeamKit;
 using BusinessLayer.RequestModel.User;
+using BusinessLayer.ResponseModel.Accessory;
+using BusinessLayer.ResponseModel.AccessoryKitTemplate;
+using BusinessLayer.ResponseModel.Assignment;
+using BusinessLayer.ResponseModel.Class;
+using BusinessLayer.ResponseModel.Equipment;
+using BusinessLayer.ResponseModel.EquipmentType;
+using BusinessLayer.ResponseModel.Kit;
+using BusinessLayer.ResponseModel.KitAccessory;
+using BusinessLayer.ResponseModel.KitTemplate;
+using BusinessLayer.ResponseModel.Lab;
+using BusinessLayer.ResponseModel.RegistrationSchedule;
+using BusinessLayer.ResponseModel.Schedule;
+using BusinessLayer.ResponseModel.ScheduleType;
+using BusinessLayer.ResponseModel.Slot;
+using BusinessLayer.ResponseModel.Subject;
+using BusinessLayer.ResponseModel.Team;
+using BusinessLayer.ResponseModel.TeamEquipment;
+using BusinessLayer.ResponseModel.TeamKit;
 using BusinessLayer.ResponseModel.User;
 using DataLayer.Entities;
-using BusinessLayer.RequestModel.Subject;
-using BusinessLayer.ResponseModel.Subject;
-using BusinessLayer.RequestModel.Lab;
-using BusinessLayer.ResponseModel.Lab;
-using BusinessLayer.RequestModel.Equipment;
-using BusinessLayer.ResponseModel.Equipment;
-using BusinessLayer.ResponseModel.Assignment;
-using BusinessLayer.RequestModel.TeamEquipment;
-using BusinessLayer.ResponseModel.TeamEquipment;
-using BusinessLayer.RequestModel.KitTemplate;
-using BusinessLayer.ResponseModel.KitTemplate;
-using BusinessLayer.RequestModel.Kit;
-using BusinessLayer.ResponseModel.Kit;
-using BusinessLayer.ResponseModel.Class;
-using BusinessLayer.RequestModel.Class;
-using BusinessLayer.RequestModel.EquipmentType;
-using BusinessLayer.ResponseModel.EquipmentType;
-using BusinessLayer.RequestModel.Slot;
-using BusinessLayer.ResponseModel.Slot;
-using BusinessLayer.RequestModel.ScheduleType;
-using BusinessLayer.ResponseModel.ScheduleType;
-using BusinessLayer.ResponseModel.Schedule;
-using BusinessLayer.RequestModel.Team;
-using BusinessLayer.ResponseModel.Team;
 using System;
 using System.Linq;
-using BusinessLayer.RequestModel.TeamKit;
-using BusinessLayer.ResponseModel.TeamKit;
-using BusinessLayer.RequestModel.RegistrationSchedule;
-using BusinessLayer.ResponseModel.RegistrationSchedule;
 
 namespace OhmLab_FUHCM_BE.AppStarts
 {
@@ -61,6 +67,7 @@ namespace OhmLab_FUHCM_BE.AppStarts
 
             //Equipment
             CreateMap<CreateEquipmentRequestModel, Equipment>().ReverseMap();
+            CreateMap<UpdateEquipmentRequestModel, Equipment>().ReverseMap();
             CreateMap<Equipment, EquipmentResponseModel>()
                 .ForMember(dest => dest.EquipmentTypeName, opt => opt.MapFrom(src => src.EquipmentType.EquipmentTypeName))
                 .ReverseMap();
@@ -127,6 +134,7 @@ namespace OhmLab_FUHCM_BE.AppStarts
 
             //Kit
             CreateMap<CreateKitRequestModel, Kit>().ReverseMap();
+            CreateMap<UpdateKitRequestModel, Kit>().ReverseMap();
             CreateMap<CreateKitRequestModel, KitResponseModel>().ReverseMap();
             CreateMap<Kit, KitResponseModel>()
                  .ForMember(dest => dest.KitTemplateName, opt => opt.MapFrom(src => src.KitTemplate.KitTemplateName))
@@ -310,6 +318,30 @@ namespace OhmLab_FUHCM_BE.AppStarts
             CreateMap<GetAllRegistrationScheduleRequestModel, RegistrationScheduleAllResponseModel>().ReverseMap();
             CreateMap<CreateRegistrationScheduleRequestModel, RegistrationSchedule>().ReverseMap();
             CreateMap<UpdateRegistrationScheduleRequestModel, RegistrationSchedule>().ReverseMap();
+
+
+            //Accessory
+            CreateMap<CreateAccessoryRequestModel, Accessory>().ReverseMap();
+            CreateMap<UpdateAccessoryRequestModel, Accessory>().ReverseMap();
+            CreateMap<AccessoryResponseModel, Accessory>().ReverseMap();
+
+            //AccessoryKitTemplate
+            CreateMap<CreateAccessoryKitTemplateRequestModel, AccessoryKitTemplate>().ReverseMap();
+            CreateMap<UpdateAccessoryKitTemplateRequestModel, AccessoryKitTemplate>().ReverseMap();
+            CreateMap<AccessoryKitTemplate, AccessoryKitTemplateResponseModel>()
+                .ForMember(dest => dest.KitTemplateName, opt => opt.MapFrom(src => src.KitTemplate.KitTemplateName))
+                .ForMember(dest => dest.AccessoryName, opt => opt.MapFrom(src => src.Accessory.AccessoryName))
+                .ForMember(dest => dest.AccessoryValueCode, opt => opt.MapFrom(src => src.Accessory.AccessoryValueCode))
+                .ReverseMap();
+
+            //KitAccessory
+            CreateMap<CreateKitAccessoryRequestModel, KitAccessory>().ReverseMap();
+            CreateMap<UpdateKitAccessoryRequestModel, KitAccessory>().ReverseMap();
+            CreateMap<KitAccessory, KitAccessoryResponseModel>()
+                .ForMember(dest => dest.KitName, opt => opt.MapFrom(src => src.Kit.KitName))
+                .ForMember(dest => dest.AccessoryName, opt => opt.MapFrom(src => src.Accessory.AccessoryName))
+                .ForMember(dest => dest.AccessoryValueCode, opt => opt.MapFrom(src => src.Accessory.AccessoryValueCode))
+                .ReverseMap();
 
 
         }

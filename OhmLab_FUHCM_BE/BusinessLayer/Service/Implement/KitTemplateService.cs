@@ -24,12 +24,14 @@ namespace BusinessLayer.Service.Implement
     public class KitTemplateService : IKitTemplateService
     {
         private readonly IKitTemplateRepository _kitTemplateRepository;
+        private readonly IAccessoryKitTemplateRepository _accessoryKitTemplateRepository;
         private readonly IConfiguration _configuration;
         private readonly IMapper _mapper;
         private readonly IMemoryCache _memoryCache;
 
-        public KitTemplateService(IKitTemplateRepository kitTemplateRepository, IConfiguration configuration, IMapper mapper, IMemoryCache memoryCache)
+        public KitTemplateService(IAccessoryKitTemplateRepository accessoryKitTemplateRepository, IKitTemplateRepository kitTemplateRepository, IConfiguration configuration, IMapper mapper, IMemoryCache memoryCache)
         {
+            _accessoryKitTemplateRepository = accessoryKitTemplateRepository;
             _kitTemplateRepository = kitTemplateRepository;
             _configuration = configuration;
             _mapper = mapper;
@@ -72,15 +74,55 @@ namespace BusinessLayer.Service.Implement
                         Data = null
                     };
                 }
-
-                await _kitTemplateRepository.CreateKitTemplate(kitTemplate);
-                return new BaseResponse<KitTemplateResponseModel>()
+                if (model.ListAccessory.Any())
                 {
-                    Code = 200,
-                    Success = true,
-                    Message = "Create KitTemplate Success!.",
-                    Data = null
-                };
+                    foreach (var Accessory in model.ListAccessory)
+                    {
+                        if (Accessory.AccessoryQuantity <= 0)
+                        {
+                            return new BaseResponse<KitTemplateResponseModel>()
+                            {
+                                Code = 401,
+                                Success = false,
+                                Message = "Quantity cannot be less than or equal to 0.",
+                                Data = null
+                            };
+                        }
+                    }
+
+                    await _kitTemplateRepository.CreateKitTemplate(kitTemplate);
+
+                    foreach (var Accessory in model.ListAccessory)
+                    {
+                        var AccessoryKitTemplate = new AccessoryKitTemplate()
+                        {
+                            KitTemplateId = kidTemplateId,
+                            AccessoryId = Accessory.AccessoryId,
+                            AccessoryQuantity = Accessory.AccessoryQuantity,
+                            AccessoryKitTemplateStatus = "Valid"
+                        };
+                        await _accessoryKitTemplateRepository.CreateAccessoryKitTemplate(AccessoryKitTemplate);
+                    }
+
+                    return new BaseResponse<KitTemplateResponseModel>()
+                    {
+                        Code = 200,
+                        Success = true,
+                        Message = "Create KitTemplate Success!.",
+                        Data = null
+                    };
+                }
+                else
+                {
+                    return new BaseResponse<KitTemplateResponseModel>()
+                    {
+                        Code = 401,
+                        Success = false,
+                        Message = "List accessory must have at least one accessory!.",
+                        Data = null
+                    };
+                }   
+                
             }
             catch (Exception ex)
             {

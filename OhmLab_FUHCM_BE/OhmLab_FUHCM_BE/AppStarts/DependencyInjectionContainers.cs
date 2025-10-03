@@ -82,6 +82,8 @@ namespace OhmLab_FUHCM_BE.AppStarts
             services.AddScoped<IScheduleTypeService, ScheduleTypeService>();
             services.AddScoped<IScheduleService, ScheduleService>();
             services.AddScoped<IGradeService, GradeService>();
+            services.AddScoped<IAccessoryKitTemplateService, AccessoryKitTemplateService>();
+            services.AddScoped<IKitAccessoryService, KitAccessoryService>();
             services.AddScoped<IAnalyticsService>(provider => new AnalyticsService(
                 provider.GetRequiredService<IScheduleRepository>(),
                 provider.GetRequiredService<IClassRepository>(),
@@ -92,6 +94,7 @@ namespace OhmLab_FUHCM_BE.AppStarts
                 provider.GetRequiredService<ILogger<AnalyticsService>>()
             ));
             services.AddScoped<ITeamKitService, TeamKitService>();
+            services.AddScoped<IAccessoryService, AccessoryService>();
 
             services.AddScoped<IStudentDashboardService>(provider => new StudentDashboardService(
                 provider.GetRequiredService<IClassUserRepository>(),
@@ -115,7 +118,7 @@ namespace OhmLab_FUHCM_BE.AppStarts
             services.AddScoped<IEquipmentRepository, EquipmentRepository>();
             services.AddScoped<IEquipmentTypeRepository, EquipmentTypeRepository>();
             services.AddScoped<IGradeRepository, GradeRepository>();
-            
+            services.AddScoped<IKitAccessoryRepository, KitAccessoryRepository>();
             services.AddScoped<IScheduleRepository, ScheduleRepository>();
             services.AddScoped<IReportRepository, ReportRepository>();
             services.AddScoped<IClassRepository, ClassRepository>();
@@ -133,6 +136,8 @@ namespace OhmLab_FUHCM_BE.AppStarts
             services.AddScoped<ILabKitTemplateRepository, LabKitTemplateRepository>();
             services.AddScoped<ITeamKitRepository, TeamKitRepository>();
             services.AddScoped<IRegistrationScheduleRepository, RegistrationScheduleRepository>();
+            services.AddScoped<IAccessoryRepository, AccessoryRepository>();
+            services.AddScoped<IAccessoryKitTemplateRepository, AccessoryKittemplateRepository>();
         }
     }
 }
