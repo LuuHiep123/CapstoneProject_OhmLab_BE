@@ -2162,14 +2162,14 @@
   },
   {
     "ContainingType": "OhmLab_FUHCM_BE.Controller.ReportController",
-    "Method": "GetReportsBySchedule",
-    "RelativePath": "api/report/schedule/{scheduleId}",
+    "Method": "GetReportsByRegistrationSchedule",
+    "RelativePath": "api/report/schedule/{registrationScheduleId}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "scheduleId",
+        "Name": "registrationScheduleId",
         "Type": "System.Int32",
         "IsRequired": true
       }

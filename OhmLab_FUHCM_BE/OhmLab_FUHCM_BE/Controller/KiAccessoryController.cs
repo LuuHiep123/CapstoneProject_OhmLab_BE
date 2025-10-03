@@ -35,7 +35,7 @@ namespace OhmLab_FUHCM_BE.Controller
         }
 
 
-        [Authorize(Roles = "Admin,HeadOfDepartment")]
+        [Authorize(Roles = "Admin,HeadOfDepartment,Lecturer")]
         [HttpGet("Kit/{kitId}")]
         public async Task<IActionResult> GetAllKitAccessoryByKitId(string kitId)
         {

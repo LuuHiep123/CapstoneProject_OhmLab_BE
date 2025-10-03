@@ -284,6 +284,8 @@ namespace DataLayer.DBContext
 
                 entity.Property(e => e.UserId).HasColumnName("User_id");
 
+                entity.Property(e => e.GradeTeamGrade).HasColumnName("Grade_TeamGrade");
+
                 entity.HasOne(d => d.Lab)
                      .WithMany(p => p.Grades)
                      .HasForeignKey(d => d.LabId)

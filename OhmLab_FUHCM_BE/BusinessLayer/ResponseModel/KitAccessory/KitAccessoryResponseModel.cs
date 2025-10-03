@@ -14,7 +14,9 @@ namespace BusinessLayer.ResponseModel.KitAccessory
         public int AccessoryId { get; set; }
         public string AccessoryName { get; set; }
         public string AccessoryValueCode { get; set; }
-        public int AccessoryQuantity { get; set; }
+        public int CurrentAccessoryQuantity { get; set; }
+        public int initialAccessoryQuantity { get; set; }
+        public float ValidPercen { get; set; }
         public string KitAccessoryStatus { get; set; } = null!;
     }
 }

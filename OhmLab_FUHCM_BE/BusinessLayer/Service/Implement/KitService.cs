@@ -162,6 +162,25 @@ namespace BusinessLayer.Service.Implement
                         Message = "Not found Kit!"
                     };
                 }
+                if (kit.KitStatus.ToLower().Equals("inuse"))
+                {
+                    return new BaseResponse<KitResponseModel>()
+                    {
+                        Code = 404,
+                        Success = false,
+                        Message = "Can not delete Kit in use!"
+                    };
+                }
+                var listKitAccessory = await _kitAccessoryRepository.GetAllKitAccessory();
+                listKitAccessory = listKitAccessory.Where(ka => ka.KitId == id).ToList();
+                foreach(var kitAccessory in listKitAccessory)
+                {
+                    kitAccessory.KitAccessoryStatus = "Invalid";
+                    await _kitAccessoryRepository.UpdateKitAccessory(kitAccessory);
+                }
+                var kitTemplate = await _kitTemplateRepository.GetKitTemplateById(kit.KitTemplateId);
+                kitTemplate.KitTemplateQuantity = kitTemplate.KitTemplateQuantity - 1;
+                await _kitTemplateRepository.UpdateKitTemplate(kitTemplate);
                 kit.KitStatus = "Invalid";
                 await _kitRepository.UpdateKit(kit);
                 return new BaseResponse<KitResponseModel>()

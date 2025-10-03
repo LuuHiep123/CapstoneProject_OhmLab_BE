@@ -21,13 +21,15 @@ namespace BusinessLayer.Service.Implement
     {
         private readonly IKitRepository _kitRepository;
         private readonly IKitAccessoryRepository _kitAccessoryRepository;
+        private readonly IAccessoryKitTemplateRepository _accessoryKitTemplateRepository;
         private readonly IAccessoryRepository _accessoryRepository;
         private readonly IConfiguration _configuration;
         private readonly IMapper _mapper;
         private readonly IMemoryCache _memoryCache;
 
-        public KitAccessoryService(IAccessoryRepository accessoryRepository, IKitAccessoryRepository kitAccessoryRepository, IKitRepository kitRepository,  IConfiguration configuration, IMapper mapper, IMemoryCache memoryCache)
+        public KitAccessoryService(IAccessoryKitTemplateRepository accessoryKitTemplateRepository, IAccessoryRepository accessoryRepository, IKitAccessoryRepository kitAccessoryRepository, IKitRepository kitRepository,  IConfiguration configuration, IMapper mapper, IMemoryCache memoryCache)
         {
+            _accessoryKitTemplateRepository = accessoryKitTemplateRepository;
             _accessoryRepository = accessoryRepository;
             _kitRepository = kitRepository;
             _kitAccessoryRepository = kitAccessoryRepository;
@@ -195,12 +197,59 @@ namespace BusinessLayer.Service.Implement
             {
                 var listKitAccessory = await _kitAccessoryRepository.GetAllKitAccessory();
                 var result = listKitAccessory.Where(ka => ka.KitId.Equals(KitId)).ToList();
+                var kit = await _kitRepository.GetKitById(KitId);
+
+                var listAccessoryKitTemplate = await _accessoryKitTemplateRepository.GetAllAccessoryKitTemplate();
+                listAccessoryKitTemplate = listAccessoryKitTemplate.Where(ak => ak.KitTemplateId.Equals(kit.KitTemplateId)).ToList();
+                List<KitAccessoryResponseModel> listResponse = new List<KitAccessoryResponseModel>();
+
+                foreach (var item in result)
+                {
+                    foreach (var item1 in listAccessoryKitTemplate)
+                    {
+                        if (item.AccessoryId.Equals(item1.AccessoryId))
+                        {
+                            var kitAccessory = new KitAccessoryResponseModel()
+                            {
+                                KitAccessoryId = item.KitAccessoryId,
+                                KitId = item.KitId,
+                                KitName = item.Kit.KitName,
+                                AccessoryId = item.AccessoryId,
+                                AccessoryName = item.Accessory.AccessoryName,
+                                AccessoryValueCode = item.Accessory.AccessoryValueCode,
+                                CurrentAccessoryQuantity = item.AccessoryQuantity,
+                                initialAccessoryQuantity = item1.AccessoryQuantity,
+                                ValidPercen = ((float)item.AccessoryQuantity / item1.AccessoryQuantity) * 100,
+                                KitAccessoryStatus = item.KitAccessoryStatus,
+                            };
+                            listResponse.Add(kitAccessory);
+                        }
+                        if (!listAccessoryKitTemplate.Any(ak => ak.AccessoryId == item.AccessoryId))
+                        {
+                            var kitAccessory = new KitAccessoryResponseModel()
+                            {
+                                KitAccessoryId = item.KitAccessoryId,
+                                KitId = item.KitId,
+                                KitName = item.Kit.KitName,
+                                AccessoryId = item.AccessoryId,
+                                AccessoryName = item.Accessory.AccessoryName,
+                                AccessoryValueCode = item.Accessory.AccessoryValueCode,
+                                CurrentAccessoryQuantity = item.AccessoryQuantity,
+                                initialAccessoryQuantity = 0,
+                                ValidPercen = 0,
+                                KitAccessoryStatus = item.KitAccessoryStatus,
+                            };
+                            listResponse.Add(kitAccessory);
+                            break;
+                        }
+                    }
+                }
                 return new BaseResponse<List<KitAccessoryResponseModel>>()
                 {
                     Code = 200,
                     Success = true,
                     Message = null,
-                    Data = _mapper.Map<List<KitAccessoryResponseModel>>(result)
+                    Data = listResponse
                 };
             }
             catch (Exception ex)

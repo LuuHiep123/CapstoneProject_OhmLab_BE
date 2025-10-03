@@ -3532,14 +3532,14 @@
         }
       }
     },
-    "/api/report/schedule/{scheduleId}": {
+    "/api/report/schedule/{registrationScheduleId}": {
       "get": {
         "tags": [
           "Report"
         ],
         "parameters": [
           {
-            "name": "scheduleId",
+            "name": "registrationScheduleId",
             "in": "path",
             "required": true,
             "schema": {
