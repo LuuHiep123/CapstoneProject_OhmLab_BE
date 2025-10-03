@@ -130,7 +130,7 @@ namespace OhmLab_FUHCM_BE.Controller
 
         // ✅ Admin/HeadOfDepartment: Xem lab theo ID
         [HttpGet("{id}")]
-        [Authorize(Roles = "Admin,HeadOfDepartment,Lecturer")]
+        [Authorize(Roles = "Admin,HeadOfDepartment,Lecturer,Student")]
         public async Task<IActionResult> GetLabById(int id)
         {
             var lab = await _labService.GetLabById(id);

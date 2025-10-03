@@ -21,7 +21,7 @@ namespace BusinessLayer.Service
         Task<BaseResponse<ReportResponseModel>> SubmitPracticeReportAsync(Report report);
         Task<BaseResponse<ReportResponseModel>> GetReportByIdAsync(int reportId);
         Task<DynamicResponse<ReportResponseModel>> GetReportsByStudentAsync(Guid studentId);
-        Task<DynamicResponse<ReportResponseModel>> GetReportsByScheduleAsync(int scheduleId);
+        Task<DynamicResponse<ReportResponseModel>> GetReportsByRegistrationScheduleAsync(int registrationScheduleId);
         Task<DynamicResponse<ReportResponseModel>> GetReportsByLabAsync(int labId);
 
         // Grade management

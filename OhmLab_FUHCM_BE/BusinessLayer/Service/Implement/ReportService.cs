@@ -78,7 +78,6 @@ namespace BusinessLayer.Service.Implement
                     return new BaseResponse<ReportResponseModel>
                     {
                         Code = 404,
-                        Success = false,
                         Message = "Không tìm thấy lịch học phù hợp cho hôm nay hoặc bạn không có quyền truy cập!",
                         Data = null
                     };
@@ -87,7 +86,7 @@ namespace BusinessLayer.Service.Implement
                 var report = new Report
                 {
                     UserId = userId,
-                    ScheduleId = schedule.RegistrationScheduleId,
+                    RegistrationScheduleId = schedule.RegistrationScheduleId,
                     ReportTitle = model.ReportTitle,
                     ReportDescription = model.ReportDescription,
                     ReportCreateDate = DateTime.Now,
@@ -96,6 +95,7 @@ namespace BusinessLayer.Service.Implement
 
                 var createdReport = await _reportRepository.CreateAsync(report);
                 var response = await MapToReportResponseModel(createdReport);
+
 
                 return new BaseResponse<ReportResponseModel>
                 {
@@ -394,42 +394,35 @@ namespace BusinessLayer.Service.Implement
             {
                 return schedule.TeacherId == userId;
             }
-
             return false;
         }
 
-        private async Task<List<Schedule>> GetUserSchedulesAsync(Guid userId)
-        {
-            var user = await _userRepository.GetUserById(userId);
-            if (user == null) return new List<Schedule>();
-
-            var allSchedules = await _scheduleRepository.GetAllAsync();
-            var userSchedules = new List<Schedule>();
-
-            if (user.UserRoleName == "Student")
-            {
-                var studentClasses = await _classRepository.GetByStudentIdAsync(userId);
-                var classIds = studentClasses.Select(c => c.ClassId).ToList();
-                userSchedules = allSchedules.Where(s => classIds.Contains(s.ClassId)).ToList();
-            }
-            else if (user.UserRoleName == "Lecturer")
-            {
-                var lecturerClasses = await _classRepository.GetByLecturerIdAsync(userId);
-                var classIds = lecturerClasses.Select(c => c.ClassId).ToList();
-                userSchedules = allSchedules.Where(s => classIds.Contains(s.ClassId)).ToList();
-            }
-            else
-            {
-                // Admin/HeadOfDepartment can see all schedules
-                userSchedules = allSchedules.ToList();
-            }
-
-            return userSchedules;
-        }
 
         private async Task<RegistrationSchedule?> FindScheduleByUserSelectionAsync(Guid userId, DateTime date, string slotName, string className, string userRole)
         {
-            var todaySchedules = await GetUserTodaySchedulesAsync(userId, userRole);
+            List<RegistrationSchedule> todaySchedules;
+            
+            if (userRole == "Student")
+            {
+                var studentClasses = await _classRepository.GetByStudentIdAsync(userId);
+                var classIds = studentClasses.Select(c => c.ClassId).ToList();
+                
+                todaySchedules = new List<RegistrationSchedule>();
+                foreach (var classId in classIds)
+                {
+                    var classSchedules = await _registrationScheduleRepository.GetByClassIdAndDateWithIncludesAsync(classId, date);
+                    todaySchedules.AddRange(classSchedules);
+                }
+            }
+            else if (userRole == "Lecturer")
+            {
+                todaySchedules = await _registrationScheduleRepository.GetByTeacherIdAndDateWithIncludesAsync(userId, date);
+            }
+            else
+            {
+                return null;
+            }
+            
             return todaySchedules.FirstOrDefault(s => 
                 s.Slot?.SlotName == slotName &&
                 s.Class?.ClassName == className);
@@ -691,11 +684,11 @@ namespace BusinessLayer.Service.Implement
             }
         }
 
-        public async Task<BaseResponse<object>> GetReportsByScheduleAsync(int scheduleId)
+        public async Task<BaseResponse<object>> GetReportsByRegistrationScheduleAsync(int registrationScheduleId)
         {
             try
             {
-                var reports = await _reportRepository.GetByScheduleIdAsync(scheduleId);
+                var reports = await _reportRepository.GetByRegistrationScheduleIdAsync(registrationScheduleId);
                 
                 var reportResponses = new List<ReportResponseModel>();
                 foreach (var report in reports)
@@ -714,13 +707,13 @@ namespace BusinessLayer.Service.Implement
                 {
                     Code = 200,
                     Success = true,
-                    Message = "Lấy danh sách báo cáo theo lịch học thành công!",
+                    Message = "Lấy danh sách báo cáo theo lịch thực hành thành công!",
                     Data = result
                 };
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Error in GetReportsBySchedule: {Message}", ex.Message);
+                _logger.LogError(ex, "Error in GetReportsByRegistrationSchedule: {Message}", ex.Message);
                 return new BaseResponse<object>
                 {
                     Code = 500,
@@ -848,7 +841,7 @@ namespace BusinessLayer.Service.Implement
                 ReportId = report.ReportId,
                 UserId = report.UserId,
                 UserName = user?.UserFullName ?? "Unknown",
-                ScheduleId = report.RegistrationScheduleId ?? 0,
+              
                 RegistrationScheduleId = report.RegistrationScheduleId,
                 ScheduleName = scheduleName,
                 ReportTitle = report.ReportTitle,
@@ -883,7 +876,7 @@ namespace BusinessLayer.Service.Implement
                 ReportId = report.ReportId,
                 UserId = report.UserId,
                 UserName = user?.UserFullName ?? "Unknown",
-                ScheduleId = report.RegistrationScheduleId ?? 0,
+                
                 RegistrationScheduleId = report.RegistrationScheduleId,
                 ScheduleName = scheduleName,
                 ReportTitle = report.ReportTitle,

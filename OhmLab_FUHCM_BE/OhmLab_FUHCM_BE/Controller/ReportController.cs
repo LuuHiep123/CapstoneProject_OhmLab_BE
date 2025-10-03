@@ -204,17 +204,17 @@ namespace OhmLab_FUHCM_BE.Controller
 
         // --- Báo cáo theo lịch học ---
         [Authorize]
-        [HttpGet("schedule/{scheduleId}")]
-        public async Task<IActionResult> GetReportsBySchedule(int scheduleId)
+        [HttpGet("schedule/{registrationScheduleId}")]
+        public async Task<IActionResult> GetReportsByRegistrationSchedule(int registrationScheduleId)
         {
             try
             {
-                var result = await _reportService.GetReportsByScheduleAsync(scheduleId);
+                var result = await _reportService.GetReportsByRegistrationScheduleAsync(registrationScheduleId);
                 return StatusCode(result.Code, result);
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Error in GetReportsBySchedule: {Message}", ex.Message);
+                _logger.LogError(ex, "Error in GetReportsByRegistrationSchedule: {Message}", ex.Message);
                 return StatusCode(500, new { Code = 500, Success = false, Message = "Lỗi hệ thống!" });
             }
         }
