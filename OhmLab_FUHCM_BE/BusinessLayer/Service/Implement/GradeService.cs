@@ -128,7 +128,8 @@ namespace BusinessLayer.Service.Implement
                         TeamId = teamId,
                         LabId = labId,
                         UserId = member.UserId, // UserId là từng thành viên trong team
-                        Grade1 = model.Grade, // Tất cả cùng điểm
+                        Grade1 = model.Grade, // Điểm cá nhân (bằng điểm team ban đầu)
+                        GradeTeamGrade = model.Grade, // Lưu điểm gốc của team
                         GradeDescription = model.GradeDescription,
                         GradeStatus = model.GradeStatus
                     };
@@ -211,13 +212,13 @@ namespace BusinessLayer.Service.Implement
                     };
                 }
 
-                // Tạo hoặc cập nhật grade cho member
+                // Lấy grade hiện tại của member
                 var existingGrade = (await _gradeRepository.GetByLabIdAsync(labId))
                     .FirstOrDefault(g => g.TeamId == teamId && g.UserId == studentId);
 
                 if (existingGrade != null)
                 {
-                    // Cập nhật grade hiện tại
+                    // Chỉ cập nhật điểm cá nhân, giữ nguyên điểm team
                     existingGrade.Grade1 = model.IndividualGrade;
                     existingGrade.GradeDescription = model.IndividualComment;
                     existingGrade.GradeStatus = "Graded";
@@ -226,13 +227,17 @@ namespace BusinessLayer.Service.Implement
                 }
                 else
                 {
-                    // Tạo grade mới
+                    // Nếu chưa có grade, tạo mới với cả điểm team (nếu có) hoặc để null
+                    var teamGrade = (await _gradeRepository.GetByLabIdAsync(labId))
+                        .FirstOrDefault(g => g.TeamId == teamId)?.GradeTeamGrade;
+
                     var newGrade = new Grade
                     {
                         TeamId = teamId,
                         LabId = labId,
                         UserId = studentId,
                         Grade1 = model.IndividualGrade,
+                        GradeTeamGrade = teamGrade ?? model.IndividualGrade, // Nếu có điểm team thì dùng, không thì dùng điểm cá nhân
                         GradeDescription = model.IndividualComment,
                         GradeStatus = "Graded"
                     };
@@ -392,37 +397,34 @@ namespace BusinessLayer.Service.Implement
                     };
                 }
 
-                // Lấy grade của team
+                // Lấy tất cả grade của team trong lab này
                 var teamGrades = (await _gradeRepository.GetByLabIdAsync(labId))
                     .Where(g => g.TeamId == teamId).ToList();
 
-                // Debug: In ra số lượng grade tìm được
-                Console.WriteLine($"Debug: Tìm thấy {teamGrades.Count} grade cho team {teamId}");
-
-                // Tất cả grade đều là của thành viên trong team (cùng điểm)
-                var memberGrades = teamGrades.Where(g => g.UserId != Guid.Empty).ToList();
-                var teamGrade = memberGrades.FirstOrDefault(); // Lấy grade đầu tiên làm điểm chung
-
-                // Debug: In ra thông tin grade
-                if (teamGrade != null)
+                if (!teamGrades.Any())
                 {
-                    Console.WriteLine($"Debug: Team grade: {teamGrade.Grade1}, UserId: {teamGrade.UserId}");
-                }
-                else
-                {
-                    Console.WriteLine("Debug: Không tìm thấy team grade!");
+                    return new BaseResponse<TeamGradeResponseModel>
+                    {
+                        Code = 404,
+                        Success = false,
+                        Message = "Chưa có điểm cho team này!",
+                        Data = null
+                    };
                 }
 
+                // Lấy điểm gốc của team (lấy từ bất kỳ thành viên nào)
+                var teamGrade = teamGrades.First().GradeTeamGrade;
+                
                 var response = new TeamGradeResponseModel
                 {
                     TeamId = teamId,
                     TeamName = team.TeamName,
                     LabId = labId,
                     LabName = lab.LabName,
-                    TeamGrade = teamGrade?.Grade1 ?? 0,
-                    TeamComment = teamGrade?.GradeDescription,
-                    GradeStatus = teamGrade?.GradeStatus ?? "Pending",
-                    GradedDate = teamGrade != null ? DateTime.Now : null
+                    TeamGrade = teamGrade, // Điểm gốc của team
+                    TeamComment = teamGrades.First().GradeDescription,
+                    GradeStatus = teamGrades.First().GradeStatus ?? "Pending",
+                    GradedDate = DateTime.Now
                 };
 
                 // Lấy thông tin các member và điểm của họ
@@ -430,14 +432,16 @@ namespace BusinessLayer.Service.Implement
                 {
                     foreach (var member in team.TeamUsers)
                     {
-                        var memberGrade = memberGrades.FirstOrDefault(g => g.UserId == member.UserId);
+                        var memberGrade = teamGrades.FirstOrDefault(g => g.UserId == member.UserId);
                         var memberUser = await _userRepository.GetUserById(member.UserId);
 
                         response.Members.Add(new TeamMemberGradeModel
                         {
                             StudentId = member.UserId,
-                            StudentName = memberUser?.UserFullName ?? "Unknown",
-                            IndividualGrade = memberGrade?.Grade1 ?? 0,
+                            StudentName = memberUser?.UserFullName ?? "Không xác định",
+                            IndividualGrade = memberGrade?.Grade1 ?? 0, // Điểm cá nhân
+                            TeamGrade = memberGrade?.GradeTeamGrade ?? 0, // Điểm gốc của team
+                            
                             IndividualComment = memberGrade?.GradeDescription
                         });
                     }
@@ -509,16 +513,18 @@ namespace BusinessLayer.Service.Implement
                     };
                 }
 
-                // Lấy điểm cá nhân
-                var individualGrade = (await _gradeRepository.GetByLabIdAsync(labId))
+                // Lấy điểm cá nhân và điểm team
+                var grade = (await _gradeRepository.GetByLabIdAsync(labId))
                     .FirstOrDefault(g => g.TeamId == teamWithLab.TeamId && g.UserId == studentId);
 
                 var response = new TeamMemberGradeModel
                 {
                     StudentId = studentId,
                     StudentName = "You", // Student xem điểm của chính mình
-                    IndividualGrade = individualGrade?.Grade1 ?? 0,
-                    IndividualComment = individualGrade?.GradeDescription
+                    IndividualGrade = grade?.Grade1 ?? 0, // Điểm cá nhân
+                    TeamGrade = grade?.GradeTeamGrade ?? 0, // Điểm gốc của team
+                    IsAdjusted = grade != null && grade.Grade1 != grade.GradeTeamGrade, // Kiểm tra có điều chỉnh không
+                    IndividualComment = grade?.GradeDescription
                 };
 
                 return new BaseResponse<TeamMemberGradeModel>
@@ -1211,6 +1217,101 @@ namespace BusinessLayer.Service.Implement
                 response.Code = 500;
                 response.Success = false;
                 response.Message = $"Lỗi khi cập nhật điểm: {ex.Message}";
+            }
+            
+            return response;
+        }
+
+        public async Task<BaseResponse<bool>> UpdateTeamGradesAsync(int labId, int teamId, UpdateTeamGradesRequestModel model, Guid lecturerId)
+        {
+            var response = new BaseResponse<bool>();
+            try
+            {
+                // Kiểm tra lab tồn tại
+                var lab = await _labRepository.GetLabById(labId);
+                if (lab == null)
+                {
+                    response.Code = 404;
+                    response.Message = "Không tìm thấy bài lab này.";
+                    return response;
+                }
+
+                // Kiểm tra team tồn tại và thuộc lớp học
+                var team = await _teamRepository.GetByIdAsync(teamId);
+                if (team == null)
+                {
+                    response.Code = 404;
+                    response.Message = "Không tìm thấy nhóm này.";
+                    return response;
+                }
+
+                // Kiểm tra giảng viên có phải là người dạy lớp không
+                var classInfo = await _classRepository.GetByIdAsync(team.ClassId);
+                if (classInfo == null || classInfo.LecturerId != lecturerId)
+                {
+                    response.Code = 403;
+                    response.Message = "Bạn không có quyền cập nhật điểm cho nhóm này.";
+                    return response;
+                }
+
+                // Lấy tất cả thành viên trong team
+                var teamMembers = await _teamUserRepository.GetByTeamIdAsync(teamId);
+                if (teamMembers == null || !teamMembers.Any())
+                {
+                    response.Code = 404;
+                    response.Message = "Không tìm thấy thành viên nào trong nhóm này.";
+                    return response;
+                }
+
+                // Lấy tất cả điểm hiện có của team cho lab này
+                var existingGrades = await _gradeRepository.GetGradesByLabAndTeam(labId, teamId);
+                
+                // Cập nhật điểm cho từng thành viên
+                foreach (var member in teamMembers)
+                {
+                    // Kiểm tra xem đã có điểm chưa
+                    var existingGrade = existingGrades.FirstOrDefault(g => g.UserId == member.UserId);
+                    
+                    if (existingGrade != null)
+                    {
+                        // Cập nhật điểm hiện có
+                        existingGrade.Grade1 = model.Grade;
+                        existingGrade.GradeTeamGrade = model.Grade; // Cập nhật cả điểm gốc của team
+                        existingGrade.GradeDescription = model.Description ?? existingGrade.GradeDescription;
+                        existingGrade.GradeStatus = "Đã chấm điểm";
+                        
+                        
+                        await _gradeRepository.UpdateAsync(existingGrade);
+                    }
+                    else
+                    {
+                        // Tạo mới bản ghi điểm
+                        var newGrade = new Grade
+                        {
+                            UserId = member.UserId,
+                            LabId = labId,
+                            TeamId = teamId,
+                            Grade1 = model.Grade,
+                            GradeTeamGrade = model.Grade,
+                            GradeDescription = model.Description,
+                            GradeStatus = "Đã chấm điểm",
+                            
+                        };
+                        
+                        await _gradeRepository.CreateAsync(newGrade);
+                    }
+                }
+
+                response.Code = 200;
+                response.Success = true;
+                response.Message = "Cập nhật điểm thành công cho toàn bộ thành viên trong nhóm.";
+                response.Data = true;
+            }
+            catch (Exception ex)
+            {
+                response.Code = 500;
+                response.Success = false;
+                response.Message = "Đã xảy ra lỗi khi cập nhật điểm: " + ex.Message;
             }
             
             return response;

@@ -1018,12 +1018,8 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 7,
+          "SelectedChildIndex": 6,
           "Children": [
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
-            },
             {
               "$type": "Document",
               "DocumentIndex": 6,
@@ -1034,8 +1030,7 @@
               "RelativeToolTip": "DataLayer\\Repository\\Implement\\EquipmentRepository.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-30T14:45:06.788Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-09-30T14:45:06.788Z"
             },
             {
               "$type": "Document",
@@ -1047,8 +1042,7 @@
               "RelativeToolTip": "BusinessLayer\\Service\\Implement\\EquipmentService.cs",
               "ViewState": "AgIAAL4AAAAAAAAAAAAUwMIAAAAQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-30T14:45:06.07Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-09-30T14:45:06.07Z"
             },
             {
               "$type": "Document",
@@ -1072,8 +1066,7 @@
               "RelativeToolTip": "OhmLab_FUHCM_BE\\Controller\\EquipmentController.cs",
               "ViewState": "AgIAABUAAAAAAAAAAAAzwGkAAAAgAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-30T14:45:06.049Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-09-30T14:45:06.049Z"
             },
             {
               "$type": "Document",
@@ -1085,8 +1078,7 @@
               "RelativeToolTip": "OhmLab_FUHCM_BE\\Controller\\UserController.cs",
               "ViewState": "AgIAACsAAAAAAAAAAAAmwDcAAABGAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-30T14:45:06.563Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-09-30T14:45:06.563Z"
             },
             {
               "$type": "Document",
@@ -1098,8 +1090,7 @@
               "RelativeToolTip": "BusinessLayer\\RequestModel\\User\\RegisterRequestModel.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAA6AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-30T14:45:06.985Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-09-30T14:45:06.985Z"
             },
             {
               "$type": "Document",
@@ -1124,8 +1115,7 @@
               "RelativeToolTip": "OhmLab_FUHCM_BE\\Controller\\ReportController.cs",
               "ViewState": "AgIAAA4AAAAAAAAAAAAUwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-30T14:45:05.279Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-09-30T14:45:05.279Z"
             },
             {
               "$type": "Document",
@@ -1149,8 +1139,7 @@
               "RelativeToolTip": "DataLayer\\DBContext\\db_abadcb_ohmlabContext.cs",
               "ViewState": "AgIAABgBAAAAAAAAAAASwB8BAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-30T14:45:04.895Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-09-30T14:45:04.895Z"
             },
             {
               "$type": "Document",
@@ -1486,8 +1475,7 @@
               "RelativeToolTip": "OhmLab_FUHCM_BE\\AppStarts\\DependencyInjectionContainers.cs",
               "ViewState": "AgIAAHEAAAAAAAAAAAAAAIoAAABMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-30T14:45:05.151Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-09-30T14:45:05.151Z"
             },
             {
               "$type": "Document",
@@ -1511,8 +1499,7 @@
               "RelativeToolTip": "OhmLab_FUHCM_BE\\Controller\\GradeController.cs",
               "ViewState": "AgIAAJ8AAAAAAAAAAAAiwLMAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-30T14:45:05.275Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-09-30T14:45:05.275Z"
             },
             {
               "$type": "Document",
@@ -1764,8 +1751,7 @@
               "RelativeToolTip": "OhmLab_FUHCM_BE\\AppStarts\\AuthConfig.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-30T14:45:05.844Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-09-30T14:45:05.844Z"
             },
             {
               "$type": "Document",
@@ -1861,8 +1847,7 @@
               "RelativeToolTip": "OhmLab_FUHCM_BE\\Controller\\AssignmentController.cs",
               "ViewState": "AgIAAAcAAAAAAAAAAAAIwBsAAACRAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-30T14:45:05.991Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-09-30T14:45:05.991Z"
             },
             {
               "$type": "Document",
@@ -1898,8 +1883,7 @@
               "RelativeToolTip": "OhmLab_FUHCM_BE\\Controller\\LabController.cs",
               "ViewState": "AgIAAMEAAAAAAAAAAAAqwNkAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-30T14:45:05.486Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-09-30T14:45:05.486Z"
             },
             {
               "$type": "Document",
@@ -2667,8 +2651,7 @@
               "RelativeToolTip": "OhmLab_FUHCM_BE\\Controller\\SemesterController.cs",
               "ViewState": "AgIAABYAAAAAAAAAAAAQwC8AAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-30T14:45:05.177Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-09-30T14:45:05.177Z"
             },
             {
               "$type": "Document",
@@ -2728,8 +2711,7 @@
               "RelativeToolTip": "OhmLab_FUHCM_BE\\Controller\\CourseController.cs",
               "ViewState": "AgIAAA4AAAAAAAAAAAAAABYAAAAxAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-30T14:45:05.199Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-09-30T14:45:05.199Z"
             },
             {
               "$type": "Document",
@@ -4066,6 +4048,10 @@
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-09-30T14:45:06.992Z"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
             }
           ]
         }
