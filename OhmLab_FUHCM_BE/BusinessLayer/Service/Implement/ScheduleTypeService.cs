@@ -55,7 +55,7 @@ namespace BusinessLayer.Service.Implement
                 var existingScheduleType = existingScheduleTypes.Any(st => 
                     st.ScheduleTypeName.ToLower() == model.ScheduleTypeName.ToLower() && st.SlotId == model.SlotId && st.ScheduleTypeDow == model.ScheduleTypeDow);
                 
-                if (existingScheduleType != null)
+                if (existingScheduleType)
                 {
                     return new BaseResponse<ScheduleTypeResponseModel>
                     {

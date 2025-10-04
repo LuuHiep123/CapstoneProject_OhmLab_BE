@@ -12,6 +12,6 @@ namespace BusinessLayer.RequestModel.User
         public string UserRollNumber { get; set; } = null!;
         public string UserEmail { get; set; } = null!;
         public string UserNumberCode { get; set; } = null!;
-        public string User_RoleName { get; set; } = null!;
+        public string UserRoleName { get; set; } = null!;
     }
 }

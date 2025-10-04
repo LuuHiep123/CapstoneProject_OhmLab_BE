@@ -122,6 +122,7 @@ namespace BusinessLayer.Service.Implement
                 equipment.EquipmentId = equipmentId;
                 equipment.EquipmentCode = equipmentType.EquipmentTypeCode;
                 equipment.EquipmentStatus = "Available";
+                equipment.EquipmentTypeUrlImg = equipmentType.EquipmentTypeUrlImg;
                 equipment.EquipmentQr = GenerateQRCodeBase64(equipmentId);
                 await _equipmentRepository.CreateEquipment(equipment);
 

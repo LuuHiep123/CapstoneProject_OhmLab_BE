@@ -11,6 +11,5 @@ namespace BusinessLayer.RequestModel.Kit
         public string KitTemplateId { get; set; } = null!;
         public string KitName { get; set; } = null!;
         public string? KitDescription { get; set; }
-        public string? KitUrlImg { get; set; }
     }
 }

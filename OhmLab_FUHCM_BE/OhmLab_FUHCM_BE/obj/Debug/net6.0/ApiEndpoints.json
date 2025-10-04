@@ -1386,6 +1386,32 @@
   },
   {
     "ContainingType": "OhmLab_FUHCM_BE.Controller.GradeController",
+    "Method": "UpdateTeamGrades",
+    "RelativePath": "api/grade/labs/{labId}/teams/{teamId}/grades",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "labId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "teamId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "model",
+        "Type": "BusinessLayer.RequestModel.Assignment.UpdateTeamGradesRequestModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OhmLab_FUHCM_BE.Controller.GradeController",
     "Method": "GradeTeamMember",
     "RelativePath": "api/grade/labs/{labId}/teams/{teamId}/members/{studentId}/grade",
     "HttpMethod": "POST",

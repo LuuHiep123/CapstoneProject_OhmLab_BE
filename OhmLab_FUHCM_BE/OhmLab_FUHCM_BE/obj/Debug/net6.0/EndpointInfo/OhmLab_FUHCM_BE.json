@@ -2066,6 +2066,57 @@
         }
       }
     },
+    "/api/grade/labs/{labId}/teams/{teamId}/grades": {
+      "put": {
+        "tags": [
+          "Grade"
+        ],
+        "parameters": [
+          {
+            "name": "labId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "teamId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateTeamGradesRequestModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateTeamGradesRequestModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateTeamGradesRequestModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
     "/api/grade/labs/{labId}/teams/{teamId}/members/{studentId}/grade": {
       "post": {
         "tags": [
@@ -5388,10 +5439,6 @@
           "equipmentDescription": {
             "type": "string",
             "nullable": true
-          },
-          "equipmentTypeUrlImg": {
-            "type": "string",
-            "nullable": true
           }
         },
         "additionalProperties": false
@@ -5448,10 +5495,6 @@
             "nullable": true
           },
           "kitDescription": {
-            "type": "string",
-            "nullable": true
-          },
-          "kitUrlImg": {
             "type": "string",
             "nullable": true
           }
@@ -6260,7 +6303,7 @@
             "type": "string",
             "nullable": true
           },
-          "user_RoleName": {
+          "userRoleName": {
             "type": "string",
             "nullable": true
           }
@@ -6838,6 +6881,24 @@
             "nullable": true
           },
           "teamEquipmentStatus": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "UpdateTeamGradesRequestModel": {
+        "type": "object",
+        "properties": {
+          "grade": {
+            "maximum": 10,
+            "minimum": 0,
+            "type": "number",
+            "format": "double"
+          },
+          "description": {
+            "maxLength": 500,
+            "minLength": 0,
             "type": "string",
             "nullable": true
           }

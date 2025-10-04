@@ -2,8 +2,8 @@
 using BusinessLayer.RequestModel.RegistrationSchedule;
 using BusinessLayer.ResponseModel.BaseResponse;
 using BusinessLayer.ResponseModel.RegistrationSchedule;
-using BusinessLayer.ResponseModel.Slot;
 using BusinessLayer.ResponseModel.Schedule;
+using BusinessLayer.ResponseModel.Slot;
 using BusinessLayer.ResponseModel.TeamKit;
 using BusinessLayer.ResponseModel.User;
 using DataLayer.Entities;
@@ -14,6 +14,8 @@ using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
 using X.PagedList.Extensions;
@@ -86,11 +88,13 @@ namespace BusinessLayer.Service.Implement
 
                         };
                     }
-                    registrationSchedule.RegistrationScheduleStatus = "Accept";
+                    
                     if (model.RegistrationScheduleNote != null)
                     {
                         registrationSchedule.RegistrationScheduleNote = model.RegistrationScheduleNote;
                     }
+                    registrationSchedule.RegistrationScheduleStatus = "Accept";
+                    await SendMailAccept(registrationSchedule);
                     await _registrationScheduleRepository.UpdateRegistrationSchedule(registrationSchedule);
                     return new BaseResponse<RegistrationScheduleAllResponseModel>()
                     {
@@ -110,6 +114,229 @@ namespace BusinessLayer.Service.Implement
                     Success = false,
                     Message = "Server Error!"
 
+                };
+            }
+        }
+
+        public async Task<BaseResponse> SendMailAccept(RegistrationSchedule registrationSchedule)
+        {
+            try
+            {
+                var user = await _userRepository.GetUserById(registrationSchedule.TeacherId);
+                var smtpClient = new SmtpClient("smtp.gmail.com");
+                smtpClient.Port = 587;
+                smtpClient.EnableSsl = true;
+                smtpClient.UseDefaultCredentials = false;
+                smtpClient.Credentials = new NetworkCredential("ohmlabsystem@gmail.com", "rdpj tier eipp epmd");
+
+                MailMessage mailMessage = new MailMessage();
+                mailMessage.From = new MailAddress("ohmlabsystem@gmail.com");
+                mailMessage.To.Add(user.UserEmail);
+                mailMessage.Subject = "Thông báo trạng thái đăng ký lịch thực hành";
+
+                mailMessage.Body = @"
+<html>
+<head>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      background-color: #f8f9fa;
+    }
+    .container {
+      padding: 20px;
+      background-color: #ffffff;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      max-width: 600px;
+      margin: 40px auto;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+    .header {
+      font-size: 20px;
+      font-weight: bold;
+      text-align: center;
+      color: #007BFF;
+      margin-bottom: 20px;
+    }
+    .content {
+      font-size: 16px;
+      color: #333;
+      background-color: #f8f9ff;
+      padding: 15px;
+      border-radius: 8px;
+    }
+    .footer {
+      font-size: 12px;
+      color: #888;
+      text-align: center;
+      margin-top: 25px;
+    }
+    .highlight {
+      color: #007BFF;
+      font-weight: bold;
+    }
+    ul {
+      list-style-type: none;
+      padding-left: 0;
+    }
+    li {
+      margin-bottom: 6px;
+    }
+  </style>
+</head>
+<body>
+  <div class='container'>
+    <div class='header'>Thông tin lịch thực hành</div>
+    <div class='content'>
+      <p><strong>Thông tin lịch thực hành:</strong></p>
+      <ul>
+        <li> <strong>Lớp:</strong> " + registrationSchedule.Class.ClassName + @"</li>
+        <li> <strong>Bài lab thực hành:</strong> " + registrationSchedule.Lab.LabName + @"</li>
+        <li> <strong>Ngày đăng ký:</strong> " + registrationSchedule.RegistrationScheduleDate.ToString("dd/MM/yyyy") + @"</li>
+        <li> <strong>Slot:</strong> " + registrationSchedule.Slot.SlotName + @"</li>
+        <li> <strong>Giờ học:</strong> " + registrationSchedule.Slot.SlotStartTime + " - " + registrationSchedule.Slot.SlotEndTime + @"</li>
+        <li> <strong>Description:</strong> " + registrationSchedule.RegistrationScheduleNote + @"</li>
+        <li> <strong>Trạng thái:</strong> <span class='highlight'>Accept</span></li>
+      </ul>
+
+      <p style='margin-top:15px;'>Lịch thực hành của bạn đã được duyệt. Vui lòng kiểm tra lại thông tin trên hệ thống trước khi đến phòng lab.</p>
+    </div>
+    <div class='footer'>
+      &copy; 2024 OHM Lab System. All rights reserved.
+    </div>
+  </div>
+</body>
+</html>";
+
+                mailMessage.IsBodyHtml = true;
+
+                await smtpClient.SendMailAsync(mailMessage);
+
+                return new BaseResponse
+                {
+                    Code = 200,
+                    Message = "Send succeed."
+                };
+            }
+            catch (Exception ex)
+            {
+                return new BaseResponse
+                {
+                    Code = 400,
+                    Message = "An error occurred: " + ex.Message
+                };
+            }
+        }
+
+
+        public async Task<BaseResponse> SendMailReject(RegistrationSchedule registrationSchedule)
+        {
+            try
+            {
+                var user = await _userRepository.GetUserById(registrationSchedule.TeacherId);
+                var smtpClient = new SmtpClient("smtp.gmail.com");
+                smtpClient.Port = 587;
+                smtpClient.EnableSsl = true;
+                smtpClient.UseDefaultCredentials = false;
+                smtpClient.Credentials = new NetworkCredential("ohmlabsystem@gmail.com", "rdpj tier eipp epmd");
+
+                MailMessage mailMessage = new MailMessage();
+                mailMessage.From = new MailAddress("ohmlabsystem@gmail.com");
+                mailMessage.To.Add(user.UserEmail);
+                mailMessage.Subject = "Thông báo trạng thái đăng ký lịch thực hành";
+
+                mailMessage.Body = @"
+<html>
+<head>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      background-color: #f8f9fa;
+    }
+    .container {
+      padding: 20px;
+      background-color: #ffffff;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      max-width: 600px;
+      margin: 40px auto;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+    .header {
+      font-size: 20px;
+      font-weight: bold;
+      text-align: center;
+      color: #007BFF;
+      margin-bottom: 20px;
+    }
+    .content {
+      font-size: 16px;
+      color: #333;
+      background-color: #f8f9ff;
+      padding: 15px;
+      border-radius: 8px;
+    }
+    .footer {
+      font-size: 12px;
+      color: #888;
+      text-align: center;
+      margin-top: 25px;
+    }
+    .highlight {
+      color: #007BFF;
+      font-weight: bold;
+    }
+    ul {
+      list-style-type: none;
+      padding-left: 0;
+    }
+    li {
+      margin-bottom: 6px;
+    }
+  </style>
+</head>
+<body>
+  <div class='container'>
+    <div class='header'>Thông tin lịch thực hành</div>
+    <div class='content'>
+      <p><strong>Thông tin lịch thực hành:</strong></p>
+      <ul>
+        <li>- <strong>Lớp:</strong> " + registrationSchedule.Class.ClassName + @"</li>
+        <li>- <strong>Bài lab thực hành:</strong> " + registrationSchedule.Lab.LabName + @"</li>
+        <li>- <strong>Ngày đăng ký:</strong> " + registrationSchedule.RegistrationScheduleDate.ToString("dd/MM/yyyy") + @"</li>
+        <li>- <strong>Slot:</strong> " + registrationSchedule.Slot.SlotName + @"</li>
+        <li>- <strong>Giờ học:</strong> " + registrationSchedule.Slot.SlotStartTime + " - " + registrationSchedule.Slot.SlotEndTime + @"</li>
+        <li>- <strong>Description:</strong> " + registrationSchedule.RegistrationScheduleNote + @"</li>
+        <li>- <strong>Trạng thái:</strong> <span class='highlight'>Reject</span></li>
+      </ul>
+
+      <p style='margin-top:15px;'>Lịch thực hành của bạn bị từ chối. Vui lòng kiểm tra lại thông tin trên hệ thống trước khi đến phòng lab.</p>
+    </div>
+    <div class='footer'>
+      &copy; 2024 OHM Lab System. All rights reserved.
+    </div>
+  </div>
+</body>
+</html>";
+
+                mailMessage.IsBodyHtml = true;
+
+                await smtpClient.SendMailAsync(mailMessage);
+
+                return new BaseResponse
+                {
+                    Code = 200,
+                    Message = "Send succeed."
+                };
+            }
+            catch (Exception ex)
+            {
+                return new BaseResponse
+                {
+                    Code = 400,
+                    Message = "An error occurred: " + ex.Message
                 };
             }
         }
@@ -558,6 +785,7 @@ namespace BusinessLayer.Service.Implement
                     {
                         registrationSchedule.RegistrationScheduleNote = model.RegistrationScheduleNote;
                     }
+                    await SendMailReject(registrationSchedule);
                     await _registrationScheduleRepository.UpdateRegistrationSchedule(registrationSchedule);
                     return new BaseResponse<RegistrationScheduleAllResponseModel>()
                     {

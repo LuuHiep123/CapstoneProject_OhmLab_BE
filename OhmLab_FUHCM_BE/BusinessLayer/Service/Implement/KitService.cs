@@ -96,6 +96,7 @@ namespace BusinessLayer.Service.Implement
                 kit.KitStatus = "Valid";
                 kit.KitCreateDate = DateTime.Now;
                 kit.KitUrlQr = GenerateQRCodeBase64(kidId);
+                kit.KitUrlImg = kitTemplate.KitTemplateUrlImg;
 
                 var listAccessoryKitTemplate = await _accessoryKitTemplateRepository.GetAllAccessoryKitTemplate();
                 listAccessoryKitTemplate = listAccessoryKitTemplate.Where(ak => ak.KitTemplateId.Equals(kit.KitTemplateId)).ToList();

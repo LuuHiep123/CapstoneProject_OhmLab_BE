@@ -1,3 +1,4 @@
+using BusinessLayer.RequestModel.TeamUser;
 using BusinessLayer.ResponseModel.BaseResponse;
 using BusinessLayer.ResponseModel.Team;
 using DataLayer.Entities;
@@ -24,105 +25,60 @@ namespace BusinessLayer.Service.Implement
             _classUserRepository = classUserRepository;
         }
 
-        public async Task<BaseResponse<TeamUserResponseModel>> AddUserToTeamAsync(int teamId, Guid userId)
+        public async Task<BaseResponse<TeamUserResponseModel>> AddUserToTeamAsync(ListTeamUserRequestModel model)
         {
             try
             {
-                
-                var team = await _teamRepository.GetByIdAsync(teamId);
-                if (team == null)
+                foreach(var tu in model.listTeamUser)
                 {
-                    return new BaseResponse<TeamUserResponseModel>
-                    {
-                        Code = 404,
-                        Success = false,
-                        Message = "Không tìm thấy nhóm!",
-                        Data = null
-                    };
-                }
-                var isUserInClass = await _classUserRepository.IsUserInClassAsync(userId, team.ClassId);
-                if (!isUserInClass)
-                {
-                    return new BaseResponse<TeamUserResponseModel>
-                    {
-                        Code = 404,
-                        Success = false,
-                        Message = "Người dùng không thuộc lớp học của nhóm này!",
-                        Data = null
-                    };
-                }
-
-               
-                var user = await _userRepository.GetUserById(userId);
-                if (user == null)
-                {
-                    return new BaseResponse<TeamUserResponseModel>
-                    {
-                        Code = 404,
-                        Success = false,
-                        Message = "Không tìm thấy người dùng!",
-                        Data = null
-                    };
-                }
-
-                
-                // Kiểm tra user đã có trong team khác ở CÙNG LỚP chưa
-                var userTeams = await _teamUserRepository.GetByUserIdAsync(userId);
-                var conflictingTeam = userTeams.FirstOrDefault(tu => tu.TeamId != teamId);
-                
-                if (conflictingTeam != null)
-                {
-                    // Lấy thông tin team xung đột để kiểm tra lớp
-                    var conflictingTeamInfo = await _teamRepository.GetByIdAsync(conflictingTeam.TeamId);
-                    if (conflictingTeamInfo != null && conflictingTeamInfo.ClassId == team.ClassId)
+                    var team = await _teamRepository.GetByIdAsync(tu.TeamId);
+                    if (team == null)
                     {
                         return new BaseResponse<TeamUserResponseModel>
                         {
-                            Code = 400,
+                            Code = 404,
                             Success = false,
-                            Message = "Người dùng đã có trong một nhóm khác ở cùng lớp này!",
+                            Message = "Không tìm thấy nhóm!",
                             Data = null
                         };
                     }
-                    // Nếu team xung đột ở lớp khác thì cho phép (khác lớp vẫn được)
-                }
-
-                
-                var isUserInTeam = await _teamUserRepository.IsUserInTeamAsync(userId, teamId);
-                if (isUserInTeam)
-                {
-                    return new BaseResponse<TeamUserResponseModel>
+                    var isUserInClass = await _classUserRepository.IsUserInClassAsync(tu.UserId, team.ClassId);
+                    if (!isUserInClass)
                     {
-                        Code = 409,
-                        Success = false,
-                        Message = "Người dùng đã có trong nhóm này!",
-                        Data = null
+                        return new BaseResponse<TeamUserResponseModel>
+                        {
+                            Code = 404,
+                            Success = false,
+                            Message = "Người dùng không thuộc lớp học của nhóm này!",
+                            Data = null
+                        };
+                    }
+                    var user = await _userRepository.GetUserById(tu.UserId);
+                    if (user == null)
+                    {
+                        return new BaseResponse<TeamUserResponseModel>
+                        {
+                            Code = 404,
+                            Success = false,
+                            Message = "Không tìm thấy người dùng!",
+                            Data = null
+                        };
+                    }
+                    var teamUser = new TeamUser()
+                    {
+                        UserId = tu.UserId,
+                        TeamId = tu.TeamId,
+                        TeamUserStatus = "Active"
                     };
-                }
 
-                var teamUser = new TeamUser
-                {
-                    TeamId = teamId,
-                    UserId = userId,
-                    TeamUserStatus = "Active"
-                };
-
-                var result = await _teamUserRepository.CreateAsync(teamUser);
-                var response = new TeamUserResponseModel
-                {
-                    TeamUserId = result.TeamUserId,
-                    UserId = result.UserId,
-                    UserName = user.UserFullName,
-                    UserEmail = user.UserEmail,
-                    TeamUserStatus = result.TeamUserStatus
-                };
-
+                    await _teamUserRepository.CreateAsync(teamUser);
+                }       
                 return new BaseResponse<TeamUserResponseModel>
                 {
                     Code = 200,
                     Success = true,
                     Message = "Thêm người dùng vào nhóm thành công!",
-                    Data = response
+                    Data = null
                 };
             }
             catch (System.Exception ex)

@@ -21,10 +21,14 @@ namespace BusinessLayer.Service.Implement
         private readonly IClassUserRepository _classUserRepository;
         private readonly IUserRepository _userRepository;
         private readonly IClassRepository _classRepository;
+        private readonly ITeamRepository _teamRepository;
+        private readonly ITeamUserRepository _teamUserRepository;
         private readonly IMapper _mapper;
 
-        public ClassUserService(IClassUserRepository classUserRepository, IUserRepository userRepository, IClassRepository classRepository, IMapper mapper)
+        public ClassUserService(ITeamUserRepository teamUserRepository, ITeamRepository teamRepository, IClassUserRepository classUserRepository, IUserRepository userRepository, IClassRepository classRepository, IMapper mapper)
         {
+            _teamUserRepository = teamUserRepository;
+            _teamRepository = teamRepository;
             _classUserRepository = classUserRepository;
             _userRepository = userRepository;
             _classRepository = classRepository;
@@ -144,8 +148,26 @@ namespace BusinessLayer.Service.Implement
         {
             try
             {
+                var listClassUsercheck = new List<ClassUser>();
                 var classUsers = await _classUserRepository.GetByClassIdAsync(classId);
-                var response = _mapper.Map<List<ClassUserResponseModel>>(classUsers);
+                var team = await _teamRepository.GetByClassIdAsync(classId);
+                var teamUser = await _teamUserRepository.GetAllAsync();
+
+                foreach (var t in team )
+                {
+                    foreach(var cu in classUsers)
+                    {
+                        if(teamUser.Any(tu => tu.TeamId.Equals(t.TeamId) && tu.UserId.Equals(cu.UserId)))
+                        {
+                            listClassUsercheck.Add(cu);
+                        }
+                    }
+                }
+                var result = classUsers
+                    .Where(x => !listClassUsercheck.Any(y => y.UserId == x.UserId))
+                    .ToList();
+
+                var response = _mapper.Map<List<ClassUserResponseModel>>(result);
 
                 return new BaseResponse<List<ClassUserResponseModel>>
                 {

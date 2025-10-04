@@ -1,3 +1,4 @@
+using BusinessLayer.RequestModel.TeamUser;
 using BusinessLayer.Service;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace OhmLab_FUHCM_BE.Controller
 {
-    [Route("api/[controller]")]
+    [Route("api/TeamUser/")]
     [ApiController]
     public class TeamUserController : ControllerBase
     {
@@ -18,10 +19,10 @@ namespace OhmLab_FUHCM_BE.Controller
         }
 
         [Authorize(Roles = "Admin,HeadOfDepartment,Lecturer")]
-        [HttpPost("team/{teamId}/user/{userId}")]
-        public async Task<IActionResult> AddUserToTeam(int teamId, Guid userId)
+        [HttpPost("teamuser")]
+        public async Task<IActionResult> AddUserToTeam(ListTeamUserRequestModel model)
         {
-            var result = await _teamUserService.AddUserToTeamAsync(teamId, userId);
+            var result = await _teamUserService.AddUserToTeamAsync(model);
             return StatusCode(result.Code, result);
         }
 
