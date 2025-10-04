@@ -283,6 +283,7 @@ namespace BusinessLayer.Service.Implement
                         Data = null
                     };
                 }
+                
 
                 // Log thông tin file
                 Console.WriteLine($"Import Excel: File size = {file.Length}, ClassId = {classId}");
@@ -411,6 +412,21 @@ namespace BusinessLayer.Service.Implement
                             });
                             continue;
                         }
+                        var dupplicatedemails = excelData.GroupBy(x => x.email)
+                                               .Where(g => g.Count() > 1)
+                                               .Select(g => g.Key)
+                                               .ToHashSet(StringComparer.OrdinalIgnoreCase);
+                        if (dupplicatedemails.Contains(email))
+                        {
+
+                            errorItems.Add(new ImportErrorItem
+                            {
+                                RowNumber = row,
+                                UserNumberCode = studentId ?? "",
+                                FullName = fullName ?? "",
+                                ErrorMessage = "Email bị trùng lặp trong file"
+                            });
+                            continue;}
 
                         // Validate email format
                         if (!IsValidEmail(email))
