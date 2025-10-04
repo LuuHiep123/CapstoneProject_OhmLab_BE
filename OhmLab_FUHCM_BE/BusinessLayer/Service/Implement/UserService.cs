@@ -349,7 +349,6 @@ namespace BusinessLayer.Service.Implement
                 var User = _mapper.Map<User>(model);
                 User.UserId = Guid.NewGuid();
                 User.Status = "IsActive";
-                User.UserRoleName = "Student";
                 bool check = await _teamEquipmentRepository.CreateUser(User);
                 if (!check)
                 {

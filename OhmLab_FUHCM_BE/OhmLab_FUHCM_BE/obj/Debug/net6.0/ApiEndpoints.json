@@ -3197,27 +3197,6 @@
   },
   {
     "ContainingType": "SWDProject_BE.Controllers.UserController",
-    "Method": "RegisterHeadOfDepartment",
-    "RelativePath": "api/user/headofdepartment",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "email",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "name",
-        "Type": "System.String",
-        "IsRequired": false
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "SWDProject_BE.Controllers.UserController",
     "Method": "LoginMail",
     "RelativePath": "api/user/loginmail",
     "HttpMethod": "POST",
@@ -3267,7 +3246,7 @@
   {
     "ContainingType": "SWDProject_BE.Controllers.UserController",
     "Method": "Register",
-    "RelativePath": "api/user/student",
+    "RelativePath": "api/user/user",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,

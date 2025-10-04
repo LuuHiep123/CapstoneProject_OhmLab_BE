@@ -5011,35 +5011,7 @@
         }
       }
     },
-    "/api/user/headofdepartment": {
-      "post": {
-        "tags": [
-          "User"
-        ],
-        "parameters": [
-          {
-            "name": "email",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "name",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success"
-          }
-        }
-      }
-    },
-    "/api/user/student": {
+    "/api/user/user": {
       "post": {
         "tags": [
           "User"
@@ -6285,6 +6257,10 @@
             "nullable": true
           },
           "userNumberCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "user_RoleName": {
             "type": "string",
             "nullable": true
           }

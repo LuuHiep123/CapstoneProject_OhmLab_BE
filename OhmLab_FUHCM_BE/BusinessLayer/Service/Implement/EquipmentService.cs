@@ -207,7 +207,7 @@ namespace BusinessLayer.Service.Implement
                 }
                 if (!string.IsNullOrEmpty(model.status))
                 {
-                    listEquipment = listEquipment.Where(eq => eq.EquipmentStatus.ToLower().Equals(model.status)).ToList();
+                    listEquipment = listEquipment.Where(eq => eq.EquipmentStatus.ToLower().Equals(model.status.ToLower())).ToList();
 
                 }
                 var result = _mapper.Map<List<EquipmentResponseModel>>(listEquipment);

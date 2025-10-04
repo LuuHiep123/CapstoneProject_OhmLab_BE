@@ -50,23 +50,9 @@ namespace SWDProject_BE.Controllers
                 throw new Exception(ex.Message);
             }
         }
-        [Authorize(Roles = "Admin")]
-        [HttpPost("HeadOfDepartment")]
-        public async Task<IActionResult> RegisterHeadOfDepartment(string email, string name)
-        {
-            try
-            {
-                var result = await _service.CreateAccountHeadOfDepartment(email, name);
-                return StatusCode(result.Code, result);
 
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
-        }
-        [Authorize(Roles = "Admin,HeadOfDepartment")]
-        [HttpPost("Student")]
+        [Authorize(Roles = "Admin")]
+        [HttpPost("User")]
         public async Task<IActionResult> Register(RegisterRequestModel model)
         {
             try
