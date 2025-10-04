@@ -94,7 +94,21 @@ namespace OhmLab_FUHCM_BE.AppStarts
                 provider.GetRequiredService<ILogger<AnalyticsService>>()
             ));
             services.AddScoped<ITeamKitService, TeamKitService>();
-            services.AddScoped<IAccessoryService, AccessoryService>();
+            services.AddScoped<IHeadOfDepartmentService>(provider => new HeadOfDepartmentService(
+     provider.GetRequiredService<IClassRepository>(),
+     provider.GetRequiredService<IEquipmentRepository>(),  
+     provider.GetRequiredService<ITeamRepository>(),       
+     provider.GetRequiredService<IUserRepository>(),
+     provider.GetRequiredService<IScheduleRepository>(),
+     provider.GetRequiredService<ISubjectRepository>(),
+     provider.GetRequiredService<ILabRepository>(),
+     provider.GetRequiredService<ISemesterRepository>(),
+     provider.GetRequiredService<IEquipmentTypeRepository>(),
+     provider.GetRequiredService<IKitTemplateRepository>(),
+     provider.GetRequiredService<IMapper>(),
+     provider.GetRequiredService<ILogger<HeadOfDepartmentService>>()
+ ));
+
 
             services.AddScoped<IStudentDashboardService>(provider => new StudentDashboardService(
                 provider.GetRequiredService<IClassUserRepository>(),
